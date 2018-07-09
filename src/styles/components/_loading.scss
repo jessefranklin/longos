@@ -1,0 +1,9 @@
+.loading-element {
+  transition:height 1.6s linear;
+  overflow:hidden;
+  width: 100px;
+  height: 0px;
+  margin: auto;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+}

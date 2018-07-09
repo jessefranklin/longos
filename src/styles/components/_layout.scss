@@ -1,0 +1,17 @@
+.content--container {
+    padding-top: 10rem;
+}
+
+.products {
+    aside {
+        position: fixed;
+        top: 10rem;
+        width: 25rem;
+        height: 100vh;
+        background: #CCC;
+        padding: $s-size 0 $s-size $s-size;
+    }
+    .content--container {
+        margin-left: 27rem;
+    }
+}

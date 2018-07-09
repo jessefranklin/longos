@@ -1,0 +1,12 @@
+{
+    "store": "store1",
+    "location": "toronto",
+    "tax": {
+        "name": "HST",
+        "tax": 13
+    },
+    "terms" : {
+        "header": "Order agreement confirmation",
+        "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+    }
+}
