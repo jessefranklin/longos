@@ -15,7 +15,6 @@ class Header extends React.Component {
             <Link className="header__title" to="/">
               <h1>
                 Longos Catering 
-                <img src={longos} alt="logo" />
                 <span className="longos-logo"></span>
               </h1>
             </Link>
