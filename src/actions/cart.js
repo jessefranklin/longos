@@ -54,3 +54,9 @@ export const editItem = (id, updates) => ({
   id,
   updates
 });
+
+
+// EMPTY CART
+export const removeCart = () => ({
+  type: 'EMPTY_CART'
+});
