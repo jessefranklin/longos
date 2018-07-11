@@ -7,8 +7,28 @@ import CartListItem from './CartListItem';
 import cartTotal from '../selectors/cartTotal';
 import moment from 'moment';
 import numeral from 'numeral';
+import CartProgress from './CartProgress';
+import { Checkbox } from 'react-bootstrap';
+
 
 class CartOrderReview extends React.Component {
+  
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checkboxChecked: false
+    }
+  }
+  onSubmit = (e) => {
+    this.state.completeOrder(this.state);
+  };
+  handler(checkbox) {
+    this.setState({ checkboxChecked: checkbox });
+  }
+  handleIsItChecked() {
+    console.log(this.state.checkboxChecked ? 'Yes' : 'No');
+  }
   render() {
     const { profile, cart, cartTotal } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
@@ -18,6 +38,9 @@ class CartOrderReview extends React.Component {
       <div>
         <ProductsHeader />
         <div className="content--container">
+
+          <CartProgress progress="yyy" />
+
           <h2>Place Order</h2>
           <div className="cart--item">
             {cart.map(product => {
@@ -36,11 +59,14 @@ class CartOrderReview extends React.Component {
             {moment(profile.pickUpDate).format('MMMM,Do,YYYY')}
 
             {profile.time}
-           
+
           </div>
           <div>
             <h5>{config.terms.header}</h5>
             <p>{config.terms.body}</p>
+              <Checkbox checked={this.state.checkboxChecked} onClick={e => this.handler(e.target.checked)}>
+                I accept the terms and conditions.
+              </Checkbox>
           </div>
 
           <Link className="btn" to="/cartorderreview" onClick={this.onSubmit}>Submit Order</Link>

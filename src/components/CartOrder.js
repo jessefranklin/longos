@@ -6,6 +6,7 @@ import ProductsHeader from '../components/ProductsHeader';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimeInput from 'react-time-input';
+import CartProgress from './CartProgress';
 
 class CartOrder extends React.Component {
   constructor(props) {
@@ -49,59 +50,65 @@ class CartOrder extends React.Component {
     return (
       <div>
         <ProductsHeader />
+
         <div className="content--container">
-          <input
-            type="text"
-            placeholder="username"
-            name="username" 
-            value={this.state.username}
-            onChange={this.handleChange.bind(this)}
-          />
-          <input
-            type="email"
-            name="email" 
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.handleChange.bind(this)}
-          />
-          <input
-            type="phone"
-            name="phone" 
-            placeholder="phone"
-            value={this.state.phone}
-            onChange={this.handleChange.bind(this)}
-          />
-          <input
-            type="number" 
-            name="rewards" 
-            value={this.state.rewards}
-            placeholder="rewards number"
-            onChange={this.handleChange.bind(this)}
-          />
+        
+          <CartProgress progress="yyy" />
 
-          <SingleDatePicker
-            date={this.state.pickUpDate} 
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
+          <div className="form-group">
+            <input
+              type="text"
+              name="username" 
+              placeholder="username"
+              value={this.state.username}
+              onChange={this.handleChange.bind(this)}
+            />
+            <input
+              type="email"
+              name="email" 
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.handleChange.bind(this)}
+            />
+            <input
+              type="phone"
+              name="phone" 
+              placeholder="phone"
+              value={this.state.phone}
+              onChange={this.handleChange.bind(this)}
+            />
+            <input
+              type="number" 
+              name="rewards" 
+              value={this.state.rewards}
+              placeholder="rewards number"
+              onChange={this.handleChange.bind(this)}
+            />
 
-          {this.state.order.time}
-          
-          <TimeInput
-            initTime={this.state.order.time}
-            ref="TimeInputWrapper"
-            className='form-control'
-            mountFocus='true'
-            onTimeChange={this.onTimeChangeHandler}
-          />
+            <SingleDatePicker
+              date={this.state.pickUpDate} 
+              onDateChange={this.onDateChange}
+              focused={this.state.calendarFocused}
+              onFocusChange={this.onFocusChange}
+              numberOfMonths={1}
+              isOutsideRange={() => false}
+            />
 
-          <Link className="btn" to="/cartorderreview" onClick={this.onSubmit}>Next step</Link>
-          <Link to="/products" className="btn btn-secondary">Cancel</Link>
-          <div>
-            Allow for 24 hour notice or call in store for other accommodations."
+            {this.state.order.time}
+            
+            <TimeInput
+              initTime={this.state.time}
+              ref="TimeInputWrapper"
+              className='form-control'
+              mountFocus='true'
+              onTimeChange={this.onTimeChangeHandler}
+            />
+
+            <Link className="btn" to="/cartorderreview" onClick={this.onSubmit}>Next step</Link>
+            <Link to="/products" className="btn btn-secondary">Cancel</Link>
+            <div>
+              Allow for 24 hour notice or call in store for other accommodations."
+            </div>
           </div>
         </div>
       </div>

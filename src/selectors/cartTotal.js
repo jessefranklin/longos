@@ -8,7 +8,11 @@ export default (item) => {
 
 
 export const totalCount = (item) => {
-    return item
-        .map((item) => (item.quantity))
-        .reduce((sum, value) => sum+value,0);
+    if(item.length > 0){        
+        return item
+            .map((item) => (item.quantity))
+            .reduce((sum, value) => sum+value,0);
+    } else {
+        return 0;
+    }
 }

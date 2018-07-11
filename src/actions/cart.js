@@ -8,7 +8,7 @@ export const startAddToCart = (productData = {}) => {
       name = 'default',
       description = 'description',
       option = {},
-      quantity = 1,
+      quantity = 0,
       note = ''
     } = productData;
     

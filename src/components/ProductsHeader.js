@@ -5,9 +5,17 @@ import FontAwesome from 'react-fontawesome';
 import { totalCount } from '../selectors/cartTotal';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  handleClick(e) {
+    if(this.props.cart.length === 0) e.preventDefault();
+  }
   render() {
     const {cart, profile, total} = this.props;
     const cartLength = cart.length > 0;
+    const itemWord = total === 1 ? 'item' : 'items' ;
+
     return (
       <header className="header">
         <div className="content-container">
@@ -18,17 +26,23 @@ class Header extends React.Component {
               </h1>
             </Link>
             
-            {profile.username && <div>{profile.username}</div>}
+            {profile.username && <div>
+              {profile.username}
+              <Link to="/">Logout</Link>
+            </div>}
+
 
             <div className="cart-container">
-              <Link className="button" to="/cart" disabled={cartLength ? '' : 'disabled'}>
+
+              <Link className="btn" to="/cart" onClick={this.handleClick.bind(this)}>
                 <FontAwesome
                   className='super-crazy-colors'
                   name='shopping-cart'
                   size='2x'
                 />
               </Link>
-              {cart.length >= 1 && <div className="cart__indicator">{total}</div>}
+
+              {cart.length >= 1 && <div className="cart__indicator">{total} {itemWord}</div>}
 
             </div>
             <Link to="/order">Place Order</Link>
