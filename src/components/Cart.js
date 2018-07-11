@@ -8,6 +8,11 @@ import numeral from 'numeral';
 import { totalCount } from '../selectors/cartTotal';
 
 class Cart extends React.Component {
+  componentDidUpdate() {
+    if (this.props.cart.length < 1) {
+      this.props.history.push('/products');
+    }
+  }
   render() {
     const { cart, cartTotal, total } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
