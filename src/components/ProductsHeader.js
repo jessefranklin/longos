@@ -9,7 +9,7 @@ class Header extends React.Component {
     super(props);
   }
   handleClick(e) {
-    if(this.props.cart.length === 0) e.preventDefault();
+    if(this.props.cart.length == 0 || this.props.cart.length == undefined) e.preventDefault();
   }
   render() {
     const {cart, profile, total} = this.props;
@@ -28,13 +28,13 @@ class Header extends React.Component {
             
             {profile.username && <div>
               {profile.username}
-              <Link to="/">Logout</Link>
+                <Link to="/">Logout</Link>
             </div>}
 
 
             <div className="cart-container">
 
-              <Link className="btn" to="/cart" onClick={this.handleClick.bind(this)}>
+              <Link className="btn" to="/cart" onClick={this.handleClick.bind(this)} disabled={cartLength?'':'disabled'}>
                 <FontAwesome
                   className='super-crazy-colors'
                   name='shopping-cart'

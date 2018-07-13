@@ -12,28 +12,34 @@ import { Checkbox } from 'react-bootstrap';
 
 
 class CartOrderReview extends React.Component {
-  
   constructor(props) {
     super(props);
 
     this.state = {
-      checkboxChecked: false
+      checked: false
+    }
+
+    this.handleCheck = this.handleCheck.bind(this);
+  }
+  componentDidUpdate() {
+    if (this.props.cart.length < 1) {
+      this.props.history.push('/products');
     }
   }
   onSubmit = (e) => {
-    this.state.completeOrder(this.state);
+    if(!this.state.checked){e.preventDefault(); return; }
+    console.log(this.state);
+    // this.completeOrder(this.state);
   };
-  handler(checkbox) {
-    this.setState({ checkboxChecked: checkbox });
-  }
-  handleIsItChecked() {
-    console.log(this.state.checkboxChecked ? 'Yes' : 'No');
+  handleCheck(e) {
+    this.setState({checked: !!e.target.checked});
   }
   render() {
     const { profile, cart, cartTotal } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
     const taxAmount = numeral(cartTotal * (config.tax.tax/100)).format('$0,0.00');
     const totalAmount = numeral(cartTotal + (cartTotal * (config.tax.tax/100))).format('$0,0.00');
+
     return (
       <div>
         <ProductsHeader />
@@ -63,13 +69,24 @@ class CartOrderReview extends React.Component {
           </div>
           <div>
             <h5>{config.terms.header}</h5>
-            <p>{config.terms.body}</p>
-              <Checkbox checked={this.state.checkboxChecked} onClick={e => this.handler(e.target.checked)}>
-                I accept the terms and conditions.
-              </Checkbox>
+            <p>{config.terms.body}
+            
+            {this.state.checked}
+            </p>
+
+            <div className="checkbox">
+            <label className={this.state.checked?'checked':''} >I accept the terms and conditions.
+            <input
+              name="terms"
+              type="checkbox"
+              checked={this.state.checked}
+              onChange={this.handleCheck} />
+            </label>
+            </div>
+
           </div>
 
-          <Link className="btn" to="/cartorderreview" onClick={this.onSubmit}>Submit Order</Link>
+          <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.checked?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
 
         </div>

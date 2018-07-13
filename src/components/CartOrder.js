@@ -5,8 +5,8 @@ import { setProfile } from '../actions/profile';
 import ProductsHeader from '../components/ProductsHeader';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-import TimeInput from 'react-time-input';
 import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, Row, Col, Button } from 'react-bootstrap';
+
 import CartProgress from './CartProgress';
 
 class CartOrder extends React.Component {
@@ -40,9 +40,6 @@ class CartOrder extends React.Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
   };
-  onTimeChangeHandler = (e) => {
-
-  };
   onSubmit = (e) => {
     this.props.setProfile(this.state);
   };
@@ -60,13 +57,15 @@ class CartOrder extends React.Component {
             <input
               type="text"
               name="username" 
+              className='form-control'
               placeholder="username"
               value={this.state.username}
               onChange={this.handleChange.bind(this)}
             />
             <input
               type="email"
-              name="email" 
+              name="email"
+              className='form-control' 
               placeholder="email"
               value={this.state.email}
               onChange={this.handleChange.bind(this)}
@@ -74,6 +73,7 @@ class CartOrder extends React.Component {
             <input
               type="phone"
               name="phone" 
+              className='form-control'
               placeholder="phone"
               value={this.state.phone}
               onChange={this.handleChange.bind(this)}
@@ -81,6 +81,7 @@ class CartOrder extends React.Component {
             <input
               type="number" 
               name="rewards" 
+              className='form-control'
               value={this.state.rewards}
               placeholder="rewards number"
               onChange={this.handleChange.bind(this)}
@@ -95,17 +96,7 @@ class CartOrder extends React.Component {
               isOutsideRange={() => false}
             />
 
-            {this.state.order.time}
-            
-            <TimeInput
-              initTime={this.state.time}
-              ref="TimeInputWrapper"
-              className='form-control'
-              mountFocus='true'
-              onTimeChange={this.onTimeChangeHandler}
-            />
-
-            <Link className="btn" to="/cartorderreview" onClick={this.onSubmit}>Next step</Link>
+            <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
             <Link to="/products" className="btn btn-secondary">Cancel</Link>
             <div>
               Allow for 24 hour notice or call in store for other accommodations."
