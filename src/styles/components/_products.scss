@@ -7,4 +7,7 @@
     margin-right: 2%;
     display: inline-block;
     vertical-align: top;
+    &.selected {
+        border: 1px solid #000;
+    }
 }

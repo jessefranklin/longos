@@ -83,7 +83,7 @@ class ProductsListItem extends Component {
     const options = this.selOptions(item);
    
     return (
-      <div className="product--item"  onClick={this.handleShow}>
+      <div className='product--item' onClick={this.handleShow}>
         <div className="img--container">
           <img src={item.imageLink} alt={item.name} />
         </div>

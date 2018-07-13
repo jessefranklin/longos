@@ -35,17 +35,18 @@ class CartOrderReview extends React.Component {
     this.setState({checked: !!e.target.checked});
   }
   render() {
-    const { profile, cart, cartTotal } = this.props;
+    const { profile, cart, cartTotal, order } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
     const taxAmount = numeral(cartTotal * (config.tax.tax/100)).format('$0,0.00');
     const totalAmount = numeral(cartTotal + (cartTotal * (config.tax.tax/100))).format('$0,0.00');
+    const time = moment().startOf('day').seconds(order.time).format('h:mm A');
 
     return (
       <div>
         <ProductsHeader />
         <div className="content--container">
 
-          <CartProgress progress="yyy" />
+          <CartProgress progress="1" />
 
           <h2>Place Order</h2>
           <div className="cart--item">
@@ -62,7 +63,10 @@ class CartOrderReview extends React.Component {
             {profile.username}
             {profile.phone}
             {profile.email}
-            {moment(profile.pickUpDate).format('MMMM,Do,YYYY')}
+            {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
+            <br />
+            {time}
+            <br />
 
             {profile.time}
 
@@ -98,7 +102,8 @@ class CartOrderReview extends React.Component {
 const mapStateToProps = (state) => ({
     profile: state.profile,
     cart: state.cart,
-    cartTotal: cartTotal(state.cart)
+    cartTotal: cartTotal(state.cart),
+    order: state.order
 });
 
 export default connect(mapStateToProps)(CartOrderReview);

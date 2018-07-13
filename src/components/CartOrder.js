@@ -6,8 +6,9 @@ import ProductsHeader from '../components/ProductsHeader';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, Row, Col, Button } from 'react-bootstrap';
-
+import { setOrder } from '../actions/order';
 import CartProgress from './CartProgress';
+import TimePicker from 'react-bootstrap-time-picker';
 
 class CartOrder extends React.Component {
   constructor(props) {
@@ -19,15 +20,15 @@ class CartOrder extends React.Component {
       phone: props.profile ? props.profile.phone : '',
       rewards: props.profile.rewards ? props.profile.rewards : '',
       calendarFocused: false,
-      pickUpDate: moment(),
-      time: '',
-      order: {
-        id: 0,
-        status: 'pending',
-        createdAt: moment()
-      },
+      pickUpDate: props.order.pickUpDate?moment(props.order.pickUpDate):moment(),
+      time: props.order.time?props.order.time:32400,
+      status: 'pending',
+      createdAt: moment(),
       error: ''
     };
+
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+
   }
   onDateChange = (pickUpDate) => {
     if (pickUpDate) {
@@ -40,8 +41,23 @@ class CartOrder extends React.Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
   };
+  handleTimeChange(time) {
+    console.log(time);
+    this.setState({ time });
+  }
   onSubmit = (e) => {
-    this.props.setProfile(this.state);
+    this.props.setProfile({
+      username: this.state.username,
+      email: this.state.email,
+      phone: this.state.phone,
+      rewards: this.state.rewards
+    });
+    this.props.setOrder({
+      pickUpDate: this.state.pickUpDate,
+      time: this.state.time,
+      status: this.state.status,
+      createdAt: this.state.createdAt
+    });
   };
   render() {
     const { profile } = this.props;
@@ -96,7 +112,10 @@ class CartOrder extends React.Component {
               isOutsideRange={() => false}
             />
 
+            <TimePicker onChange={this.handleTimeChange} start="9:00" end="22:00" value={this.state.time} />
+
             <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
+            
             <Link to="/products" className="btn btn-secondary">Cancel</Link>
             <div>
               Allow for 24 hour notice or call in store for other accommodations."
@@ -109,11 +128,13 @@ class CartOrder extends React.Component {
 }
   
 const mapStateToProps = (state) => ({
-    profile: state.profile
+    profile: state.profile,
+    order: state.order
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setProfile: (profile) => dispatch(setProfile(profile))
+  setProfile: (profile) => dispatch(setProfile(profile)),
+  setOrder: (order) => dispatch(setOrder(order))
 });
   
 export default connect(mapStateToProps, mapDispatchToProps)(CartOrder);
