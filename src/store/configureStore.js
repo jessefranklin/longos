@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import profileReducer from '../reducers/auth';
 import productsReducer from '../reducers/products';
 import cartReducer from '../reducers/cart';
+import orderReducer from '../reducers/order';
 import filterReducer from '../reducers/filters';
 import { StateLoader } from "../state.loader"
 
@@ -16,6 +17,7 @@ export default () => {
             profile: profileReducer,
             products: productsReducer,
             filters: filterReducer,
+            order: orderReducer,
             cart: cartReducer
         }),
         // State persist

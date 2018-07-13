@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { history } from '../routers/AppRouter';
 import { setProfile } from '../actions/profile';
 import { Textbox } from 'react-inputs-validation';
-import { StateLoader } from "../state.loader"
+import { StateLoader } from '../state.loader';
 import { removeCart }  from '../actions/cart';
+import { resetOrder }  from '../actions/order';
 
 class LoginPage extends React.Component {
   state = {
@@ -14,6 +15,7 @@ class LoginPage extends React.Component {
     let stateLoader = new StateLoader();
     stateLoader.removeState();
     this.props.removeCart();
+    this.props.resetOrder();
   }
   onSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +69,8 @@ class LoginPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   setProfile: (profile) => dispatch(setProfile(profile)),
-  removeCart: () => dispatch(removeCart())
+  removeCart: () => dispatch(removeCart()),
+  resetOrder: () => dispatch(resetOrder())
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);

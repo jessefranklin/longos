@@ -6,7 +6,7 @@ import ProductsHeader from '../components/ProductsHeader';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, Row, Col, Button } from 'react-bootstrap';
-
+import { setOrder } from '../actions/order';
 import CartProgress from './CartProgress';
 
 class CartOrder extends React.Component {
@@ -19,13 +19,10 @@ class CartOrder extends React.Component {
       phone: props.profile ? props.profile.phone : '',
       rewards: props.profile.rewards ? props.profile.rewards : '',
       calendarFocused: false,
-      pickUpDate: moment(),
+      pickUpDate: props.order.pickUpDate?moment(props.order.pickUpDate):moment(),
       time: '',
-      order: {
-        id: 0,
-        status: 'pending',
-        createdAt: moment()
-      },
+      status: 'pending',
+      createdAt: moment(),
       error: ''
     };
   }
@@ -41,7 +38,18 @@ class CartOrder extends React.Component {
     this.setState({ [e.target.name]: e.target.value});
   };
   onSubmit = (e) => {
-    this.props.setProfile(this.state);
+    this.props.setProfile({
+      username: this.state.username,
+      email: this.state.email,
+      phone: this.state.phone,
+      rewards: this.state.rewards
+    });
+    this.props.setOrder({
+      pickUpDate: this.state.pickUpDate,
+      time: this.state.time,
+      status: this.state.status,
+      createdAt: this.state.createdAt
+    });
   };
   render() {
     const { profile } = this.props;
@@ -109,11 +117,13 @@ class CartOrder extends React.Component {
 }
   
 const mapStateToProps = (state) => ({
-    profile: state.profile
+    profile: state.profile,
+    order: state.order
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setProfile: (profile) => dispatch(setProfile(profile))
+  setProfile: (profile) => dispatch(setProfile(profile)),
+  setOrder: (order) => dispatch(setOrder(order))
 });
   
 export default connect(mapStateToProps, mapDispatchToProps)(CartOrder);
