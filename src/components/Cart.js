@@ -5,21 +5,27 @@ import CartListItem from './CartListItem';
 import ProductsHeader from '../components/ProductsHeader';
 import cartTotal from '../selectors/cartTotal';
 import numeral from 'numeral';
+import { totalCount } from '../selectors/cartTotal';
 
 class Cart extends React.Component {
+  componentDidUpdate() {
+    if (this.props.cart.length < 1) {
+      this.props.history.push('/products');
+    }
+  }
   render() {
-    const { cart, cartTotal } = this.props;
+    const { cart, cartTotal, total } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
-    const itemWord = cart.length === 1 ? 'item' : 'items' ;
+    const itemWord = total === 1 ? 'item' : 'items' ;
 
     return (
       <div>
         <ProductsHeader />
         <div className="content--container">
-          <h2>Shopping Cart ({cart.length} {itemWord})</h2>
+          <h2>Shopping Cart ({total} {itemWord})</h2>
           <div className="cart--item">
             {cart.map(product => {
-              return <CartListItem key={product.id} item={product} editable="true" />;
+              return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
             })}
           </div>
           <div>
@@ -35,7 +41,8 @@ class Cart extends React.Component {
   
 const mapStateToProps = (state) => ({
   cart: state.cart,
-  cartTotal: cartTotal(state.cart)
+  cartTotal: cartTotal(state.cart),
+  total: totalCount(state.cart)
 });
   
 export default connect(mapStateToProps)(Cart);

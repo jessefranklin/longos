@@ -21,7 +21,7 @@ const AppRouter = () => (
         <PublicRoute path="/dashboard" component={DashboardPage} />
         <PublicRoute path="/products" component={Products} />
         <PublicRoute path="/cart" component={Cart} />
-        <PublicRoute path="/cartorderreview" component={CartOrderReview} />
+        <PublicRoute path="/orderreview" component={CartOrderReview} />
         <PublicRoute path="/order" component={Order} />
         <Route component={NotFoundPage} />
       </Switch>

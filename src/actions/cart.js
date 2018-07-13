@@ -8,7 +8,7 @@ export const startAddToCart = (productData = {}) => {
       name = 'default',
       description = 'description',
       option = {},
-      quantity = 1,
+      quantity = 0,
       note = ''
     } = productData;
     
@@ -53,4 +53,10 @@ export const editItem = (id, updates) => ({
   type: 'EDIT_ITEM',
   id,
   updates
+});
+
+
+// EMPTY CART
+export const removeCart = () => ({
+  type: 'EMPTY_CART'
 });

@@ -13,6 +13,7 @@ class LoginPage extends React.Component {
   componentDidMount() {
     let stateLoader = new StateLoader();
     stateLoader.removeState();
+    this.props.removeCart();
   }
   onSubmit = (e) => {
     e.preventDefault();
@@ -65,7 +66,8 @@ class LoginPage extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-  setProfile: (profile) => dispatch(setProfile(profile))
+  setProfile: (profile) => dispatch(setProfile(profile)),
+  removeCart: () => dispatch(removeCart())
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);

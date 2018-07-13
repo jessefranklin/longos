@@ -10,6 +10,8 @@ export default (state = cartReducerDefaultState, action) => {
       ];
     case 'REMOVE_ITEM':
       return state.filter(({ id }) => id !== action.id);
+    case 'EMPTY_CART':
+      return {};
     case 'EDIT_ITEM':
       return state.map((item) => {
         if (item.id === action.id) {
