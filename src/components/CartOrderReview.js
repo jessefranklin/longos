@@ -39,6 +39,7 @@ class CartOrderReview extends React.Component {
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
     const taxAmount = numeral(cartTotal * (config.tax.tax/100)).format('$0,0.00');
     const totalAmount = numeral(cartTotal + (cartTotal * (config.tax.tax/100))).format('$0,0.00');
+    const time = moment().startOf('day').seconds(order.time).format('h:mm A');
 
     return (
       <div>
@@ -63,8 +64,9 @@ class CartOrderReview extends React.Component {
             {profile.phone}
             {profile.email}
             {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
-            
-            {moment(order.time).format('h:mm A')}
+            <br />
+            {time}
+            <br />
 
             {profile.time}
 

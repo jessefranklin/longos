@@ -21,7 +21,7 @@ class CartOrder extends React.Component {
       rewards: props.profile.rewards ? props.profile.rewards : '',
       calendarFocused: false,
       pickUpDate: props.order.pickUpDate?moment(props.order.pickUpDate):moment(),
-      time: props.order.time?props.order.time:0,
+      time: props.order.time?props.order.time:32400,
       status: 'pending',
       createdAt: moment(),
       error: ''
