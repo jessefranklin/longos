@@ -1,6 +1,9 @@
-{
+[{
     "store": "store1",
-    "location": "toronto",
+    "location": {
+        "provence": "ontario",
+        "city": "toronto"
+    },
     "tax": {
         "name": "HST",
         "tax": 13
@@ -9,4 +12,18 @@
         "header": "Order agreement confirmation",
         "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
     }
-}
+},{
+    "store": "store2",
+    "location": {
+        "provence": "alberta",
+        "city": "calgary" 
+    },
+    "tax": {
+        "name": "PST",
+        "tax": 5
+    },
+    "terms" : {
+        "header": "Order agreement confirmation",
+        "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+    }
+}]

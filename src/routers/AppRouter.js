@@ -4,6 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
 import Products from '../components/Products';
 import Cart from '../components/Cart';
+import Settings from '../components/Settings';
 import Order from '../components/CartOrder';
 import CartOrderReview from '../components/CartOrderReview';
 import NotFoundPage from '../components/NotFoundPage';
@@ -18,6 +19,7 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
+        <PublicRoute path="/settings" component={Settings} />
         <PublicRoute path="/dashboard" component={DashboardPage} />
         <PublicRoute path="/products" component={Products} />
         <PublicRoute path="/cart" component={Cart} />

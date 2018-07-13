@@ -5,6 +5,7 @@ import productsReducer from '../reducers/products';
 import cartReducer from '../reducers/cart';
 import orderReducer from '../reducers/order';
 import filterReducer from '../reducers/filters';
+import configReducer from '../reducers/config';
 import { StateLoader } from "../state.loader"
 
 
@@ -14,6 +15,7 @@ let stateLoader = new StateLoader();
 export default () => {
     const store = createStore(
         combineReducers({
+            settings: configReducer,
             profile: profileReducer,
             products: productsReducer,
             filters: filterReducer,

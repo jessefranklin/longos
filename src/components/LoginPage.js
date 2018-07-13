@@ -30,6 +30,9 @@ class LoginPage extends React.Component {
     return(
       <div>
         <div className="box-layout">
+          <h1>
+            <span className="longos-logo"></span>
+          </h1>
           <div className="box-layout__box">
             <input
               type="text"
@@ -57,8 +60,8 @@ class LoginPage extends React.Component {
             />
     
             <Link className="button" to="/products" data="/products" onClick={this.onSubmit}>Customer/Products</Link>
-            <Link to="/dashboard">CSA Dashboard</Link>
-            
+            <Link to="/dashboard">CSA Dashboard</Link><br /><br />
+            <Link to="/settings">Settings</Link>
             </div>
         </div>
       </div>
