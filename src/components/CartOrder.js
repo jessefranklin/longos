@@ -8,6 +8,7 @@ import { SingleDatePicker } from 'react-dates';
 import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, Row, Col, Button } from 'react-bootstrap';
 import { setOrder } from '../actions/order';
 import CartProgress from './CartProgress';
+import TimePicker from 'react-bootstrap-time-picker';
 
 class CartOrder extends React.Component {
   constructor(props) {
@@ -20,11 +21,14 @@ class CartOrder extends React.Component {
       rewards: props.profile.rewards ? props.profile.rewards : '',
       calendarFocused: false,
       pickUpDate: props.order.pickUpDate?moment(props.order.pickUpDate):moment(),
-      time: '',
+      time: props.order.time?props.order.time:0,
       status: 'pending',
       createdAt: moment(),
       error: ''
     };
+
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+
   }
   onDateChange = (pickUpDate) => {
     if (pickUpDate) {
@@ -37,6 +41,10 @@ class CartOrder extends React.Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
   };
+  handleTimeChange(time) {
+    console.log(time);
+    this.setState({ time });
+  }
   onSubmit = (e) => {
     this.props.setProfile({
       username: this.state.username,
@@ -104,7 +112,10 @@ class CartOrder extends React.Component {
               isOutsideRange={() => false}
             />
 
+            <TimePicker onChange={this.handleTimeChange} start="9:00" end="22:00" value={this.state.time} />
+
             <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
+            
             <Link to="/products" className="btn btn-secondary">Cancel</Link>
             <div>
               Allow for 24 hour notice or call in store for other accommodations."

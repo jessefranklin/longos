@@ -45,7 +45,7 @@ class CartOrderReview extends React.Component {
         <ProductsHeader />
         <div className="content--container">
 
-          <CartProgress progress="yyy" />
+          <CartProgress progress="1" />
 
           <h2>Place Order</h2>
           <div className="cart--item">
@@ -63,6 +63,8 @@ class CartOrderReview extends React.Component {
             {profile.phone}
             {profile.email}
             {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
+            
+            {moment(order.time).format('h:mm A')}
 
             {profile.time}
 
