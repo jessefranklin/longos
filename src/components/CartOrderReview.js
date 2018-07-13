@@ -37,8 +37,8 @@ class CartOrderReview extends React.Component {
   render() {
     const { profile, cart, cartTotal, order } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
-    const taxAmount = numeral(cartTotal * (config.tax.tax/100)).format('$0,0.00');
-    const totalAmount = numeral(cartTotal + (cartTotal * (config.tax.tax/100))).format('$0,0.00');
+    const taxAmount = numeral(cartTotal * (config[0].tax.tax/100)).format('$0,0.00');
+    const totalAmount = numeral(cartTotal + (cartTotal * (config[0].tax.tax/100))).format('$0,0.00');
     const time = moment().startOf('day').seconds(order.time).format('h:mm A');
 
     return (
@@ -56,7 +56,7 @@ class CartOrderReview extends React.Component {
           </div>
           <div>
             Total price: {formattedCartTotal}
-            {config.tax.name}: {taxAmount}
+            {config[0].tax.name}: {taxAmount}
             Grand Total: {totalAmount}
           </div>
           <div>
@@ -72,8 +72,8 @@ class CartOrderReview extends React.Component {
 
           </div>
           <div>
-            <h5>{config.terms.header}</h5>
-            <p>{config.terms.body}
+            <h5>{config[0].terms.header}</h5>
+            <p>{config[0].terms.body}
             
             {this.state.checked}
             </p>
