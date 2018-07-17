@@ -8,7 +8,7 @@
 		"id": "p1-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p1-Regular-6",
@@ -33,7 +33,7 @@
 		"id": "p2-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p2-Regular-6",
@@ -58,7 +58,7 @@
 		"id": "p3-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p3-Regular-6",
@@ -283,7 +283,7 @@
 		"id": "p12-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "140-110",
 		"price": {
 			"id": "p12-Regular-6",
@@ -308,7 +308,7 @@
 		"id": "p13-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p13-Regular-6",
@@ -333,7 +333,7 @@
 		"id": "p14-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "110-90",
 		"price": {
 			"id": "p14-Regular-6",
@@ -358,7 +358,7 @@
 		"id": "p15-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "280-230",
 		"price": {
 			"id": "p15-Regular-6",
@@ -383,7 +383,7 @@
 		"id": "p16-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "130-100",
 		"price": {
 			"id": "p16-Regular-6",
@@ -408,7 +408,7 @@
 		"id": "p17-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p17-Regular-6",
@@ -433,7 +433,7 @@
 		"id": "p18-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "500-420",
 		"price": {
 			"id": "p18-Regular-6",
@@ -458,7 +458,7 @@
 		"id": "p19-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "360-300",
 		"price": {
 			"id": "p19-Regular-6",
@@ -483,7 +483,7 @@
 		"id": "p20-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "625-520",
 		"price": {
 			"id": "p20-Regular-6",
@@ -508,7 +508,7 @@
 		"id": "p21-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "260-210",
 		"price": {
 			"id": "p21-Regular-6",
@@ -533,7 +533,7 @@
 		"id": "p22-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "625-520",
 		"price": {
 			"id": "p22-Regular-6",
@@ -558,7 +558,7 @@
 		"id": "p23-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "300-250",
 		"price": {
 			"id": "p23-Regular-6",
@@ -583,7 +583,7 @@
 		"id": "p24-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "380-310",
 		"price": {
 			"id": "p24-Regular-6",
@@ -608,7 +608,7 @@
 		"id": "p25-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "580-480",
 		"price": {
 			"id": "p25-Regular-6",
@@ -633,7 +633,7 @@
 		"id": "p26-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "450-380",
 		"price": {
 			"id": "p26-Regular-6",
@@ -658,7 +658,7 @@
 		"id": "p27-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "480-400",
 		"price": {
 			"id": "p27-Regular-6",
@@ -683,7 +683,7 @@
 		"id": "p28-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p28-Regular-6",
@@ -708,7 +708,7 @@
 		"id": "p29-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
+		"servingSize": "15",
 		"calories": "",
 		"price": {
 			"id": "p29-Regular-6",
@@ -723,7 +723,7 @@
 		"id": "p29-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
+		"servingSize": "25",
 		"calories": "",
 		"price": {
 			"id": "p29-Large-6",
@@ -748,7 +748,7 @@
 		"id": "p30-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
+		"servingSize": "15",
 		"calories": "",
 		"price": {
 			"id": "p30-Regular-6",
@@ -763,7 +763,7 @@
 		"id": "p30-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
+		"servingSize": "25",
 		"calories": "",
 		"price": {
 			"id": "p30-Large-6",
@@ -788,7 +788,7 @@
 		"id": "p31-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
+		"servingSize": "15",
 		"calories": "",
 		"price": {
 			"id": "p31-Regular-6",
@@ -803,7 +803,7 @@
 		"id": "p31-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
+		"servingSize": "25",
 		"calories": "",
 		"price": {
 			"id": "p31-Large-6",
@@ -828,7 +828,7 @@
 		"id": "p32-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
+		"servingSize": "15",
 		"calories": "",
 		"price": {
 			"id": "p32-Regular-6",
@@ -843,7 +843,7 @@
 		"id": "p32-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
+		"servingSize": "25",
 		"calories": "",
 		"price": {
 			"id": "p32-Large-6",
@@ -868,7 +868,7 @@
 		"id": "p33-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
+		"servingSize": "15",
 		"calories": "",
 		"price": {
 			"id": "p33-Regular-6",
@@ -893,7 +893,7 @@
 		"id": "p34-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p34-Regular-6",
@@ -918,7 +918,7 @@
 		"id": "p35-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
+		"servingSize": "15",
 		"calories": "",
 		"price": {
 			"id": "p35-Regular-6",
@@ -933,7 +933,7 @@
 		"id": "p35-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
+		"servingSize": "25",
 		"calories": "",
 		"price": {
 			"id": "p35-Large-6",
@@ -1383,7 +1383,7 @@
 		"id": "p47-Regular",
 		"name": "Regular",
 		"piecesCount": 6,
-		"servingSize": "Serves 6 people",
+		"servingSize": "6",
 		"calories": "310/piece",
 		"price": {
 			"id": "p47-Regular-6",
@@ -1408,7 +1408,7 @@
 		"id": "p48-Regular",
 		"name": "Regular",
 		"piecesCount": 6,
-		"servingSize": "Serves 6 people",
+		"servingSize": "6",
 		"calories": "300/piece",
 		"price": {
 			"id": "p48-Regular-6",
@@ -1433,7 +1433,7 @@
 		"id": "p49-Regular",
 		"name": "Regular",
 		"piecesCount": 6,
-		"servingSize": "Serves 6 people",
+		"servingSize": "6",
 		"calories": "200/piece",
 		"price": {
 			"id": "p49-Regular-6",
@@ -1458,7 +1458,7 @@
 		"id": "p50-Regular",
 		"name": "Regular",
 		"piecesCount": 12,
-		"servingSize": "Serves 6-12 people",
+		"servingSize": "6-12",
 		"calories": "260/piece",
 		"price": {
 			"id": "p50-Regular-6",
@@ -1483,7 +1483,7 @@
 		"id": "p51-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "70-60",
 		"price": {
 			"id": "p51-Regular-6",
@@ -1508,7 +1508,7 @@
 		"id": "p52-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "200-170",
 		"price": {
 			"id": "p52-Regular-6",
@@ -1533,7 +1533,7 @@
 		"id": "p53-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "",
 		"price": {
 			"id": "p53-Regular-6",
@@ -1558,7 +1558,7 @@
 		"id": "p54-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "625-520",
 		"price": {
 			"id": "p54-Regular-6",
@@ -1583,7 +1583,7 @@
 		"id": "p55-Regular",
 		"name": "Regular",
 		"piecesCount": 20,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "280-230",
 		"price": {
 			"id": "p55-Regular-6",
@@ -1608,7 +1608,7 @@
 		"id": "p56-Regular",
 		"name": "Regular",
 		"piecesCount": 12,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "130-100",
 		"price": {
 			"id": "p56-Regular-6",
@@ -1633,7 +1633,7 @@
 		"id": "p57-Regular",
 		"name": "Regular",
 		"piecesCount": 12,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "",
 		"price": {
 			"id": "p57-Regular-6",
@@ -1658,7 +1658,7 @@
 		"id": "p58-Regular",
 		"name": "Regular",
 		"piecesCount": 10,
-		"servingSize": "Serves 5-7 people",
+		"servingSize": "5-7",
 		"calories": "500-420",
 		"price": {
 			"id": "p58-Regular-6",
@@ -1683,7 +1683,7 @@
 		"id": "p59-Regular",
 		"name": "Regular",
 		"piecesCount": 20,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "360-300",
 		"price": {
 			"id": "p59-Regular-6",
@@ -1708,7 +1708,7 @@
 		"id": "p60-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 6-10 people",
+		"servingSize": "6-10",
 		"calories": "625-520",
 		"price": {
 			"id": "p60-Regular-6",
@@ -1733,7 +1733,7 @@
 		"id": "p61-Regular",
 		"name": "Regular",
 		"piecesCount": 16,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "260-210",
 		"price": {
 			"id": "p61-Regular-6",
@@ -1758,7 +1758,7 @@
 		"id": "p62-Regular",
 		"name": "Regular",
 		"piecesCount": 16,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "625-520",
 		"price": {
 			"id": "p62-Regular-6",
@@ -1783,7 +1783,7 @@
 		"id": "p63-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 20-25 people",
+		"servingSize": "20-25",
 		"calories": "310-250",
 		"price": {
 			"id": "p63-Regular-6",
@@ -1808,7 +1808,7 @@
 		"id": "p64-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "580-480",
 		"price": {
 			"id": "p64-Regular-6",
@@ -1833,7 +1833,7 @@
 		"id": "p65-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 25-30 people",
+		"servingSize": "25-30",
 		"calories": "450-380",
 		"price": {
 			"id": "p65-Regular-6",
@@ -1858,7 +1858,7 @@
 		"id": "p66-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "480-360",
 		"price": {
 			"id": "p66-Regular-6",
@@ -1873,7 +1873,7 @@
 		"id": "p66-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 20-25 people",
+		"servingSize": "20-25",
 		"calories": "540-430",
 		"price": {
 			"id": "p66-Large-6",
@@ -1898,7 +1898,7 @@
 		"id": "p67-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p67-Regular-6",
@@ -1923,7 +1923,7 @@
 		"id": "p68-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "",
 		"price": {
 			"id": "p68-Regular-6",
@@ -1948,7 +1948,7 @@
 		"id": "p69-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 12-15 people",
+		"servingSize": "12-15",
 		"calories": "590-470",
 		"price": {
 			"id": "p69-Regular-6",
@@ -1973,7 +1973,7 @@
 		"id": "p70-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "",
 		"price": {
 			"id": "p70-Regular-6",
@@ -1998,7 +1998,7 @@
 		"id": "p71-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 12-15 people",
+		"servingSize": "12-15",
 		"calories": "730-580",
 		"price": {
 			"id": "p71-Regular-6",
@@ -2023,7 +2023,7 @@
 		"id": "p72-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "600-450",
 		"price": {
 			"id": "p72-Regular-6",
@@ -2048,7 +2048,7 @@
 		"id": "p73-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p73-Regular-6",
@@ -2073,7 +2073,7 @@
 		"id": "p74-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "",
 		"price": {
 			"id": "p74-Regular-6",
@@ -2088,7 +2088,7 @@
 		"id": "p74-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25-35 people",
+		"servingSize": "25-35",
 		"calories": "",
 		"price": {
 			"id": "p74-Large-6",
@@ -2113,7 +2113,7 @@
 		"id": "p75-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
 			"id": "p75-Regular-6",
@@ -2138,7 +2138,7 @@
 		"id": "p76-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "",
 		"price": {
 			"id": "p76-Regular-6",
@@ -2153,7 +2153,7 @@
 		"id": "p76-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25-35 people",
+		"servingSize": "25-35",
 		"calories": "",
 		"price": {
 			"id": "p76-Large-6",
@@ -2178,7 +2178,7 @@
 		"id": "p77-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "",
 		"price": {
 			"id": "p77-Regular-6",
@@ -2203,7 +2203,7 @@
 		"id": "p101-Regular",
 		"name": "Regular",
 		"piecesCount": 40,
-		"servingSize": "Serves 4 people",
+		"servingSize": "4",
 		"calories": "300/Serving",
 		"price": {
 			"id": "p101-Regular-6",
@@ -2228,7 +2228,7 @@
 		"id": "p102-Regular",
 		"name": "Regular",
 		"piecesCount": 59,
-		"servingSize": "Serves 6 people",
+		"servingSize": "6",
 		"calories": "330/Serving",
 		"price": {
 			"id": "p102-Regular-6",
@@ -2241,7 +2241,7 @@
 		}
 	}],
 	"counter": "Sushi",
-	"imageLink": ".png",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
 	"smallImageLink": null
 }, {
 	"id": "p103",
@@ -2253,7 +2253,7 @@
 		"id": "p103-Regular",
 		"name": "Regular",
 		"piecesCount": 30,
-		"servingSize": "Serves 4",
+		"servingSize": "4",
 		"calories": "330/Serving",
 		"price": {
 			"id": "p103-Regular-6",
@@ -2278,7 +2278,7 @@
 		"id": "p104-Regular",
 		"name": "Regular",
 		"piecesCount": 53,
-		"servingSize": "Serves 6",
+		"servingSize": "6",
 		"calories": "380/Serving",
 		"price": {
 			"id": "p104-Regular-6",
@@ -2294,8 +2294,8 @@
 	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
 	"smallImageLink": null
 }, {
-	"id": "p104",
-	"name": "Make a cake",
+	"id": "p106",
+	"name": "Make a 7\" cake",
 	"description": "Customize your cake",
 	"category": "Cake",
 	"productNumber": "888",
@@ -2303,7 +2303,32 @@
 		"id": "p104-Regular",
 		"name": "Regular",
 		"piecesCount": 53,
-		"servingSize": "Serves 6",
+		"servingSize": "6",
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
+	"smallImageLink": null
+},{
+	"id": "p107",
+	"name": "Make a 9\" cake",
+	"description": "Customize your cake",
+	"category": "Cake",
+	"productNumber": "888",
+	"options": [{
+		"id": "p104-Regular",
+		"name": "Regular",
+		"piecesCount": 53,
+		"servingSize": "6",
 		"calories": "380/Serving",
 		"price": {
 			"id": "p104-Regular-6",

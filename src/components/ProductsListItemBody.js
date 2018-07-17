@@ -18,7 +18,7 @@ class ProductsListItemBody extends Component {
         label: this.props.item.options[0].name
       },
       selectedProduct: {
-        productNumber: this.props.item.productNumber,
+        productNumber: parseInt(this.props.item.productNumber),
         name: this.props.item.name,
         description: this.props.item.description,
         option: this.props.item.options[0],
@@ -44,6 +44,7 @@ class ProductsListItemBody extends Component {
     const selectedProduct = {...this.state.selectedProduct}
     selectedProduct.note = notes;
     this.setState(() => ({ selectedProduct }));
+    
   };
 
   onSelectChange = (selectedOption) => {

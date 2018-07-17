@@ -1,7 +1,9 @@
 {
-    "store": "store1",
+    "title": "Cake Options",
+    "description": "these are your config options for a cake.",
     "fields": [{
         "label": "size",
+        "name": "size",
         "descriptions": "descriptions",
         "options": [{
                 "label": "7",
@@ -27,10 +29,11 @@
         }]
     },{
         "label": "Cake Layers",
+        "name": "cakelayers",
         "descriptions": "descriptions",
         "options": [{
                 "label": "Single Layer White",
-                "value": "single layer white"
+                "value": "single layer white "
             },{
                 "label": "Single Layer Chocolate",
                 "value": "Single Layer Chocolate"
@@ -55,6 +58,7 @@
             }]
     },{
         "label": "Icing",
+        "name": "icing",
         "descriptions": "descriptions",
         "options": [{
                 "label": "Vanilla",
@@ -83,6 +87,7 @@
             }]
     },{
         "label": "Trim",
+        "name": "trim",
         "descriptions": "descriptions",
         "options": [{
                 "label": "White",
@@ -96,6 +101,7 @@
             }]
     },{
         "label": "Writing Color",
+        "name": "color",
         "descriptions": "descriptions",
         "options": [{
                 "label": "White",
@@ -115,6 +121,7 @@
             }]
     },{
         "label": "Filling",
+        "name": "filling",
         "descriptions": "descriptions",
         "options": [{
                 "label": "Vanilla",
@@ -134,6 +141,7 @@
             }]
     },{
         "label": "Side",
+        "name": "side",
         "descriptions": "descriptions",
         "options": [{
                 "label": "White chocolate shavings",
@@ -154,42 +162,52 @@
     }],
     "details":[{
         "label": "Decoration",
+        "name": "decoration",
         "descriptions": "descriptions",
-        "type": [{
+        "fields": [{
                 "label": "Character Cake",
                 "descriptions": "descriptions",
+                "placeholder":"placehold it",
                 "type": "text"
             },{
                 "label": "Edible Image",
                 "descriptions": "descriptions",
+                "placeholder":"placehold it",
                 "type": "text"
             },{
                 "label": "Other",
                 "descriptions": "descriptions",
+                "placeholder":"placehold it",
                 "type": "textarea"
             }]
     },{
         "label": "Writing on Cake",
+        "name": "writing",
         "descriptions": "descriptions",
-        "type": [{
+        "fields": [{
                 "label": "Character Cake",
+                "name":"character",
                 "descriptions": "descriptions",
                 "placeholder": "Happy Birthday",
                 "type": "text"
             },{
                 "label": "Edible Image",
+                "name":"image",
                 "descriptions": "descriptions",
                 "placeholder": "Happy Birthday",
                 "type": "text"
             },{
                 "label": "Other",
+                "name":"other",
                 "descriptions": "descriptions",
+                "placeholder": "Happy Birthday",
                 "type": "textarea"
             }]
     },{
         "label": "Extras",
+        "name": "extras",
         "descriptions": "descriptions",
-        "type": [{
+        "fields": [{
                 "label": "Extras",
                 "descriptions": "descriptions",
                 "type": "textarea"

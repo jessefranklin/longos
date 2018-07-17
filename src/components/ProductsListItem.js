@@ -47,18 +47,29 @@ class ProductsListItem extends Component {
           <img src={item.imageLink} alt={item.name} />
         </div>
         <h4>{item.name}</h4>
+        
         {/* <p>{item.description}</p>
         {this.state.selectedProduct.option.piecesCount !=0 && <p> {this.state.selectedProduct.option.piecesCount} pieces</p>}
         {this.state.selectedProduct.option.servingSize && <p>Serves {this.state.selectedProduct.option.servingSize} people </p>}
          */}
+        {item.options.map(options => {
+          if(options.servingSize) {
+            return (
+              <p key={options.id}>{options.name} Serves {options.servingSize} people </p>
+            );
+          } else {
+            return (
+              <p key={options.id}>{options.name} {options.piecesCount} pieces</p>
+            );
+          }
+        })}
+
         <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <Modal.Title><img src={item.imageLink} alt={item.name} /></Modal.Title>
             </Modal.Header>
             
             {this.renderBody(item)}
-
-           
 
           </Modal>
       </div>

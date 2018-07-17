@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startAddToCart }  from '../actions/cart';
+import cakeOptions from '../server/cake.json';
 import Select from 'react-select';
 import { QuantitySelect } from './partials/QuantitySelect';
+import { OptionsSelect } from './partials/OptionsSelect';
+import { TextField } from './partials/TextField';
+import uuid from 'uuid/v1';
 
 class ProductsListItemCake extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.handleClose = this.handleClose.bind(this);
+    this.onChange = this.onChange.bind(this);
 
     this.state = {
       selectedOption: {
@@ -38,6 +43,10 @@ class ProductsListItemCake extends Component {
     this.props.handleClose();
   }
 
+  onChange = (val, name) => {
+    this.setState({ ...this.state, [name]: val });
+  };
+
   render() {
     const item = this.props.item;
    
@@ -45,7 +54,7 @@ class ProductsListItemCake extends Component {
       <div>
         <Modal.Body>
         <div className="item--header">
-          <h4>{item.name} XXX</h4>
+          <h4>{item.name}</h4>
           <h5>${this.state.selectedProduct.option.price.price}</h5>
         </div>
 
@@ -53,6 +62,32 @@ class ProductsListItemCake extends Component {
           {item.description}
         </p>
 
+        {cakeOptions.fields.map(options => {
+          return <OptionsSelect 
+            key={options.label} 
+            options={options}
+            value={this.state[options.name]}
+            onChange={this.onChange}
+            />
+        })}
+
+        {cakeOptions.details.map((textfields,index) => {
+          return <div key={textfields.name + index}>
+            <h4>{textfields.name}</h4> 
+            {textfields.fields.map(textfield => {
+              return <TextField 
+                key={textfield.name} 
+                properties={textfield}
+                value={this.state[textfield.name]}
+                onChange={this.onChange}
+              />
+            })}
+          </div>;
+        })}
+
+        {cakeOptions.disclaimers.map(disclaimers => {
+          return disclaimers.header;
+        })}
 
         </Modal.Body>
         <Modal.Footer>
