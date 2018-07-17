@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.PUBLIC_URL = 'public/';
 
 if (process.env.NODE_ENV === 'test') {
   require('dotenv').config({ path: '.env.test' });
@@ -26,6 +27,20 @@ module.exports = (env) => {
         test: /\.js$/,
         exclude: /node_modules/
       }, {
+        test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+        use: [
+            {
+                loader: 'file-loader'
+            },
+        ]
+      },{
+        test: /\.(pdf|jpg|png|gif|svg|ico)$/,
+        use: [
+          {
+            loader: 'url-loader'
+          }
+        ]
+      },{
         test: /\.s?css$/,
         use: CSSExtract.extract({
           use: [
