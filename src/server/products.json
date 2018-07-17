@@ -1,20 +1,45 @@
 [{
+	"id": "p1",
+	"name": "Soft Cheese Selection",
+	"description": "A unique assortment of domestic and imported French cheeses including Douanier, Bleu d'Auvergne, Ch�teau Bourgogne and Sauvagine. ",
+	"category": "Appetizers",
+	"productNumber": "1",
+	"options": [{
+		"id": "p1-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "",
+		"price": {
+			"id": "p1-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p1.png",
+	"smallImageLink": null
+}, {
 	"id": "p2",
 	"name": "Spanish Tapas",
 	"description": "Authentic tapas including Manchego cheese, imported Spanish Serrano ham, chorizo sausage, almond-stuffed olives, grilled eggplant and stuffed cherry peppers.",
 	"category": "Appetizers",
 	"productNumber": "2",
 	"options": [{
-		"id": null,
+		"id": "p2-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p2-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 39.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -24,22 +49,97 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p2.png",
 	"smallImageLink": null
 }, {
+	"id": "p3",
+	"name": "Firm Cheese Favourites",
+	"description": "Firm favourites from around the globe featuring Merlot BellaVitano, Beemster XO, Auricchio & Manchego.",
+	"category": "Appetizers",
+	"productNumber": "3",
+	"options": [{
+		"id": "p3-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "",
+		"price": {
+			"id": "p3-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p3.png",
+	"smallImageLink": null
+}, {
+	"id": "p4",
+	"name": "BBQ Wings",
+	"description": "Smokey and delicious BBQ flavoured chicken wings served with creamy Longo?s Ranch dip.",
+	"category": "Appetizers",
+	"productNumber": "4",
+	"options": [{
+		"id": "p4-Regular",
+		"name": "Regular",
+		"piecesCount": 40,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p4-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p4.png",
+	"smallImageLink": null
+}, {
+	"id": "p5",
+	"name": "Mini Rice Balls",
+	"description": "A Sicilian specialty in cocktail-sized bites. Mini rice balls served with Longo?s Tuscan Gorgonzola Red Pepper dip.",
+	"category": "Appetizers",
+	"productNumber": "5",
+	"options": [{
+		"id": "p5-Regular",
+		"name": "Regular",
+		"piecesCount": 32,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p5-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p5.png",
+	"smallImageLink": null
+}, {
 	"id": "p6",
 	"name": "Mini Empanadas",
 	"description": "Savoury little empanadas served with a kicky chipotle dip. Flavours include chicken, beef, and spinach with feta. One flavour per tray.",
 	"category": "Appetizers",
 	"productNumber": "6",
 	"options": [{
-		"id": null,
+		"id": "p6-Regular",
 		"name": "Regular",
 		"piecesCount": 24,
 		"servingSize": "",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p6-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -49,22 +149,72 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p6.png",
 	"smallImageLink": null
 }, {
+	"id": "p7",
+	"name": "Samosas",
+	"description": "A taste of India. Flavourful vegetable samosas with Longo?s Mango Chutney dip.",
+	"category": "Appetizers",
+	"productNumber": "7",
+	"options": [{
+		"id": "p7-Regular",
+		"name": "Regular",
+		"piecesCount": 20,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p7-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p7.png",
+	"smallImageLink": null
+}, {
+	"id": "p8",
+	"name": "Breaded Perogies",
+	"description": "Little pockets of heaven. Breaded potato perogies with Longo?s Parmesan Cheese & Red Pepper dip.",
+	"category": "Appetizers",
+	"productNumber": "8",
+	"options": [{
+		"id": "p8-Regular",
+		"name": "Regular",
+		"piecesCount": 40,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p8-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p8.png",
+	"smallImageLink": null
+}, {
 	"id": "p9",
 	"name": "Chicken Tenders",
 	"description": "The perfect addition to your party buffet. Chicken tenders with plum sauce.",
 	"category": "Appetizers",
 	"productNumber": "9",
 	"options": [{
-		"id": null,
+		"id": "p9-Regular",
 		"name": "Regular",
 		"piecesCount": 24,
 		"servingSize": "",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p9-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -74,22 +224,47 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p9.png",
 	"smallImageLink": null
 }, {
+	"id": "p10",
+	"name": "Spring Rolls",
+	"description": "A party favourite for everyone. Vegetable spring rolls with plum sauce.",
+	"category": "Appetizers",
+	"productNumber": "10",
+	"options": [{
+		"id": "p10-Regular",
+		"name": "Regular",
+		"piecesCount": 30,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p10-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p10.png",
+	"smallImageLink": null
+}, {
 	"id": "p11",
 	"name": "Risotto Cakes",
-	"description": "A dreamy little side dish. Creamy risotto cakes served with Longo’s Artichoke Asiago dip.",
+	"description": "A dreamy little side dish. Creamy risotto cakes served with Longo?s Artichoke Asiago dip.",
 	"category": "Appetizers",
 	"productNumber": "11",
 	"options": [{
-		"id": null,
+		"id": "p11-Regular",
 		"name": "Regular",
 		"piecesCount": 11,
 		"servingSize": "",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p11-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -105,16 +280,16 @@
 	"category": "Salads",
 	"productNumber": "12",
 	"options": [{
-		"id": null,
+		"id": "p12-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "140-110",
 		"price": {
-			"id": 0,
+			"id": "p12-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 13.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -124,792 +299,22 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p12.png",
 	"smallImageLink": null
 }, {
-	"id": "p15",
-	"name": "Coleslaw Salad",
-	"description": "A cool and creamy addition. Fresh cabbage and carrots in a vinaigrette dressing.",
-	"category": "Salads",
-	"productNumber": "15",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "280-230",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 19.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Salad bar",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p15.jpg",
-	"smallImageLink": null
-}, {
-	"id": "p16",
-	"name": "Caesar Salad",
-	"description": "A refreshing combination of crisp ingredients. Lettuce, croutons, real bacon bits, Parmesan cheese.",
-	"category": "Salads",
-	"productNumber": "16",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "130-100",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 12.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Salad bar",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p16.png",
-	"smallImageLink": null
-}, {
-	"id": "p27",
-	"name": "Pesto Tortellini",
-	"description": "Delicious tortellini stuffed with ricotta, Parmesan and Romano cheese tossed in a light pesto dressing.",
-	"category": "Salads",
-	"productNumber": "27",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "480-400",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Salad bar",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p27.jpg",
-	"smallImageLink": null
-}, {
-	"id": "p35",
-	"name": "Taste of Italy",
-	"description": "Stunningly arranged Italian antipasti. Capicollo, cacciatore sausage, dry-cured prosciutto, soppressata salami, mini cocktail bocconcini, mortadella, asiago, Sicilian olives.",
-	"category": "Deli and Cheese",
-	"productNumber": "35",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 59.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p35.png",
-	"smallImageLink": null
-}, {
-	"id": "p39",
-	"name": "Slim & Tasty Wraps",
-	"description": "Wraps cut into quarters including portions of tuna salad, egg salad and grilled vegetables. Served with roasted red pepper dip.",
-	"category": "Sandwiches",
-	"productNumber": "39",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 24,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 36,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p39.png",
-	"smallImageLink": null
-}, {
-	"id": "p44",
-	"name": "Sandwich Combo",
-	"description": "A classic combination of sandwiches and wraps. Includes egg salad, tuna salad, Black Forest ham, roast chicken and roast beef.",
-	"category": "Sandwiches",
-	"productNumber": "44",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 42,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 70,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p44.png",
-	"smallImageLink": null
-}, {
-	"id": "p47",
-	"name": "Veal Cutlets",
-	"description": "Classic scaloppine with a Longo’s touch. Breaded veal cutlets.",
-	"category": "Entrees and Sides ",
-	"productNumber": "47",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 6,
-		"servingSize": "Serves 6 people",
-		"calories": "310/piece",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 34.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p47.png",
-	"smallImageLink": null
-}, {
-	"id": "p59",
-	"name": "Meat Shells",
-	"description": "Meaty morsels on a bed of fresh tomato sauce. Fresh pasta, ground beef, marinara sauce and Parmesan cheese.",
-	"category": "Pasta",
-	"productNumber": "59",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 20,
-		"servingSize": "Serves 4-6 people",
-		"calories": "360-300",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p59.png",
-	"smallImageLink": null
-}, {
-	"id": "p70",
-	"name": "Mini Square Dessert Tray",
-	"description": "A gorgeous arrangement of assorted square-shaped desserts made with real cream.",
-	"category": "Desserts and Breads",
-	"productNumber": "70",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Bakery",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p70.png",
-	"smallImageLink": null
-}, {
-	"id": "p71",
-	"name": "Sweet Creations Tray",
-	"description": "Finish things off with these decadent mini pastries, made with velvety cream.",
-	"category": "Desserts and Breads",
-	"productNumber": "71",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 12-15 people",
-		"calories": "730-580",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Bakery",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p71.png",
-	"smallImageLink": null
-}, {
-	"id": "p75",
-	"name": "Sliced Fruit Tray",
-	"description": "A light and refreshing dessert addition. Cantaloupe, honeydew, pineapple and strawberries.",
-	"category": "Fruits and Vegetables",
-	"productNumber": "75",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 17.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p75.png",
-	"smallImageLink": null
-}, {
-	"id": "p76",
-	"name": "Veggie Tray",
-	"description": "Super fresh, crisp vegetables. Baby carrots, celery, cauliflower, broccoli, peppers, cucumbers and cherry tomatoes, with Longo’s Ranch dip.",
-	"category": "Fruits and Vegetables",
-	"productNumber": "76",
-	"options": [{
-		"id": null,
-		"name": "Large",
-		"piecesCount": 0,
-		"servingSize": "Serves 25-35 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 34.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p76.png",
-	"smallImageLink": null
-}, {
-	"id": "p1",
-	"name": "Soft Cheese Selection",
-	"description": "A unique assortment of domestic and imported French cheeses including Douanier, Bleu d’Auvergne, Château Bourgogne and Sauvagine. ",
-	"category": "Appetizers",
-	"productNumber": "1",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p1.png",
-	"smallImageLink": null
-}, {
-	"id": "p21",
-	"name": "Greek Pasta Salad",
-	"description": "A heartier take on the Mediterranean classic. Penne pasta, green and red peppers, black olives, feta cheese, olives, dressing.",
-	"category": "Salads",
-	"productNumber": "21",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "260-210",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Salad bar",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p21.jpg",
-	"smallImageLink": null
-}, {
-	"id": "p26",
-	"name": "Red Potato & Herb Salad",
-	"description": "Luscious red potatoes with a fragrant finish. Red potatoes, onions, parsley, dill, vinegar, spices.",
-	"category": "Salads",
-	"productNumber": "26",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "450-380",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Salad bar",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p26.png",
-	"smallImageLink": null
-}, {
-	"id": "p29",
-	"name": "Cheese Taster",
-	"description": "The perfect snack for cheese lsovers. Bite-sized pieces of Canadian Emmenthal, Muenster, flavoured havarti, smoked mozzarella, Canadian medium cheddar and marble. Arranged with grapes and strawberries.",
-	"category": "Deli and Cheese",
-	"productNumber": "29",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p29.png",
-	"smallImageLink": null
-}, {
-	"id": "p34",
-	"name": "Shrimp Feast",
-	"description": "A fresh favourite for any occasion. Jumbo shrimp, cocktail sauce, lemon wedges.",
-	"category": "Deli and Cheese",
-	"productNumber": "34",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p34.png",
-	"smallImageLink": null
-}, {
-	"id": "p37",
-	"name": "Sandwich Bites",
-	"description": "An exciting variety of finger-sized, sliced bread sandwiches. Selection includes Black Forest ham, roast beef, turkey, chicken, egg salad and tuna salad. Served with dill pickles cherry tomatoes and baby carrots.",
-	"category": "Sandwiches",
-	"productNumber": "37",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 40,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 80,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p37.png",
-	"smallImageLink": null
-}, {
-	"id": "p42",
-	"name": "New York Style Deli",
-	"description": "A taste of Manhattan. Includes roast beef and cheddar on pumpernickel, pastrami and swiss on rye, and spiced turkey and cheddar Emmenthal on sourdough. Served with dill pickles, cherry tomatoes and dijonnaise.",
-	"category": "Sandwiches",
-	"productNumber": "42",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 18,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 24,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p42.png",
-	"smallImageLink": null
-}, {
-	"id": "p45",
-	"name": "Mini Croissants",
-	"description": "Buttery little croissants perfect for brunch. Includes turkey, ham, roast beef, tuna salad and egg salad.",
-	"category": "Sandwiches",
-	"productNumber": "45",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 20,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 19.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 32,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p45.png",
-	"smallImageLink": null
-}, {
-	"id": "p49",
-	"name": "Grilled Chicken Breast",
-	"description": "A flavourful and healthy basic for any party. Grilled chicken breast.",
-	"category": "Entrees and Sides ",
-	"productNumber": "49",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 6,
-		"servingSize": "Serves 6 people",
-		"calories": "200/piece",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p49.png",
-	"smallImageLink": null
-}, {
-	"id": "p56",
-	"name": "Cannelloni",
-	"description": "A mouth-watering main dish. Fresh pasta, ground veal, marinara sauce, mozzarella and Parmesan cheese.",
-	"category": "Pasta",
-	"productNumber": "56",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 12,
-		"servingSize": "Serves 4-6 people",
-		"calories": "130-100",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p56.png",
-	"smallImageLink": null
-}, {
-	"id": "p57",
-	"name": "Manicotti",
-	"description": "The ultimate combination of ricotta and spinach. Fresh pasta, ricotta cheese, spinach, marinara sauce, mozzarella and Parmesan cheese.",
-	"category": "Pasta",
-	"productNumber": "57",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 12,
-		"servingSize": "Serves 4-6 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p57.png",
-	"smallImageLink": null
-}, {
-	"id": "p58",
-	"name": "Eggplant Rollatini",
-	"description": "An authentic Italian classic that every family will love. Sliced eggplant, ricotta cheese, marinara sauce and Parmesan cheese.",
-	"category": "Pasta",
-	"productNumber": "58",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 10,
-		"servingSize": "Serves 5-7 people",
-		"calories": "500-420",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p58.png",
-	"smallImageLink": null
-}, {
-	"id": "p68",
-	"name": "Decadent Delight Squares",
-	"description": "Delightful little bites of some of ourdecadent treats. Killer Brownies® and mini squares",
-	"category": "Desserts and Breads",
-	"productNumber": "68",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 34.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Bakery",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p68.png",
-	"smallImageLink": null
-}, {
-	"id": "p8",
-	"name": "Breaded Perogies",
-	"description": "Little pockets of heaven. Breaded potato perogies with Longo’s Parmesan Cheese & Red Pepper dip.",
-	"category": "Appetizers",
-	"productNumber": "8",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 40,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p8.png",
-	"smallImageLink": null
-}, {
 	"id": "p13",
 	"name": "Garden Salad",
 	"description": "A rainbow-bright display of fresh garden produce. Lettuce, cherry tomatoes, cucumbers, carrots, peppers.",
 	"category": "Salads",
 	"productNumber": "13",
 	"options": [{
-		"id": null,
+		"id": "p13-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p13-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 11.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -925,16 +330,16 @@
 	"category": "Salads",
 	"productNumber": "14",
 	"options": [{
-		"id": null,
+		"id": "p14-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "110-90",
 		"price": {
-			"id": 0,
+			"id": "p14-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 12.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -944,22 +349,72 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p14.png",
 	"smallImageLink": null
 }, {
+	"id": "p15",
+	"name": "Coleslaw Salad",
+	"description": "A cool and creamy addition. Fresh cabbage and carrots in a vinaigrette dressing.",
+	"category": "Salads",
+	"productNumber": "15",
+	"options": [{
+		"id": "p15-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "280-230",
+		"price": {
+			"id": "p15-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 19.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Salad bar",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p15.jpg",
+	"smallImageLink": null
+}, {
+	"id": "p16",
+	"name": "Caesar Salad",
+	"description": "A refreshing combination of crisp ingredients. Lettuce, croutons, real bacon bits, Parmesan cheese.",
+	"category": "Salads",
+	"productNumber": "16",
+	"options": [{
+		"id": "p16-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "130-100",
+		"price": {
+			"id": "p16-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 12.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Salad bar",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p16.png",
+	"smallImageLink": null
+}, {
 	"id": "p17",
 	"name": "California Salad",
 	"description": "A fruity ray of California sunshine. Mixed greens, mandarin slices, strawberries, slivered almonds.",
 	"category": "Salads",
 	"productNumber": "17",
 	"options": [{
-		"id": null,
+		"id": "p17-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
+		"servingSize": "8-10",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p17-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 12.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -975,16 +430,16 @@
 	"category": "Salads",
 	"productNumber": "18",
 	"options": [{
-		"id": null,
+		"id": "p18-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "500-420",
 		"price": {
-			"id": 0,
+			"id": "p18-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -994,252 +449,22 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p18.png",
 	"smallImageLink": null
 }, {
-	"id": "p28",
-	"name": "Italian Charcuterie",
-	"description": "A selection of the finest traditional Italian cold cuts. Fellino salami, pancetta, imported Parma prosciutto, Culatello, Auricchio, oven-dried olives, dried figs and Rosemary flatbreads.",
-	"category": "Deli and Cheese",
-	"productNumber": "28",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p28.png",
-	"smallImageLink": null
-}, {
-	"id": "p31",
-	"name": "All Natural Deli",
-	"description": "An appetizing arrangement of naturally made deli meats. McLean’s Tuscan turkey and roast beef, and oven roast chicken and ham. Served alongside Swiss Emmenthal cheese and dijonnaise.",
-	"category": "Deli and Cheese",
-	"productNumber": "31",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p31.png",
-	"smallImageLink": null
-}, {
-	"id": "p41",
-	"name": "Vegetarian Deli",
-	"description": "A tasty, meat-free selection, including cucumber and cream cheese, egg salad, cheese, and grilled vegetables.",
-	"category": "Sandwiches",
-	"productNumber": "41",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 40,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 80,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p41.png",
-	"smallImageLink": null
-}, {
-	"id": "p51",
-	"name": "Steamed Vegetable Medley",
-	"description": "A healthy assortment of steamed veggies including asparagus, broccoli, cauliflower, zucchini, red and yellow peppers, mini carrots, and red onion.",
-	"category": "Entrees and Sides ",
-	"productNumber": "51",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "70-60",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p51.png",
-	"smallImageLink": null
-}, {
-	"id": "p61",
-	"name": "Smoked Chicken Ravioli",
-	"description": "A Longo’s favourite. Fresh ravioli stuffed with perfectly smoked chicken and cheese. Dressed in a vodka sauce and Parmesan cheese.",
-	"category": "Pasta",
-	"productNumber": "61",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 16,
-		"servingSize": "Serves 4-6 people",
-		"calories": "260-210",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p61.png",
-	"smallImageLink": null
-}, {
-	"id": "p73",
-	"name": "Longo’s Signature Frutta di Bosco",
-	"description": "An Italian masterpiece of cream and berries. Golden buttery crust, filled with rich pastry cream and topped with blackberries, raspberries and blueberries. ",
-	"category": "Desserts and Breads",
-	"productNumber": "73",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 25.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Bakery",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p73.png",
-	"smallImageLink": null
-}, {
-	"id": "p3",
-	"name": "Firm Cheese Favourites",
-	"description": "Firm favourites from around the globe featuring Merlot BellaVitano, Beemster XO, Auricchio & Manchego.",
-	"category": "Appetizers",
-	"productNumber": "3",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p3.png",
-	"smallImageLink": null
-}, {
-	"id": "p4",
-	"name": "BBQ Wings",
-	"description": "Smokey and delicious BBQ flavoured chicken wings served with creamy Longo’s Ranch dip.",
-	"category": "Appetizers",
-	"productNumber": "4",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 40,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p4.png",
-	"smallImageLink": null
-}, {
 	"id": "p19",
 	"name": "Macaroni Salad",
 	"description": "Large elbow macaroni in a unique dressing mixed with diced celery, shredded carrots, Spanish onion and red peppers.",
 	"category": "Salads",
 	"productNumber": "19",
 	"options": [{
-		"id": null,
+		"id": "p19-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "360-300",
 		"price": {
-			"id": 0,
+			"id": "p19-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 19.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1249,22 +474,72 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p19.jpg",
 	"smallImageLink": null
 }, {
+	"id": "p20",
+	"name": "Wheatberry Salad",
+	"description": "A sweet and tangy side. Wheatberries, sunflower seeds, red peppers, parsley and raisins in a honey-ginger dressing.",
+	"category": "Salads",
+	"productNumber": "20",
+	"options": [{
+		"id": "p20-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "625-520",
+		"price": {
+			"id": "p20-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Salad bar",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p20.png",
+	"smallImageLink": null
+}, {
+	"id": "p21",
+	"name": "Greek Pasta Salad",
+	"description": "A heartier take on the Mediterranean classic. Penne pasta, green and red peppers, black olives, feta cheese, olives, dressing.",
+	"category": "Salads",
+	"productNumber": "21",
+	"options": [{
+		"id": "p21-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "260-210",
+		"price": {
+			"id": "p21-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Salad bar",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p21.jpg",
+	"smallImageLink": null
+}, {
 	"id": "p22",
 	"name": "Cranberry Quinoa & Pumpkin Seeds Salad",
 	"description": "A twist in the right direction, Quinoa, dried cranberries, raisins and toasted pumpkin seeds all married together and dressed in a delicious honey and white wine vinegar dressing.",
 	"category": "Salads",
 	"productNumber": "22",
 	"options": [{
-		"id": null,
+		"id": "p22-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "625-520",
 		"price": {
-			"id": 0,
+			"id": "p22-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1280,16 +555,16 @@
 	"category": "Salads",
 	"productNumber": "23",
 	"options": [{
-		"id": null,
+		"id": "p23-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "300-250",
 		"price": {
-			"id": 0,
+			"id": "p23-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1305,16 +580,16 @@
 	"category": "Salads",
 	"productNumber": "24",
 	"options": [{
-		"id": null,
+		"id": "p24-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "380-310",
 		"price": {
-			"id": 0,
+			"id": "p24-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 19.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1324,37 +599,177 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p24.jpg",
 	"smallImageLink": null
 }, {
-	"id": "p30",
-	"name": "Connoisseur’s Choice",
-	"description": "Fine shavings of Longo’s Signature deli meats. Roast beef, Black Forest ham, oven roast turkey, Montreal smoked beef, and shaved Swiss cheese, served with dijonnaise.",
-	"category": "Deli and Cheese",
-	"productNumber": "30",
+	"id": "p25",
+	"name": "Curried Couscous Salad",
+	"description": "A delicious spin on traditional couscous. With chickpea, raisins and green onion in a lemon and honey dressing.",
+	"category": "Salads",
+	"productNumber": "25",
 	"options": [{
-		"id": null,
+		"id": "p25-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
-		"calories": "",
+		"servingSize": "10-12",
+		"calories": "580-480",
 		"price": {
-			"id": 0,
+			"id": "p25-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Salad bar",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p25.jpg",
+	"smallImageLink": null
+}, {
+	"id": "p26",
+	"name": "Red Potato & Herb Salad",
+	"description": "Luscious red potatoes with a fragrant finish. Red potatoes, onions, parsley, dill, vinegar, spices.",
+	"category": "Salads",
+	"productNumber": "26",
+	"options": [{
+		"id": "p26-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "450-380",
+		"price": {
+			"id": "p26-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Salad bar",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p26.png",
+	"smallImageLink": null
+}, {
+	"id": "p27",
+	"name": "Pesto Tortellini",
+	"description": "Delicious tortellini stuffed with ricotta, Parmesan and Romano cheese tossed in a light pesto dressing.",
+	"category": "Salads",
+	"productNumber": "27",
+	"options": [{
+		"id": "p27-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "480-400",
+		"price": {
+			"id": "p27-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Salad bar",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p27.jpg",
+	"smallImageLink": null
+}, {
+	"id": "p28",
+	"name": "Italian Charcuterie",
+	"description": "A selection of the finest traditional Italian cold cuts. Fellino salami, pancetta, imported Parma prosciutto, Culatello, Auricchio, oven-dried olives, dried figs and Rosemary flatbreads.",
+	"category": "Deli and Cheese",
+	"productNumber": "28",
+	"options": [{
+		"id": "p28-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "",
+		"price": {
+			"id": "p28-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p28.png",
+	"smallImageLink": null
+}, {
+	"id": "p29",
+	"name": "Cheese Taster",
+	"description": "The perfect snack for cheese lsovers. Bite-sized pieces of Canadian Emmenthal, Muenster, flavoured havarti, smoked mozzarella, Canadian medium cheddar and marble. Arranged with grapes and strawberries.",
+	"category": "Deli and Cheese",
+	"productNumber": "29",
+	"options": [{
+		"id": "p29-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15",
+		"calories": "",
+		"price": {
+			"id": "p29-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
 			"price": 39.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
 		}
 	}, {
-		"id": null,
+		"id": "p29-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
+		"servingSize": "25",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p29-Large-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p29.png",
+	"smallImageLink": null
+}, {
+	"id": "p30",
+	"name": "Connoisseur?s Choice",
+	"description": "Fine shavings of Longo?s Signature deli meats. Roast beef, Black Forest ham, oven roast turkey, Montreal smoked beef, and shaved Swiss cheese, served with dijonnaise.",
+	"category": "Deli and Cheese",
+	"productNumber": "30",
+	"options": [{
+		"id": "p30-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15",
+		"calories": "",
+		"price": {
+			"id": "p30-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p30-Large",
+		"name": "Large",
+		"piecesCount": 0,
+		"servingSize": "25",
+		"calories": "",
+		"price": {
+			"id": "p30-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
 			"price": 49.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1364,22 +779,102 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p30.png",
 	"smallImageLink": null
 }, {
+	"id": "p31",
+	"name": "All Natural Deli",
+	"description": "An appetizing arrangement of naturally made deli meats. McLean?s Tuscan turkey and roast beef, and oven roast chicken and ham. Served alongside Swiss Emmenthal cheese and dijonnaise.",
+	"category": "Deli and Cheese",
+	"productNumber": "31",
+	"options": [{
+		"id": "p31-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15",
+		"calories": "",
+		"price": {
+			"id": "p31-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p31-Large",
+		"name": "Large",
+		"piecesCount": 0,
+		"servingSize": "25",
+		"calories": "",
+		"price": {
+			"id": "p31-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p31.png",
+	"smallImageLink": null
+}, {
+	"id": "p32",
+	"name": "Sandwich Stacker",
+	"description": "Build the perfect sandwich from top-quality ingredients. Sliced cheddar cheese, Canadian Swiss cheese, roast beef, Black Forest ham, summer sausage, smoked turkey, roasted red pepper spread.",
+	"category": "Deli and Cheese",
+	"productNumber": "32",
+	"options": [{
+		"id": "p32-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15",
+		"calories": "",
+		"price": {
+			"id": "p32-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p32-Large",
+		"name": "Large",
+		"piecesCount": 0,
+		"servingSize": "25",
+		"calories": "",
+		"price": {
+			"id": "p32-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p32.png",
+	"smallImageLink": null
+}, {
 	"id": "p33",
 	"name": "Fruit and Cheese",
-	"description": "A world tour of cheeses. Longo’s double cream brie, Original Swiss Emmenthal, Canadian Oka, Longo’s original goat cheese, extra old cheddar and blue cheese. Served with a fig spread and an assortment of fresh fruit.",
+	"description": "A world tour of cheeses. Longo?s double cream brie, Original Swiss Emmenthal, Canadian Oka, Longo?s original goat cheese, extra old cheddar and blue cheese. Served with a fig spread and an assortment of fresh fruit.",
 	"category": "Deli and Cheese",
 	"productNumber": "33",
 	"options": [{
-		"id": null,
+		"id": "p33-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
+		"servingSize": "15",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p33-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 49.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1389,22 +884,247 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p33.png",
 	"smallImageLink": null
 }, {
+	"id": "p34",
+	"name": "Shrimp Feast",
+	"description": "A fresh favourite for any occasion. Jumbo shrimp, cocktail sauce, lemon wedges.",
+	"category": "Deli and Cheese",
+	"productNumber": "34",
+	"options": [{
+		"id": "p34-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "",
+		"price": {
+			"id": "p34-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p34.png",
+	"smallImageLink": null
+}, {
+	"id": "p35",
+	"name": "Taste of Italy",
+	"description": "Stunningly arranged Italian antipasti. Capicollo, cacciatore sausage, dry-cured prosciutto, soppressata salami, mini cocktail bocconcini, mortadella, asiago, Sicilian olives.",
+	"category": "Deli and Cheese",
+	"productNumber": "35",
+	"options": [{
+		"id": "p35-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15",
+		"calories": "",
+		"price": {
+			"id": "p35-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p35-Large",
+		"name": "Large",
+		"piecesCount": 0,
+		"servingSize": "25",
+		"calories": "",
+		"price": {
+			"id": "p35-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 59.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p35.png",
+	"smallImageLink": null
+}, {
+	"id": "p36",
+	"name": "Artisan Baguette Sandwiches",
+	"description": "A delicious assortment of Longo?s gourmet artisan sandwiches, including sweet Black Forest and brie, artichoke and asiago beef, chili lime chicken and zesty Italian and Mediterranean turkey.",
+	"category": "Sandwiches",
+	"productNumber": "36",
+	"options": [{
+		"id": "p36-Regular",
+		"name": "Regular",
+		"piecesCount": 18,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p36-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p36-Large",
+		"name": "Large",
+		"piecesCount": 24,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p36-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 59.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p36.png",
+	"smallImageLink": null
+}, {
+	"id": "p37",
+	"name": "Sandwich Bites",
+	"description": "An exciting variety of finger-sized, sliced bread sandwiches. Selection includes Black Forest ham, roast beef, turkey, chicken, egg salad and tuna salad. Served with dill pickles cherry tomatoes and baby carrots.",
+	"category": "Sandwiches",
+	"productNumber": "37",
+	"options": [{
+		"id": "p37-Regular",
+		"name": "Regular",
+		"piecesCount": 40,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p37-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p37-Large",
+		"name": "Large",
+		"piecesCount": 80,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p37-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p37.png",
+	"smallImageLink": null
+}, {
+	"id": "p38",
+	"name": "Pinwheel Wraps",
+	"description": "Perfect little bites. Includes oven roasted turkey, roast beef and Black Forest ham. Each has cream cheese, lettuce, tomatoes and cheddar cheese. Served with baba ghanouj dip",
+	"category": "Sandwiches",
+	"productNumber": "38",
+	"options": [{
+		"id": "p38-Regular",
+		"name": "Regular",
+		"piecesCount": 36,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p38-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p38-Large",
+		"name": "Large",
+		"piecesCount": 54,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p38-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p38.png",
+	"smallImageLink": null
+}, {
+	"id": "p39",
+	"name": "Slim & Tasty Wraps",
+	"description": "Wraps cut into quarters including portions of tuna salad, egg salad and grilled vegetables. Served with roasted red pepper dip.",
+	"category": "Sandwiches",
+	"productNumber": "39",
+	"options": [{
+		"id": "p39-Regular",
+		"name": "Regular",
+		"piecesCount": 24,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p39-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p39-Large",
+		"name": "Large",
+		"piecesCount": 36,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p39-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p39.png",
+	"smallImageLink": null
+}, {
 	"id": "p40",
 	"name": "Focaccia Fingers",
 	"description": "Fresh, finger-sized sandwiches on focaccia bread. Includes deli meats, cheese and grilled vegetables. Served with Asiago artichoke dip.",
 	"category": "Sandwiches",
 	"productNumber": "40",
 	"options": [{
-		"id": null,
+		"id": "p40-Regular",
 		"name": "Regular",
 		"piecesCount": 24,
 		"servingSize": "",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p40-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 49.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1414,22 +1134,337 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p40.png",
 	"smallImageLink": null
 }, {
+	"id": "p41",
+	"name": "Vegetarian Deli",
+	"description": "A tasty, meat-free selection, including cucumber and cream cheese, egg salad, cheese, and grilled vegetables.",
+	"category": "Sandwiches",
+	"productNumber": "41",
+	"options": [{
+		"id": "p41-Regular",
+		"name": "Regular",
+		"piecesCount": 40,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p41-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p41-Large",
+		"name": "Large",
+		"piecesCount": 80,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p41-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p41.png",
+	"smallImageLink": null
+}, {
+	"id": "p42",
+	"name": "New York Style Deli",
+	"description": "A taste of Manhattan. Includes roast beef and cheddar on pumpernickel, pastrami and swiss on rye, and spiced turkey and cheddar Emmenthal on sourdough. Served with dill pickles, cherry tomatoes and dijonnaise.",
+	"category": "Sandwiches",
+	"productNumber": "42",
+	"options": [{
+		"id": "p42-Regular",
+		"name": "Regular",
+		"piecesCount": 18,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p42-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p42-Large",
+		"name": "Large",
+		"piecesCount": 24,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p42-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p42.png",
+	"smallImageLink": null
+}, {
+	"id": "p43",
+	"name": "Slider & Pita Combo",
+	"description": "An inviting display of mini soft slider buns filled with egg, tuna and crab, along with mini pitas filled with assorted meats and cheeses.",
+	"category": "Sandwiches",
+	"productNumber": "43",
+	"options": [{
+		"id": "p43-Regular",
+		"name": "Regular",
+		"piecesCount": 17,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p43-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 19.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p43-Large",
+		"name": "Large",
+		"piecesCount": 27,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p43-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p43.png",
+	"smallImageLink": null
+}, {
+	"id": "p44",
+	"name": "Sandwich Combo",
+	"description": "A classic combination of sandwiches and wraps. Includes egg salad, tuna salad, Black Forest ham, roast chicken and roast beef.",
+	"category": "Sandwiches",
+	"productNumber": "44",
+	"options": [{
+		"id": "p44-Regular",
+		"name": "Regular",
+		"piecesCount": 42,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p44-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p44-Large",
+		"name": "Large",
+		"piecesCount": 70,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p44-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p44.png",
+	"smallImageLink": null
+}, {
+	"id": "p45",
+	"name": "Mini Croissants",
+	"description": "Buttery little croissants perfect for brunch. Includes turkey, ham, roast beef, tuna salad and egg salad.",
+	"category": "Sandwiches",
+	"productNumber": "45",
+	"options": [{
+		"id": "p45-Regular",
+		"name": "Regular",
+		"piecesCount": 20,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p45-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 19.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p45-Large",
+		"name": "Large",
+		"piecesCount": 32,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p45-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p45.png",
+	"smallImageLink": null
+}, {
+	"id": "p46",
+	"name": "Classic Sandwich Tray",
+	"description": "A selection of favourite classic sandwiches on kaiser, cheddar, onion and egg buns. Includes turkey, ham, Montreal smoked meat and roast beef.",
+	"category": "Sandwiches",
+	"productNumber": "46",
+	"options": [{
+		"id": "p46-Regular",
+		"name": "Regular",
+		"piecesCount": 16,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p46-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p46-Large",
+		"name": "Large",
+		"piecesCount": 24,
+		"servingSize": "",
+		"calories": "",
+		"price": {
+			"id": "p46-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p46.png",
+	"smallImageLink": null
+}, {
+	"id": "p47",
+	"name": "Veal Cutlets",
+	"description": "Classic scaloppine with a Longo?s touch. Breaded veal cutlets.",
+	"category": "Entrees and Sides ",
+	"productNumber": "47",
+	"options": [{
+		"id": "p47-Regular",
+		"name": "Regular",
+		"piecesCount": 6,
+		"servingSize": "6",
+		"calories": "310/piece",
+		"price": {
+			"id": "p47-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 34.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p47.png",
+	"smallImageLink": null
+}, {
+	"id": "p48",
+	"name": "Chicken Cutlets",
+	"description": "The perfect comfort food. Tender, breaded chicken cutlets.",
+	"category": "Entrees and Sides ",
+	"productNumber": "48",
+	"options": [{
+		"id": "p48-Regular",
+		"name": "Regular",
+		"piecesCount": 6,
+		"servingSize": "6",
+		"calories": "300/piece",
+		"price": {
+			"id": "p48-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 34.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p48.png",
+	"smallImageLink": null
+}, {
+	"id": "p49",
+	"name": "Grilled Chicken Breast",
+	"description": "A flavourful and healthy basic for any party. Grilled chicken breast.",
+	"category": "Entrees and Sides ",
+	"productNumber": "49",
+	"options": [{
+		"id": "p49-Regular",
+		"name": "Regular",
+		"piecesCount": 6,
+		"servingSize": "6",
+		"calories": "200/piece",
+		"price": {
+			"id": "p49-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p49.png",
+	"smallImageLink": null
+}, {
 	"id": "p50",
 	"name": "Grilled Salmon",
 	"description": "An elegant addition to any menu. Grilled salmon.",
 	"category": "Entrees and Sides ",
 	"productNumber": "50",
 	"options": [{
-		"id": null,
+		"id": "p50-Regular",
 		"name": "Regular",
 		"piecesCount": 12,
-		"servingSize": "Serves 6-12 people",
+		"servingSize": "6-12",
 		"calories": "260/piece",
 		"price": {
-			"id": 0,
+			"id": "p50-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 49.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1439,22 +1474,72 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p50.png",
 	"smallImageLink": null
 }, {
+	"id": "p51",
+	"name": "Steamed Vegetable Medley",
+	"description": "A healthy assortment of steamed veggies including asparagus, broccoli, cauliflower, zucchini, red and yellow peppers, mini carrots, and red onion.",
+	"category": "Entrees and Sides ",
+	"productNumber": "51",
+	"options": [{
+		"id": "p51-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "70-60",
+		"price": {
+			"id": "p51-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p51.png",
+	"smallImageLink": null
+}, {
+	"id": "p52",
+	"name": "Roasted Potatoes",
+	"description": "An irresistible side, prepared to perfection. Roasted potatoes in oil and spices.",
+	"category": "Entrees and Sides ",
+	"productNumber": "52",
+	"options": [{
+		"id": "p52-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "200-170",
+		"price": {
+			"id": "p52-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 19.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p52.png",
+	"smallImageLink": null
+}, {
 	"id": "p53",
 	"name": "Vegetable Rice",
 	"description": "The ideal side dish. Fluffy rice with celery, carrots, onions, broccoli, mushrooms, peas and spices.",
 	"category": "Entrees and Sides ",
 	"productNumber": "53",
 	"options": [{
-		"id": null,
+		"id": "p53-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p53-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 19.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1470,16 +1555,16 @@
 	"category": "Entrees and Sides ",
 	"productNumber": "54",
 	"options": [{
-		"id": null,
+		"id": "p54-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
+		"servingSize": "10-12",
 		"calories": "625-520",
 		"price": {
-			"id": 0,
+			"id": "p54-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1495,16 +1580,16 @@
 	"category": "Pasta",
 	"productNumber": "55",
 	"options": [{
-		"id": null,
+		"id": "p55-Regular",
 		"name": "Regular",
 		"piecesCount": 20,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "280-230",
 		"price": {
-			"id": 0,
+			"id": "p55-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 24.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1514,22 +1599,172 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p55.png",
 	"smallImageLink": null
 }, {
+	"id": "p56",
+	"name": "Cannelloni",
+	"description": "A mouth-watering main dish. Fresh pasta, ground veal, marinara sauce, mozzarella and Parmesan cheese.",
+	"category": "Pasta",
+	"productNumber": "56",
+	"options": [{
+		"id": "p56-Regular",
+		"name": "Regular",
+		"piecesCount": 12,
+		"servingSize": "4-6",
+		"calories": "130-100",
+		"price": {
+			"id": "p56-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p56.png",
+	"smallImageLink": null
+}, {
+	"id": "p57",
+	"name": "Manicotti",
+	"description": "The ultimate combination of ricotta and spinach. Fresh pasta, ricotta cheese, spinach, marinara sauce, mozzarella and Parmesan cheese.",
+	"category": "Pasta",
+	"productNumber": "57",
+	"options": [{
+		"id": "p57-Regular",
+		"name": "Regular",
+		"piecesCount": 12,
+		"servingSize": "4-6",
+		"calories": "",
+		"price": {
+			"id": "p57-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p57.png",
+	"smallImageLink": null
+}, {
+	"id": "p58",
+	"name": "Eggplant Rollatini",
+	"description": "An authentic Italian classic that every family will love. Sliced eggplant, ricotta cheese, marinara sauce and Parmesan cheese.",
+	"category": "Pasta",
+	"productNumber": "58",
+	"options": [{
+		"id": "p58-Regular",
+		"name": "Regular",
+		"piecesCount": 10,
+		"servingSize": "5-7",
+		"calories": "500-420",
+		"price": {
+			"id": "p58-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p58.png",
+	"smallImageLink": null
+}, {
+	"id": "p59",
+	"name": "Meat Shells",
+	"description": "Meaty morsels on a bed of fresh tomato sauce. Fresh pasta, ground beef, marinara sauce and Parmesan cheese.",
+	"category": "Pasta",
+	"productNumber": "59",
+	"options": [{
+		"id": "p59-Regular",
+		"name": "Regular",
+		"piecesCount": 20,
+		"servingSize": "4-6",
+		"calories": "360-300",
+		"price": {
+			"id": "p59-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p59.png",
+	"smallImageLink": null
+}, {
+	"id": "p60",
+	"name": "Beef Lasagna",
+	"description": "An authentic recipe handed down from generations. Lasagna sheets, ground beef, marinara sauce and mozzarella cheese.",
+	"category": "Pasta",
+	"productNumber": "60",
+	"options": [{
+		"id": "p60-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "6-10",
+		"calories": "625-520",
+		"price": {
+			"id": "p60-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p60.png",
+	"smallImageLink": null
+}, {
+	"id": "p61",
+	"name": "Smoked Chicken Ravioli",
+	"description": "A Longo?s favourite. Fresh ravioli stuffed with perfectly smoked chicken and cheese. Dressed in a vodka sauce and Parmesan cheese.",
+	"category": "Pasta",
+	"productNumber": "61",
+	"options": [{
+		"id": "p61-Regular",
+		"name": "Regular",
+		"piecesCount": 16,
+		"servingSize": "4-6",
+		"calories": "260-210",
+		"price": {
+			"id": "p61-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Kitchen",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p61.png",
+	"smallImageLink": null
+}, {
 	"id": "p62",
 	"name": "Tomato & Asiago Ravioli",
-	"description": "A pairing that is full of flavour. Fresh pasta, hand-stuffed with ricotta, asiago and grilled tomatoes. Dressed in a rosé sauce and Parmesan cheese.",
+	"description": "A pairing that is full of flavour. Fresh pasta, hand-stuffed with ricotta, asiago and grilled tomatoes. Dressed in a ros� sauce and Parmesan cheese.",
 	"category": "Pasta",
 	"productNumber": "62",
 	"options": [{
-		"id": null,
+		"id": "p62-Regular",
 		"name": "Regular",
 		"piecesCount": 16,
-		"servingSize": "Serves 4-6 people",
+		"servingSize": "4-6",
 		"calories": "625-520",
 		"price": {
-			"id": 0,
+			"id": "p62-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 24.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1545,16 +1780,16 @@
 	"category": "Desserts and Breads",
 	"productNumber": "63",
 	"options": [{
-		"id": null,
+		"id": "p63-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 20-25 people",
+		"servingSize": "20-25",
 		"calories": "310-250",
 		"price": {
-			"id": 0,
+			"id": "p63-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 24.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1570,16 +1805,16 @@
 	"category": "Desserts and Breads",
 	"productNumber": "64",
 	"options": [{
-		"id": null,
+		"id": "p64-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "580-480",
 		"price": {
-			"id": 0,
+			"id": "p64-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 14.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -1589,472 +1824,22 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p64.png",
 	"smallImageLink": null
 }, {
-	"id": "p67",
-	"name": "European Cookie Tray",
-	"description": "Specialty biscuits from across the pond. Assorted European cookies.",
-	"category": "Desserts and Breads",
-	"productNumber": "67",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 8-10 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 19.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Bakery",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p67.png",
-	"smallImageLink": null
-}, {
-	"id": "p77",
-	"name": "Fruit Cocktail Bowl",
-	"description": "A fresh medley of juicy favourites. Cantaloupe, honeydew, pineapple, strawberries and grapes. ",
-	"category": "Fruits and Vegetables",
-	"productNumber": "77",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p77.png",
-	"smallImageLink": null
-}, {
-	"id": "p5",
-	"name": "Mini Rice Balls",
-	"description": "A Sicilian specialty in cocktail-sized bites. Mini rice balls served with Longo’s Tuscan Gorgonzola Red Pepper dip.",
-	"category": "Appetizers",
-	"productNumber": "5",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 32,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p5.png",
-	"smallImageLink": null
-}, {
-	"id": "p7",
-	"name": "Samosas",
-	"description": "A taste of India. Flavourful vegetable samosas with Longo’s Mango Chutney dip.",
-	"category": "Appetizers",
-	"productNumber": "7",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 20,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p7.png",
-	"smallImageLink": null
-}, {
-	"id": "p10",
-	"name": "Spring Rolls",
-	"description": "A party favourite for everyone. Vegetable spring rolls with plum sauce.",
-	"category": "Appetizers",
-	"productNumber": "10",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 30,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p10.png",
-	"smallImageLink": null
-}, {
-	"id": "p20",
-	"name": "Wheatberry Salad",
-	"description": "A sweet and tangy side. Wheatberries, sunflower seeds, red peppers, parsley and raisins in a honey-ginger dressing.",
-	"category": "Salads",
-	"productNumber": "20",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "625-520",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Salad bar",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p20.png",
-	"smallImageLink": null
-}, {
-	"id": "p25",
-	"name": "Curried Couscous Salad",
-	"description": "A delicious spin on traditional couscous. With chickpea, raisins and green onion in a lemon and honey dressing.",
-	"category": "Salads",
-	"productNumber": "25",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "580-480",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Salad bar",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p25.jpg",
-	"smallImageLink": null
-}, {
-	"id": "p32",
-	"name": "Sandwich Stacker",
-	"description": "Build the perfect sandwich from top-quality ingredients. Sliced cheddar cheese, Canadian Swiss cheese, roast beef, Black Forest ham, summer sausage, smoked turkey, roasted red pepper spread.",
-	"category": "Deli and Cheese",
-	"productNumber": "32",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 15 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 0,
-		"servingSize": "Serves 25 people",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Deli",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p32.png",
-	"smallImageLink": null
-}, {
-	"id": "p36",
-	"name": "Artisan Baguette Sandwiches",
-	"description": "A delicious assortment of Longo’s gourmet artisan sandwiches, including sweet Black Forest and brie, artichoke and asiago beef, chili lime chicken and zesty Italian and Mediterranean turkey.",
-	"category": "Sandwiches",
-	"productNumber": "36",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 18,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 24,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 59.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p36.png",
-	"smallImageLink": null
-}, {
-	"id": "p38",
-	"name": "Pinwheel Wraps",
-	"description": "Perfect little bites. Includes oven roasted turkey, roast beef and Black Forest ham. Each has cream cheese, lettuce, tomatoes and cheddar cheese. Served with baba ghanouj dip",
-	"category": "Sandwiches",
-	"productNumber": "38",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 36,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 54,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p38.png",
-	"smallImageLink": null
-}, {
-	"id": "p43",
-	"name": "Slider & Pita Combo",
-	"description": "An inviting display of mini soft slider buns filled with egg, tuna and crab, along with mini pitas filled with assorted meats and cheeses.",
-	"category": "Sandwiches",
-	"productNumber": "43",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 17,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 19.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 27,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 29.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p43.png",
-	"smallImageLink": null
-}, {
-	"id": "p46",
-	"name": "Classic Sandwich Tray",
-	"description": "A selection of favourite classic sandwiches on kaiser, cheddar, onion and egg buns. Includes turkey, ham, Montreal smoked meat and roast beef.",
-	"category": "Sandwiches",
-	"productNumber": "46",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 16,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}, {
-		"id": null,
-		"name": "Large",
-		"piecesCount": 24,
-		"servingSize": "",
-		"calories": "",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p46.png",
-	"smallImageLink": null
-}, {
-	"id": "p48",
-	"name": "Chicken Cutlets",
-	"description": "The perfect comfort food. Tender, breaded chicken cutlets.",
-	"category": "Entrees and Sides ",
-	"productNumber": "48",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 6,
-		"servingSize": "Serves 6 people",
-		"calories": "300/piece",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 34.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p48.png",
-	"smallImageLink": null
-}, {
-	"id": "p52",
-	"name": "Roasted Potatoes",
-	"description": "An irresistible side, prepared to perfection. Roasted potatoes in oil and spices.",
-	"category": "Entrees and Sides ",
-	"productNumber": "52",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 10-12 people",
-		"calories": "200-170",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 19.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p52.png",
-	"smallImageLink": null
-}, {
-	"id": "p60",
-	"name": "Beef Lasagna",
-	"description": "An authentic recipe handed down from generations. Lasagna sheets, ground beef, marinara sauce and mozzarella cheese.",
-	"category": "Pasta",
-	"productNumber": "60",
-	"options": [{
-		"id": null,
-		"name": "Regular",
-		"piecesCount": 0,
-		"servingSize": "Serves 6-10 people",
-		"calories": "625-520",
-		"price": {
-			"id": 0,
-			"product": null,
-			"storeId": "6",
-			"barcodeLink": "",
-			"price": 24.99,
-			"stockLevel": 0,
-			"lastUpdated": "0001-01-01T00:00:00"
-		}
-	}],
-	"counter": "Kitchen",
-	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p60.png",
-	"smallImageLink": null
-}, {
 	"id": "p65",
 	"name": "Two Bite Tray",
 	"description": "Satisfyingly sweet and totally permissible. Mini cupcakes, mini tartes, brownies and coconut macaroons. ",
 	"category": "Desserts and Breads",
 	"productNumber": "65",
 	"options": [{
-		"id": null,
+		"id": "p65-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 25-30 people",
+		"servingSize": "25-30",
 		"calories": "450-380",
 		"price": {
-			"id": 0,
+			"id": "p65-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 29.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -2066,35 +1851,35 @@
 }, {
 	"id": "p66",
 	"name": "Cookies Galore",
-	"description": "Make everyone happy with this assortment of Longo’s homemade cookies.",
+	"description": "Make everyone happy with this assortment of Longo?s homemade cookies.",
 	"category": "Desserts and Breads",
 	"productNumber": "66",
 	"options": [{
-		"id": null,
+		"id": "p66-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "480-360",
 		"price": {
-			"id": 0,
+			"id": "p66-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 24.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
 		}
 	}, {
-		"id": null,
+		"id": "p66-Large",
 		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 20-25 people",
+		"servingSize": "20-25",
 		"calories": "540-430",
 		"price": {
-			"id": 0,
+			"id": "p66-Large-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 34.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -2104,22 +1889,72 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p66.png",
 	"smallImageLink": null
 }, {
+	"id": "p67",
+	"name": "European Cookie Tray",
+	"description": "Specialty biscuits from across the pond. Assorted European cookies.",
+	"category": "Desserts and Breads",
+	"productNumber": "67",
+	"options": [{
+		"id": "p67-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "",
+		"price": {
+			"id": "p67-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 19.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p67.png",
+	"smallImageLink": null
+}, {
+	"id": "p68",
+	"name": "Decadent Delight Squares",
+	"description": "Delightful little bites of some of ourdecadent treats. Killer Brownies? and mini squares",
+	"category": "Desserts and Breads",
+	"productNumber": "68",
+	"options": [{
+		"id": "p68-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15-20",
+		"calories": "",
+		"price": {
+			"id": "p68-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 34.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p68.png",
+	"smallImageLink": null
+}, {
 	"id": "p69",
-	"name": "Longo’s Signature Dessert Tray",
-	"description": "Everyone has a favourite here. Includes perfect little cannolis, Killer Brownies® and chocolate dipped strawberries.",
+	"name": "Longo?s Signature Dessert Tray",
+	"description": "Everyone has a favourite here. Includes perfect little cannolis, Killer Brownies? and chocolate dipped strawberries.",
 	"category": "Desserts and Breads",
 	"productNumber": "69",
 	"options": [{
-		"id": null,
+		"id": "p69-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 12-15 people",
+		"servingSize": "12-15",
 		"calories": "590-470",
 		"price": {
-			"id": 0,
+			"id": "p69-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 39.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -2129,22 +1964,72 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p69.png",
 	"smallImageLink": null
 }, {
+	"id": "p70",
+	"name": "Mini Square Dessert Tray",
+	"description": "A gorgeous arrangement of assorted square-shaped desserts made with real cream.",
+	"category": "Desserts and Breads",
+	"productNumber": "70",
+	"options": [{
+		"id": "p70-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15-20",
+		"calories": "",
+		"price": {
+			"id": "p70-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p70.png",
+	"smallImageLink": null
+}, {
+	"id": "p71",
+	"name": "Sweet Creations Tray",
+	"description": "Finish things off with these decadent mini pastries, made with velvety cream.",
+	"category": "Desserts and Breads",
+	"productNumber": "71",
+	"options": [{
+		"id": "p71-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "12-15",
+		"calories": "730-580",
+		"price": {
+			"id": "p71-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p71.png",
+	"smallImageLink": null
+}, {
 	"id": "p72",
-	"name": "Killer Brownie® Tray",
-	"description": "A selection of our decadent and exclusive Killer Brownie® squares.",
+	"name": "Killer Brownie? Tray",
+	"description": "A selection of our decadent and exclusive Killer Brownie? squares.",
 	"category": "Desserts and Breads",
 	"productNumber": "72",
 	"options": [{
-		"id": null,
+		"id": "p72-Regular",
 		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "15-20",
 		"calories": "600-450",
 		"price": {
-			"id": 0,
+			"id": "p72-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
+			"upc": "",
 			"price": 39.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
@@ -2154,43 +2039,308 @@
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p72.png",
 	"smallImageLink": null
 }, {
+	"id": "p73",
+	"name": "Longo?s Signature Frutta di Bosco",
+	"description": "An Italian masterpiece of cream and berries. Golden buttery crust, filled with rich pastry cream and topped with blackberries, raspberries and blueberries.�",
+	"category": "Desserts and Breads",
+	"productNumber": "73",
+	"options": [{
+		"id": "p73-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "",
+		"price": {
+			"id": "p73-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 25.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p73.png",
+	"smallImageLink": null
+}, {
 	"id": "p74",
 	"name": "Fruit Tray",
 	"description": "A colourful platter to please any taste. Cantaloupe, honeydew, pineapple, strawberries, grapes, watermelon, oranges and kiwi.",
 	"category": "Fruits and Vegetables",
 	"productNumber": "74",
 	"options": [{
-		"id": null,
-		"name": "Large",
+		"id": "p74-Regular",
+		"name": "Regular",
 		"piecesCount": 0,
-		"servingSize": "Serves 25-35 people",
+		"servingSize": "15-20",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p74-Regular-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
-			"price": 49.99,
+			"upc": "",
+			"price": 39.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
 		}
 	}, {
-		"id": null,
-		"name": "Regular",
+		"id": "p74-Large",
+		"name": "Large",
 		"piecesCount": 0,
-		"servingSize": "Serves 15-20 people",
+		"servingSize": "25-35",
 		"calories": "",
 		"price": {
-			"id": 0,
+			"id": "p74-Large-6",
 			"product": null,
 			"storeId": "6",
-			"barcodeLink": "",
-			"price": 39.99,
+			"upc": "",
+			"price": 49.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
 		}
 	}],
 	"counter": "Deli",
 	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p74.png",
+	"smallImageLink": null
+}, {
+	"id": "p75",
+	"name": "Sliced Fruit Tray",
+	"description": "A light and refreshing dessert addition. Cantaloupe, honeydew, pineapple and strawberries.",
+	"category": "Fruits and Vegetables",
+	"productNumber": "75",
+	"options": [{
+		"id": "p75-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "8-10",
+		"calories": "",
+		"price": {
+			"id": "p75-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 17.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p75.png",
+	"smallImageLink": null
+}, {
+	"id": "p76",
+	"name": "Veggie Tray",
+	"description": "Super fresh, crisp vegetables. Baby carrots, celery, cauliflower, broccoli, peppers, cucumbers and cherry tomatoes, with Longo?s Ranch dip.",
+	"category": "Fruits and Vegetables",
+	"productNumber": "76",
+	"options": [{
+		"id": "p76-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "15-20",
+		"calories": "",
+		"price": {
+			"id": "p76-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 34.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}, {
+		"id": "p76-Large",
+		"name": "Large",
+		"piecesCount": 0,
+		"servingSize": "25-35",
+		"calories": "",
+		"price": {
+			"id": "p76-Large-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 49.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p76.png",
+	"smallImageLink": null
+}, {
+	"id": "p77",
+	"name": "Fruit Cocktail Bowl",
+	"description": "A fresh medley of juicy favourites. Cantaloupe, honeydew, pineapple, strawberries and grapes.�",
+	"category": "Fruits and Vegetables",
+	"productNumber": "77",
+	"options": [{
+		"id": "p77-Regular",
+		"name": "Regular",
+		"piecesCount": 0,
+		"servingSize": "10-12",
+		"calories": "",
+		"price": {
+			"id": "p77-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 24.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Deli",
+	"imageLink": "https://digitalpreorder.blob.core.windows.net/images/p77.png",
+	"smallImageLink": null
+}, {
+	"id": "p101",
+	"name": "Assorted Maki Roll Platter",
+	"description": "Includes:Vegitables California Roll (8pc), California Roll (8pc), Spicy California Roll (8pc), Cucumber Roll (8pc), Avacado Roll (8pc).Includes wasabi, ginger and soy sauce",
+	"category": "Sushi",
+	"productNumber": "101",
+	"options": [{
+		"id": "p101-Regular",
+		"name": "Regular",
+		"piecesCount": 40,
+		"servingSize": "4",
+		"calories": "300/Serving",
+		"price": {
+			"id": "p101-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 19.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Sushi",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102494-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMjE3NDQ4fGltYWdlL3BuZ3xpbWFnZXMvaGUwL2hlNC84OTE2OTQ2NTUwODE0LnBuZ3wwZTI5NTE0M2UyNDkyZTYyZDIwODgxNTc4OTIzODYxNWY1MTk0ZGRkM2FlMjA0NGYwZDNlN2EzZmRkZWNhNTgw",
+	"smallImageLink": null
+}, {
+	"id": "p102",
+	"name": "Mega Maki Roll Platter",
+	"description": "Includes:Vegitables California Roll (8pc),California Roll (8pc),Spicy California Roll (8pc),Vegetable Alaska (9pc),Ebi Roll (9pc),Dynamite Roll (9pc), Avacado Roll (8pc). Includes wasabi, ginger and soy sauce ",
+	"category": "Sushi",
+	"productNumber": "102",
+	"options": [{
+		"id": "p102-Regular",
+		"name": "Regular",
+		"piecesCount": 59,
+		"servingSize": "6",
+		"calories": "330/Serving",
+		"price": {
+			"id": "p102-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 28.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Sushi",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
+	"smallImageLink": null
+}, {
+	"id": "p103",
+	"name": "Maki Roll & Nigiri Platter",
+	"description": "Includes:Spicy Salmon Roll (8pc), Orange California (4pc), Red California Roll (4pc), Shrimp Nigiri (4pc), Tuna Nigiri (4pc), Salmon Nigiri (3pc), BBQ Salmon Nigiri (3pc). Includes wasabi, ginger and soy sauce ",
+	"category": "Sushi",
+	"productNumber": "103",
+	"options": [{
+		"id": "p103-Regular",
+		"name": "Regular",
+		"piecesCount": 30,
+		"servingSize": "4",
+		"calories": "330/Serving",
+		"price": {
+			"id": "p103-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Sushi",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
+	"smallImageLink": null
+}, {
+	"id": "p104",
+	"name": "Mega Maki Roll & Nigiri Platter",
+	"description": "Includes: Spicy Salmon Roll (16pc), Tropical Roll (9pc), Salmon Hosomaki (8pc), Orange California (4pc), Red California Roll (4pc), Shrimp Nigiri (3pc), Tuna Nigiri (3pc), Salmon Nigiri (3pc), BBQ Salmon Nigiri (3pc). Includes wasabi, ginger and soy sauce ",
+	"category": "Sushi",
+	"productNumber": "104",
+	"options": [{
+		"id": "p104-Regular",
+		"name": "Regular",
+		"piecesCount": 53,
+		"servingSize": "6",
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Sushi",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
+	"smallImageLink": null
+}, {
+	"id": "p106",
+	"name": "Make a 7\" cake",
+	"description": "Customize your cake",
+	"category": "Cake",
+	"productNumber": "888",
+	"options": [{
+		"id": "p104-Regular",
+		"name": "Regular",
+		"piecesCount": 53,
+		"servingSize": "6",
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
+	"smallImageLink": null
+},{
+	"id": "p107",
+	"name": "Make a 9\" cake",
+	"description": "Customize your cake",
+	"category": "Cake",
+	"productNumber": "888",
+	"options": [{
+		"id": "p104-Regular",
+		"name": "Regular",
+		"piecesCount": 53,
+		"servingSize": "6",
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	}],
+	"counter": "Bakery",
+	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
 	"smallImageLink": null
 }]
