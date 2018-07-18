@@ -7,16 +7,31 @@ import { Textbox } from 'react-inputs-validation';
 import { StateLoader } from '../state.loader';
 import { removeCart }  from '../actions/cart';
 import { resetOrder }  from '../actions/order';
+import { fetchConfigs } from "../actions/config";
+import { fetchProducts } from "../actions/products";
+
+const headers = {
+  mode: "no-cors",
+  headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*"
+  }
+}
+
 
 class LoginPage extends React.Component {
   state = {
   };
   componentDidMount() {
+    this.props.fetchConfigs();
     let stateLoader = new StateLoader();
     stateLoader.removeState();
     this.props.removeCart();
     this.props.resetOrder();
-  }
+    this.props.fetchProducts();
+
+    
+  };
   onSubmit = (e) => {
     e.preventDefault();
     this.props.setProfile(this.state);
@@ -72,8 +87,10 @@ class LoginPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   setProfile: (profile) => dispatch(setProfile(profile)),
+  fetchProducts: () => dispatch(fetchProducts()),
   removeCart: () => dispatch(removeCart()),
-  resetOrder: () => dispatch(resetOrder())
+  resetOrder: () => dispatch(resetOrder()),
+  fetchConfigs: () => dispatch(fetchConfigs())
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);

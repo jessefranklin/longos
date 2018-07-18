@@ -12,7 +12,7 @@ export function fetchConfigs() {
     };
 }
 
-export const fetchConfigSuccess = config => ({
+export const fetchConfigSuccess = (config) => ({
     type: 'FETCH_CONFIG',
     payload: { config }
   });

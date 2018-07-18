@@ -6,14 +6,10 @@ import ProductsSidebar from './ProductsSidebar';
 import sortByCategory from '../selectors/sortByCategory';
 import listCategory from '../selectors/listCategory';
 import ProductsList from './ProductsList';
-import { fetchProducts } from "../actions/products";
 import ProductsHeader from '../components/ProductsHeader';
 
 
 class Products extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchProducts());
-  }
   render() {
     const {loading, products, categories } = this.props;
     return (
