@@ -24,7 +24,6 @@ export class StateLoader {
     }
 
     removeState(){
-        console.log('remove');
         try {
             localStorage.removeItem("name");
         }

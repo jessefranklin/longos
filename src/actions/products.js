@@ -1,3 +1,4 @@
+/*
 import productsjson from '../server/products.json';
 
 export function fetchProducts() {
@@ -5,13 +6,37 @@ export function fetchProducts() {
         dispatch(fetchProductsSuccess(productsjson));
     };
 }
-  
-function handleErrors(response) {
-    if (!response.ok) {
-        throw Error(response.statusText);
+*/  
+
+
+let axios = require('axios');
+import config from '../server/config.json';
+
+const apiUrl = "http://digitalpreorder.azurewebsites.net/api/product";
+const store = `?store=${config[0].store_id}`;
+let url = apiUrl + store;
+
+const headers = {
+    header: {
+        "Access-Control-Allow-Origin": "*"
     }
-    return response;
 }
+
+export let fetchProducts = () => {
+    return (dispatch) => {
+        dispatch(fetchProductsBegin())
+        return axios.get(url, headers).then(
+            (response) => {
+                dispatch(fetchProductsSuccess(response.data));
+            },
+            (err) => {
+                console.log(err);
+            }
+        )
+
+    }
+}
+
 
 export const FETCH_PRODUCTS_BEGIN   = 'FETCH_PRODUCTS_BEGIN';
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';

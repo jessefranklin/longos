@@ -4,7 +4,6 @@ export const setOrder = (order) => ({
     order
 });
 
-
 // EDIT ORDER
 export const editOrder = (id, updates) => ({
     type: 'EDIT_ORDER',
@@ -17,4 +16,13 @@ export const editOrder = (id, updates) => ({
 export const resetOrder = () => ({
     type: 'RESET_ORDER'
 });
+
+
+//Dispatch Order
+export function dispatchOrder(order) {
+    return dispatch => {
+        console.log(order);
+    };
+}
+  
   

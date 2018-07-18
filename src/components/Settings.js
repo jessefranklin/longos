@@ -1,8 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { fetchConfigs } from "../actions/config";
-import { setConfig }  from '../actions/config';
 import Select from 'react-select';
 
 class Settings extends React.Component {
@@ -12,9 +9,6 @@ class Settings extends React.Component {
     this.state = {
       selectedOption: 0
     };
-  }
-  componentDidMount() {
-    this.props.dispatch(fetchConfigs());
   }
   selOptions= (stores) => {
     let storeList = [];
