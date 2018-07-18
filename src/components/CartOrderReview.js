@@ -20,20 +20,20 @@ class CartOrderReview extends React.Component {
 
     this.state = {
       agreedTerms: false,
-      OrderId: null,
-      StoreId: store.store_id,
-      StoreZone: store.zone,
-      IsPaid: false,
-      Customer: {
-        CustomerId: this.props.profile.rewards,
-        Name: this.props.profile.username,
-        PhoneNumber: this.props.profile.phone,
-        OtherPhoneNumber: null,
-        Email: this.props.profile.email
+      orderId: null,
+      storeId: store.store_id,
+      storeZone: store.zone,
+      isPaid: false,
+      customer: {
+        customerId: this.props.profile.rewards,
+        name: this.props.profile.username,
+        phoneNumber: this.props.profile.phone,
+        otherPhoneNumber: null,
+        email: this.props.profile.email
       },
-      PickupDate: null,
-      PickupTime: null,
-      OrderItems: this.props.cart
+      pickUpDate: moment(this.props.order.pickUpDate).format('MMMM,Do,YYYY'),
+      pickUpTime: this.props.order.time,
+      orderItems: this.props.cart
     }
 
     this.handleCheck = this.handleCheck.bind(this);

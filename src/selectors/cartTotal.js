@@ -2,7 +2,7 @@
 
 export default (item) => {
     return item
-        .map((item) => (item.quantity * item.option.price.price))
+        .map((item) => (item.quantity * item.price))
         .reduce((sum, value) => sum+value,0);
 };
 

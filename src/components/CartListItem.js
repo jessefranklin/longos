@@ -20,7 +20,7 @@ class CartListItem extends Component {
   };
   render() {
     const item = this.props.item;
-    const formattedItemTotal = numeral(item.quantity * item.option.price.price).format('$0,0.00');
+    const formattedItemTotal = numeral(item.quantity * item.price).format('$0,0.00');
     const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onChange} quantity={item.quantity} /> : item.quantity; 
     return (
       <div className="cart--item">
@@ -30,7 +30,7 @@ class CartListItem extends Component {
           
           {quantityEditable}
 
-          {item.option.name}
+          {item.name}
         </div>
         {formattedItemTotal}
         <button onClick={this.onRemove}>X remove</button>

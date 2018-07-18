@@ -12,12 +12,11 @@ export const startAddToCart = (productData = {}) => {
       priceId = '',
       price = '',
       tax = '',
-      option = {},
       quantity = 0,
       comment = ''
     } = productData;
     
-    const product = {id,name,description,optionId,optionName,priceId,price,tax,option,quantity,comment}
+    const product = {id,name,description,optionId,optionName,priceId,price,tax,quantity,comment}
 
     dispatch(addToCart({
       id: uuid(),
