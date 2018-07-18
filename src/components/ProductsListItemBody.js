@@ -18,12 +18,17 @@ class ProductsListItemBody extends Component {
         label: this.props.item.options[0].name
       },
       selectedProduct: {
-        productNumber: parseInt(this.props.item.productNumber),
+        id: this.props.item.id,
         name: this.props.item.name,
         description: this.props.item.description,
+        optionId: "",
+        optionName: "",
+        priceId: "",
+        price: "",
+        tax: "",
         option: this.props.item.options[0],
         quantity: 1,
-        note: ''
+        comment: ''
       }
     };
   }
@@ -42,7 +47,7 @@ class ProductsListItemBody extends Component {
   onNoteChange = (e) => {
     const notes = e.target.value;
     const selectedProduct = {...this.state.selectedProduct}
-    selectedProduct.note = notes;
+    selectedProduct.comment = notes;
     this.setState(() => ({ selectedProduct }));
     
   };
@@ -76,7 +81,9 @@ class ProductsListItemBody extends Component {
     const item = this.props.item;
     const tooltip = <Tooltip id="modal-tooltip">example.</Tooltip>;
     const options = this.selOptions(item);
-   
+    
+    console.log(item);
+
     return (
       <div>
         <Modal.Body>

@@ -26,7 +26,7 @@ class CartListItem extends Component {
       <div className="cart--item">
         <h4>{item.name}</h4>
         <div>
-          {item.note}  
+          {item.comment}  
           
           {quantityEditable}
 
