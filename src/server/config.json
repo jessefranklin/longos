@@ -1,8 +1,11 @@
 [{
-    "store": "store1",
+    "name": "store1",
+    "store_id": "store1",
+    "zone": "5",
     "location": {
         "provence": "ontario",
-        "city": "toronto"
+        "city": "toronto",
+        "address": "123 yonge st."
     },
     "tax": {
         "name": "HST",
@@ -13,10 +16,13 @@
         "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
     }
 },{
-    "store": "store2",
+    "name": "store2",
+    "store_id": "store2",
+    "zone": "6",
     "location": {
         "provence": "alberta",
-        "city": "calgary" 
+        "city": "calgary",
+        "address": "123 yonge st."
     },
     "tax": {
         "name": "PST",

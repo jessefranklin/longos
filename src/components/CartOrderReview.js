@@ -9,17 +9,35 @@ import moment from 'moment';
 import numeral from 'numeral';
 import CartProgress from './CartProgress';
 import { Checkbox } from 'react-bootstrap';
+import { dispatchOrder } from '../actions/order';
 
+
+const store = config[0];
 
 class CartOrderReview extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      checked: false
+      agreedTerms: false,
+      OrderId: null,
+      StoreId: store.store_id,
+      StoreZone: store.zone,
+      IsPaid: false,
+      Customer: {
+        CustomerId: this.props.profile.rewards,
+        Name: this.props.profile.username,
+        PhoneNumber: this.props.profile.phone,
+        OtherPhoneNumber: null,
+        Email: this.props.profile.email
+      },
+      PickupDate: null,
+      PickupTime: null,
+      OrderItems: this.props.cart
     }
 
     this.handleCheck = this.handleCheck.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidUpdate() {
     if (this.props.cart.length < 1) {
@@ -27,18 +45,18 @@ class CartOrderReview extends React.Component {
     }
   }
   onSubmit = (e) => {
-    if(!this.state.checked){e.preventDefault(); return; }
-    console.log(this.state);
-    // this.completeOrder(this.state);
+    if(!this.state.agreedTerms){e.preventDefault(); return; }
+    this.props.dispatchOrder(this.state);
+    e.preventDefault();
   };
   handleCheck(e) {
-    this.setState({checked: !!e.target.checked});
+    this.setState({agreedTerms: !!e.target.checked});
   }
   render() {
     const { profile, cart, cartTotal, order } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
-    const taxAmount = numeral(cartTotal * (config[0].tax.tax/100)).format('$0,0.00');
-    const totalAmount = numeral(cartTotal + (cartTotal * (config[0].tax.tax/100))).format('$0,0.00');
+    const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
+    const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
     const time = moment().startOf('day').seconds(order.time).format('h:mm A');
 
     return (
@@ -56,7 +74,7 @@ class CartOrderReview extends React.Component {
           </div>
           <div>
             Total price: {formattedCartTotal}
-            {config[0].tax.name}: {taxAmount}
+            {store.tax.name}: {taxAmount}
             Grand Total: {totalAmount}
           </div>
           <div>
@@ -70,16 +88,17 @@ class CartOrderReview extends React.Component {
 
             {profile.time}
 
+            at {store.location.address} {store.location.city}
+
           </div>
           <div>
-            <h5>{config[0].terms.header}</h5>
-            <p>{config[0].terms.body}
+            <h5>{store.terms.header}</h5>
+            <p>{store.terms.body}
             
-            {this.state.checked}
             </p>
 
             <div className="checkbox">
-            <label className={this.state.checked?'checked':''} >I accept the terms and conditions.
+            <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
             <input
               name="terms"
               type="checkbox"
@@ -90,7 +109,7 @@ class CartOrderReview extends React.Component {
 
           </div>
 
-          <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.checked?'':'disabled'} >Submit Order</Link>
+          <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
 
         </div>
@@ -106,4 +125,8 @@ const mapStateToProps = (state) => ({
     order: state.order
 });
 
-export default connect(mapStateToProps)(CartOrderReview);
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOrder:(order) => dispatch(dispatchOrder(order))
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(CartOrderReview);
