@@ -24,7 +24,7 @@ class CartListItem extends Component {
     const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onChange} quantity={item.quantity} /> : item.quantity; 
     return (
       <div className="cart--item">
-        <h4>{item.name}</h4>
+        <h4>{item.productName}</h4>
         <div>
           {item.comment}  
           

@@ -20,9 +20,8 @@ class ProductsListItemBody extends Component {
       },
       selectedProduct: {
         id: uuid(),
-        productId: this.props.item.id,
-        name: this.props.item.name,
-        description: this.props.item.description,
+        productId: this.props.item.productNumber,
+        productName: this.props.item.name,
         optionId: this.props.item.options[0].id,
         optionName: this.props.item.options[0].name,
         priceId: this.props.item.options[0].price.id,
@@ -84,7 +83,8 @@ class ProductsListItemBody extends Component {
     const item = this.props.item;
     const tooltip = <Tooltip id="modal-tooltip">example.</Tooltip>;
     const options = this.selOptions(item);
-    
+    let opt = this.props.item.options[this.state.selectedOption.value];
+
     return (
       <div>
         <Modal.Body>

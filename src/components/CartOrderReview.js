@@ -46,7 +46,11 @@ class CartOrderReview extends React.Component {
   }
   onSubmit = (e) => {
     if(!this.state.agreedTerms){e.preventDefault(); return; }
-    this.props.dispatchOrder(this.state);
+    this.props.dispatchOrder(this.state).then(() => {
+      if(this.props.order.orderId){
+        this.props.history.push('/orderConfirmation');
+      }
+    })
     e.preventDefault();
   };
   handleCheck(e) {

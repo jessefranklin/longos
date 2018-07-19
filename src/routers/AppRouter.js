@@ -6,6 +6,7 @@ import Products from '../components/Products';
 import Cart from '../components/Cart';
 import Settings from '../components/Settings';
 import Order from '../components/CartOrder';
+import OrderConfirmation from '../components/CartOrderConfirmation';
 import CartOrderReview from '../components/CartOrderReview';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
@@ -25,6 +26,7 @@ const AppRouter = () => (
         <PublicRoute path="/cart" component={Cart} />
         <PublicRoute path="/orderreview" component={CartOrderReview} />
         <PublicRoute path="/order" component={Order} />
+        <PublicRoute path="/orderConfirmation" component={OrderConfirmation} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
