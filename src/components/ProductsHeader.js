@@ -52,7 +52,9 @@ const CartHeader = ({cartLength,handleClick,total}) => {
         </Link>
 
         {cartLength >= 1 && <div className="cart__indicator">{total} {itemWord}</div>}
-        <Link to="/order">Place Order</Link>
+
+        {total >= 1 ? <Link to="/order">Place Order</Link> : null }
+        
       </div>
     );
 };

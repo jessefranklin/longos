@@ -6,6 +6,7 @@ import Select from 'react-select';
 import ProductsListItemBody from './ProductsListItemBody';
 import ProductsListItemCake from './ProductsListItemCake';
 
+
 class ProductsListItem extends Component {
   constructor(props, context) {
     super(props, context);
@@ -37,12 +38,17 @@ class ProductsListItem extends Component {
       );
     }
   }
-
+  isInCart(id) {
+    if(this.props.cart.find(x => x.productId === id)){
+      return true;
+    }
+  }
   render() {
-    const item = this.props.item;
-   
+    const { item } = this.props;
+    const isInCart = this.isInCart(item.productNumber) ? 'product--item active' : 'product--item';
+    
     return (
-      <div className='product--item' onClick={this.handleShow}>
+      <div className={isInCart} onClick={this.handleShow}>
         <div className="img--container">
           <img src={item.imageLink} alt={item.name} />
         </div>
@@ -77,4 +83,9 @@ class ProductsListItem extends Component {
   }
 }
 
-export default ProductsListItem;
+const mapStateToProps = (state) => ({
+  cart: state.cart
+});
+
+
+export default connect(mapStateToProps)(ProductsListItem);
