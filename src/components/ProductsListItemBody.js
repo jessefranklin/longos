@@ -50,7 +50,8 @@ class ProductsListItemBody extends Component {
     selectedProduct.comment = notes;
     this.setState(() => ({ selectedProduct }));
   };
-
+  
+  
   onSelectChange = (selectedOption) => {
     this.setState({ selectedOption });
     if (selectedOption) {
@@ -64,7 +65,7 @@ class ProductsListItemBody extends Component {
   }
 
   onQuantityChange = (selectedOption) => {
-    const quantity = selectedOption.value;
+    const quantity = selectedOption;
     const selectedProduct = {...this.state.selectedProduct}
     selectedProduct.quantity = quantity;
     this.setState(() => ({ selectedProduct }));

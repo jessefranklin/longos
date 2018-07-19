@@ -18,10 +18,15 @@ class CartListItem extends Component {
     item.quantity = selectedOption.value;
     this.props.startEditItem(item.id, item);
   };
+  onQuantityChange = (selectedOption) => {
+    const item = {...this.props.item}
+    item.quantity = selectedOption;
+    this.props.startEditItem(item.id, item);
+  }
   render() {
     const item = this.props.item;
     const formattedItemTotal = numeral(item.quantity * item.price).format('$0,0.00');
-    const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onChange} quantity={item.quantity} /> : item.quantity; 
+    const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={item.quantity} /> : item.quantity; 
     return (
       <div className="cart--item">
         <h4>{item.productName}</h4>
