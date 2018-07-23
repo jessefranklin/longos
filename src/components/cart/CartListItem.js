@@ -9,6 +9,7 @@ class CartListItem extends Component {
     super(props, context);
 
     this.onChange = this.onChange.bind(this);
+    this.onRemove = this.onRemove.bind(this);
   }
   onRemove = () => {
     this.props.startRemoveItem({ id: this.props.item.id });
@@ -28,7 +29,16 @@ class CartListItem extends Component {
     const formattedItemTotal = numeral(item.quantity * item.price).format('$0,0.00');
     const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={item.quantity} /> : item.quantity; 
     return (
-      <div className="cart--item">
+      <div className="cart--row">
+        {item.type === 'cake' ? <CakeItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} />:<CartItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} /> }
+      </div>
+    );
+  }
+}
+
+const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
+  return (
+    <div className="cart--item">
         <h4>{item.productName}</h4>
         <div>
           {item.comment}  
@@ -38,11 +48,40 @@ class CartListItem extends Component {
           {item.name}
         </div>
         {formattedItemTotal}
-        <button onClick={this.onRemove}>X remove</button>
-      </div>
-    );
-  }
-}
+        <button onClick={onRemove}>X remove</button>
+    </div>
+  );
+};
+
+const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
+  return (
+    <div className="cart--item">
+        <h4>{item.productName}</h4>
+        <div>
+          {item.comment}  
+          {item.options.size}
+          {item.options.cakelayers} 
+          {item.options.icing} 
+          {item.options.trim} 
+          {item.options.color} 
+          {item.options.filling} 
+          {item.options.side}
+          {item.options.decorationType}  
+          {item.options.decorationTypeNote}  
+          {item.options.writigOnCakeType}
+          {item.options.extras}
+          
+          {quantityEditable}
+
+          {item.name}
+        </div>
+        {formattedItemTotal}
+        <button onClick={onRemove}>X remove</button>
+    </div>
+  );
+};
+
+
 
 const mapDispatchToProps = (dispatch) => ({
   startEditItem: (id, item) => dispatch(startEditItem(id, item)),

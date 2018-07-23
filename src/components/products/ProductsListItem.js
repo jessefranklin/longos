@@ -54,23 +54,14 @@ class ProductsListItem extends Component {
         <div className="img--container">
           <img src={item.imageLink} alt={item.name} />
         </div>
-        <h4>{item.name}</h4>
+        <h4>{item.name} {item.category === 'Cake'?'Cake':''}</h4>
         
         {/* <p>{item.description}</p>
         {this.state.selectedProduct.option.piecesCount !=0 && <p> {this.state.selectedProduct.option.piecesCount} pieces</p>}
         {this.state.selectedProduct.option.servingSize && <p>Serves {this.state.selectedProduct.option.servingSize} people </p>}
          */}
-        {item.options.map(options => {
-          if(options.servingSize) {
-            return (
-              <p key={options.id}>{options.name} Serves {options.servingSize} people </p>
-            );
-          } else {
-            return (
-              <p key={options.id}>{options.name} {options.piecesCount} pieces</p>
-            );
-          }
-        })}
+
+        {item.category === 'Cake'?<CakeDescription item={item}/>:<ItemDescription item={item} />}
 
         <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
@@ -87,6 +78,32 @@ class ProductsListItem extends Component {
     );
   }
 }
+
+const ItemDescription = ({item}) => {
+  return (
+    <div>
+      {item.options.map(options => {
+        if(options.servingSize) {
+          return (
+            <p key={options.id}>{options.name} Serves {options.servingSize} people </p>
+          );
+        } else {
+          return (
+            <p key={options.id}>{options.name} {options.piecesCount} pieces</p>
+          );
+        }
+      })}
+    </div>
+  );
+};
+
+const CakeDescription = ({item}) => {
+  return (
+    <div>
+      
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   cart: state.cart

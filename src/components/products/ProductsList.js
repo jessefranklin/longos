@@ -9,7 +9,7 @@ class ProductsList extends React.Component {
     }
 
     return (
-      <div className="content--container">
+      <div className="product--container">
         {Object.keys(products).map(function(key, index) {
           const refKey = key.replace(/\s+/g, '').toLowerCase();
           return <div key={index} id={refKey} className="element">

@@ -19,19 +19,17 @@ class Cart extends React.Component {
 
     return (
       <div>
-        <div className="content--container">
-          <h2>Shopping Cart ({total} {itemWord})</h2>
-          <div className="cart--item">
-            {cart.map(product => {
-              return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
-            })}
-          </div>
-          <div>
-          Total price: {formattedCartTotal}
-          </div>
-          <Link to="/order" className="btn">Place Order</Link>
-          <Link to="/products" className="btn btn-secondary">Back To Order Form</Link>
+        <h2>Shopping Cart ({total} {itemWord})</h2>
+        <div className="cart--item">
+          {cart.map(product => {
+            return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
+          })}
         </div>
+        <div>
+        Total price: {formattedCartTotal}
+        </div>
+        <Link to="/order" className="btn">Place Order</Link>
+        <Link to="/products" className="btn btn-secondary">Back To Order Form</Link>
       </div>
     )
   }

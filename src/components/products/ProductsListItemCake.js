@@ -24,6 +24,7 @@ class ProductsListItemCake extends Component {
       },
       selectedProduct: {
         id: uuid(),
+        type: 'cake',
         productId: this.props.item.productNumber,
         productName: this.props.item.name,
         optionId: this.props.item.options[0].id,
@@ -71,20 +72,52 @@ class ProductsListItemCake extends Component {
     this.setState(() => ({ cakeOptions }));
   };
 
+  onSelectChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    if (selectedOption) {
+      const selectedProduct = {...this.state.selectedProduct}
+      selectedProduct.optionId = this.props.item.options[selectedOption.value].id;
+      selectedProduct.optionName = this.props.item.options[selectedOption.value].name;
+      selectedProduct.priceId = this.props.item.options[selectedOption.value].price.id;
+      selectedProduct.price = this.props.item.options[selectedOption.value].price.price;
+      this.setState(() => ({ selectedProduct }));
+    }
+  }
+
+  selOptions= (item) => {
+    let options = [];
+    {item.options.map((item,index) => {
+        options.push({ value: index, label: item.name });
+    })}
+    
+    return options;
+  }
+
   render() {
     const item = this.props.item;
-   
+    const options = this.selOptions(item);
+    let opt = item.options[this.state.selectedOption.value];
+
     return (
       <div>
         <Modal.Body>
         <div className="item--header">
-          <h4>{item.name}</h4>
-          <h5>Starting at ${this.state.selectedProduct.price?this.state.selectedProduct.price: cakeOptions.fields[0].options[0].value}</h5>
+          <h4>{opt.name} {item.category === 'Cake'?'Cake':''}</h4>
+          <h5>Starting at ${opt.price.price}</h5>
         </div>
 
         <p>
           {item.description}
         </p>
+
+        <Select
+          name="option"
+          value={this.state.selectedOption}
+          onChange={this.onSelectChange}
+          options={options}
+          searchable={false}
+          clearable={false} 
+        />
 
         {cakeOptions.fields.map(options => {
           return <OptionsSelect 

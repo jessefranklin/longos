@@ -64,57 +64,55 @@ class CartOrderReview extends React.Component {
 
     return (
       <div>
-        <div className="content--container">
 
-          <CartProgress progress="1" />
+        <CartProgress progress="2" />
 
-          <h2>Place Order</h2>
-          <div className="cart--item">
-            {cart.map(product => {
-              return <CartListItem key={product.id} item={product} editable="false" />
-            })}
-          </div>
-          <div>
-            Total price: {formattedCartTotal}
-            {store.tax.name}: {taxAmount}
-            Grand Total: {totalAmount}
-          </div>
-          <div>
-            {profile.username}
-            {profile.phone}
-            {profile.email}
-            {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
-            <br />
-            {time}
-            <br />
+        <h2>Place Order</h2>
+        <div className="cart--item">
+          {cart.map(product => {
+            return <CartListItem key={product.id} item={product} editable="false" />
+          })}
+        </div>
+        <div>
+          Total price: {formattedCartTotal}
+          {store.tax.name}: {taxAmount}
+          Grand Total: {totalAmount}
+        </div>
+        <div>
+          {profile.username}
+          {profile.phone}
+          {profile.email}
+          {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
+          <br />
+          {time}
+          <br />
 
-            {profile.time}
+          {profile.time}
 
-            at {store.location.address} {store.location.city}
-
-          </div>
-          <div>
-            <h5>{store.terms.header}</h5>
-            <p>{store.terms.body}
-            
-            </p>
-
-            <div className="checkbox">
-            <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
-            <input
-              name="terms"
-              type="checkbox"
-              checked={this.state.checked}
-              onChange={this.handleCheck} />
-            </label>
-            </div>
-
-          </div>
-
-          <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
-          <Link to="/products" className="btn btn-secondary">Cancel</Link>
+          at {store.location.address} {store.location.city}
 
         </div>
+        <div>
+          <h5>{store.terms.header}</h5>
+          <p>{store.terms.body}
+          
+          </p>
+
+          <div className="checkbox">
+          <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
+          <input
+            name="terms"
+            type="checkbox"
+            checked={this.state.checked}
+            onChange={this.handleCheck} />
+          </label>
+          </div>
+
+        </div>
+
+        <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
+        <Link to="/products" className="btn btn-secondary">Cancel</Link>
+
       </div>
     )
   }

@@ -2,33 +2,6 @@
     "title": "Cake Options",
     "description": "these are your config options for a cake.",
     "fields": [{
-            "label": "size",
-            "name": "size",
-            "descriptions": "descriptions",
-            "options": [{
-                    "label": "7",
-                    "value": "7"
-
-                },{
-                    "label": "8",
-                    "value": "8"
-                },{
-                    "label": "9 SQ",
-                    "value": "9"
-                },{
-                    "label": "1/8 Slab",
-                    "value": "18"
-                },{
-                    "label": "1/4 Slab",
-                    "value": "24"
-                },{
-                    "label": "1/2 Slab",
-                    "value": "28"
-                },{
-                    "label": "Full Slab",
-                    "value": "32"
-            }]
-        },{
             "label": "Cake Layers",
             "name": "cakelayers",
             "descriptions": "descriptions",
