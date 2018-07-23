@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from "react-redux";
-import selectProducts from '../selectors/products';
+import selectProducts from '../../selectors/products';
+import sortByCategory from '../../selectors/sortByCategory';
+import listCategory from '../../selectors/listCategory';
 import ProductsListFilters from './ProductsFilters';
 import ProductsSidebar from './ProductsSidebar';
-import sortByCategory from '../selectors/sortByCategory';
-import listCategory from '../selectors/listCategory';
 import ProductsList from './ProductsList';
-import ProductsHeader from '../components/ProductsHeader';
+import ProductsHeader from './ProductsHeader';
 
 
 class Products extends React.Component {

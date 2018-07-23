@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter } from '../actions/filter';
+import { setTextFilter } from '../../actions/filter';
 
 export class ProductListFilters extends React.Component {
     state = {};

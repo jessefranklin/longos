@@ -2295,7 +2295,7 @@
 	"smallImageLink": null
 }, {
 	"id": "p106",
-	"name": "Make a 7\" cake",
+	"name": "7\" cake",
 	"description": "Customize your cake",
 	"category": "Cake",
 	"productNumber": "888",
@@ -2320,7 +2320,7 @@
 	"smallImageLink": null
 },{
 	"id": "p107",
-	"name": "Make a 9\" cake",
+	"name": "9\" cake",
 	"description": "Customize your cake",
 	"category": "Cake",
 	"productNumber": "888",
@@ -2339,6 +2339,7 @@
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
 		}
+
 	}],
 	"counter": "Bakery",
 	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",

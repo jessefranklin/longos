@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
-import { totalCount } from '../selectors/cartTotal';
+import { totalCount } from '../../selectors/cartTotal';
 
 class Header extends React.Component {
   constructor(props) {

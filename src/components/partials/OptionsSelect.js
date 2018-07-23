@@ -16,8 +16,10 @@ export const OptionsSelect = ({options,value,onChange}) => {
             <Select
                 name={options.name}
                 value={value}
+                placeholder={options.name}
                 onChange={(e) => onChange(e.value, options.name)}
                 options={optionsArray} 
+                className={options.type==='hidden'?'hidden':''}
                 searchable={false}
                 clearable={false} 
             />

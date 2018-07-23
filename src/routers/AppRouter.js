@@ -1,17 +1,19 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-import DashboardPage from '../components/DashboardPage';
-import Products from '../components/Products';
-import Cart from '../components/Cart';
-import Settings from '../components/Settings';
-import Order from '../components/CartOrder';
-import OrderConfirmation from '../components/CartOrderConfirmation';
-import CartOrderReview from '../components/CartOrderReview';
+import DashboardPage from '../components/csa/DashboardPage';
+import Products from '../components/products/Products';
+import Settings from '../components/csa/Settings';
+import Cart from '../components/cart/Cart';
+import Order from '../components/cart/CartOrder';
+import OrderConfirmation from '../components/cart/CartOrderConfirmation';
+import CartOrderReview from '../components/cart/CartOrderReview';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import LoginRoute from './LoginRoute';
+
 
 export const history = createHistory();
 
@@ -19,7 +21,7 @@ const AppRouter = () => (
   <Router history={history}>
     <div>
       <Switch>
-        <PublicRoute path="/" component={LoginPage} exact={true} />
+        <LoginRoute path="/" component={LoginPage} exact={true} />
         <PublicRoute path="/settings" component={Settings} />
         <PublicRoute path="/dashboard" component={DashboardPage} />
         <PublicRoute path="/products" component={Products} />

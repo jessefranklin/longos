@@ -1,14 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import ProductsHeader from '../components/products/ProductsHeader';
 
-export const PublicRoute = ({
+export const LoginRoute = ({
   component: Component,
   ...rest
 }) => (
   <Route {...rest} component={(props) => (
     <div>
-      <ProductsHeader />
       <div className="content--container">
         <Component {...props} />
       </div>
@@ -17,4 +15,4 @@ export const PublicRoute = ({
 );
 
 
-export default PublicRoute;
+export default LoginRoute;

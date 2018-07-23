@@ -1,11 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
-import _ from 'lodash';
 
-let q = [];
-const quantityList = _.range(1, 11).map((value, index) => {
-    q.push({label: index+1, value: index+1})
-})
 
 export class QuantitySelect extends React.Component {
     constructor(props){
@@ -17,6 +11,7 @@ export class QuantitySelect extends React.Component {
         this.props.onQuantityChange(this.props.quantity+1);
     }
     minusOne() {
+        if(this.props.quantity === 1) return;
         this.props.onQuantityChange(this.props.quantity-1);
     }
     render() {

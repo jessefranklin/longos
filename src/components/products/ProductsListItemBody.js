@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { startAddToCart }  from '../actions/cart';
+import { startAddToCart }  from '../../actions/cart';
 import Select from 'react-select';
-import { QuantitySelect } from './partials/QuantitySelect';
+import { QuantitySelect } from '../partials/QuantitySelect';
 import uuid from 'uuid/v1';
 
 class ProductsListItemBody extends Component {

@@ -12,7 +12,6 @@ export const TextField = ({properties,value,onChange}) => {
     } else {
         return (
             <div>
-                {properties.name} {properties.type}
                 <textarea
                     placeholder={properties.placeholder}
                     onChange={(e) => onChange(e.target.value, properties.name)}

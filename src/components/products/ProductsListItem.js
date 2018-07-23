@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { startAddToCart }  from '../actions/cart';
+import { startAddToCart }  from '../../actions/cart';
 import Select from 'react-select';
 import ProductsListItemBody from './ProductsListItemBody';
 import ProductsListItemCake from './ProductsListItemCake';
@@ -39,13 +39,15 @@ class ProductsListItem extends Component {
     }
   }
   isInCart(id) {
-    if(this.props.cart.find(x => x.productId === id)){
-      return true;
-    }
+      if(this.props.cart.find(x => x.productId === id)){
+        return true;
+      }
+    
   }
   render() {
-    const { item } = this.props;
-    const isInCart = this.isInCart(item.productNumber) ? 'product--item active' : 'product--item';
+    const { item, cart } = this.props;
+    // const isInCart = this.isInCart(item.productNumber) ? 'product--item active' : 'product--item';
+    const isInCart = 'product--item';
     
     return (
       <div className={isInCart} onClick={this.handleShow}>
@@ -72,7 +74,10 @@ class ProductsListItem extends Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title><img src={item.imageLink} alt={item.name} /></Modal.Title>
+              <Modal.Title></Modal.Title>
+              <div className="img--container">
+                <img src={item.imageLink} alt={item.name} />
+              </div>
             </Modal.Header>
             
             {this.renderBody(item)}

@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import config from '../server/config.json';
-import ProductsHeader from '../components/ProductsHeader';
-import CartListItem from './CartListItem';
-import cartTotal from '../selectors/cartTotal';
+import { dispatchOrder } from '../../actions/order';
+import config from '../../server/config.json';
+import cartTotal from '../../selectors/cartTotal';
 import moment from 'moment';
 import numeral from 'numeral';
+import CartListItem from './CartListItem';
 import CartProgress from './CartProgress';
 import { Checkbox } from 'react-bootstrap';
-import { dispatchOrder } from '../actions/order';
 
 
 const store = config[0];
@@ -65,7 +64,6 @@ class CartOrderReview extends React.Component {
 
     return (
       <div>
-        <ProductsHeader />
         <div className="content--container">
 
           <CartProgress progress="1" />

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import { startRemoveItem, startEditItem }  from '../actions/cart';
+import { startRemoveItem, startEditItem }  from '../../actions/cart';
 import numeral from 'numeral';
-import { QuantitySelect } from './partials/QuantitySelect';
+import { QuantitySelect } from '../partials/QuantitySelect';
 
 class CartListItem extends Component {
   constructor(props, context) {

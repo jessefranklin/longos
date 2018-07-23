@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { setProfile } from '../actions/profile';
-import ProductsHeader from '../components/ProductsHeader';
+import { setProfile } from '../../actions/profile';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, Row, Col, Button } from 'react-bootstrap';
-import { setOrder } from '../actions/order';
+import { setOrder } from '../../actions/order';
 import CartProgress from './CartProgress';
 import TimePicker from 'react-bootstrap-time-picker';
 
@@ -63,7 +62,6 @@ class CartOrder extends React.Component {
     const { profile } = this.props;
     return (
       <div>
-        <ProductsHeader />
 
         <div className="content--container">
         

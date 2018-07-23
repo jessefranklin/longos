@@ -2,10 +2,9 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import CartListItem from './CartListItem';
-import ProductsHeader from '../components/ProductsHeader';
-import cartTotal from '../selectors/cartTotal';
+import cartTotal from '../../selectors/cartTotal';
 import numeral from 'numeral';
-import { totalCount } from '../selectors/cartTotal';
+import { totalCount } from '../../selectors/cartTotal';
 
 class Cart extends React.Component {
   componentDidUpdate() {
@@ -20,7 +19,6 @@ class Cart extends React.Component {
 
     return (
       <div>
-        <ProductsHeader />
         <div className="content--container">
           <h2>Shopping Cart ({total} {itemWord})</h2>
           <div className="cart--item">
