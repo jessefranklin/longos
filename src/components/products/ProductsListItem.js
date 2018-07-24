@@ -39,15 +39,14 @@ class ProductsListItem extends Component {
     }
   }
   isInCart(id) {
-      if(this.props.cart.find(x => x.productId === id)){
-        return true;
-      }
-    
+    let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === id) : '';
+    if(obj){
+      return true;
+    }
   }
   render() {
     const { item, cart } = this.props;
-    // const isInCart = this.isInCart(item.productNumber) ? 'product--item active' : 'product--item';
-    const isInCart = 'product--item';
+    const isInCart = this.isInCart(item.productNumber) ? 'product--item active' : 'product--item';
     
     return (
       <div className={isInCart} onClick={this.handleShow}>

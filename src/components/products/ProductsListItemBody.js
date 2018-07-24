@@ -36,7 +36,7 @@ class ProductsListItemBody extends Component {
   }
 
   onAddToCart = () => {
-    let obj = this.props.cart.find(x => x.productId === this.state.selectedProduct.productId);
+    let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === this.state.selectedProduct.productId) : '';
     if(obj && obj.optionId == this.state.selectedProduct.optionId && obj.comment == this.state.selectedProduct.comment){
       
       const selectedProduct = {...this.state.selectedProduct}
