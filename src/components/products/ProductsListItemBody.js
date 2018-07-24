@@ -112,6 +112,7 @@ class ProductsListItemBody extends Component {
           value={this.state.selectedOption}
           onChange={this.onSelectChange}
           options={sizeOptions}
+          disabled={item.options.length === 1?true:false}
           searchable={false}
           clearable={false} 
         />

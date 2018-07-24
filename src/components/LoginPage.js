@@ -18,7 +18,6 @@ const headers = {
   }
 }
 
-
 class LoginPage extends React.Component {
   state = {
     
