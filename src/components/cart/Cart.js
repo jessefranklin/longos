@@ -5,12 +5,17 @@ import CartListItem from './CartListItem';
 import cartTotal from '../../selectors/cartTotal';
 import numeral from 'numeral';
 import { totalCount } from '../../selectors/cartTotal';
+import Announcements from '../Announcements';
 
 class Cart extends React.Component {
   componentDidUpdate() {
     if (this.props.cart.length < 1) {
       this.props.history.push('/products');
     }
+  }
+  componentWillMount() {
+    document.title = 'Checkout';
+    this.setState({ announcementMessage: `Checkout: ${this.props.cart.length}`} );
   }
   render() {
     const { cart, cartTotal, total } = this.props;
@@ -19,6 +24,7 @@ class Cart extends React.Component {
 
     return (
       <div>
+        <Announcements message={this.state.announcementMessage} />
         <h2>Shopping Cart ({total} {itemWord})</h2>
         <div className="cart--item">
           {cart.map(product => {

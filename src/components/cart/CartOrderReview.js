@@ -30,8 +30,8 @@ class CartOrderReview extends React.Component {
         otherPhoneNumber: null,
         email: this.props.profile.email
       },
-      pickUpDate: moment(this.props.order.pickUpDate).format('MMMM,Do,YYYY'),
-      pickUpTime: this.props.order.time,
+      pickUpDate: moment(this.props.order.pickUpDate).format('YYYY-MM-DD'),
+      pickUpTime: moment(this.props.order.time).format('hh:mm:ss'),
       orderItems: this.props.cart
     }
 
@@ -45,6 +45,7 @@ class CartOrderReview extends React.Component {
   }
   onSubmit = (e) => {
     if(!this.state.agreedTerms){e.preventDefault(); return; }
+    console.log(this.state)
     this.props.dispatchOrder(this.state).then(() => {
       if(this.props.order.orderId){
         this.props.history.push('/orderConfirmation');

@@ -21,7 +21,23 @@ const headers = {
 
 class LoginPage extends React.Component {
   state = {
+    
   };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      username: '',
+      touched: {
+        email: false,
+        username: false
+      }
+    }
+
+  
+    this.validate = this.validate.bind(this);
+  }
   componentDidMount() {
     this.props.fetchConfigs();
     let stateLoader = new StateLoader();
@@ -29,19 +45,53 @@ class LoginPage extends React.Component {
     this.props.removeCart();
     this.props.resetOrder();
     this.props.fetchProducts();
-
-    
   };
+
+  handleBlur = (field) => (evt) => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true },
+    });
+  }
+
+  canBeSubmitted() {
+    const errors = this.validate(this.state.email, this.state.password);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
+
+  validate() {
+    return {
+      email: this.state.email.length === 0,
+      username: this.state.username.length === 0
+    };
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
+    if (!this.canBeSubmitted()) {
+      e.preventDefault();
+      return;
+    }
     this.props.setProfile(this.state);
     let val = e.target.getAttribute('data')
     history.push(val);
   };
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
   }
+
   render(){
+    const errors = this.validate(this.state.email, this.state.username);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    
+    const shouldMarkError = (field) => {
+      const hasError = errors[field];
+      const shouldShow = this.state.touched[field];
+      
+      return hasError ? shouldShow : false;
+    };
+
     return(
       <div>
         <div className="box-layout">
@@ -49,18 +99,25 @@ class LoginPage extends React.Component {
             <span className="longos-logo"></span>
           </h1>
           <div className="box-layout__box">
-            <input
-              type="text"
-              placeholder="username"
-              name="username" 
-              onChange={this.handleChange}
-            />
-            <input
-              type="email"
-              name="email" 
-              placeholder="email"
-              onChange={this.handleChange}
-            />
+          <input
+            className={shouldMarkError('username') ? "error" : ""}
+            type="text"
+            name="username" 
+            placeholder="Enter username"
+            value={this.state.username}
+            onChange={this.handleChange}
+            onBlur={this.handleBlur('username')}
+          />
+          <input
+            className={shouldMarkError('email') ? "error" : ""}
+            type="text"
+            name="email"
+            placeholder="Enter email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            onBlur={this.handleBlur('email')}
+          />
+
             <input
               type="phone"
               name="phone" 
@@ -74,7 +131,10 @@ class LoginPage extends React.Component {
               onChange={this.handleChange}
             />
     
-            <Link className="button" to="/products" data="/products" onClick={this.onSubmit}>Customer/Products</Link>
+            <Link className="button" to="/products" data="/products" 
+              onClick={this.onSubmit}
+              disabled={isDisabled} 
+            >Customer/Products</Link>
             <Link to="/dashboard">CSA Dashboard</Link><br /><br />
             <Link to="/settings">Settings</Link>
             </div>

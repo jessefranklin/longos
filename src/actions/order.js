@@ -14,7 +14,7 @@ const payload = {acceptTerms:true,"orderId":null,"StoreId":"store1","StoreZone":
 export function dispatchOrder(order) {
     return (dispatch) => {
         console.log(order);
-        return axios.post(orderApi,payload,headers).then(
+        return axios.post(orderApi,order,headers).then(
             (response) => {
                 console.log(response.data);
                 dispatch(editOrder({ orderId: response.data }));
