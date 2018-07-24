@@ -4,20 +4,21 @@ import uuid from 'uuid/v1';
 export const startAddToCart = (productData = {}) => {
   return (dispatch, getState) => {
     const {
-      id = 'p0',
-      name = 'default',
-      description = 'description',
+      id = 0,
+      type= '',
+      productId = 'p0',
+      productName = 'default',
       optionId = '',
       optionName = '',
+      options = {},
       priceId = '',
       price = '',
       tax = '',
-      option = {},
       quantity = 0,
       comment = ''
     } = productData;
     
-    const product = {id,name,description,optionId,optionName,priceId,price,tax,option,quantity,comment}
+    const product = {id,type,productId,productName,optionId,optionName,options,priceId,price,tax,quantity,comment}
 
     dispatch(addToCart({
       id: uuid(),

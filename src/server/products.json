@@ -2295,13 +2295,13 @@
 	"smallImageLink": null
 }, {
 	"id": "p106",
-	"name": "Make a 7\" cake",
+	"name": "7\"",
 	"description": "Customize your cake",
 	"category": "Cake",
 	"productNumber": "888",
 	"options": [{
-		"id": "p104-Regular",
-		"name": "Regular",
+		"id": "p304-Regular",
+		"name": "7\"",
 		"piecesCount": 53,
 		"servingSize": "6",
 		"calories": "380/Serving",
@@ -2314,21 +2314,81 @@
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
 		}
+	},{
+		"id": "p305-Regular",
+		"name": "9\"",
+		"piecesCount": 24,
+		"servingSize": 0,
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		} 
+	},{
+		"id": "p306-Regular",
+		"name": "9\" SQ",
+		"piecesCount": 32,
+		"servingSize": 0,
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 39.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		} 
 	}],
 	"counter": "Bakery",
 	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",
 	"smallImageLink": null
 },{
 	"id": "p107",
-	"name": "Make a 9\" cake",
+	"name": "9\"",
 	"description": "Customize your cake",
 	"category": "Cake",
 	"productNumber": "888",
 	"options": [{
-		"id": "p104-Regular",
-		"name": "Regular",
-		"piecesCount": 53,
-		"servingSize": "6",
+		"id": "p404-Regular",
+		"name": "7\"",
+		"piecesCount": 18,
+		"servingSize": 0,
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 19.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		}
+	},{
+		"id": "p405-Regular",
+		"name": "9\"",
+		"piecesCount": 24,
+		"servingSize": 0,
+		"calories": "380/Serving",
+		"price": {
+			"id": "p104-Regular-6",
+			"product": null,
+			"storeId": "6",
+			"upc": "",
+			"price": 29.99,
+			"stockLevel": 0,
+			"lastUpdated": "0001-01-01T00:00:00"
+		} 
+	},{
+		"id": "p406-Regular",
+		"name": "9\" SQ",
+		"piecesCount": 32,
+		"servingSize": 0,
 		"calories": "380/Serving",
 		"price": {
 			"id": "p104-Regular-6",
@@ -2338,7 +2398,7 @@
 			"price": 39.99,
 			"stockLevel": 0,
 			"lastUpdated": "0001-01-01T00:00:00"
-		}
+		} 
 	}],
 	"counter": "Bakery",
 	"imageLink": "https://media.grocerygateway.com/medias/00670452102500-1-base-conversionFormat-1200-conversionFormat.png?context=bWFzdGVyfGltYWdlc3wxMDk1MTU5fGltYWdlL3BuZ3xpbWFnZXMvaDcwL2gxMS84OTE2OTQxOTYzMjk0LnBuZ3wwM2Y2MTllZmI2OTFkMzFhMWRkNjQ3YTZkYzEyOWJhYTUyMDE3Y2RmMzU5MDQ5Nzk1NTE2OTBiNDU1ZmFmZTUz",

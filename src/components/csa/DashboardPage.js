@@ -1,5 +1,5 @@
 import React from 'react';
-import CSAHeader from '../components/CSAHeader';
+import CSAHeader from './CSAHeader';
 
 const DashboardPage = () => (
   <div>

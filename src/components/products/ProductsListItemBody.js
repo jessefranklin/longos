@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { startAddToCart }  from '../actions/cart';
+import { startAddToCart }  from '../../actions/cart';
 import Select from 'react-select';
-import { QuantitySelect } from './partials/QuantitySelect';
+import { QuantitySelect } from '../partials/QuantitySelect';
+import uuid from 'uuid/v1';
 
 class ProductsListItemBody extends Component {
   constructor(props, context) {
@@ -18,15 +19,15 @@ class ProductsListItemBody extends Component {
         label: this.props.item.options[0].name
       },
       selectedProduct: {
-        id: this.props.item.id,
-        name: this.props.item.name,
-        description: this.props.item.description,
-        optionId: "",
-        optionName: "",
-        priceId: "",
-        price: "",
+        id: uuid(),
+        type: 'item',
+        productId: this.props.item.productNumber,
+        productName: this.props.item.name,
+        optionId: this.props.item.options[0].id,
+        optionName: this.props.item.options[0].name,
+        priceId: this.props.item.options[0].price.id,
+        price: this.props.item.options[0].price.price,
         tax: "",
-        option: this.props.item.options[0],
         quantity: 1,
         comment: ''
       }
@@ -49,20 +50,23 @@ class ProductsListItemBody extends Component {
     const selectedProduct = {...this.state.selectedProduct}
     selectedProduct.comment = notes;
     this.setState(() => ({ selectedProduct }));
-    
   };
-
+  
+  
   onSelectChange = (selectedOption) => {
     this.setState({ selectedOption });
     if (selectedOption) {
       const selectedProduct = {...this.state.selectedProduct}
-      selectedProduct.option = this.props.item.options[selectedOption.value];
+      selectedProduct.optionId = this.props.item.options[selectedOption.value].id;
+      selectedProduct.optionName = this.props.item.options[selectedOption.value].name;
+      selectedProduct.priceId = this.props.item.options[selectedOption.value].price.id;
+      selectedProduct.price = this.props.item.options[selectedOption.value].price.price;
       this.setState(() => ({ selectedProduct }));
     }
   }
 
   onQuantityChange = (selectedOption) => {
-    const quantity = selectedOption.value;
+    const quantity = selectedOption;
     const selectedProduct = {...this.state.selectedProduct}
     selectedProduct.quantity = quantity;
     this.setState(() => ({ selectedProduct }));
@@ -80,27 +84,26 @@ class ProductsListItemBody extends Component {
   render() {
     const item = this.props.item;
     const tooltip = <Tooltip id="modal-tooltip">example.</Tooltip>;
-    const options = this.selOptions(item);
-    
-    console.log(item);
+    const sizeOptions = this.selOptions(item);
+    let opt = this.props.item.options[this.state.selectedOption.value];
 
     return (
       <div>
         <Modal.Body>
         <div className="item--header">
           <h4>{item.name}</h4>
-          <h5>${this.state.selectedProduct.option.price.price}</h5>
+          <h5>${this.state.selectedProduct.price}</h5>
         </div>
 
         <p>
           {item.description}
         </p>
 
-        {this.state.selectedProduct.option.piecesCount !=0 && <p> {this.state.selectedProduct.option.piecesCount} pieces <OverlayTrigger overlay={tooltip}>
+        {this.props.item.options[this.state.selectedOption.value].piecesCount !=0 && <p> {this.props.item.options[this.state.selectedOption.value].piecesCount} pieces <OverlayTrigger overlay={tooltip}>
           <a href="#tooltip">?</a>
         </OverlayTrigger>{' '}</p>}
 
-        {this.state.selectedProduct.option.servingSize && <p>Serves {this.state.selectedProduct.option.servingSize} people <OverlayTrigger overlay={tooltip}>
+        {this.props.item.options[this.state.selectedOption.value].servingSize && <p>Serves {this.props.item.options[this.state.selectedOption.value].servingSize} people <OverlayTrigger overlay={tooltip}>
           <a href="#popover">?</a>
         </OverlayTrigger>{' '}</p>}
 
@@ -108,7 +111,7 @@ class ProductsListItemBody extends Component {
           name="option"
           value={this.state.selectedOption}
           onChange={this.onSelectChange}
-          options={options}
+          options={sizeOptions}
           searchable={false}
           clearable={false} 
         />

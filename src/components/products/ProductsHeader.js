@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
-import { totalCount } from '../selectors/cartTotal';
+import { totalCount } from '../../selectors/cartTotal';
 
 class Header extends React.Component {
   constructor(props) {
@@ -14,8 +14,7 @@ class Header extends React.Component {
   render() {
     const {cart, profile, total} = this.props;
     const cartLength = cart.length > 0;
-    const itemWord = total === 1 ? 'item' : 'items' ;
-
+  
     return (
       <header className="header">
         <div className="content-container">
@@ -31,33 +30,40 @@ class Header extends React.Component {
                 <Link to="/">Logout</Link>
             </div>}
 
+            {!this.props.order.orderId ? <CartHeader handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : null }
 
-            <div className="cart-container">
-
-              <Link className="btn" to="/cart" onClick={this.handleClick.bind(this)} disabled={cartLength?'':'disabled'}>
-                <FontAwesome
-                  className='super-crazy-colors'
-                  name='shopping-cart'
-                  size='2x'
-                />
-              </Link>
-
-              {cart.length >= 1 && <div className="cart__indicator">{total} {itemWord}</div>}
-
-            </div>
-            <Link to="/order">Place Order</Link>
-            
           </div>
         </div>
       </header>
     )
   }
 }
+
+const CartHeader = ({cartLength,handleClick,total}) => {
+    const itemWord = total === 1 ? 'item' : 'items' ;
+    return (
+      <div className="cart-container" >
+        <Link className="btn" to="/cart" onClick={handleClick} disabled={cartLength?'':'disabled'}>
+          <FontAwesome
+            className='super-crazy-colors'
+            name='shopping-cart'
+            size='2x'
+          />
+        </Link>
+
+        {cartLength >= 1 && <div className="cart__indicator">{total} {itemWord}</div>}
+
+        {total >= 1 ? <Link to="/order">Place Order</Link> : null }
+        
+      </div>
+    );
+};
   
 const mapStateToProps = (state) => ({
   profile: state.profile,
   cart: state.cart,
-  total: totalCount(state.cart)
+  total: totalCount(state.cart),
+  order: state.order
 });
   
 export default connect(mapStateToProps)(Header);

@@ -2,224 +2,178 @@
     "title": "Cake Options",
     "description": "these are your config options for a cake.",
     "fields": [{
-        "label": "size",
-        "name": "size",
-        "descriptions": "descriptions",
-        "options": [{
-                "label": "7",
-                "value": "7"
-            },{
-                "label": "8",
-                "value": "8"
-            },{
-                "label": "9 SQ",
-                "value": "9"
-            },{
-                "label": "1/8 Slab",
-                "value": "1/8"
-            },{
-                "label": "1/4 Slab",
-                "value": "1/4"
-            },{
-                "label": "1/2 Slab",
-                "value": "1/2"
-            },{
-                "label": "Full Slab",
-                "value": "Full Slab"
-        }]
-    },{
-        "label": "Cake Layers",
-        "name": "cakelayers",
-        "descriptions": "descriptions",
-        "options": [{
-                "label": "Single Layer White",
-                "value": "single layer white "
-            },{
-                "label": "Single Layer Chocolate",
-                "value": "Single Layer Chocolate"
-            },{
-                "label": "3 Layer White",
-                "value": "3 Layer White"
-            },{
-                "label": "3 Layer Choclate",
-                "value": "3 Layer Choclate"
-            },{
-                "label": "2 Layer White 1 Layer Chocolate",
-                "value": "2 Layer White 1 Layer Chocolate"
-            },{
-                "label": "2 Layer Chocolate 1 Layer White",
-                "value": "2 Layer Chocolate 1 Layer White"
-            },{
-                "label": "3 Layer SFOLIA",
-                "value": "3 Layer SFOLIA"
-            },{
-                "label": "Other",
-                "value": "other"
-            }]
-    },{
-        "label": "Icing",
-        "name": "icing",
-        "descriptions": "descriptions",
-        "options": [{
-                "label": "Vanilla",
-                "value": "single layer white"
-            },{
-                "label": "Chocolate",
-                "value": "Single Layer Chocolate"
-            },{
-                "label": "Oreo Cream",
-                "value": "9"
-            },{
-                "label": "Mocha Cream",
-                "value": "1/8"
-            },{
-                "label": "Fudge",
-                "value": "1/4"
-            },{
-                "label": "Lemon Cream",
-                "value": "1/2"
-            },{
-                "label": "Real Cream",
-                "value": "Full Slab"
-            },{
-                "label": "Other",
-                "value": "other"
-            }]
-    },{
-        "label": "Trim",
-        "name": "trim",
-        "descriptions": "descriptions",
-        "options": [{
-                "label": "White",
-                "value": "single layer white"
-            },{
-                "label": "Chocolate",
-                "value": "Single Layer Chocolate"
-            },{
-                "label": "Other",
-                "value": "9"
-            }]
-    },{
-        "label": "Writing Color",
-        "name": "color",
-        "descriptions": "descriptions",
-        "options": [{
-                "label": "White",
-                "value": "White"
-            },{
-                "label": "Chocolate",
-                "value": "Chocolate"
-            },{
-                "label": "Pink",
-                "value": "9"
-            },{
-                "label": "Blue",
-                "value": "9"
-            },{
-                "label": "Other",
-                "value": "other"
-            }]
-    },{
-        "label": "Filling",
-        "name": "filling",
-        "descriptions": "descriptions",
-        "options": [{
-                "label": "Vanilla",
-                "value": "White"
-            },{
-                "label": "Chocolate",
-                "value": "Chocolate"
-            },{
-                "label": "Pink",
-                "value": "9"
-            },{
-                "label": "Blue",
-                "value": "9"
-            },{
-                "label": "Other",
-                "value": "other"
-            }]
-    },{
-        "label": "Side",
-        "name": "side",
-        "descriptions": "descriptions",
-        "options": [{
-                "label": "White chocolate shavings",
-                "value": "White"
-            },{
-                "label": "Dark chocolate shavings",
-                "value": "Chocolate"
-            },{
-                "label": "Pink",
-                "value": "9"
-            },{
-                "label": "Blue",
-                "value": "9"
-            },{
-                "label": "Other",
-                "value": "other"
-            }]
-    }],
+            "label": "Cake Layers",
+            "name": "cakelayers",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "Single Layer White",
+                    "value": "single layer white "
+                },{
+                    "label": "Single Layer Chocolate",
+                    "value": "Single Layer Chocolate"
+                },{
+                    "label": "3 Layer White",
+                    "value": "3 Layer White"
+                },{
+                    "label": "3 Layer Choclate",
+                    "value": "3 Layer Choclate"
+                },{
+                    "label": "2 Layer White 1 Layer Chocolate",
+                    "value": "2 Layer White 1 Layer Chocolate"
+                },{
+                    "label": "2 Layer Chocolate 1 Layer White",
+                    "value": "2 Layer Chocolate 1 Layer White"
+                },{
+                    "label": "3 Layer SFOLIA",
+                    "value": "3 Layer SFOLIA"
+                },{
+                    "label": "Other",
+                    "value": "other"
+                }]
+        },{
+            "label": "Icing",
+            "name": "icing",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "Vanilla",
+                    "value": "single layer white"
+                },{
+                    "label": "Chocolate",
+                    "value": "Single Layer Chocolate"
+                },{
+                    "label": "Oreo Cream",
+                    "value": "9"
+                },{
+                    "label": "Mocha Cream",
+                    "value": "1/8"
+                },{
+                    "label": "Fudge",
+                    "value": "1/4"
+                },{
+                    "label": "Lemon Cream",
+                    "value": "1/2"
+                },{
+                    "label": "Real Cream",
+                    "value": "Full Slab"
+                },{
+                    "label": "Other",
+                    "value": "other"
+                }]
+        },{
+            "label": "Trim",
+            "name": "trim",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "White",
+                    "value": "single layer white"
+                },{
+                    "label": "Chocolate",
+                    "value": "Single Layer Chocolate"
+                },{
+                    "label": "Other",
+                    "value": "9"
+                }]
+        },{
+            "label": "Writing Color",
+            "name": "color",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "White",
+                    "value": "White"
+                },{
+                    "label": "Chocolate",
+                    "value": "Chocolate"
+                },{
+                    "label": "Pink",
+                    "value": "9"
+                },{
+                    "label": "Blue",
+                    "value": "9"
+                },{
+                    "label": "Other",
+                    "value": "other"
+                }]
+        },{
+            "label": "Filling",
+            "name": "filling",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "Vanilla",
+                    "value": "White"
+                },{
+                    "label": "Chocolate",
+                    "value": "Chocolate"
+                },{
+                    "label": "Pink",
+                    "value": "9"
+                },{
+                    "label": "Blue",
+                    "value": "9"
+                },{
+                    "label": "Other",
+                    "value": "other"
+                }]
+        },{
+            "label": "Side",
+            "name": "side",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "White chocolate shavings",
+                    "value": "White"
+                },{
+                    "label": "Dark chocolate shavings",
+                    "value": "Chocolate"
+                },{
+                    "label": "Pink",
+                    "value": "9"
+                },{
+                    "label": "Blue",
+                    "value": "9"
+                },{
+                    "label": "Other",
+                    "value": "other"
+                }]
+        }, {
+            "label": "Decoration",
+            "name": "decorationType",
+            "descriptions": "descriptions",
+            "placeholder": "Decoration Type",
+            "target": "decorationTypeNote",
+            "options": [{
+                    "label": "Character Cake",
+                    "value": "characterCake"
+                },{
+                    "label": "Edible Image",
+                    "value": "editableImage"
+                },{
+                    "label": "Other",
+                    "value": "other"
+                }]
+        }], 
     "details":[{
-        "label": "Decoration",
-        "name": "decoration",
-        "descriptions": "descriptions",
-        "fields": [{
-                "label": "Character Cake",
-                "descriptions": "descriptions",
-                "placeholder":"placehold it",
-                "type": "text"
-            },{
-                "label": "Edible Image",
-                "descriptions": "descriptions",
-                "placeholder":"placehold it",
-                "type": "text"
-            },{
-                "label": "Other",
-                "descriptions": "descriptions",
-                "placeholder":"placehold it",
-                "type": "textarea"
-            }]
-    },{
-        "label": "Writing on Cake",
-        "name": "writing",
-        "descriptions": "descriptions",
-        "fields": [{
-                "label": "Character Cake",
-                "name":"character",
-                "descriptions": "descriptions",
-                "placeholder": "Happy Birthday",
-                "type": "text"
-            },{
-                "label": "Edible Image",
-                "name":"image",
-                "descriptions": "descriptions",
-                "placeholder": "Happy Birthday",
-                "type": "text"
-            },{
-                "label": "Other",
-                "name":"other",
-                "descriptions": "descriptions",
-                "placeholder": "Happy Birthday",
-                "type": "textarea"
-            }]
-    },{
-        "label": "Extras",
-        "name": "extras",
-        "descriptions": "descriptions",
-        "fields": [{
-                "label": "Extras",
-                "descriptions": "descriptions",
-                "type": "textarea"
-            }]
-    }],
+            "label": "Decoration",
+            "name": "decorationTypeNote",
+            "descriptions": "descriptions",
+            "placeholder": "",
+            "type": "textarea"
+        },{
+            "label": "Writing on Cake",
+            "name": "writigOnCakeType",
+            "descriptions": "descriptions",
+            "type": "textarea"
+        },{
+            "label": "Extras",
+            "name": "extras",
+            "descriptions": "descriptions",
+            "type": "textarea"
+        }],
     "disclaimers" : [{
-        "type":"bold",
-        "header": "We are not a nut free env.",
-        "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
-    },{
-        "type":"script",
-        "header": "Character cakes may not beexactly as shown",
-        "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
-    }]
+            "type":"bold",
+            "header": "We are not a nut free env.",
+            "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+        },{
+            "type":"script",
+            "header": "Character cakes may not beexactly as shown",
+            "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+        }]
 }
