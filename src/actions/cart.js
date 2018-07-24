@@ -23,7 +23,7 @@ export const startAddToCart = (productData = {}) => {
     dispatch(addToCart({
       id: uuid(),
       ...product
-    }))
+    })) 
   }
 };
 
@@ -48,9 +48,9 @@ export const removeItem = ({ id }) => ({
 });
 
 // Start Edit Item
-export const startEditItem = (id,item) => {
+export const startEditItem = (id,update) => {
   return (dispatch, getState) => {
-    dispatch(editItem(id, item));
+    dispatch(editItem(id, update));
   }
 };
 
