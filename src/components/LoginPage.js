@@ -66,8 +66,18 @@ class LoginPage extends React.Component {
     };
   }
 
+  validEmail(){
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(this.state.email);
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
+    console.log(this.validEmail());
+    if (!this.validEmail()) {
+      e.preventDefault();
+      return;
+    }
     if (!this.canBeSubmitted()) {
       e.preventDefault();
       return;
