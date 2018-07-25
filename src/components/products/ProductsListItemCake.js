@@ -6,6 +6,7 @@ import cakeOptions from '../../server/cake.json';
 import Select from 'react-select';
 import { QuantitySelect } from '../partials/QuantitySelect';
 import { OptionsSelect } from '../partials/OptionsSelect';
+import { CreateableSelect } from '../partials/CreateableSelect';
 import { TextField } from '../partials/TextField';
 import uuid from 'uuid/v1';
 import _ from 'lodash';
@@ -31,7 +32,7 @@ class ProductsListItemCake extends Component {
         optionName: this.props.item.options[0].name,
         priceId: this.props.item.options[0].price.id,
         price: this.props.item.options[0].price.price,
-        tax: "",
+        tax: 0,
         quantity: 1,
         comment: ''
       },
@@ -120,7 +121,7 @@ class ProductsListItemCake extends Component {
         />
 
         {cakeOptions.fields.map(options => {
-          return <OptionsSelect 
+          return <CreateableSelect 
             key={options.label} 
             options={options}
             value={this.state.cakeOptions[options.name]}

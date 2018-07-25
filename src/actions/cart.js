@@ -6,14 +6,14 @@ export const startAddToCart = (productData = {}) => {
     const {
       id = 0,
       type= '',
-      productId = 'p0',
-      productName = 'default',
+      productId = '',
+      productName = '',
       optionId = '',
       optionName = '',
       options = {},
       priceId = '',
       price = '',
-      tax = '',
+      tax = 0,
       quantity = 0,
       comment = ''
     } = productData;
@@ -23,7 +23,7 @@ export const startAddToCart = (productData = {}) => {
     dispatch(addToCart({
       id: uuid(),
       ...product
-    }))
+    })) 
   }
 };
 
@@ -48,9 +48,9 @@ export const removeItem = ({ id }) => ({
 });
 
 // Start Edit Item
-export const startEditItem = (id,item) => {
+export const startEditItem = (id,update) => {
   return (dispatch, getState) => {
-    dispatch(editItem(id, item));
+    dispatch(editItem(id, update));
   }
 };
 

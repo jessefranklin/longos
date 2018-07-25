@@ -23,7 +23,7 @@ class Cart extends React.Component {
     const itemWord = total === 1 ? 'item' : 'items' ;
 
     return (
-      <div>
+      <div ref={(contentContainer) => { this.contentContainer = contentContainer; }} tabIndex="-1" aria-labelledby="pageHeading">
         <Announcements message={this.state.announcementMessage} />
         <h2>Shopping Cart ({total} {itemWord})</h2>
         <div className="cart--item">

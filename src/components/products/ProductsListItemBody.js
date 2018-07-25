@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { startAddToCart }  from '../../actions/cart';
+import { startAddToCart, startEditItem }  from '../../actions/cart';
+
 import Select from 'react-select';
 import { QuantitySelect } from '../partials/QuantitySelect';
 import uuid from 'uuid/v1';
@@ -27,7 +28,7 @@ class ProductsListItemBody extends Component {
         optionName: this.props.item.options[0].name,
         priceId: this.props.item.options[0].price.id,
         price: this.props.item.options[0].price.price,
-        tax: "",
+        tax: 0,
         quantity: 1,
         comment: ''
       }
@@ -35,10 +36,22 @@ class ProductsListItemBody extends Component {
   }
 
   onAddToCart = () => {
+    let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === this.state.selectedProduct.productId) : '';
+    if(obj && obj.optionId == this.state.selectedProduct.optionId && obj.comment == this.state.selectedProduct.comment){
+      
+      const selectedProduct = {...this.state.selectedProduct}
+      selectedProduct.quantity = obj.quantity + this.state.selectedProduct.quantity;
+
+      this.props.startEditItem(
+        obj.id,
+        selectedProduct
+      );
+    } else {
+      this.props.startAddToCart(
+        this.state.selectedProduct
+      );
+    }
     this.props.handleClose();
-    this.props.startAddToCart(
-      this.state.selectedProduct
-    );
   };
 
   handleClose(){
@@ -112,6 +125,7 @@ class ProductsListItemBody extends Component {
           value={this.state.selectedOption}
           onChange={this.onSelectChange}
           options={sizeOptions}
+          disabled={item.options.length === 1?true:false}
           searchable={false}
           clearable={false} 
         />
@@ -136,7 +150,12 @@ class ProductsListItemBody extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startAddToCart: (item) => dispatch(startAddToCart(item))
+  startAddToCart: (item) => dispatch(startAddToCart(item)),
+  startEditItem: (id,update) => dispatch(startEditItem(id,update))
 });
 
-export default connect(undefined, mapDispatchToProps)(ProductsListItemBody);
+const mapStateToProps = (state) => ({
+  cart: state.cart
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsListItemBody);

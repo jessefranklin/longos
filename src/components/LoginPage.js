@@ -7,8 +7,8 @@ import { Textbox } from 'react-inputs-validation';
 import { StateLoader } from '../state.loader';
 import { removeCart }  from '../actions/cart';
 import { resetOrder }  from '../actions/order';
-import { fetchConfigs } from "../actions/config";
-import { fetchProducts } from "../actions/products";
+import { fetchConfigs } from '../actions/config';
+import { fetchProducts } from '../actions/customer/products';
 
 const headers = {
   mode: "no-cors",
@@ -17,7 +17,6 @@ const headers = {
       "Access-Control-Allow-Origin": "*"
   }
 }
-
 
 class LoginPage extends React.Component {
   state = {
@@ -66,8 +65,18 @@ class LoginPage extends React.Component {
     };
   }
 
+  validEmail(){
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(this.state.email);
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
+    console.log(this.validEmail());
+    if (!this.validEmail()) {
+      e.preventDefault();
+      return;
+    }
     if (!this.canBeSubmitted()) {
       e.preventDefault();
       return;
