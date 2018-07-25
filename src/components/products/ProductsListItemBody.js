@@ -28,7 +28,7 @@ class ProductsListItemBody extends Component {
         optionName: this.props.item.options[0].name,
         priceId: this.props.item.options[0].price.id,
         price: this.props.item.options[0].price.price,
-        tax: "",
+        tax: 0,
         quantity: 1,
         comment: ''
       }

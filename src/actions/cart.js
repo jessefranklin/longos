@@ -13,7 +13,7 @@ export const startAddToCart = (productData = {}) => {
       options = {},
       priceId = '',
       price = '',
-      tax = '',
+      tax = 0,
       quantity = 0,
       comment = ''
     } = productData;
