@@ -39,7 +39,7 @@ class ProductsListItem extends Component {
     }
   }
   isInCart(id) {
-    let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === id) : '';
+    let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === id) : false;
     if(obj){
       return true;
     }
