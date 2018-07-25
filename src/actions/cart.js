@@ -6,8 +6,8 @@ export const startAddToCart = (productData = {}) => {
     const {
       id = 0,
       type= '',
-      productId = 'p0',
-      productName = 'default',
+      productId = '',
+      productName = '',
       optionId = '',
       optionName = '',
       options = {},

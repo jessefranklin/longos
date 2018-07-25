@@ -7,8 +7,8 @@ import { Textbox } from 'react-inputs-validation';
 import { StateLoader } from '../state.loader';
 import { removeCart }  from '../actions/cart';
 import { resetOrder }  from '../actions/order';
-import { fetchConfigs } from "../actions/config";
-import { fetchProducts } from "../actions/products";
+import { fetchConfigs } from '../actions/config';
+import { fetchProducts } from '../actions/customer/products';
 
 const headers = {
   mode: "no-cors",
