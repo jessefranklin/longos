@@ -1,0 +1,77 @@
+{
+	"agreedTerms": true,
+	"orderId": null,
+	"storeId": "store1",
+	"storeZone": "5",
+	"isPaid": false,
+	"customer": {
+		"customerId": "c4",
+		"name": "Jesse",
+		"phoneNumber": "4163887376",
+		"otherPhoneNumber": null,
+		"email": "jesse@ctoboost.com"
+	},
+	"pickUpDate": "2018-08-01",
+	"pickUpTime": "12:30:00",
+	"orderItems": [{
+			"id": "5aabd560-8e87-11e8-b395-a598576ad7e4",
+			"type": "item",
+			"productId": "30",
+			"productName": "Connoisseur's Choice",
+			"optionId": "p30-Regular",
+			"optionName": "Regular",
+			"optionss": {},
+			"priceId": "p30-Regular-6",
+			"price": 39.99,
+			"tax": "5.2",
+			"taxName":"HST",
+			"quantity": 1,
+			"comment": "Comment 1"
+		},
+		{
+			"id": "60442d10-8e87-11e8-b395-a598576ad7e4",
+			"type": "item",
+			"productId": "30",
+			"productName": "Connoisseur's Choice",
+			"optionId": "p30-Large",
+			"optionName": "Large",
+			"optionss": {},
+			"priceId": "p30-Large-6",
+			"price": 49.99,
+			"tax": "6.5",
+			"taxName": "HST",
+			"quantity": 1,
+			"comment": "comment 2"
+		},
+		{
+			"id": "64e15be0-8e87-11e8-b395-a598576ad7e4",
+			"type": "cake",
+			"productId": "p401",
+			"productName": "Cake",
+			"optionId": "p401-9`` square",
+			"optionName": "9`` square",
+			"options": {
+				"size": "",
+				"cakelayers": "Single Layer Chocolate",
+				"icing": "Single Layer Chocolate",
+				"trim": "single layer white",
+				"color": "Chocolate",
+				"filling": "Chocolate",
+				"side": "Chocolate",
+				"decorationType": "characterCake",
+				"decorqationTypeNote": "",
+				"writingOnCakeType": "",
+				"writingOnCakeNote": "",
+				"decorationTypeNote": "Flowers and balloons",
+				"writigOnCakeType": "Happy birthday Alex",
+				"extras": "I would like an MVP trophy next to a picture of the MS logo"
+			},
+			"priceId": "p104-Regular-6",
+			"price": 39.99,
+			"tax": "5.2",
+			"taxName": "HST",
+			"quantity": 1,
+			"comment": ""
+		}
+	]
+}

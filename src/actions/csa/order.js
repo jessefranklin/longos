@@ -2,9 +2,10 @@
 let axios = require('axios');
 import config from '../../server/config.json';
 
-const apiUrl = "http://digitalpreorder.azurewebsites.net/api/order/active";
-const store = `?storeid=${config[0].store_id}`;
-let url = apiUrl + store;
+const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order`;
+const orderID = `?orderId=O8184008`;
+const orderIDs = `?storeid=${config[0].store_id}`;
+let url = orderAPI + orderID;
 
 const headers = {
     header: {
@@ -13,8 +14,9 @@ const headers = {
     }
 }
 
-export let fetchCSAOrders = () => {
+export let fetchCSAOrders = (oId) => {
     return (dispatch) => {
+        console.log(oId);
         dispatch(fetchCSAOrdersBegin())
         return axios.get(url, headers).then(
             (response) => {
@@ -36,9 +38,4 @@ export const fetchCSAOrdersBegin = () => ({
 export const fetchCSAOrdersSuccess = orders => ({
   type: 'FETCH_ORDERS_SUCCESS',
   payload: { orders }
-});
-
-export const fetchCSAOrdersFailure = error => ({
-  type: 'FETCH_ORDERS_FAILURE',
-  payload: { error }
 });

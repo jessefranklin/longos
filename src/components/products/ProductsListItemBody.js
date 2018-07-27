@@ -14,15 +14,18 @@ class ProductsListItemBody extends Component {
     this.onQuantityChange = this.onQuantityChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
+    let pieceorserving = this.props.item.options[0].piecesCount !=0 ? this.props.item.options[0].piecesCount+' pieces' : 'Serves '+ this.props.item.options[0].servingSize+' people';
+    let itemName = this.props.item.options[0].name +' - '+ pieceorserving;
+
     this.state = {
       selectedOption: {
         value: 0, 
-        label: this.props.item.options[0].name
+        label: itemName 
       },
       selectedProduct: {
         id: uuid(),
         type: 'item',
-        productId: this.props.item.productNumber,
+        productId: this.props.item.id,
         productName: this.props.item.name,
         optionId: this.props.item.options[0].id,
         optionName: this.props.item.options[0].name,
@@ -88,7 +91,9 @@ class ProductsListItemBody extends Component {
   selOptions= (item) => {
     let options = [];
     {item.options.map((item,index) => {
-        options.push({ value: index, label: item.name });
+        let pieceorserving = item.piecesCount !=0 ? item.piecesCount+' pieces' : 'Serves '+ item.servingSize+' people';
+        let itemName = item.name +' - '+ pieceorserving;
+        options.push({ value: index, label: itemName });
     })}
     
     return options;

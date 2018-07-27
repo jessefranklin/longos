@@ -6,22 +6,29 @@ import cartReducer from '../reducers/cart';
 import orderReducer from '../reducers/order';
 import filterReducer from '../reducers/filters';
 import configReducer from '../reducers/config';
-import { StateLoader } from "../state.loader"
+import { StateLoader } from '../state.loader';
+import ordersReducer from '../reducers/csa/orders';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 let stateLoader = new StateLoader();
 
+const reducers = {
+    settings: configReducer,
+    profile: profileReducer,
+    products: productsReducer,
+    filters: filterReducer,
+    order: orderReducer,
+    cart: cartReducer,
+    orders: ordersReducer
+}
+
+
 export default () => {
     const store = createStore(
-        combineReducers({
-            settings: configReducer,
-            profile: profileReducer,
-            products: productsReducer,
-            filters: filterReducer,
-            order: orderReducer,
-            cart: cartReducer
-        }),
+        combineReducers(
+            reducers
+        ),
         // State persist
         stateLoader.loadState(),
         composeEnhancers(applyMiddleware(thunk))
