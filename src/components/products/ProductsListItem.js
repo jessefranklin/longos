@@ -46,7 +46,7 @@ class ProductsListItem extends Component {
   }
   render() {
     const { item, cart } = this.props;
-    const isInCart = this.isInCart(item.productNumber) ? 'product--item active' : 'product--item';
+    const isInCart = this.isInCart(item.id) ? 'product--item active' : 'product--item';
     
     return (
       <div className={isInCart} onClick={this.handleShow}>

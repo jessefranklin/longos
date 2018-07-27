@@ -144,7 +144,7 @@ class LoginPage extends React.Component {
               onClick={this.onSubmit}
               disabled={isDisabled} 
             >Customer/Products</Link>
-            <Link to="/dashboard">CSA Dashboard</Link><br /><br />
+            <Link to="/orderDashboard">CSA Dashboard</Link><br /><br />
             <Link to="/settings">Settings</Link>
             </div>
         </div>

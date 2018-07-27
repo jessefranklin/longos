@@ -1,10 +1,38 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { fetchCSAOrders }  from '../../actions/csa/orders';
+import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
 
-const DashboardPage = () => (
-  <div>
-    <CSAHeader />
-  </div>
-);
+class DashboardPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.fetchCSAOrders();
+  };
+  render(){
 
-export default DashboardPage;
+    return(
+      <div>
+        <CSAHeader />
+        <div className="order--container">
+          {this.props.orders.items.map(order => {
+            return <OrderListItem key={order.id} item={order} />;
+          })}
+        </div>
+      </div>
+    )
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchCSAOrders: () => dispatch(fetchCSAOrders())
+});
+
+const mapStateToProps = state => ({
+  orders: state.orders
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(DashboardPage);
+

@@ -13,6 +13,7 @@ import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import LoginRoute from './LoginRoute';
+import OrderDetail from  '../components/csa/OrderDetail';
 
 
 export const history = createHistory();
@@ -23,12 +24,13 @@ const AppRouter = () => (
       <Switch>
         <LoginRoute path="/" component={LoginPage} exact={true} />
         <PublicRoute path="/settings" component={Settings} />
-        <PublicRoute path="/dashboard" component={DashboardPage} />
         <PublicRoute path="/products" component={Products} />
         <PublicRoute path="/cart" component={Cart} />
         <PublicRoute path="/orderreview" component={CartOrderReview} />
         <PublicRoute path="/order" component={Order} />
         <PublicRoute path="/orderConfirmation" component={OrderConfirmation} />
+        <PrivateRoute path="/orderDashboard" component={DashboardPage} />
+        <PrivateRoute path="/orderDetail/:id" component={OrderDetail} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
