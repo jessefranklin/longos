@@ -26,9 +26,6 @@
                 },{
                     "label": "3 Layer SFOLIA",
                     "value": "3 Layer SFOLIA"
-                },{
-                    "label": "Other",
-                    "value": "other"
                 }]
         },{
             "label": "Icing",
@@ -39,25 +36,22 @@
                     "value": "single layer white"
                 },{
                     "label": "Chocolate",
-                    "value": "Single Layer Chocolate"
+                    "value": "single layer chocolate"
                 },{
                     "label": "Oreo Cream",
-                    "value": "9"
+                    "value": "oreo cream"
                 },{
                     "label": "Mocha Cream",
-                    "value": "1/8"
+                    "value": "mocha cream"
                 },{
                     "label": "Fudge",
-                    "value": "1/4"
+                    "value": "fudge"
                 },{
                     "label": "Lemon Cream",
-                    "value": "1/2"
+                    "value": "Lemon cream"
                 },{
                     "label": "Real Cream",
-                    "value": "Full Slab"
-                },{
-                    "label": "Other",
-                    "value": "other"
+                    "value": "real cream"
                 }]
         },{
             "label": "Trim",
@@ -65,13 +59,10 @@
             "descriptions": "descriptions",
             "options": [{
                     "label": "White",
-                    "value": "single layer white"
+                    "value": "white"
                 },{
                     "label": "Chocolate",
-                    "value": "Single Layer Chocolate"
-                },{
-                    "label": "Other",
-                    "value": "9"
+                    "value": "chocolate"
                 }]
         },{
             "label": "Writing Color",
@@ -79,39 +70,60 @@
             "descriptions": "descriptions",
             "options": [{
                     "label": "White",
-                    "value": "White"
+                    "value": "white"
                 },{
                     "label": "Chocolate",
-                    "value": "Chocolate"
+                    "value": "chocolate"
                 },{
                     "label": "Pink",
-                    "value": "9"
+                    "value": "pink"
                 },{
                     "label": "Blue",
-                    "value": "9"
-                },{
-                    "label": "Other",
-                    "value": "other"
+                    "value": "blue"
                 }]
         },{
             "label": "Filling",
             "name": "filling",
             "descriptions": "descriptions",
             "options": [{
-                    "label": "Vanilla",
-                    "value": "White"
+                    "label": "Vanilla Custard",
+                    "value": "vanilla-custard"
                 },{
-                    "label": "Chocolate",
-                    "value": "Chocolate"
+                    "label": "Chocolate Custard",
+                    "value": "chocolate-custard"
                 },{
-                    "label": "Pink",
-                    "value": "9"
+                    "label": "Vanilla Cream",
+                    "value": "vanilla-cream"
                 },{
-                    "label": "Blue",
-                    "value": "9"
+                    "label": "Chocolate Cream",
+                    "value": "chocolate-cream"
                 },{
-                    "label": "Other",
-                    "value": "other"
+                    "label": "Oreo Cream",
+                    "value": "oreo-cream"
+                },{
+                    "label": "Mocah Cream",
+                    "value": "mocha-cream"
+                },{
+                    "label": "Fudge",
+                    "value": "fudge"
+                },{
+                    "label": "Lemon Custard",
+                    "value": "lemon-custard"
+                },{
+                    "label": "Lemon Cream",
+                    "value": "lemon-cream"
+                },{
+                    "label": "Cherry",
+                    "value": "cherry"
+                },{
+                    "label": "Stawberries",
+                    "value": "stawberries"
+                },{
+                    "label": "Mixed Fruit",
+                    "value": "mixed-fruit"
+                },{
+                    "label": "Real Cream",
+                    "value": "real-cream"
                 }]
         },{
             "label": "Side",
@@ -119,19 +131,22 @@
             "descriptions": "descriptions",
             "options": [{
                     "label": "White chocolate shavings",
-                    "value": "White"
+                    "value": "white-chocolate-shavings"
                 },{
                     "label": "Dark chocolate shavings",
-                    "value": "Chocolate"
+                    "value": "dark-chocolate-shavings"
                 },{
-                    "label": "Pink",
-                    "value": "9"
+                    "label": "Almonds",
+                    "value": "almonds"
                 },{
-                    "label": "Blue",
-                    "value": "9"
+                    "label": "Vanilla Biscrunch",
+                    "value": "vanilla-biscrunch"
                 },{
-                    "label": "Other",
-                    "value": "other"
+                    "label": "Chocolate Biscrunch",
+                    "value": "chocolate-bidcrunch"
+                },{
+                    "label": "Conffetti",
+                    "value": "conffetti"
                 }]
         }, {
             "label": "Decoration",
@@ -149,6 +164,31 @@
                     "label": "Other",
                     "value": "other"
                 }]
+        }, {
+            "label": "Writing on cake",
+            "name": "writingPlaceholder",
+            "descriptions": "descriptions",
+            "placeholder": "Writing on Cake",
+            "target": "writigOnCakeTypeNote",
+            "options": [{
+                    "label": "Happy Birthday",
+                    "value": "Happy ___ Birthday ______"
+                },{
+                    "label": "Happy Anniversary",
+                    "value": "Happy ___ Anniversary ______"
+                },{
+                    "label": "Congradulations _______",
+                    "value": "Congradulations _______"
+                },{
+                    "label": "God bless you _____ on your ______",
+                    "value": "God bless you _____ on your ______"
+                },{
+                    "label": "Pink or blue we welcome you",
+                    "value": "Pink or blue we welcome you"
+                },{
+                    "label": "Showers of happiness",
+                    "value": "Showers of happiness"
+                }]
         }], 
     "details":[{
             "label": "Decoration",
@@ -158,7 +198,7 @@
             "type": "textarea"
         },{
             "label": "Writing on Cake",
-            "name": "writigOnCakeType",
+            "name": "writigOnCakeTypeNote",
             "descriptions": "descriptions",
             "type": "textarea"
         },{
