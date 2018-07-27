@@ -31,7 +31,7 @@ class ProductsListItem extends Component {
     if(item.category === 'Cake') {
       return (
         <ProductsListItemCake item={item} handleClose={this.handleClose} />
-      );
+      ); 
     } else {
       return (
         <ProductsListItemBody item={item} handleClose={this.handleClose} />
@@ -39,27 +39,26 @@ class ProductsListItem extends Component {
     }
   }
   isInCart(id) {
-    let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === id) : false;
-    if(obj){
-      return true;
+    let obj = this.props.cart.length ? this.props.cart.filter(x => x.productId === id) : false;
+    if(obj.length){
+      const count = obj.map((item) => item.quantity)
+                      .reduce((sum, value) => sum+value,0);
+
+      return count;
     }
   }
   render() {
     const { item, cart } = this.props;
-    const isInCart = this.isInCart(item.id) ? 'product--item active' : 'product--item';
+    const isInCart = this.isInCart(item.id);
     
     return (
-      <div className={isInCart} onClick={this.handleShow}>
+      <div className={isInCart ? 'product--item active' : 'product--item'} onClick={this.handleShow}>
+        {isInCart ? <div className="indicator">{isInCart}</div> : ''}
         <div className="img--container">
           <img src={item.imageLink} alt={item.name} />
         </div>
         <h4>{item.name} {item.category === 'Cake'?'Cake':''}</h4>
         
-        {/* <p>{item.description}</p>
-        {this.state.selectedProduct.option.piecesCount !=0 && <p> {this.state.selectedProduct.option.piecesCount} pieces</p>}
-        {this.state.selectedProduct.option.servingSize && <p>Serves {this.state.selectedProduct.option.servingSize} people </p>}
-         */}
-
         {item.category === 'Cake'?<CakeDescription item={item}/>:<ItemDescription item={item} />}
 
         <Modal show={this.state.show} onHide={this.handleClose}>
