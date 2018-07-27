@@ -3,10 +3,10 @@
 
 
 @font-face {
-    font-family: 'josefin_sansbold';
-    src: url('josefinsans-bold-webfont.woff2') format('woff2'),
-         url('josefinsans-bold-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'josefin';
+    src: url('fonts/josefinsans-bold-webfont.woff2') format('woff2'),
+         url('fonts/josefinsans-bold-webfont.woff') format('woff');
+    font-weight: 600;
     font-style: normal;
 
 }
@@ -15,10 +15,10 @@
 
 
 @font-face {
-    font-family: 'josefin_sanslight';
-    src: url('josefinsans-light-webfont.woff2') format('woff2'),
-         url('josefinsans-light-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'josefin';
+    src: url('fonts/josefinsans-light-webfont.woff2') format('woff2'),
+         url('fonts/josefinsans-light-webfont.woff') format('woff');
+    font-weight: 300;
     font-style: normal;
 
 }
@@ -27,10 +27,10 @@
 
 
 @font-face {
-    font-family: 'josefin_sansregular';
-    src: url('josefinsans-regular-webfont.woff2') format('woff2'),
-         url('josefinsans-regular-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'josefin';
+    src: url('fonts/josefinsans-regular-webfont.woff2') format('woff2'),
+         url('fonts/josefinsans-regular-webfont.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
 
 }
@@ -39,10 +39,10 @@
 
 
 @font-face {
-    font-family: 'josefin_sanssemibold';
-    src: url('josefinsans-semibold-webfont.woff2') format('woff2'),
-         url('josefinsans-semibold-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'josefin';
+    src: url('fonts/josefinsans-semibold-webfont.woff2') format('woff2'),
+         url('fonts/josefinsans-semibold-webfont.woff') format('woff');
+    font-weight: 500;
     font-style: normal;
 
 }
@@ -51,10 +51,10 @@
 
 
 @font-face {
-    font-family: 'josefin_sansthin';
-    src: url('josefinsans-thin-webfont.woff2') format('woff2'),
-         url('josefinsans-thin-webfont.woff') format('woff');
-    font-weight: normal;
+    font-family: 'josefin';
+    src: url('fonts/josefinsans-thin-webfont.woff2') format('woff2'),
+         url('fonts/josefinsans-thin-webfont.woff') format('woff');
+    font-weight: 200;
     font-style: normal;
 
 }
