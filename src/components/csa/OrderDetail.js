@@ -9,6 +9,7 @@ const headers = {
     }
 }
 
+const orderAPI = 'http://digitalpreorder.azurewebsites.net/api/order';
 
 class OrderDetail extends Component {
   constructor(props, context) {
@@ -16,25 +17,21 @@ class OrderDetail extends Component {
 
   }
   componentDidMount() {
-    const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order`;
-    const orderID = `?orderId=O8184008`;
+    const orderID = `?orderId=${this.props.match.params.id}`;
     
-    console.log(this.props.match.params.id);
-    // const orderIDs = `?storeid=${config[0].store_id}`;
-    // let url = orderAPI + orderID;
+    let url = orderAPI + orderID;
     
-    // axios.get(url, headers).then(
-    //     (response) => {
-    //         console.log(response.data);
-    //         dispatch(fetchCSAOrdersSuccess(response.data));
-    //     },
-    //     (err) => {
-    //         console.log(err);
-    //     }
-    // )
+    axios.get(url, headers).then(
+        (response) => {
+            console.log(response.data);
+            this.setState(response.data);
+        },
+        (err) => {
+            console.log(err);
+        }
+    )
   };
   render() {
-    
     return (
       <div >
       </div>
@@ -42,9 +39,8 @@ class OrderDetail extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  order: state.order
+const mapDispatchToProps = (dispatch) => ({
+  updateOrder: (order) => dispatch(updateOrder(order))
 });
 
-
-export default OrderDetail;
+export default connect(undefined, mapDispatchToProps)(OrderDetail);

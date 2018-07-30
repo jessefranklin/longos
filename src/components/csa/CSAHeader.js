@@ -5,10 +5,12 @@ const Header = () => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">
-        <Link className="header__title" to="/">
-          <h1>Longos Catering</h1>
+        <Link className="header__title" to="/orderDashboard">
+          <h1>
+            <span className="longos-logo"></span>
+          </h1>
         </Link>
-        <Link to="/products">Catering Products</Link>
+        <Link to="/">Go to Customer Login</Link>
       </div>
     </div>
   </header>
