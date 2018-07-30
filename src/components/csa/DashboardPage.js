@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchCSAOrders }  from '../../actions/csa/orders';
 import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
+import OrdersFilters from './OrdersFilters';
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class DashboardPage extends React.Component {
     return(
       <div>
         <CSAHeader />
-        <div className="order--container">
+        <div className="content--container">
+          <OrdersFilters />
           {this.props.orders.items.map(order => {
             return <OrderListItem key={order.id} item={order} />;
           })}
