@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setOrderFilter } from '../../actions/filter';
+import OrdersCountersFilters from './OrdersCountersFilters';
 
 export class OrdersFilters extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.handleCounter = this.handleCounter.bind(this);
     }
     onTextChange = (e) => {
       this.props.setOrderFilter(e.target.value);
@@ -13,9 +13,6 @@ export class OrdersFilters extends React.Component {
     onClearField = (e) => {
       this.props.setOrderFilter('');
     };
-    handleCounter (value){
-        console.log(value);
-    }
     render() {
       return (
         <div>
@@ -23,17 +20,10 @@ export class OrdersFilters extends React.Component {
                 type="text"
                 value={this.props.filters.order}
                 onChange={this.onTextChange}
-            />
+                />
             <button className="close" onClick={this.onClearField}>x</button>
-
-            <ul>
-                <li><button onClick={() => this.handleCounter('all')}>All Dept.</button></li>
-                <li><button onClick={() => this.handleCounter('deli')}>Deli</button></li>
-                <li><button onClick={() => this.handleCounter('kitchen')}>Kitchen</button></li>
-                <li><button onClick={() => this.handleCounter('salad')}>Salad bar</button></li>
-                <li><button onClick={() => this.handleCounter('sushi')}>Sushi</button></li>
-                <li><button onClick={() => this.handleCounter('cakes')}>Cakes</button></li>
-            </ul>
+            <OrdersCountersFilters />
+            
         </div>
       );
     }
@@ -44,8 +34,7 @@ export class OrdersFilters extends React.Component {
   });
   
   const mapDispatchToProps = (dispatch) => ({
-    setOrderFilter: (text) => dispatch(setOrderFilter(text)),
-
+    setOrderFilter: (text) => dispatch(setOrderFilter(text))
   });
   
   export default connect(mapStateToProps, mapDispatchToProps)(OrdersFilters);

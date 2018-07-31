@@ -1,7 +1,17 @@
-export const totalCount = (products, {text}) => {
-  return products.filter((product) => {
-    const textMatch = product.description.toLowerCase().includes(text.toLowerCase()) || product.name.toLowerCase().includes(text.toLowerCase()) || product.category.toLowerCase().includes(text.toLowerCase());
-    
+export const selectOrders = (orderItems, {order = ''}) => {
+  return orderItems.filter((orderItem) => {
+    const textMatch = orderItem.id.toLowerCase().includes(order.toLowerCase());
+    return textMatch;
+  });
+};
+
+
+export const filterByCounter = (orderItems, {counter = ''}) => {
+  if(counter === ''){
+    return orderItems;
+  }
+  return orderItems.filter((orderItem) => {
+    const textMatch = orderItem.counters.find(x => x.counterName.toLowerCase() === counter);
     return textMatch;
   });
 };

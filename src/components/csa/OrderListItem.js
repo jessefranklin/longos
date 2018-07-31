@@ -7,7 +7,6 @@ const OrderListItem = ({item}) => {
 
     const counters = sortByCounter(item.counters);
 
-    console.log(counters);
     return(
         <div className='orders--item'>
             <h4>{item.id}</h4>
