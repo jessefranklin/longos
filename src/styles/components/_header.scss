@@ -4,8 +4,9 @@
   top: 0;
   left: 0;
   right: 0;
-  background: #fff;
+  background: $red;
   z-index: 1;
+
 }
 
 .header__content {
@@ -27,4 +28,11 @@
   width: 200px;
   height: 80px;
   background: transparent url('/images/longos.svg') no-repeat 0 0;
+}
+
+.longos-logo-white {
+  display: block;
+  width: 200px;
+  height: 80px;
+  background: transparent url('/images/longos-white.svg') no-repeat 0 0;
 }

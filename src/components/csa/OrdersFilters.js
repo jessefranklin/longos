@@ -1,17 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setOrderFilter } from '../../actions/filter';
-import OrdersCountersFilters from './OrdersCountersFilters';
+import { setOrderFilter, filterByCounter } from '../../actions/filter';
+import OrderCounterFilters from './OrderCounterFilters';
+import OrderStatusFilters from './OrderStatusFilters';
 
 export class OrdersFilters extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.handleCounter = this.handleCounter.bind(this);
     }
     onTextChange = (e) => {
       this.props.setOrderFilter(e.target.value);
     };
     onClearField = (e) => {
       this.props.setOrderFilter('');
+    };
+    handleCounter(value){
+      this.props.filterByCounter(value);
     };
     render() {
       return (
@@ -22,7 +27,10 @@ export class OrdersFilters extends React.Component {
                 onChange={this.onTextChange}
                 />
             <button className="close" onClick={this.onClearField}>x</button>
-            <OrdersCountersFilters />
+            
+            <OrderCounterFilters handleCounter={this.handleCounter} />
+
+            <OrderStatusFilters />
             
         </div>
       );
@@ -34,7 +42,8 @@ export class OrdersFilters extends React.Component {
   });
   
   const mapDispatchToProps = (dispatch) => ({
-    setOrderFilter: (text) => dispatch(setOrderFilter(text))
+    setOrderFilter: (text) => dispatch(setOrderFilter(text)),
+    filterByCounter: (text) => dispatch(filterByCounter(text))
   });
   
   export default connect(mapStateToProps, mapDispatchToProps)(OrdersFilters);

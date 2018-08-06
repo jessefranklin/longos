@@ -16,6 +16,11 @@ export const filterByCounter = (text = '') => ({
     text
 });
 
+export const filterByOrderCounter = (text = '') => ({
+    type: 'FILTER_BY_ORDER_COUNTER',
+    text
+});
+
 export const filterByStatus = (text = '') => ({
     type: 'FILTER_BY_STATUS',
     text

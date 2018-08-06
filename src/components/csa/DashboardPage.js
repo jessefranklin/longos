@@ -4,7 +4,7 @@ import { fetchCSAOrders }  from '../../actions/csa/orders';
 import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
 import OrdersFilters from './OrdersFilters';
-import { selectOrders, filterByCounter } from '../../selectors/orders';
+import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = state => ({
-  orders: filterByCounter(selectOrders(state.orders.items,state.filters),state.filters)
+  orders: filterByStatus(filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),state.filters)
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(DashboardPage);

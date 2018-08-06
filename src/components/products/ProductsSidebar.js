@@ -7,7 +7,6 @@ class ProductsSidebar extends React.Component {
         const categories = this.props.categories
         return (
             <ul>
-                <h3>Order Options</h3>
                 {Object.keys(categories).map(function(key, index) {
                     const refKey = key.replace(/\s+/g, '').toLowerCase();
                     return <li key={index}>

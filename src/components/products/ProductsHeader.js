@@ -21,7 +21,7 @@ class Header extends React.Component {
           <div className="header__content">
             <Link className="header__title" to="/">
               <h1>
-                <span className="longos-logo"></span>
+                <span className="longos-logo-white"></span>
               </h1>
             </Link>
             

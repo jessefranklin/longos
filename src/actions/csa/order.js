@@ -16,7 +16,6 @@ const headers = {
 
 export let fetchCSAOrders = (oId) => {
     return (dispatch) => {
-        console.log(oId);
         dispatch(fetchCSAOrdersBegin())
         return axios.get(url, headers).then(
             (response) => {

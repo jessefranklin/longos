@@ -5,13 +5,31 @@ export const selectOrders = (orderItems, {order = ''}) => {
   });
 };
 
-
 export const filterByCounter = (orderItems, {counter = ''}) => {
+  console.log(orderItems, counter)
   if(counter === ''){
     return orderItems;
   }
   return orderItems.filter((orderItem) => {
     const textMatch = orderItem.counters.find(x => x.counterName.toLowerCase() === counter);
+    return textMatch;
+  });
+};
+
+export const filterByStatus = (orderItems, {status = 0}) => {
+  return orderItems.filter((orderItem) => {
+    const textMatch = orderItem.status === status;
+    return textMatch;
+  });
+};
+
+
+export const orderFilterByCounter = (orderItems, text) => {
+  if(text === ''){
+    return orderItems;
+  }
+  return orderItems.filter((orderItem) => {
+    const textMatch = orderItem.product.counter.toLowerCase() === text;
     return textMatch;
   });
 };
