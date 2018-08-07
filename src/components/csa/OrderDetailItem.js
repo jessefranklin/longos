@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import Barcode from 'react-barcode';
 import Select from 'react-select';
-import { serialize } from 'uri-js';
-
+let axios = require('axios');
 
 const options = [
     { value: 0, label: 'Not ready' },
@@ -17,6 +16,12 @@ const employees = [
     { value: 'Alex Longo', label: 'Alex Longo' }
 ]
 
+const headers = {
+  header: {
+      "Content-Type":"application/json",
+      "Access-Control-Allow-Origin": "*"
+  }
+}
 
 class OrderDetailItem extends Component {
   constructor(props, context) {
@@ -29,19 +34,42 @@ class OrderDetailItem extends Component {
   }
   onSelectChange = (value, name) => {
     this.setState({ [name] : value });
+    let orderUpdate = `setstatus?status=${value}`;
+    this.updateOrder(orderUpdate);
+
+  }
+  onAssignedChange = (value, name) => {
+    this.setState({ [name] : value });
+    let orderUpdate = `assign?assignee=${value}`;
+    this.updateOrder(orderUpdate);
+  }
+
+  updateOrder (orderUpdate) {
+    const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/${this.props.oid}/item/${this.props.order.id}/`;
+    
+    let url = orderAPI + orderUpdate;
+    
+    axios.put(url, headers).then(
+        (response) => {
+          this.props.updateState(response.data);
+        },
+        (err) => {
+            console.log(err);
+        }
+    )
   }
 
   render() {
     const { order } = this.props;
-    
+    console.log(order);
     return (
       <div>
         <h4>{order.product.counter} {order.product.name}</h4>
-
+        
         <Select
             name="assigned"
-            value={this.state.assigned}
-            onChange={(e)=>this.onSelectChange(e.value, 'assigned')}
+            value={order.assignee}
+            onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
             options={employees}
             isSearchable={true}
             clearable={false} 
@@ -51,7 +79,7 @@ class OrderDetailItem extends Component {
 
         <Select
           name="status"
-          value={this.state.status}
+          value={order.status}
           onChange={(e)=>this.onSelectChange(e.value, 'status')}
           options={options}
           clearable={false} 

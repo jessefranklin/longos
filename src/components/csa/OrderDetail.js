@@ -60,15 +60,20 @@ class OrderDetail extends Component {
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
     let itemsFiltered = orderFilterByCounter(this.state.items,value);
+    
     let status = event.target.value
     this.setState({
         filtered: status !== ' ' ? true : false,
         visible: itemsFiltered
     })
   };
+  updateState = (data) => {
+    this.setState(data);
+  }
   render() {
 
     let itemsFiltered = this.state.items;
+
     if (this.state.filtered) {
       itemsFiltered = this.state.visible
     }
@@ -76,8 +81,10 @@ class OrderDetail extends Component {
     return (
       <div>
         <Link to="../orderDashboard">Back to orders</Link>
+
         Order # {this.state.id}
         Customer {this.state.client.name}
+
         {this.state.client.email && this.state.client.email}
         {this.state.client.phone && this.state.client.phone}
 
@@ -100,7 +107,7 @@ class OrderDetail extends Component {
         <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
         
         {itemsFiltered.map(order => {
-          return <OrderDetailItem key={order.id} order={order} />;
+          return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
         })}
 
       </div>
