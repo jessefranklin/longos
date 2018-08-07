@@ -97,7 +97,7 @@ class OrderDetail extends Component {
         {this.state.isPaid && 'order is paid for'}
         {!this.state.isPaid && 'order is not paid for'}
 
-        <OrderCounterFilters handleCounter={this.handleCounter} />
+        <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
         
         {itemsFiltered.map(order => {
           return <OrderDetailItem key={order.id} order={order} />;

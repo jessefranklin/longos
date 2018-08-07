@@ -28,7 +28,7 @@ export class OrdersFilters extends React.Component {
                 />
             <button className="close" onClick={this.onClearField}>x</button>
             
-            <OrderCounterFilters handleCounter={this.handleCounter} />
+            <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} />
 
             <OrderStatusFilters />
             

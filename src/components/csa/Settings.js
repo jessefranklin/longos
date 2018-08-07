@@ -13,9 +13,8 @@ class Settings extends React.Component {
   selOptions= (stores) => {
     let storeList = [];
     {stores.map((store,index) => {
-      storeList.push({ value: index, label: store.store });
+      storeList.push({ value: index, label: store.store_id });
     })}
-    
     return storeList;
   }
   onSelectChange = (selectedOption) => {
@@ -24,8 +23,8 @@ class Settings extends React.Component {
   render(){
     const stores = this.props.settings;
     const options = this.selOptions(stores);
- 
-    return(
+    console.log(options);
+    return( 
       <div>
         <div className="box-layout">
           <h1>Settings</h1>
