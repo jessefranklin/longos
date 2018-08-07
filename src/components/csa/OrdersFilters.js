@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setOrderFilter } from '../../actions/filter';
+import { setOrderFilter, filterByCounter } from '../../actions/filter';
+import OrderCounterFilters from './OrderCounterFilters';
+import OrderStatusFilters from './OrderStatusFilters';
 
 export class OrdersFilters extends React.Component {
     constructor(props, context) {
@@ -13,9 +15,9 @@ export class OrdersFilters extends React.Component {
     onClearField = (e) => {
       this.props.setOrderFilter('');
     };
-    handleCounter (value){
-        console.log(value);
-    }
+    handleCounter(value){
+      this.props.filterByCounter(value);
+    };
     render() {
       return (
         <div>
@@ -23,17 +25,13 @@ export class OrdersFilters extends React.Component {
                 type="text"
                 value={this.props.filters.order}
                 onChange={this.onTextChange}
-            />
+                />
             <button className="close" onClick={this.onClearField}>x</button>
+            
+            <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} />
 
-            <ul>
-                <li><button onClick={() => this.handleCounter('all')}>All Dept.</button></li>
-                <li><button onClick={() => this.handleCounter('deli')}>Deli</button></li>
-                <li><button onClick={() => this.handleCounter('kitchen')}>Kitchen</button></li>
-                <li><button onClick={() => this.handleCounter('salad')}>Salad bar</button></li>
-                <li><button onClick={() => this.handleCounter('sushi')}>Sushi</button></li>
-                <li><button onClick={() => this.handleCounter('cakes')}>Cakes</button></li>
-            </ul>
+            <OrderStatusFilters />
+            
         </div>
       );
     }
@@ -45,7 +43,7 @@ export class OrdersFilters extends React.Component {
   
   const mapDispatchToProps = (dispatch) => ({
     setOrderFilter: (text) => dispatch(setOrderFilter(text)),
-
+    filterByCounter: (text) => dispatch(filterByCounter(text))
   });
   
   export default connect(mapStateToProps, mapDispatchToProps)(OrdersFilters);

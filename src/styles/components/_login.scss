@@ -1,0 +1,20 @@
+.login-scene {
+    width: 100vw;
+    height: 100vh;
+    padding: $l-size;
+    background: transparent url('/images/bg-login.png') no-repeat 0 0;
+    background-size: 100%;
+    h1 {
+        color: $red;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 60px;
+        line-height: 1.1em;
+        letter-spacing: -.06em;
+    }
+    .rewards-container,
+    .guest-container {
+        width: 60%;
+        margin: 30px 0;
+    }
+}

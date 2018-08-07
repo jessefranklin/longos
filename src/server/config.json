@@ -14,6 +14,64 @@
     "terms" : {
         "header": "Order agreement confirmation",
         "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+    },
+    "counters" : {
+        "all" : [{
+            "name":"employee1",
+            "email":"email",
+            "sms":"number"
+        },{
+            "name":"employee2",
+            "email":"email",
+            "sms":"number"
+        }
+        ],
+        "deli" : [{
+            "name":"deli employee1",
+            "email":"email",
+            "sms":"number"
+        },{
+            "name":"deli employee2",
+            "email":"email",
+            "sms":"number"
+        }
+        ],
+        "kitchen" : [{
+            "name":"kitchen employee1",
+            "email":"email",
+            "sms":"number"
+        },{
+            "name":"kitchen employee2",
+            "email":"email",
+            "sms":"number"
+        }],
+        "salad" : [{
+            "name":"salad employee1",
+            "email":"email",
+            "sms":"number"
+        },{
+            "name":"salad employee2",
+            "email":"email",
+            "sms":"number"
+        }],
+        "sushi" : [{
+            "name":"sushi employee1",
+            "email":"email",
+            "sms":"number"
+        },{
+            "name":"sushi employee2",
+            "email":"email",
+            "sms":"number"
+        }],
+        "cakes" : [{
+            "name":"cakes employee1",
+            "email":"email",
+            "sms":"number"
+        },{
+            "name":"cakes employee2",
+            "email":"email",
+            "sms":"number"
+        }]
     }
 },{
     "name": "store2",

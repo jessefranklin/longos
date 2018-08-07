@@ -1,0 +1,23 @@
+.tab-nav {
+    list-style: none;
+    padding: 0;
+    border-bottom:1px solid #000;
+    li {
+        display: inline-block;
+        margin-right: 20px;
+        button {
+            padding: 10px 0;
+            line-height: 1em;
+            text-transform: uppercase;
+            font-family: $sans;
+            font-weight: 500;
+            background: transparent;
+            border: none;
+            &.active {
+                border: none;
+                border-bottom:1px solid #000;
+                background: transparent;
+            }
+        }
+    }
+}

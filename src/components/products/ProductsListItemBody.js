@@ -14,7 +14,7 @@ class ProductsListItemBody extends Component {
     this.onQuantityChange = this.onQuantityChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
-    let pieceorserving = this.props.item.options[0].piecesCount !=0 ? this.props.item.options[0].piecesCount+' pieces' : 'Serves '+ this.props.item.options[0].servingSize+' people';
+    let pieceorserving = this.props.item.options[0].piecesCount !=0 ? this.props.item.options[0].piecesCount+' pieces' : 'Serves '+ this.props.item.options[0].servingSize+'';
     let itemName = this.props.item.options[0].name +' - '+ pieceorserving;
 
     this.state = {
@@ -109,7 +109,7 @@ class ProductsListItemBody extends Component {
       <div>
         <Modal.Body>
         <div className="item--header">
-          <h4>{item.name}</h4>
+          <h2>{item.name}</h2>
           <h5>${this.state.selectedProduct.price}</h5>
         </div>
 

@@ -26,6 +26,7 @@ class LoginPage extends React.Component {
     super(props);
 
     this.state = {
+      active: 'guest',
       email: '',
       username: '',
       touched: {
@@ -90,6 +91,10 @@ class LoginPage extends React.Component {
     this.setState({ [e.target.name]: e.target.value});
   }
 
+  swapLogin(val) {
+    this.setState({ active: val});
+  }
+
   render(){
     const errors = this.validate(this.state.email, this.state.username);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
@@ -102,57 +107,89 @@ class LoginPage extends React.Component {
     };
 
     return(
-      <div>
-        <div className="box-layout">
-          <h1>
-            <span className="longos-logo"></span>
-          </h1>
-          <div className="box-layout__box">
-          <input
-            className={shouldMarkError('username') ? "error" : ""}
-            type="text"
-            name="username" 
-            placeholder="Enter username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur('username')}
-          />
-          <input
-            className={shouldMarkError('email') ? "error" : ""}
-            type="text"
-            name="email"
-            placeholder="Enter email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur('email')}
-          />
+      <div className="login-scene">
+        <a href="/">
+          <span className="longos-logo"></span>
+        </a>
+        <h1>Welcome to the<br /> in-store pre-order experience</h1>
+        <h3>Please sign in</h3>
+        <div className="box-layout__box">
+          
+          <ul className="tab-nav">
+            <li><button className={this.state.active ==='guest'?'active':''} onClick={() => this.swapLogin('guest')}>Sign In as Guest</button></li>
+            <li><button className={this.state.active ==='card'?'active':''} onClick={() => this.swapLogin('card')}>Sign In with Rewards Card</button></li>
+          </ul>
+          
+          {this.state.active ==='guest' && <Guest state={this.state} handleChange={this.handleChange} handleBlur={this.handleBlur} shouldMarkError={shouldMarkError} onSubmit={this.onSubmit} />}
 
-            <input
-              type="phone"
-              name="phone" 
-              placeholder="phone"
-              onChange={this.handleChange}
-            />
-            <input
-              type="number" 
-              name="rewards" 
-              placeholder="rewards number"
-              onChange={this.handleChange}
-            />
-    
-            <Link className="button" to="/products" data="/products" 
-              onClick={this.onSubmit}
-              disabled={isDisabled} 
-            >Customer/Products</Link>
+          {this.state.active ==='card' && <Card handleChange={this.handleChange} />}
+  
+          
+
+          <div className="csa-container">
             <Link to="/orderDashboard">CSA Dashboard</Link><br /><br />
             <Link to="/settings">Settings</Link>
-            </div>
+          </div>
+
         </div>
       </div>
     )
   }
 }
 
+
+const Guest = ({state, handleChange, handleBlur, shouldMarkError, onSubmit}) => (
+  <div className="guest-container form-group">
+    <input
+      className="form-control"
+      type="text"
+      name="username" 
+      placeholder="Firstname"
+      value={state.username}
+      onChange={handleChange}
+      onBlur={handleBlur('username')}
+    />
+    
+    <input
+      className="form-control"
+      type="text"
+      name="email"
+      placeholder="Email Address"
+      value={state.email}
+      onChange={handleChange}
+      onBlur={handleBlur('email')}
+    />
+
+    <input
+      className="form-control"
+      type="phone"
+      name="phone" 
+      placeholder="Phone Number"
+      onChange={handleChange}
+    />
+
+    <Link className="button" to="/products" data="/products" 
+            onClick={onSubmit}
+          >Sign-In</Link>
+  </div>
+)
+
+const Card = ({handleChange, onSubmit}) => (
+  <div className="rewards-container form-group">
+    <input
+      className="form-control"
+      type="number" 
+      name="rewards" 
+      placeholder="rewards number"
+      onChange={handleChange}
+    />
+
+    <Link className="button" to="/products" data="/products" 
+            onClick={onSubmit}
+            // disabled={isDisabled} 
+          >Sign-In</Link>
+  </div>
+)
 
 const mapDispatchToProps = (dispatch) => ({
   setProfile: (profile) => dispatch(setProfile(profile)),

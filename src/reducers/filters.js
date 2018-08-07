@@ -1,7 +1,10 @@
 
 // Filters Reducer
 const filtersReducerDefaultState = {
-  text: ''
+  text: '',
+  status: 0,
+  counter: '',
+  counterorders: ''
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -20,6 +23,11 @@ export default (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         counter: action.text
+      };
+    case 'FILTER_BY_ORDER_COUNTER':
+      return {
+        ...state,
+        orderfilter: action.text
       };
     case 'FILTER_BY_STATUS':
       return {

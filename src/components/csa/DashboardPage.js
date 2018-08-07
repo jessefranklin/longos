@@ -4,6 +4,7 @@ import { fetchCSAOrders }  from '../../actions/csa/orders';
 import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
 import OrdersFilters from './OrdersFilters';
+import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class DashboardPage extends React.Component {
         <CSAHeader />
         <div className="content--container">
           <OrdersFilters />
-          {this.props.orders.items.map(order => {
+          {this.props.orders.map(order => {
             return <OrderListItem key={order.id} item={order} />;
           })}
         </div>
@@ -33,7 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = state => ({
-  orders: state.orders
+  orders: filterByStatus(filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),state.filters)
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(DashboardPage);

@@ -1,0 +1,16 @@
+.products-sidebar {
+    padding: 0px;
+    ul {
+        padding: 0px;
+    }
+    li {
+        list-style: none;
+        a {
+            color: $dark-grey;
+            font-family: $sans;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 22px;
+        }
+    }
+}
