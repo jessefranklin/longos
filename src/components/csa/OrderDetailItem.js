@@ -5,13 +5,13 @@ import Select from 'react-select';
 let axios = require('axios');
 
 const options = [
-    { value: 0, label: 'Not ready' },
+    { value: 0, label: 'Not ready', disabled: true  },
     { value: 1, label: 'Mark item ready' },
     { value: 2, label: 'Ready' }
 ]
 
 const employees = [
-    { value: 'unassigned', label: 'Unassigned' },
+    { value: 'unassigned', label: 'Unassigned', disabled: true  },
     { value: 'Sandy Longo', label: 'John Longo' },
     { value: 'Alex Longo', label: 'Alex Longo' }
 ]
@@ -61,7 +61,7 @@ class OrderDetailItem extends Component {
 
   render() {
     const { order } = this.props;
-    console.log(order);
+
     return (
       <div>
         <h4>{order.product.counter} {order.product.name}</h4>
@@ -82,6 +82,7 @@ class OrderDetailItem extends Component {
           value={order.status}
           onChange={(e)=>this.onSelectChange(e.value, 'status')}
           options={options}
+          disabled={order.status === 0 ? true:false}
           clearable={false} 
         />
 

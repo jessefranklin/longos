@@ -16,7 +16,7 @@ const headers = {
 const orderAPI = 'http://digitalpreorder.azurewebsites.net/api/order';
 
 const options = [
-  { value: 0, label: 'Not ready' },
+  { value: 0, label: 'Not ready', disabled: true },
   { value: 1, label: 'Ready For Pickup' },
   { value: 2, label: 'Order Has been picked up' }
 ]
@@ -36,7 +36,7 @@ class OrderDetail extends Component {
       },
       pickupDate: '',
       pickupTime: '',
-      status: 0,
+      status: '',
       items: []
     }
   }
@@ -56,6 +56,22 @@ class OrderDetail extends Component {
   };
   onSelectChange = (value) => {
     this.setState({ 'status' : value });
+    
+    
+    if(value == 2){
+      this.completeOrder(value)
+    }
+  }
+  completeOrder(value){
+    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`
+    axios.put(url, headers).then(
+      (response) => {
+        console.log('completed');
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
@@ -93,11 +109,13 @@ class OrderDetail extends Component {
 
         Status {this.state.status}
 
+
         <Select
           name="status"
           value={this.state.status}
           onChange={(e)=>this.onSelectChange(e.value)}
           options={options}
+          disabled={this.state.status === 0 ? true:false}
           clearable={false} 
         />
 

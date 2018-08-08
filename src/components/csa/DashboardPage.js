@@ -20,6 +20,8 @@ class DashboardPage extends React.Component {
         <CSAHeader />
         <div className="content--container">
           <OrdersFilters />
+
+          
           {this.props.orders.map(order => {
             return <OrderListItem key={order.id} item={order} />;
           })}

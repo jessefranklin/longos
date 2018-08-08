@@ -7,7 +7,7 @@ const Header = () => (
       <div className="header__content">
         <Link className="header__title" to="/orderDashboard">
           <h1>
-            <span className="longos-logo"></span>
+            <span className="longos-logo-white"></span>
           </h1>
         </Link>
         <Link to="/">Go to Customer Login</Link>

@@ -11,43 +11,43 @@ const OrderListItem = ({item}) => {
     const dateNotification = orderDate(item.pickupDate);
     return(
         <div className='orders--item'>
-            <h4>
+            <div className="cell-id">
                 {dateNotification.class ? <Indicator notification={dateNotification} />: ''}
                 {item.id}
-            </h4>
-            <p>{item.pickupDate}</p>
-
-            <div className="">
-                <div className="">
-                    {counters.bakery ? <OrderListCounterItem item={counters.bakery[0]} /> : '-'}
-                
-                </div>
-                <div className="">
-                    {counters.deli ? <OrderListCounterItem item={counters.deli[0]} /> : '-'}
-            
-                </div>
-                <div className="">
-                    {counters.kitchen ? <OrderListCounterItem item={counters.kitchen[0]} /> : '-'}
-            
-                </div>
-                <div className="">
-                    {counters.saladbar ? <OrderListCounterItem item={counters.saladbar[0]} /> : '-'}
-            
-                </div>
-                <div className="">
-                    {counters.sushi ? <OrderListCounterItem item={counters.sushi[0]} /> : '-'}
-            
-                </div>
-                <div className="">
-                    {counters.cake ? <OrderListCounterItem item={counters.cake[0]} /> : '-'}
-            
-                </div>
-                <div className="">
-                    <Link to={`/orderDetail/${item.id}`}>View></Link>
-            
-                </div>
             </div>
 
+            <div className="cell-date">
+                {item.pickupDate}
+            </div>
+
+            <div>
+                {counters.bakery ? <OrderListCounterItem item={counters.bakery[0]} /> : '-'}
+            </div>
+
+            <div>
+                {counters.deli ? <OrderListCounterItem item={counters.deli[0]} /> : '-'}
+        
+            </div>
+            <div>
+                {counters.kitchen ? <OrderListCounterItem item={counters.kitchen[0]} /> : '-'}
+        
+            </div>
+            <div>
+                {counters.saladbar ? <OrderListCounterItem item={counters.saladbar[0]} /> : '-'}
+        
+            </div>
+            <div>
+                {counters.sushi ? <OrderListCounterItem item={counters.sushi[0]} /> : '-'}
+        
+            </div>
+            <div>
+                {counters.cake ? <OrderListCounterItem item={counters.cake[0]} /> : '-'}
+        
+            </div>
+            <div>
+                <Link to={`/orderDetail/${item.id}`}>View></Link>
+        
+            </div>
         </div>
     )
 };

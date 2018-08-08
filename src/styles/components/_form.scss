@@ -25,6 +25,20 @@ input[type="text"] {
    
 }
 
+.searchContainer {
+    display: inline-block;
+    position: relative;
+    .close {
+        position: absolute;
+        right: 0;
+        top: 5px;
+    }
+}
+
+input[type="text"].search {
+
+}
+
 .checkbox {
     input[type=checkbox] {
         
