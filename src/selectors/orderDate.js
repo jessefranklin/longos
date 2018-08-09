@@ -18,7 +18,7 @@ export const orderDate = (d2) => {
         }
     }
 
-    if(moment(d2).isSame(trmw)){
+    if(moment(d2).isSame(tmrw)){
         return {
             title: 'Pick up soon',
             class: 'pick-up-tmrw'
