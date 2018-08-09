@@ -16,7 +16,6 @@ const headers = {
 const orderAPI = 'http://digitalpreorder.azurewebsites.net/api/order';
 
 const options = [
-  { value: 0, label: 'Not ready', disabled: true },
   { value: 1, label: 'Ready For Pickup' },
   { value: 2, label: 'Order Has been picked up' }
 ]
@@ -48,6 +47,7 @@ class OrderDetail extends Component {
     axios.get(url, headers).then(
         (response) => {
             this.setState(response.data);
+            console.log(response.data);
         },
         (err) => {
             console.log(err);
@@ -95,32 +95,41 @@ class OrderDetail extends Component {
     }
 
     return (
-      <div>
+      <div className="order-detail">
         <Link to="../orderDashboard">Back to orders</Link>
+        <div className="order-detail--header">
+          <div className="">
+            <h2>Order # {this.state.id}</h2>
+          </div>
 
-        Order # {this.state.id}
-        Customer {this.state.client.name}
+          <div className="">
+            <h4>Customer</h4>
+            {this.state.client.name}
 
-        {this.state.client.email && this.state.client.email}
-        {this.state.client.phone && this.state.client.phone}
+            {this.state.client.email && this.state.client.email}
+            {this.state.client.phone && this.state.client.phone}
+          </div>
 
-        Pickup Date & Time
-        {this.state.pickupDate} @ {this.state.pickupTime}
+          <div className="">
+            <h4>Pickup Date & Time</h4>
+            {this.state.pickupDate} @ {this.state.pickupTime}
 
-        Status {this.state.status}
+            <h4>Status</h4> 
+            {this.state.status === 0 ? <div className="state--not-ready">Not Ready</div> : 
+              <Select
+                name="status"
+                value={this.state.status}
+                onChange={(e)=>this.onSelectChange(e.value)}
+                options={options}
+                disabled={this.state.status === 0 ? true:false}
+                clearable={false} 
+              />
+            }
 
-
-        <Select
-          name="status"
-          value={this.state.status}
-          onChange={(e)=>this.onSelectChange(e.value)}
-          options={options}
-          disabled={this.state.status === 0 ? true:false}
-          clearable={false} 
-        />
-
-        {this.state.isPaid && 'order is paid for'}
-        {!this.state.isPaid && 'order is not paid for'}
+            {this.state.isPaid && 'order is paid for'}
+            {!this.state.isPaid && 'order is not paid for'}
+          </div>
+        </div>
 
         <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
         

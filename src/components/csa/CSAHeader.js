@@ -10,7 +10,7 @@ const Header = () => (
             <span className="longos-logo-white"></span>
           </h1>
         </Link>
-        <Link to="/">Go to Customer Login</Link>
+        <Link to="/" className="customer-login">Go to Customer Login</Link>
       </div>
     </div>
   </header>

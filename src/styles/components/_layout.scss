@@ -8,10 +8,13 @@
         top: 10rem;
         width: 25rem;
         height: 100vh;
-        background: #CCC;
+        
         padding: $s-size 0 $s-size $s-size;
     }
     .product--container {
         margin-left: 27rem;
+    }
+    .product--item {
+        background: #fff;
     }
 }

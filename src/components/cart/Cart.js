@@ -25,8 +25,12 @@ class Cart extends React.Component {
     return (
       <div ref={(contentContainer) => { this.contentContainer = contentContainer; }} tabIndex="-1" aria-labelledby="pageHeading">
         <Announcements message={this.state.announcementMessage} />
-        <h2>Shopping Cart ({total} {itemWord})</h2>
-        <div className="cart--item">
+        <div className="cart--header">
+          <h2>Shopping Cart ({total} {itemWord})</h2> 
+          <Link to="/products" className="btn btn-secondary">Continue Shopping</Link>
+        </div>
+
+        <div className="cart--items">
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
           })}
@@ -35,7 +39,6 @@ class Cart extends React.Component {
         Total price: {formattedCartTotal}
         </div>
         <Link to="/order" className="btn">Place Order</Link>
-        <Link to="/products" className="btn btn-secondary">Back To Order Form</Link>
       </div>
     )
   }

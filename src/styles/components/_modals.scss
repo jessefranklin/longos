@@ -13,5 +13,49 @@
 		font-size: 17px;
 		font-weight: 400;
 		line-height: 1.4em;
-	}
+    }
+    .item--header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .item--options {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .Select {
+            width: 60%;
+        }
+    }
+    textarea {
+        width: 100%;
+        box-shadow: none;
+        border: 1px solid $grey;
+        padding: 1rem;
+    }
+    .Select-control {
+        border: 1px solid $red;
+        border-radius: 0px;
+        color: $red;
+        font-weight: 500;
+        font-size: 12px;
+        text-transform: uppercase;
+        .Select-arrow {
+            border-top:5px solid $red;
+        }
+        .Select-value .Select-value-label,
+        .Select-value {
+            color: $red;
+            font-weight: 500;
+        }
+    }
+}
+
+.modal-footer {
+    button {
+        border: 1px solid $red;
+        border-radius: 0px;
+        color: $red;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
 }

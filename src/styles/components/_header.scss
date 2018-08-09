@@ -6,7 +6,13 @@
   right: 0;
   background: $red;
   z-index: 1;
-
+  padding: 0 5rem;
+  a,
+  .profile--container,
+  .cart__indicator {
+    color: #fff;
+    font-weight: 600;
+  }
 }
 
 .header__content {

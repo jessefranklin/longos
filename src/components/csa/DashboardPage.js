@@ -21,10 +21,57 @@ class DashboardPage extends React.Component {
         <div className="content--container">
           <OrdersFilters />
 
-          
-          {this.props.orders.map(order => {
-            return <OrderListItem key={order.id} item={order} />;
-          })}
+          <div className="divTable">
+            <div className="divTableBody">
+
+              <div className="divTableRow">
+
+                <div className="cell-id">
+                    Order #
+                </div>
+
+                <div className="cell-date">
+                    Pickup Date
+                </div>
+
+                <div>
+                    Bakery
+                </div>
+
+                <div>
+                    Deli
+                </div>
+                
+                <div>
+                    Kitchen
+                </div>
+
+                <div>
+                    Salad Bar
+                </div>
+
+                <div>
+                    Sushi
+                </div>
+
+                <div>
+                    Cake
+                </div>
+
+                <div>
+
+                </div>
+            
+              </div>
+            
+
+
+              {this.props.orders.map(order => {
+                return <OrderListItem key={order.id} item={order} />;
+              })}
+
+            </div>
+          </div>
         </div>
       </div>
     )

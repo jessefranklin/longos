@@ -7,7 +7,7 @@ export const LoginRoute = ({
 }) => (
   <Route {...rest} component={(props) => (
     <div>
-      <div className="content--container">
+      <div>
         <Component {...props} />
       </div>
     </div>

@@ -8,6 +8,7 @@ export const startAddToCart = (productData = {}) => {
       type= '',
       productId = '',
       productName = '',
+      productImage = '',
       optionId = '',
       optionName = '',
       options = {},
@@ -18,7 +19,7 @@ export const startAddToCart = (productData = {}) => {
       comment = ''
     } = productData;
     
-    const product = {id,type,productId,productName,optionId,optionName,options,priceId,price,tax,quantity,comment}
+    const product = {id,type,productId,productName,productImage,optionId,optionName,options,priceId,price,tax,quantity,comment}
 
     dispatch(addToCart({
       id: uuid(),

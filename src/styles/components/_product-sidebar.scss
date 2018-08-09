@@ -2,15 +2,24 @@
     padding: 0px;
     ul {
         padding: 0px;
+        border-top: 1px solid $grey;
     }
     li {
         list-style: none;
+        border-bottom: 1px solid $grey;
         a {
             color: $dark-grey;
+            display: block;
             font-family: $sans;
+            line-height: 1em;
             font-size: 17px;
             font-weight: 700;
             line-height: 22px;
+            padding: 15px 0 10px;
+            cursor: pointer;
+            &.active {
+                color: $red;
+            }
         }
     }
 }

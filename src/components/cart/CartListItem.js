@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { startRemoveItem, startEditItem }  from '../../actions/cart';
 import numeral from 'numeral';
+import FontAwesome from 'react-fontawesome';
 import { QuantitySelect } from '../partials/QuantitySelect';
 
 class CartListItem extends Component {
@@ -39,6 +40,7 @@ class CartListItem extends Component {
 const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
   return (
     <div className="cart--item">
+        <img src={item.productImage} alt={item.name} />
         <h4>{item.productName}</h4>
         <div>
           {item.comment}  
@@ -48,7 +50,14 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
           {item.name}
         </div>
         {formattedItemTotal}
-        <button onClick={onRemove}>X remove</button>
+        <button onClick={onRemove} className="btn-qu">
+            <FontAwesome
+            className='fa fa-trash'
+            name='fa-trash'
+            size='2x'
+            aria-hidden='true'
+          />
+        </button>
     </div>
   );
 };

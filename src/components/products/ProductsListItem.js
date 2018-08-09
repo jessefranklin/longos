@@ -57,9 +57,10 @@ class ProductsListItem extends Component {
         <div className="img--container">
           <img src={item.imageLink} alt={item.name} />
         </div>
-        <h4>{item.name} {item.category === 'Cake'?'Cake':''}</h4>
-        
-        {item.category === 'Cake'?<CakeDescription item={item}/>:<ItemDescription item={item} />}
+        <div className="meta--container">
+          <h4>{item.name} {item.category === 'Cake'?'Cake':''}</h4>
+          {item.category === 'Cake'?<CakeDescription item={item}/>:<ItemDescription item={item} />}
+        </div>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>

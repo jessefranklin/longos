@@ -28,6 +28,15 @@ input[type="text"] {
 .searchContainer {
     display: inline-block;
     position: relative;
+    .search {
+        box-shadow: none;
+        border: none;
+        border-radius: 15px;
+        line-height: 1em;
+        font-size: 16px;
+        padding: 10px;
+        font-weight: 600;
+    }
     .close {
         position: absolute;
         right: 0;

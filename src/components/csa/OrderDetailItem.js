@@ -64,31 +64,37 @@ class OrderDetailItem extends Component {
 
     return (
       <div>
-        <h4>{order.product.counter} {order.product.name}</h4>
-        
-        <Select
-            name="assigned"
-            value={order.assignee}
-            onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
-            options={employees}
-            isSearchable={true}
+        <div className="order-item--row">
+          <h4>{order.product.counter} {order.product.name}</h4>
+          
+          <Select
+              name="assigned"
+              value={order.assignee}
+              onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
+              options={employees}
+              isSearchable={true}
+              clearable={false} 
+          />
+
+          {order.quantity}
+
+          <Select
+            name="status"
+            value={order.status}
+            onChange={(e)=>this.onSelectChange(e.value, 'status')}
+            options={options}
+            disabled={order.status === 0 ? true:false}
             clearable={false} 
-        />
+          />
 
-        {order.quantity}
+          
+          <Barcode value="88888" />
+        </div>
+        <div className="order-item--meta">
+          <h6>Item Option:</h6> {order.option.name}
 
-        <Select
-          name="status"
-          value={order.status}
-          onChange={(e)=>this.onSelectChange(e.value, 'status')}
-          options={options}
-          disabled={order.status === 0 ? true:false}
-          clearable={false} 
-        />
-
-
-        Item Option: {order.option.name}
-        <Barcode value="88888" />
+          {order.comment && `<h6>Special Instructions:</h6>${order.comment}`}
+        </div>
       </div>
     );
   }
