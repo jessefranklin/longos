@@ -28,6 +28,7 @@ class LoginPage extends React.Component {
     this.state = {
       active: 'guest',
       email: '',
+      phone: '',
       username: '',
       touched: {
         email: false,
@@ -54,14 +55,14 @@ class LoginPage extends React.Component {
   }
 
   canBeSubmitted() {
-    const errors = this.validate(this.state.email, this.state.password);
+    const errors = this.validate(this.state.phone, this.state.name);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
     return !isDisabled;
   }
 
   validate() {
     return {
-      email: this.state.email.length === 0,
+      phone: this.state.phone.length === 0,
       username: this.state.username.length === 0
     };
   }
@@ -71,10 +72,14 @@ class LoginPage extends React.Component {
     return re.test(this.state.email);
   }
 
+  validPhone(){
+    var phoneno = /^\d{10}$/;
+    return phoneno.test(this.state.phone);
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.validEmail());
-    if (!this.validEmail()) {
+    if (!this.validPhone()) {
       e.preventDefault();
       return;
     }
