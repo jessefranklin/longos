@@ -25,10 +25,13 @@ class Header extends React.Component {
               </h1>
             </Link>
             
-            {profile.username && <div>
-              {profile.username}
-                <Link to="/">Logout</Link>
-            </div>}
+            <div className="profile--container">
+              {profile.username ?  profile.username : "Guest"}
+              <ul>
+                <li><Link to="/">My Account</Link></li>
+                <li><Link to="/">Logout</Link></li>
+              </ul>
+            </div> 
 
             {!this.props.order.orderId ? <CartHeader handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : null }
 
@@ -51,9 +54,9 @@ const CartHeader = ({cartLength,handleClick,total}) => {
           />
         </Link>
 
-        {cartLength >= 1 && <div className="cart__indicator">{total} {itemWord}</div>}
+        {cartLength >= 1 && <div className="cart__indicator">{total} </div>}
 
-        {total >= 1 ? <Link to="/order">Place Order</Link> : null }
+        {total >= 1 ? <Link to="/order" className="link--place-order">Place Order <i className="fas fa-chevron-right"></i></Link> : null }
         
       </div>
     );

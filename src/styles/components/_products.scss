@@ -5,11 +5,18 @@
 .product--item {
     width: 30%;
     margin-right: 2%;
+    margin-bottom: 2%;
     display: inline-block;
     vertical-align: top;
     position: relative;
     &.active {
         border: 1px solid $red;
+    }
+    .meta--container {
+        padding: 1rem;
+        h4 {
+            margin-bottom: 0px;
+        }
     }
     .indicator {
         position: absolute;

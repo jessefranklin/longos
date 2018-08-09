@@ -1,0 +1,21 @@
+.rowFilter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.counterFilter {
+    li {
+        display: inline-block;
+        list-style: none;
+
+    }
+}
+
+.statusFilter {
+    li {
+        display: inline-block;
+        list-style: none;
+
+    }
+}

@@ -6,6 +6,8 @@
 @import './components/utility';
 @import './base/typography';
 
+@import './components/ui';
+@import './components/table';
 @import './components/global';
 @import './components/navigation';
 @import './components/button';
@@ -15,5 +17,10 @@
 @import './components/layout';
 @import './components/form';
 @import './components/modals';
+@import './components/filters';
+@import './components/cart';
 @import './components/login';
 @import './components/product-sidebar';
+@import './components/csa';
+@import './components/customer';
+@import './components/order-detail';

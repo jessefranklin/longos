@@ -25,7 +25,7 @@ export class OrderCounterFilters extends React.Component {
     }
     render() {
       return (
-        <div>
+        <div className="counterFilter">
             <ul>
                 <li><button className={this.activeHandlers('')} onClick={() => this.props.handleCounter('')} disabled={this.isDisabled()}>All Dept.</button></li>
                 <li><button className={this.activeHandlers('deli')} onClick={() => this.props.handleCounter('deli')} disabled={this.isDisabled('deli')}>Deli</button></li>

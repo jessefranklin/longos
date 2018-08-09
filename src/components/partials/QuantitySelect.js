@@ -16,10 +16,10 @@ export class QuantitySelect extends React.Component {
     }
     render() {
         return (
-            <div>
-                <h1>Quantity: {this.props.quantity} </h1>
-                <button onClick={this.addOne}>+1</button>
-                <button onClick={this.minusOne}>-1</button>
+            <div className="qty--container" >
+            <button onClick={this.minusOne}>-</button>
+                <h4>Qty: {this.props.quantity} </h4>
+                <button onClick={this.addOne}>+</button>
             </div>
         )
     }

@@ -108,7 +108,7 @@ class CartOrder extends React.Component {
             isOutsideRange={() => false}
           />
 
-          <TimePicker onChange={this.handleTimeChange} start="9:00" end="22:00" value={this.state.time} />
+          <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
 
           <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
           

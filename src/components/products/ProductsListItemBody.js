@@ -27,6 +27,7 @@ class ProductsListItemBody extends Component {
         type: 'item',
         productId: this.props.item.id,
         productName: this.props.item.name,
+        productImage: this.props.item.imageLink,
         optionId: this.props.item.options[0].id,
         optionName: this.props.item.options[0].name,
         priceId: this.props.item.options[0].price.id,
@@ -113,9 +114,7 @@ class ProductsListItemBody extends Component {
           <h5>${this.state.selectedProduct.price}</h5>
         </div>
 
-        <p>
-          {item.description}
-        </p>
+       
 
         {this.props.item.options[this.state.selectedOption.value].piecesCount !=0 && <p> {this.props.item.options[this.state.selectedOption.value].piecesCount} pieces <OverlayTrigger overlay={tooltip}>
           <a href="#tooltip">?</a>
@@ -124,22 +123,29 @@ class ProductsListItemBody extends Component {
         {this.props.item.options[this.state.selectedOption.value].servingSize && <p>Serves {this.props.item.options[this.state.selectedOption.value].servingSize} people <OverlayTrigger overlay={tooltip}>
           <a href="#popover">?</a>
         </OverlayTrigger>{' '}</p>}
+        
+        <p>
+          {item.description}
+        </p>
+        
+        <div className="item--options">
+          <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={this.state.selectedProduct.quantity}/> 
 
-        <Select
-          name="option"
-          value={this.state.selectedOption}
-          onChange={this.onSelectChange}
-          options={sizeOptions}
-          disabled={item.options.length === 1?true:false}
-          searchable={false}
-          clearable={false} 
-        />
-
-        <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={this.state.selectedProduct.quantity}/> 
+          <Select
+            name="option"
+            value={this.state.selectedOption}
+            onChange={this.onSelectChange}
+            options={sizeOptions}
+            disabled={item.options.length === 1?true:false}
+            searchable={false}
+            clearable={false} 
+          />
+        </div>
 
         <textarea
           placeholder="Add a note for your"
           onChange={this.onNoteChange}
+          rows="4"
         >
         </textarea>
 

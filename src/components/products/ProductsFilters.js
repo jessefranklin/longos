@@ -13,12 +13,16 @@ export class ProductListFilters extends React.Component {
     render() {
       return (
         <div>
-          <input
-            type="text"
-            value={this.props.filters.text}
-            onChange={this.onTextChange}
-          />
-          <button className="close" onClick={this.onClearField}>x</button>
+         
+          <div className="searchContainer">
+            <input
+              type="text"
+              value={this.props.filters.text}
+              onChange={this.onTextChange}
+              className="search"
+            />
+            <button className="close" onClick={this.onClearField}>x</button>
+          </div>
         </div>
       );
     }

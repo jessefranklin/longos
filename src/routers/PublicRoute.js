@@ -7,7 +7,7 @@ export const PublicRoute = ({
   ...rest
 }) => (
   <Route {...rest} component={(props) => (
-    <div>
+    <div className="customer--app">
       <ProductsHeader />
       <div className="content--container">
         <Component {...props} />

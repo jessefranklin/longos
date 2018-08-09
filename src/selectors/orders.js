@@ -6,7 +6,6 @@ export const selectOrders = (orderItems, {order = ''}) => {
 };
 
 export const filterByCounter = (orderItems, {counter = ''}) => {
-  console.log(orderItems, counter)
   if(counter === ''){
     return orderItems;
   }

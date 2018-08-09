@@ -13,7 +13,7 @@ export class OrderStatusFilters extends React.Component {
     render() {
       return (
         <div>
-            <ul>
+            <ul className="statusFilter">
                 <li><button onClick={() => this.handleStatus(0)}>Pending</button></li>
                 <li><button onClick={() => this.handleStatus(1)}>Ready for pickup</button></li>
                 <li><button onClick={() => this.handleStatus(2)}>Picked Up</button></li>

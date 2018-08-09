@@ -6,7 +6,7 @@ export const PrivateRoute = ({
   ...rest
 }) => (
     <Route {...rest} component={(props) => (
-      <div>
+      <div className="csa--app">
         <Component {...props} />
       </div>
     )} />

@@ -21,16 +21,21 @@ export class OrdersFilters extends React.Component {
     render() {
       return (
         <div>
-            <input
-                type="text"
-                value={this.props.filters.order}
-                onChange={this.onTextChange}
-                />
-            <button className="close" onClick={this.onClearField}>x</button>
-            
+          <div className="rowFilter">
+            <h3>Orders</h3>
+            <div className="searchContainer">
+              <input
+                  type="text"
+                  value={this.props.filters.order}
+                  onChange={this.onTextChange}
+                  className="search"
+                  />
+              <button className="close" onClick={this.onClearField}>x</button>
+            </div>
             <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} />
-
-            <OrderStatusFilters />
+          </div>
+          
+          <OrderStatusFilters />
             
         </div>
       );
