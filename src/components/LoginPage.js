@@ -55,15 +55,16 @@ class LoginPage extends React.Component {
   }
 
   canBeSubmitted() {
-    const errors = this.validate(this.state.phone, this.state.name);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
+      const errors = this.validate(this.state.name, this.state.phone, this.state.email);
+      const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return isDisabled;
   }
 
   validate() {
     return {
-      phone: this.state.phone.length === 0,
-      username: this.state.username.length === 0
+      name: this.state.username.length != 0,
+      phone: this.validPhone(),
+      email: this.validEmail()
     };
   }
 
@@ -79,14 +80,13 @@ class LoginPage extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    if (!this.validPhone()) {
-      e.preventDefault();
-      return;
-    }
+    
+    console.log(this.canBeSubmitted());
     if (!this.canBeSubmitted()) {
       e.preventDefault();
       return;
     }
+    
     this.props.setProfile(this.state);
     let val = e.target.getAttribute('data')
     history.push(val);
@@ -101,9 +101,9 @@ class LoginPage extends React.Component {
   }
 
   render(){
-    const errors = this.validate(this.state.email, this.state.username);
+    const errors = this.validate(this.state.name, this.state.email, this.state.phone);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    
+    console.log(errors);
     const shouldMarkError = (field) => {
       const hasError = errors[field];
       const shouldShow = this.state.touched[field];
@@ -125,7 +125,7 @@ class LoginPage extends React.Component {
             <li><button className={this.state.active ==='card'?'active':''} onClick={() => this.swapLogin('card')}>Sign In with Rewards Card</button></li>
           </ul>
           
-          {this.state.active ==='guest' && <Guest state={this.state} handleChange={this.handleChange} handleBlur={this.handleBlur} shouldMarkError={shouldMarkError} onSubmit={this.onSubmit} />}
+          {this.state.active ==='guest' && <Guest state={this.state} handleChange={this.handleChange} handleBlur={this.handleBlur} shouldMarkError={shouldMarkError} onSubmit={this.onSubmit} errors={errors} />}
 
           {this.state.active ==='card' && <Card handleChange={this.handleChange} />}
   
@@ -143,30 +143,30 @@ class LoginPage extends React.Component {
 }
 
 
-const Guest = ({state, handleChange, handleBlur, shouldMarkError, onSubmit}) => (
+const Guest = ({state, handleChange, handleBlur, shouldMarkError, onSubmit, errors}) => (
   <div className="guest-container form-group">
     <input
-      className="form-control"
+      className={errors.name ? "form-control" : "error form-control"}
       type="text"
       name="username" 
       placeholder="Firstname"
       value={state.username}
       onChange={handleChange}
-      onBlur={handleBlur('username')}
+      onBlur={handleChange}
     />
     
     <input
-      className="form-control"
+      className={errors.email ? "form-control" : "error form-control"}
       type="text"
       name="email"
       placeholder="Email Address"
       value={state.email}
       onChange={handleChange}
-      onBlur={handleBlur('email')}
+      onBlur={handleChange}
     />
 
     <input
-      className="form-control"
+      className={errors.phone ? "form-control" : "error form-control"}
       type="phone"
       name="phone" 
       placeholder="Phone Number"

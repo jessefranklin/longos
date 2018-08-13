@@ -45,7 +45,6 @@ class CartOrderReview extends React.Component {
   }
   onSubmit = (e) => {
     if(!this.state.agreedTerms){e.preventDefault(); return; }
-    console.log(this.state)
     this.props.dispatchOrder(this.state).then(() => {
       if(this.props.order.orderId){
         this.props.history.push('/orderConfirmation');

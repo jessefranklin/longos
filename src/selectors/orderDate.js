@@ -1,4 +1,5 @@
 import moment from 'moment';
+import i18n from '../config/i18n'
 
 export const orderDate = (d2) => {
     const d1 = moment().format('YYYY-MM-DD');

@@ -127,7 +127,7 @@ class OrderDetail extends Component {
             }
 
             {this.state.isPaid && 'order is paid for'}
-            {!this.state.isPaid && 'order is not paid for'}
+            {!this.state.isPaid && <button>order is not paid for</button>}
           </div>
         </div>
 

@@ -14,7 +14,6 @@ class CartOrderConfirmation extends React.Component {
   render() {
     return (
       <div>
-        <CartProgress progress="3" />
         <h3>Order # {this.props.order.orderId} has been placed</h3>
         <h4>We'll see you on {moment(this.props.order.pickUpDate).format('MMMM,Do,YYYY')} at {moment().startOf('day').seconds(this.props.order.time).format('h:mm A')}</h4>
       </div>
