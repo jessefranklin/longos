@@ -39,8 +39,10 @@ class OrderDetail extends Component {
       pickupDate: '',
       pickupTime: '',
       status: '',
+      isPaid: false,
       items: []
     }
+    this.orderPaid = this.orderPaid.bind(this);
   }
   componentWillMount() {
     const orderID = `?orderId=${this.props.match.params.id}`;
@@ -89,6 +91,20 @@ class OrderDetail extends Component {
   updateState = (data) => {
     this.setState(data);
   }
+  orderPaid = (data) => {
+    console.log(data);
+    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
+
+    axios.put(url, headers).then(
+      (response) => {
+        console.log(response.data)
+        this.setState(response.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   render() {
 
     let itemsFiltered = this.state.items;
@@ -121,19 +137,11 @@ class OrderDetail extends Component {
               {this.state.pickupDate} @ {this.state.pickupTime}
 
               <h4>Status</h4> 
-              {this.state.status === 0 ? <div className="state--not-ready">Not Ready</div> : 
-                <Select
-                  name="status"
-                  value={this.state.status}
-                  onChange={(e)=>this.onSelectChange(e.value)}
-                  options={options}
-                  disabled={this.state.status === 0 ? true:false}
-                  clearable={false} 
-                />
-              }
+             
 
-              {this.state.isPaid && 'order is paid for'}
-              {!this.state.isPaid && <button>order is not paid for</button>}
+              <StatusState status={this.state.status} onSelectChange={this.onSelectChange} isPaid={this.state.isPaid} />
+
+              <PaidButton isPaid={this.state.isPaid} orderPaid={this.orderPaid} />
             </div>
           </div>
 
@@ -166,5 +174,39 @@ class OrderDetail extends Component {
     );
   }
 }
+
+const StatusState = ({status,onSelectChange,isPaid}) => {
+  return (
+    <div>
+        {status === 0 && <div className="state--not-ready">Not Ready</div> }
+        {status === 1 && !isPaid && <div className="state--not-ready">Ready for pickup</div> }
+        {status === 1 && isPaid || status === 2 && isPaid && <Select
+          name="status"
+          value={status}
+          onChange={(e)=>onSelectChange(e.value)}
+          options={options}
+          disabled={status === 0 ? true:false}
+          clearable={false} 
+        /> }
+    </div>
+  );
+};
+
+
+const PaidButton = ({isPaid,orderPaid}) => {
+  return (
+    <div>
+      {isPaid ? ( 
+        <div>
+          Order is Paid <button onClick={() => orderPaid(false)}>X</button>
+        </div>
+      ):(
+        <button onClick={() => orderPaid(true)}>Order is not paid</button>
+      )}
+    </div>
+  );
+};
+
+
 
 export default OrderDetail;
