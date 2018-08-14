@@ -7,6 +7,7 @@ import { Textbox } from 'react-inputs-validation';
 import { StateLoader } from '../state.loader';
 import { removeCart }  from '../actions/cart';
 import { resetOrder }  from '../actions/order';
+import { resetProfile }  from '../actions/profile';
 import { fetchConfigs } from '../actions/config';
 import { fetchProducts } from '../actions/customer/products';
 
@@ -32,6 +33,7 @@ class LoginPage extends React.Component {
       username: '',
       touched: {
         email: false,
+        phone: false,
         username: false
       }
     }
@@ -45,6 +47,7 @@ class LoginPage extends React.Component {
     stateLoader.removeState();
     this.props.removeCart();
     this.props.resetOrder();
+    this.props.resetProfile();
     this.props.fetchProducts();
   };
 
@@ -103,7 +106,6 @@ class LoginPage extends React.Component {
   render(){
     const errors = this.validate(this.state.name, this.state.email, this.state.phone);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    console.log(errors);
     const shouldMarkError = (field) => {
       const hasError = errors[field];
       const shouldShow = this.state.touched[field];
@@ -201,6 +203,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchProducts: () => dispatch(fetchProducts()),
   removeCart: () => dispatch(removeCart()),
   resetOrder: () => dispatch(resetOrder()),
+  resetProfile: () => dispatch(resetProfile()),
   fetchConfigs: () => dispatch(fetchConfigs())
 });
 

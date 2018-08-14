@@ -23,7 +23,6 @@ const options = [
   { value: 2, label: 'Order Has been picked up' }
 ]
 
-
 class OrderDetail extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +61,6 @@ class OrderDetail extends Component {
   onSelectChange = (value) => {
     this.setState({ 'status' : value });
     
-    
     if(value == 2){
       this.completeOrder(value)
     }
@@ -92,12 +90,10 @@ class OrderDetail extends Component {
     this.setState(data);
   }
   orderPaid = (data) => {
-    console.log(data);
     let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
 
     axios.put(url, headers).then(
       (response) => {
-        console.log(response.data)
         this.setState(response.data);
       },
       (err) => {
@@ -180,7 +176,7 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
     <div>
         {status === 0 && <div className="state--not-ready">Not Ready</div> }
         {status === 1 && !isPaid && <div className="state--not-ready">Ready for pickup</div> }
-        {status === 1 && isPaid || status === 2 && isPaid && <Select
+        {status === 1 && isPaid && <Select
           name="status"
           value={status}
           onChange={(e)=>onSelectChange(e.value)}
@@ -188,6 +184,7 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
           disabled={status === 0 ? true:false}
           clearable={false} 
         /> }
+        {status === 2 && <div className="state--completed">Completed</div> }
     </div>
   );
 };
