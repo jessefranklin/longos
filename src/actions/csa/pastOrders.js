@@ -18,7 +18,7 @@ export let fetchCSAPastOrders = (oId) => {
         // dispatch(fetchCSAOrdersBegin())
         return axios.get(url, headers).then(
             (response) => {
-
+                console.log(response.data);
                 // dispatch(fetchCSAOrdersSuccess(response.data));
             },
             (err) => {

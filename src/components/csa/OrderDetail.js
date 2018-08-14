@@ -6,6 +6,9 @@ import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
 import OrderDetailItem from './OrderDetailItem';
 import { orderFilterByCounter } from '../../selectors/orders';
+import CSAHeader from './CSAHeader';
+
+
 const headers = {
     header: {
         "Content-Type":"application/json",
@@ -95,49 +98,71 @@ class OrderDetail extends Component {
     }
 
     return (
-      <div className="order-detail">
-        <Link to="../orderDashboard">Back to orders</Link>
-        <div className="order-detail--header">
-          <div className="">
-            <h2>Order # {this.state.id}</h2>
+      <div>
+        <CSAHeader />
+        <div className="content--container">
+          <div className="order-detail">
+          <Link to="../orderDashboard">Back to orders</Link>
+          <div className="order-detail--header">
+            <div className="">
+              <h2>Order # {this.state.id}</h2>
+            </div>
+
+            <div className="">
+              <h4>Customer</h4>
+              {this.state.client.name}
+
+              {this.state.client.email && this.state.client.email}
+              {this.state.client.phone && this.state.client.phone}
+            </div>
+
+            <div className="">
+              <h4>Pickup Date & Time</h4>
+              {this.state.pickupDate} @ {this.state.pickupTime}
+
+              <h4>Status</h4> 
+              {this.state.status === 0 ? <div className="state--not-ready">Not Ready</div> : 
+                <Select
+                  name="status"
+                  value={this.state.status}
+                  onChange={(e)=>this.onSelectChange(e.value)}
+                  options={options}
+                  disabled={this.state.status === 0 ? true:false}
+                  clearable={false} 
+                />
+              }
+
+              {this.state.isPaid && 'order is paid for'}
+              {!this.state.isPaid && <button>order is not paid for</button>}
+            </div>
           </div>
 
-          <div className="">
-            <h4>Customer</h4>
-            {this.state.client.name}
-
-            {this.state.client.email && this.state.client.email}
-            {this.state.client.phone && this.state.client.phone}
+          <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
+          
+          <div className="order-items--header">
+            <div className="">
+              Item
+            </div>
+            <div className="">
+              Assigned To
+            </div>
+            <div className="">
+              Qty
+            </div>
+            <div className="">
+              Status
+            </div>
+            <div className="">
+              Barcode
+            </div>
           </div>
-
-          <div className="">
-            <h4>Pickup Date & Time</h4>
-            {this.state.pickupDate} @ {this.state.pickupTime}
-
-            <h4>Status</h4> 
-            {this.state.status === 0 ? <div className="state--not-ready">Not Ready</div> : 
-              <Select
-                name="status"
-                value={this.state.status}
-                onChange={(e)=>this.onSelectChange(e.value)}
-                options={options}
-                disabled={this.state.status === 0 ? true:false}
-                clearable={false} 
-              />
-            }
-
-            {this.state.isPaid && 'order is paid for'}
-            {!this.state.isPaid && <button>order is not paid for</button>}
-          </div>
+          
+          {itemsFiltered.map(order => {
+            return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
+          })}
         </div>
-
-        <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
-        
-        {itemsFiltered.map(order => {
-          return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
-        })}
-
       </div>
+    </div>
     );
   }
 }

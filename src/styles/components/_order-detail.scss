@@ -1,9 +1,36 @@
 .order-detail--header {
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
 }
 
 .order-item--row {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
     width: 100%;
+    .Select {
+        width: 200px;
+    }
+}
+
+.order-item--meta {
+    h6 {
+        display: inline-block;
+    }
+}
+
+.order-items--header {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 600;
+    border-bottom: 1px solid #000;
+}
+
+.my-collapsible {
+    width: 100%;
+}
+
+.my-collapsible__content { 
+    overflow: hidden;
 }

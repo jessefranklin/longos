@@ -25,15 +25,9 @@ class Header extends React.Component {
               </h1>
             </Link>
             
-            <div className="profile--container">
-              {profile.username ?  profile.username : "Guest"}
-              <ul>
-                <li><Link to="/">My Account</Link></li>
-                <li><Link to="/">Logout</Link></li>
-              </ul>
-            </div> 
+            
 
-            {!this.props.order.orderId ? <CartHeader handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : null }
+            {!this.props.order.orderId ? <CartHeader profile={profile} handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : null }
 
           </div>
         </div>
@@ -42,22 +36,32 @@ class Header extends React.Component {
   }
 }
 
-const CartHeader = ({cartLength,handleClick,total}) => {
+const CartHeader = ({profile,cartLength,handleClick,total}) => {
     const itemWord = total === 1 ? 'item' : 'items' ;
     return (
-      <div className="cart-container" >
-        <Link className="btn" to="/cart" onClick={handleClick} disabled={cartLength?'':'disabled'}>
-          <FontAwesome
-            className='super-crazy-colors'
-            name='shopping-cart'
-            size='2x'
-          />
-        </Link>
-
-        {cartLength >= 1 && <div className="cart__indicator">{total} </div>}
-
-        {total >= 1 ? <Link to="/order" className="link--place-order">Place Order <i className="fas fa-chevron-right"></i></Link> : null }
-        
+      <div className="header--row">
+        <div className="profile--container">
+          <button className="profile--username btn">{profile.username ?  profile.username : "Guest"}</button>
+          <div className="profile--actions">
+            <ul >
+              <li><Link to="/">My Account</Link></li>
+              <li><Link to="/">Logout</Link></li>
+            </ul>
+          </div>
+        </div> 
+        <div className="cart--container" >
+          <Link className="btn" to="/cart" onClick={handleClick} disabled={cartLength?'':'disabled'}>
+            <FontAwesome
+              className='super-crazy-colors'
+              name='shopping-cart'
+              size='2x'
+            />
+          </Link>
+          {cartLength >= 1 && <div className="cart__indicator">{total} </div>}
+        </div>
+        <div className="place-order--container">
+          {total >= 1 ? <Link to="/order" className="link--place-order">Place Order</Link> : null }
+        </div>
       </div>
     );
 };

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import Barcode from 'react-barcode';
 import Select from 'react-select';
+import { SlideToggle } from 'react-slide-toggle';
+
 let axios = require('axios');
 
 const options = [
@@ -63,50 +65,72 @@ class OrderDetailItem extends Component {
     const { order } = this.props;
 
     return (
-      <div>
-        <div className="order-item--row">
-          <h4>{order.product.counter} {order.product.name}</h4>
-          
-          <Select
-              name="assigned"
-              value={order.assignee}
-              onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
-              options={employees}
-              isSearchable={true}
-              clearable={false} 
-          />
+        <div>
+        <SlideToggle 
+        collapsed={true} >
+          {({onToggle, setCollapsibleElement}) => (
+            <div className="my-collapsible">
+              <div className="order-item--row">
+                <div className="" onClick={onToggle}>
+                  <h4>{order.product.counter}</h4>
+                  {order.product.name}
+                </div>
+                <Select
+                    name="assigned"
+                    value={order.assignee}
+                    onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
+                    options={employees}
+                    isSearchable={true}
+                    clearable={false} 
+                />
 
-          {order.quantity}
+                {order.quantity}
 
-          <Select
-            name="status"
-            value={order.status}
-            onChange={(e)=>this.onSelectChange(e.value, 'status')}
-            options={options}
-            disabled={order.status === 0 ? true:false}
-            clearable={false} 
-          />
+                <Select
+                  name="status"
+                  value={order.status}
+                  onChange={(e)=>this.onSelectChange(e.value, 'status')}
+                  options={options}
+                  disabled={order.status === 0 ? true:false}
+                  clearable={false} 
+                />
 
-          
-          <Barcode value="88888" />
-        </div>
-        <div className="order-item--meta">
-          <h6>Item Option:</h6> {order.option.name}
-
-          {order.comment && `<h6>Special Instructions:</h6>${order.comment}`}
-        </div>
+                
+                <Barcode value="88888" />
+              </div>
+              <div className="my-collapsible__content" ref={setCollapsibleElement}>
+                <div className="my-collapsible__content-inner">
+                  <div className="order-item--meta">
+                    {order.option.name && <ItemDescription order={order} />}
+                    {order.comment && <SpecialInstructions order={order} />}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </SlideToggle>
       </div>
     );
   }
 }
 
-const ItemDescription = ({item}) => {
+const ItemDescription = ({order}) => {
   return (
     <div>
-      
+      <h6>Item Option:</h6> {order.option.name}
     </div>
   );
 };
+
+const SpecialInstructions = ({order}) => {
+  return (
+    <div>
+      <h6>Special Instructions:</h6> {order.comment}
+    </div>
+  );
+};
+
+
 
 const CakeDescription = ({item}) => {
   return (

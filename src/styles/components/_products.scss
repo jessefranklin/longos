@@ -1,5 +1,9 @@
-.products--container {
+.product--container {
     padding-bottom: 45rem;
+    h2 {
+        padding-top: 10px;
+        border-top: 2px solid #000;
+    }
 }
 
 .product--item {

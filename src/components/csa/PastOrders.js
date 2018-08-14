@@ -5,6 +5,16 @@ import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
 import OrdersFilters from './OrdersFilters';
 import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
+import config from '../../server/config.json';
+
+let axios = require('axios');
+
+const headers = {
+    header: {
+        "Content-Type":"application/json",
+        "Access-Control-Allow-Origin": "*"
+    }
+}
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -15,11 +25,23 @@ class DashboardPage extends React.Component {
         counter: '',
         dateRangeStart: '',
         dateRangeEnd:'',
-        query:''
+        query:'',
+        pastOrders: []
     }
   }
   componentDidMount() {
-    this.props.fetchCSAPastOrders();
+    const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/pickedup`;
+    const orderIDs = `?storeid=${config[0].store_id}`;
+    let url = orderAPI + orderIDs;
+    
+    axios.get(url, headers).then(
+        (response) => {
+            this.setState({'pastOrders': response.data});
+        },
+        (err) => {
+            console.log(err);
+        }
+    )
   };
   render(){
 
@@ -71,7 +93,10 @@ class DashboardPage extends React.Component {
                 </div>
             
               </div>
-            
+
+              {this.state.pastOrders.map(order => {
+                return <OrderListItem key={order.id} item={order} pastOrders={true} />;
+              })}
 
             </div>
           </div>
@@ -81,13 +106,6 @@ class DashboardPage extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchCSAPastOrders: () => dispatch(fetchCSAPastOrders())
-});
 
-const mapStateToProps = state => ({
-  orders: state.pastorders
-});
-
-export default connect(mapStateToProps,mapDispatchToProps)(DashboardPage);
+export default DashboardPage;
 
