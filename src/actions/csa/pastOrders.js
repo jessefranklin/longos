@@ -13,7 +13,6 @@ export let fetchCSAPastOrders = (url) => {
     return (dispatch) => {
         return axios.get(url, headers).then(
             (response) => {
-                console.log(response.data);
                 dispatch(setPastOrder(response.data));
             },
             (err) => {

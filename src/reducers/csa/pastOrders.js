@@ -1,6 +1,6 @@
 
 const initialState = {
-    items: [],
+    orders: [],
     loading: false,
     error: null
 };

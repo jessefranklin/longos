@@ -4,6 +4,7 @@ let axios = require('axios');
 import { Link } from 'react-router-dom';
 import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
+import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import { orderFilterByCounter } from '../../selectors/orders';
 import CSAHeader from './CSAHeader';
@@ -24,11 +25,15 @@ const options = [
 ]
 
 class OrderDetail extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  } 
+
   constructor(props) {
     super(props);
     this.state = {
       id:0,
-      counter: '',
+      counter: this.props.filters.counter,
       client: {
         name: '',
         email: '',
@@ -52,6 +57,9 @@ class OrderDetail extends Component {
         (response) => {
             this.setState(response.data);
             console.log(response.data);
+            if(this.state.counter != ''){
+              this.handleCounter(this.state.counter);
+            }
         },
         (err) => {
             console.log(err);
@@ -114,7 +122,7 @@ class OrderDetail extends Component {
         <CSAHeader />
         <div className="content--container">
           <div className="order-detail">
-          <Link to="../orderDashboard">Back to orders</Link>
+          <button onClick={this.context.router.history.goBack}>Back to orders</button>
           <div className="order-detail--header">
             <div className="">
               <h2>Order # {this.state.id}</h2>
@@ -205,5 +213,9 @@ const PaidButton = ({isPaid,orderPaid}) => {
 };
 
 
+const mapStateToProps = (state) => ({
+  filters: state.filters
+});
 
-export default OrderDetail;
+
+export default connect(mapStateToProps)(OrderDetail);

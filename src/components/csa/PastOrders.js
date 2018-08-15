@@ -45,7 +45,7 @@ class PastOrders extends React.Component {
     const params = `&perpage=${this.state.perpage}&page=${this.state.page}${counter}`
     return orderAPI + orderIDs + params;
   }
-  onPaginationChange(){
+  onPaginationChange(valuex){
       
   }
   render(){
@@ -55,7 +55,7 @@ class PastOrders extends React.Component {
       <div>
         <CSAHeader />
         <div className="content--container">
-          <OrdersFilters />
+          <OrdersFilters pastOrders={true} />
             
           <div className="divTable">
             <div className="divTableBody">

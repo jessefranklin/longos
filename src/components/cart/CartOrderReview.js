@@ -68,7 +68,7 @@ class CartOrderReview extends React.Component {
         <CartProgress progress="2" />
 
         <h2>Place Order</h2>
-        <div className="cart--item">
+        <div>
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}
