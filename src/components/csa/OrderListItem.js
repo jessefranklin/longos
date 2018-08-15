@@ -12,7 +12,7 @@ const OrderListItem = ({item}) => {
     return(
         <div className='orders--item divTableRow'>
             <div className="cell-id">
-                {dateNotification.class ? <Indicator notification={dateNotification} />: ''}
+                {dateNotification ? <Indicator notification={dateNotification} />: ''}
                 {item.id}
             </div>
 

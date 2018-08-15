@@ -1,16 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
 export const PrivateRoute = ({
-  component: Component,
-  ...rest
-}) => (
+    isAuthenticated, 
+    component: Component,
+    ...rest
+  }) => (
     <Route {...rest} component={(props) => (
-      <div className="csa--app">
-        <Component {...props} />
-      </div>
+      isAuthenticated ? (
+        <div className="csa--app">
+          <Component {...props} />
+        </div>
+      ) : (
+        <Redirect to="/" />
+      )
     )} />
   );
 
 
-export default PrivateRoute;
+const mapStateToProps = (state) => ({
+  isAuthenticated: true
+});
+
+export default connect(mapStateToProps)(PrivateRoute);
