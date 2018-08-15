@@ -40,7 +40,9 @@ class CartListItem extends Component {
 const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
   return (
     <div className="cart--item">
-        <img src={item.productImage} alt={item.name} />
+        <div className="img--container">
+          <img src={item.productImage} alt={item.name} />
+        </div>
         <h4>{item.productName}</h4>
         <div>
           {item.comment}  
