@@ -1,6 +1,6 @@
 export const selectOrders = (orderItems, {order = ''}) => {
   return orderItems.filter((orderItem) => {
-    const textMatch = orderItem.id.toLowerCase().includes(order.toLowerCase());
+    const textMatch = orderItem.id.toLowerCase().includes(order.toLowerCase()) || orderItem.customerName.toLowerCase().includes(order.toLowerCase());
     return textMatch;
   });
 };

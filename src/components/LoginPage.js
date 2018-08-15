@@ -7,6 +7,7 @@ import { Textbox } from 'react-inputs-validation';
 import { StateLoader } from '../state.loader';
 import { removeCart }  from '../actions/cart';
 import { resetOrder }  from '../actions/order';
+import { resetProfile }  from '../actions/profile';
 import { fetchConfigs } from '../actions/config';
 import { fetchProducts } from '../actions/customer/products';
 
@@ -28,9 +29,11 @@ class LoginPage extends React.Component {
     this.state = {
       active: 'guest',
       email: '',
+      phone: '',
       username: '',
       touched: {
         email: false,
+        phone: false,
         username: false
       }
     }
@@ -44,6 +47,7 @@ class LoginPage extends React.Component {
     stateLoader.removeState();
     this.props.removeCart();
     this.props.resetOrder();
+    this.props.resetProfile();
     this.props.fetchProducts();
   };
 
@@ -54,15 +58,16 @@ class LoginPage extends React.Component {
   }
 
   canBeSubmitted() {
-    const errors = this.validate(this.state.email, this.state.password);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
+      const errors = this.validate(this.state.name, this.state.phone, this.state.email);
+      const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return isDisabled;
   }
 
   validate() {
     return {
-      email: this.state.email.length === 0,
-      username: this.state.username.length === 0
+      name: this.state.username.length != 0,
+      phone: this.validPhone(),
+      email: this.validEmail()
     };
   }
 
@@ -71,17 +76,20 @@ class LoginPage extends React.Component {
     return re.test(this.state.email);
   }
 
+  validPhone(){
+    var phoneno = /^\d{10}$/;
+    return phoneno.test(this.state.phone);
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.validEmail());
-    if (!this.validEmail()) {
-      e.preventDefault();
-      return;
-    }
+    
+    console.log(this.canBeSubmitted());
     if (!this.canBeSubmitted()) {
       e.preventDefault();
       return;
     }
+    
     this.props.setProfile(this.state);
     let val = e.target.getAttribute('data')
     history.push(val);
@@ -96,9 +104,8 @@ class LoginPage extends React.Component {
   }
 
   render(){
-    const errors = this.validate(this.state.email, this.state.username);
+    const errors = this.validate(this.state.name, this.state.email, this.state.phone);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    
     const shouldMarkError = (field) => {
       const hasError = errors[field];
       const shouldShow = this.state.touched[field];
@@ -120,7 +127,7 @@ class LoginPage extends React.Component {
             <li><button className={this.state.active ==='card'?'active':''} onClick={() => this.swapLogin('card')}>Sign In with Rewards Card</button></li>
           </ul>
           
-          {this.state.active ==='guest' && <Guest state={this.state} handleChange={this.handleChange} handleBlur={this.handleBlur} shouldMarkError={shouldMarkError} onSubmit={this.onSubmit} />}
+          {this.state.active ==='guest' && <Guest state={this.state} handleChange={this.handleChange} handleBlur={this.handleBlur} shouldMarkError={shouldMarkError} onSubmit={this.onSubmit} errors={errors} />}
 
           {this.state.active ==='card' && <Card handleChange={this.handleChange} />}
   
@@ -138,30 +145,30 @@ class LoginPage extends React.Component {
 }
 
 
-const Guest = ({state, handleChange, handleBlur, shouldMarkError, onSubmit}) => (
+const Guest = ({state, handleChange, handleBlur, shouldMarkError, onSubmit, errors}) => (
   <div className="guest-container form-group">
     <input
-      className="form-control"
+      className={errors.name ? "form-control" : "error form-control"}
       type="text"
       name="username" 
       placeholder="Firstname"
       value={state.username}
       onChange={handleChange}
-      onBlur={handleBlur('username')}
+      onBlur={handleChange}
     />
     
     <input
-      className="form-control"
+      className={errors.email ? "form-control" : "error form-control"}
       type="text"
       name="email"
       placeholder="Email Address"
       value={state.email}
       onChange={handleChange}
-      onBlur={handleBlur('email')}
+      onBlur={handleChange}
     />
 
     <input
-      className="form-control"
+      className={errors.phone ? "form-control" : "error form-control"}
       type="phone"
       name="phone" 
       placeholder="Phone Number"
@@ -196,6 +203,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchProducts: () => dispatch(fetchProducts()),
   removeCart: () => dispatch(removeCart()),
   resetOrder: () => dispatch(resetOrder()),
+  resetProfile: () => dispatch(resetProfile()),
   fetchConfigs: () => dispatch(fetchConfigs())
 });
 

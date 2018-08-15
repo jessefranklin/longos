@@ -6,6 +6,9 @@ import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
 import OrderDetailItem from './OrderDetailItem';
 import { orderFilterByCounter } from '../../selectors/orders';
+import CSAHeader from './CSAHeader';
+
+
 const headers = {
     header: {
         "Content-Type":"application/json",
@@ -19,7 +22,6 @@ const options = [
   { value: 1, label: 'Ready For Pickup' },
   { value: 2, label: 'Order Has been picked up' }
 ]
-
 
 class OrderDetail extends Component {
   constructor(props) {
@@ -36,8 +38,10 @@ class OrderDetail extends Component {
       pickupDate: '',
       pickupTime: '',
       status: '',
+      isPaid: false,
       items: []
     }
+    this.orderPaid = this.orderPaid.bind(this);
   }
   componentWillMount() {
     const orderID = `?orderId=${this.props.match.params.id}`;
@@ -56,7 +60,6 @@ class OrderDetail extends Component {
   };
   onSelectChange = (value) => {
     this.setState({ 'status' : value });
-    
     
     if(value == 2){
       this.completeOrder(value)
@@ -86,6 +89,18 @@ class OrderDetail extends Component {
   updateState = (data) => {
     this.setState(data);
   }
+  orderPaid = (data) => {
+    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
+
+    axios.put(url, headers).then(
+      (response) => {
+        this.setState(response.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   render() {
 
     let itemsFiltered = this.state.items;
@@ -95,51 +110,100 @@ class OrderDetail extends Component {
     }
 
     return (
-      <div className="order-detail">
-        <Link to="../orderDashboard">Back to orders</Link>
-        <div className="order-detail--header">
-          <div className="">
-            <h2>Order # {this.state.id}</h2>
+      <div>
+        <CSAHeader />
+        <div className="content--container">
+          <div className="order-detail">
+          <Link to="../orderDashboard">Back to orders</Link>
+          <div className="order-detail--header">
+            <div className="">
+              <h2>Order # {this.state.id}</h2>
+            </div>
+
+            <div className="">
+              <h4>Customer</h4>
+              {this.state.client.name}
+
+              {this.state.client.email && this.state.client.email}
+              {this.state.client.phone && this.state.client.phone}
+            </div>
+
+            <div className="">
+              <h4>Pickup Date & Time</h4>
+              {this.state.pickupDate} @ {this.state.pickupTime}
+
+              <h4>Status</h4> 
+             
+
+              <StatusState status={this.state.status} onSelectChange={this.onSelectChange} isPaid={this.state.isPaid} />
+
+              <PaidButton isPaid={this.state.isPaid} orderPaid={this.orderPaid} />
+            </div>
           </div>
 
-          <div className="">
-            <h4>Customer</h4>
-            {this.state.client.name}
-
-            {this.state.client.email && this.state.client.email}
-            {this.state.client.phone && this.state.client.phone}
+          <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
+          
+          <div className="order-items--header">
+            <div className="">
+              Item
+            </div>
+            <div className="">
+              Assigned To
+            </div>
+            <div className="">
+              Qty
+            </div>
+            <div className="">
+              Status
+            </div>
+            <div className="">
+              Barcode
+            </div>
           </div>
-
-          <div className="">
-            <h4>Pickup Date & Time</h4>
-            {this.state.pickupDate} @ {this.state.pickupTime}
-
-            <h4>Status</h4> 
-            {this.state.status === 0 ? <div className="state--not-ready">Not Ready</div> : 
-              <Select
-                name="status"
-                value={this.state.status}
-                onChange={(e)=>this.onSelectChange(e.value)}
-                options={options}
-                disabled={this.state.status === 0 ? true:false}
-                clearable={false} 
-              />
-            }
-
-            {this.state.isPaid && 'order is paid for'}
-            {!this.state.isPaid && 'order is not paid for'}
-          </div>
+          
+          {itemsFiltered.map(order => {
+            return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
+          })}
         </div>
-
-        <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
-        
-        {itemsFiltered.map(order => {
-          return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
-        })}
-
       </div>
+    </div>
     );
   }
 }
+
+const StatusState = ({status,onSelectChange,isPaid}) => {
+  return (
+    <div>
+        {status === 0 && <div className="state--not-ready">Not Ready</div> }
+        {status === 1 && !isPaid && <div className="state--not-ready">Ready for pickup</div> }
+        {status === 1 && isPaid && <Select
+          name="status"
+          value={status}
+          onChange={(e)=>onSelectChange(e.value)}
+          options={options}
+          disabled={status === 0 ? true:false}
+          clearable={false} 
+        /> }
+        {status === 2 && <div className="state--completed">Completed</div> }
+    </div>
+  );
+};
+
+
+const PaidButton = ({isPaid,orderPaid}) => {
+  return (
+    <div>
+      {isPaid ? ( 
+        <div>
+          Order is Paid <button onClick={() => orderPaid(false)}>X</button>
+        </div>
+      ):(
+        <button onClick={() => orderPaid(true)}>Order is not paid</button>
+      )}
+    </div>
+  );
+};
+
+
 
 export default OrderDetail;

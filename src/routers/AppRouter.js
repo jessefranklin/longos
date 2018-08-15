@@ -4,6 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/csa/DashboardPage';
 import Products from '../components/products/Products';
 import Settings from '../components/csa/Settings';
+import PastOrders from '../components/csa/PastOrders';
 import Cart from '../components/cart/Cart';
 import Order from '../components/cart/CartOrder';
 import OrderConfirmation from '../components/cart/CartOrderConfirmation';
@@ -31,6 +32,7 @@ const AppRouter = () => (
         <PublicRoute path="/orderConfirmation" component={OrderConfirmation} />
         <PrivateRoute path="/orderDashboard" component={DashboardPage} />
         <PrivateRoute path="/orderDetail/:id" component={OrderDetail} />
+        <PrivateRoute path="/pastOrders" component={PastOrders} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
