@@ -4,8 +4,8 @@ import { fetchCSAPastOrders }  from '../../actions/csa/pastOrders';
 import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
 import OrdersFilters from './OrdersFilters';
-import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
 import config from '../../server/config.json';
+import { Pagination } from '../partials/Pagination';
 
 let axios = require('axios');
 
@@ -16,34 +16,40 @@ const headers = {
     }
 }
 
-class DashboardPage extends React.Component {
+// api/order/pickedup?storeId=store1&[perpage=20]‌&[page=0]‌&[counter=[counter]]
+
+
+class PastOrders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        perpage: 50,
-        page: 2,
-        counter: '',
+        perpage: 10,
+        page: 0,
+        counter: this.props.filters.counter,
         dateRangeStart: '',
         dateRangeEnd:'',
-        query:'',
-        pastOrders: []
+        query:''
     }
   }
   componentDidMount() {
+    let url = this.returnUrlwithParam();
+    this.props.fetchCSAPastOrders(url);
+  };
+  componentDidUpdate(){
+      console.log('hey');
+  }
+  returnUrlwithParam(){
     const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/pickedup`;
     const orderIDs = `?storeid=${config[0].store_id}`;
-    let url = orderAPI + orderIDs;
-    
-    axios.get(url, headers).then(
-        (response) => {
-            this.setState({'pastOrders': response.data});
-        },
-        (err) => {
-            console.log(err);
-        }
-    )
-  };
+    const counter = this.state.counter !== '' ? `&counter=${this.state.counter}` : '';
+    const params = `&perpage=${this.state.perpage}&page=${this.state.page}${counter}`
+    return orderAPI + orderIDs + params;
+  }
+  onPaginationChange(){
+      
+  }
   render(){
+    const {pastorders} = this.props;
 
     return(
       <div>
@@ -94,12 +100,14 @@ class DashboardPage extends React.Component {
             
               </div>
 
-              {this.state.pastOrders.map(order => {
+              {pastorders.orders.map(order => {
                 return <OrderListItem key={order.id} item={order} pastOrders={true} />;
               })}
 
             </div>
           </div>
+
+          <Pagination onPaginationChange={this.onPaginationChange}/>
         </div>
       </div>
     )
@@ -107,5 +115,15 @@ class DashboardPage extends React.Component {
 }
 
 
-export default DashboardPage;
 
+const mapStateToProps = (state) => ({
+    filters: state.filters,
+    pastorders: state.pastorders
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchCSAPastOrders:(params) => dispatch(fetchCSAPastOrders(params))
+});
+  
+
+export default connect(mapStateToProps, mapDispatchToProps)(PastOrders);

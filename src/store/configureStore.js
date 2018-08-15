@@ -8,6 +8,7 @@ import filterReducer from '../reducers/filters';
 import configReducer from '../reducers/config';
 import { StateLoader } from '../state.loader';
 import ordersReducer from '../reducers/csa/orders';
+import pastOrdersReducer from '../reducers/csa/pastOrders';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -20,7 +21,8 @@ const reducers = {
     filters: filterReducer,
     order: orderReducer,
     cart: cartReducer,
-    orders: ordersReducer
+    orders: ordersReducer,
+    pastorders: pastOrdersReducer
 }
 
 

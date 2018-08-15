@@ -1,10 +1,6 @@
 
 let axios = require('axios');
-import config from '../../server/config.json';
 
-const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/pickedup`;
-const orderIDs = `?storeid=${config[0].store_id}`;
-let url = orderAPI + orderIDs;
 
 const headers = {
     header: {
@@ -13,13 +9,12 @@ const headers = {
     }
 }
 
-export let fetchCSAPastOrders = (oId) => {
+export let fetchCSAPastOrders = (url) => {
     return (dispatch) => {
-        // dispatch(fetchCSAOrdersBegin())
         return axios.get(url, headers).then(
             (response) => {
                 console.log(response.data);
-                // dispatch(fetchCSAOrdersSuccess(response.data));
+                dispatch(setPastOrder(response.data));
             },
             (err) => {
                 console.log(err);
@@ -29,3 +24,20 @@ export let fetchCSAPastOrders = (oId) => {
     }
 }
 
+// SET_ORDER
+export const setPastOrder = (order) => ({
+    type: 'SET_PASTORDER',
+    order
+});
+
+// EDIT ORDER
+export const editPastOrder = (updates) => ({
+    type: 'EDIT_PASTORDER',
+    updates
+});
+
+
+// RESET ORDER
+export const resetPastOrder = () => ({
+    type: 'RESET_PASTORDER'
+});
