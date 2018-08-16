@@ -1,7 +1,7 @@
 .tab-nav {
     list-style: none;
     padding: 0;
-    border-bottom:1px solid #000;
+    border-bottom:2px solid $dark-grey;
     li {
         display: inline-block;
         margin-right: 20px;
@@ -13,9 +13,11 @@
             font-weight: 500;
             background: transparent;
             border: none;
+            color:$light-grey;
             &.active {
+                color:$dark-grey;
                 border: none;
-                border-bottom:1px solid #000;
+                border-bottom:2px solid $dark-grey;
                 background: transparent;
             }
         }

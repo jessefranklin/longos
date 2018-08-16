@@ -151,7 +151,7 @@ class ProductsListItemBody extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.onAddToCart}>+ Add To Cart</Button>  
+          <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>  
           <Button onClick={this.handleClose}>Close</Button>
         </Modal.Footer>
             

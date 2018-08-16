@@ -103,7 +103,7 @@ class ProductsListItemCake extends Component {
       <div>
         <Modal.Body>
         <div className="item--header">
-          <h4>{opt.name} {item.category === 'Cake'?'Cake':''}</h4>
+          <h5>{opt.name} {item.category === 'Cake'?'Cake':''}</h5>
           <h5>Starting at ${opt.price.price}</h5>
         </div>
 
@@ -111,14 +111,15 @@ class ProductsListItemCake extends Component {
           {item.description}
         </p>
 
-        <Select
-          name="option"
-          value={this.state.selectedOption}
-          onChange={this.onSelectChange}
-          options={options}
-          searchable={false}
-          clearable={false} 
-        />
+        <div className="item--cake-options">
+          <Select
+            name="option"
+            value={this.state.selectedOption}
+            onChange={this.onSelectChange}
+            options={options}
+            searchable={false}
+            clearable={false} 
+          />
 
         {cakeOptions.fields.map(options => {
           return <CreateableSelect 
@@ -128,6 +129,7 @@ class ProductsListItemCake extends Component {
             onChange={this.onChange}
             />
         })}
+        </div>
 
         {cakeOptions.details.map((textfield,index) => {
           return <div key={index}>
@@ -148,7 +150,7 @@ class ProductsListItemCake extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.onAddToCart}>+ Add To Cart</Button>  
+          <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>  
           <Button onClick={this.handleClose}>Close</Button>
         </Modal.Footer>
             

@@ -66,6 +66,17 @@ class CartOrder extends React.Component {
         <CartProgress progress="1" />
 
         <div className="form-group">
+          <SingleDatePicker
+            date={this.state.pickUpDate} 
+            onDateChange={this.onDateChange}
+            focused={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
+
+          <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
+
           <input
             type="text"
             name="username" 
@@ -99,23 +110,13 @@ class CartOrder extends React.Component {
             onChange={this.handleChange.bind(this)}
           />
 
-          <SingleDatePicker
-            date={this.state.pickUpDate} 
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
-
-          <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
+          <div>
+            Allow for 24 hour notice or call in store for other accommodations."
+          </div>
 
           <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
           
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
-          <div>
-            Allow for 24 hour notice or call in store for other accommodations."
-          </div>
         </div>
       </div>
     )
