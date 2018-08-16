@@ -40,13 +40,12 @@ class CartListItem extends Component {
 const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
   return (
     <div className="cart--item">
+      <div className="cart--item-row1">
         <div className="cart--item-img grey-border">
           <img src={item.productImage} alt={item.name} />
           <h4>{item.productName}</h4>
         </div>
         <div className="cart--item-qty grey-border">
-          {item.comment}  
-          
           {quantityEditable}
 
           {item.name}
@@ -60,6 +59,12 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
             aria-hidden='true'
           />
         </button>
+      </div>
+      <div className="cart--item-row2">
+        <div className="cart--item-comment">
+          {item.comment}
+        </div>
+      </div>
     </div>
   );
 };

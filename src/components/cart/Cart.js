@@ -30,6 +30,13 @@ class Cart extends React.Component {
           <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
         </div>
 
+        <div className="cart--col-names">
+          <h4 className="cart--col-item grey-border">Item</h4>
+          <h4 className="cart--col-qty grey-border">Qty</h4>
+          <h4 className="cart--col-price grey-border">Price</h4>
+          <h4 className="cart--col-remove">Remove</h4>
+        </div>
+
         <div className="cart--items">
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
