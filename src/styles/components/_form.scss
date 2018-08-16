@@ -33,7 +33,7 @@ input[type="text"] {
     .search {
         box-shadow: none;
         border: none;
-        border-radius: 15px;
+        border-radius: 27px !important;
         line-height: 1em;
         font-size: 16px;
         padding: 10px;
@@ -41,8 +41,8 @@ input[type="text"] {
     }
     .close {
         position: absolute;
-        right: 0;
-        top: 5px;
+        right: 11px;
+        top: 6px;
     }
 }
 
