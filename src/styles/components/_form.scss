@@ -6,14 +6,17 @@
         height: auto;
         background: transparent;
         border: none;
-        border-bottom: 1px solid #000;
+        border-bottom: 2px solid $dark-grey;
         font-size: 18px;
         font-weight: 400;
         padding: 20px 0;
         margin-bottom: 20px;
         box-shadow: none;
         &.error {
-            border-bottom:1px solid $red;
+            border-bottom:2px solid $red;
+        }
+        &::placeholder{
+            font-family: $sans;
         }
     }
 }
