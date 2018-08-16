@@ -27,7 +27,7 @@ class Cart extends React.Component {
         <Announcements message={this.state.announcementMessage} />
         <div className="cart--header">
           <h2>Shopping Cart ({total} {itemWord})</h2> 
-          <Link to="/products" className="btn btn-secondary">Continue Shopping</Link>
+          <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
         </div>
 
         <div className="cart--items">

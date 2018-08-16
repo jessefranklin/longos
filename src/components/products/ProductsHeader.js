@@ -89,7 +89,7 @@ const CartHeader = ({profile,showMenu,toggleMenu,cartLength,handleClick,total}) 
           </Link>
         </div>
         <div className="place-order--container">
-          {total >= 1 ? <Link to="/order" className="link--place-order">Place Order</Link> : null }
+          {total >= 1 ? <Link to="/order" className="link--place-order">Place Order</Link> : <p className="empty--place-order">Cart Empty</p> }
         </div>
       </div>
     );

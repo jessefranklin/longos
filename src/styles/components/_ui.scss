@@ -1,17 +1,21 @@
 .qty--container {
     display: flex;
     align-items: center;
+    h4{
+        margin: 2rem;
+    }
     button {
-        border: 1px solid $red;
+        border: 2px solid $red;
         border-radius: 0px;
         line-height: 1;
-        height: 22px;
-        width: 22px;
+        height: 40px;
+        width: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
         color: $red;
-        font-size: 22px;
+        font-size: 28px;
         font-weight: 200;
+        background-color: #fff;
     }
 }
