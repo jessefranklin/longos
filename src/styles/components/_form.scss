@@ -1,4 +1,5 @@
 .form-group {
+    font-family:$sans;
     .form-control {
         padding: 10px 0;
         width: 100%;
@@ -20,7 +21,6 @@
         }
     }
 }
-
 
 .error { border: 1px solid $red; }
 
