@@ -30,23 +30,33 @@ class PastOrders extends React.Component {
         dateRangeEnd:'',
         query:''
     }
+
   }
   componentDidMount() {
     let url = this.returnUrlwithParam();
     this.props.fetchCSAPastOrders(url);
   };
-  componentDidUpdate(){
-      console.log('hey');
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.filters.counter !== this.props.filters.counter) {
+      this.setState({ 'page' : 0 });
+      let url = this.returnUrlwithParam();
+      this.props.fetchCSAPastOrders(url);
+    }
+    if (prevState.page !== this.state.page) {
+      let url = this.returnUrlwithParam();
+      this.props.fetchCSAPastOrders(url);
+    }
+    
   }
   returnUrlwithParam(){
     const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/pickedup`;
     const orderIDs = `?storeid=${config[0].store_id}`;
-    const counter = this.state.counter !== '' ? `&counter=${this.state.counter}` : '';
+    let counter = this.props.filters.counter !== '' ? `&counter=${this.props.filters.counter}` : '';
     const params = `&perpage=${this.state.perpage}&page=${this.state.page}${counter}`
     return orderAPI + orderIDs + params;
   }
-  onPaginationChange(valuex){
-      
+  onPaginationChange = (val) =>{
+      this.setState({ 'page' : val });
   }
   render(){
     const {pastorders} = this.props;
@@ -107,7 +117,7 @@ class PastOrders extends React.Component {
             </div>
           </div>
 
-          <Pagination onPaginationChange={this.onPaginationChange}/>
+          <Pagination onPaginationChange={this.onPaginationChange} page={this.state.page} />
         </div>
       </div>
     )

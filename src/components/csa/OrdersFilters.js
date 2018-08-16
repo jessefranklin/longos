@@ -16,7 +16,11 @@ export class OrdersFilters extends React.Component {
       this.props.setOrderFilter('');
     };
     handleCounter(value){
-      this.props.filterByCounter(value);
+      if(this.props.pastOrders){
+        this.props.filterByCounter(value);
+      } else {
+        this.props.filterByCounter(value);
+      }
     };
     render() {
       return (
