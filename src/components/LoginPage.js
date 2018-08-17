@@ -135,7 +135,6 @@ class LoginPage extends React.Component {
 
           <div className="csa-container">
             <Link to="/orderDashboard">CSA Dashboard</Link><br /><br />
-            <Link to="/settings">Settings</Link>
           </div>
 
         </div>

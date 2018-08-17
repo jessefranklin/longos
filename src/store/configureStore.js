@@ -9,6 +9,7 @@ import configReducer from '../reducers/config';
 import { StateLoader } from '../state.loader';
 import ordersReducer from '../reducers/csa/orders';
 import pastOrdersReducer from '../reducers/csa/pastOrders';
+import authReducer from '../reducers/csa/auth';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -22,7 +23,8 @@ const reducers = {
     order: orderReducer,
     cart: cartReducer,
     orders: ordersReducer,
-    pastorders: pastOrdersReducer
+    pastorders: pastOrdersReducer,
+    auth: authReducer
 }
 
 
@@ -39,9 +41,9 @@ export default () => {
     store.subscribe(() => {
         // State persist
         // TOTO bring in throttle
+        
         stateLoader.saveState(store.getState());
 
-        console.log(store.getState());
     });
     
     return store;

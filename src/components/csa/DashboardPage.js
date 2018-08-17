@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchCSAOrders }  from '../../actions/csa/orders';
 import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
+import CSAFooter from './CSAFooter';
 import OrdersFilters from './OrdersFilters';
 import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
 
@@ -73,6 +74,7 @@ class DashboardPage extends React.Component {
             </div>
           </div>
         </div>
+        <CSAFooter />
       </div>
     )
   }
