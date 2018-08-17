@@ -5,7 +5,6 @@ import CSAHeader from './CSAHeader';
 
 export const CSALogin = ({ startLogin }) => (
     <div>
-        <CSAHeader />   
         <div className="content--container">
             <h1>Login</h1>
             <button onClick={startLogin}>Login</button>

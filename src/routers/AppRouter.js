@@ -29,7 +29,7 @@ const AppRouter = () => (
         <PublicRoute path="/orderreview" component={CartOrderReview} />
         <PublicRoute path="/order" component={Order} />
         <PublicRoute path="/orderConfirmation" component={OrderConfirmation} />
-        <PublicRoute path="/CSALogin" component={CSALogin} />
+        <LoginRoute path="/CSALogin" component={CSALogin} />
         <PrivateRoute path="/settings" component={Settings} />
         <PrivateRoute path="/orderDashboard" component={DashboardPage} />
         <PrivateRoute path="/orderDetail/:id" component={OrderDetail} />

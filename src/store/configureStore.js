@@ -41,6 +41,7 @@ export default () => {
     store.subscribe(() => {
         // State persist
         // TOTO bring in throttle
+        
         stateLoader.saveState(store.getState());
 
     });

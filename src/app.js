@@ -31,7 +31,6 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
   if(user){
-    console.log('logged in');
     store.dispatch(login(user.uid));
     renderApp();
     if( history.location.pathname === '/CSALogin' ){
@@ -39,10 +38,8 @@ firebase.auth().onAuthStateChanged((user) => {
     } 
 
   } else {
-    console.log('logged out');
     store.dispatch(logout());
     renderApp();
-    history.push('/CSALogin');
   }
 })
 
