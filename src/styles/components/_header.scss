@@ -13,6 +13,10 @@
     color: #fff;
     font-weight: 600;
   }
+  .cart__indicator {
+    display: inline-block;
+    margin-left:1rem;
+  }
 }
 
 .header--row {
@@ -33,7 +37,7 @@
 
 .cart--container {
   a.btn {
-    padding: 6px 12px 6px 0;
+    padding: 6px 0px 6px 0;
     .fa-2x {
       font-size: 20px;
     }
@@ -51,15 +55,15 @@
     left: 0;
     background: #fff;
     border-radius: 15px;
-    padding: 0 5px;
-    border: 1px solid #000;
+    padding: 0 0.5rem;
+    border: 1px solid $dark-grey;
     width: 100%;
     ul {
       padding: 0px;
       margin: 0px;
       li {
         text-align: center;
-        border-top: 1px solid #000;
+        border-top: 1px solid $dark-grey;
         list-style: none;
         &:first-child {
           border-top: none;
@@ -69,6 +73,8 @@
           display: block;
           padding: 15px 0;
           text-transform: capitalize;
+          font-family: $sans;
+          font-size: 17px;
         }
       }
     }
@@ -80,13 +86,14 @@
   position: relative;
   padding: 0px;
   padding-right: 20px;
+  font-family: $sans;
   font-weight: 600;
   
   &:after {
     content: '';
     position: absolute;
     right: 0;
-    top: 7px;
+    top: 6px;
     width: 0; 
     height: 0; 
     border-left: 5px solid transparent;
@@ -99,16 +106,17 @@
   text-transform: uppercase;
   padding-right: 15px;
   position: relative;
+  font-family: $sans;
   &:after {
     content: '';
     position: absolute;
     right: 0;
-    top: 5px;
+    top: 3px;
     width: 0; 
     height: 0; 
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 5px solid $yellow;
+    border-left: 5px solid $light-green;
   }
 }
 

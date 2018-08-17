@@ -5,14 +5,24 @@
     img {
         
     }
+    .close {
+        font-size:50px;
+        color:$red;
+        &:hover {
+            color:$red;
+        }
+    }
 }
 
 .modal-body {
+    font-family: $sans;
+    color: $dark-grey !important;
+    padding:2rem 2rem 1.5rem 2rem!important;
     p {
 		font-family: $sans;
 		font-size: 17px;
 		font-weight: 400;
-		line-height: 1.4em;
+        line-height: 1.4em;
     }
     .item--header {
         display: flex;
@@ -22,6 +32,7 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        margin: 2rem 0;
         .Select {
             width: 60%;
         }
@@ -29,11 +40,15 @@
     textarea {
         width: 100%;
         box-shadow: none;
-        border: 1px solid $grey;
+        border: 2px solid $grey;
         padding: 1rem;
+        &::placeholder{
+            font-family: $sans;
+        }
     }
     .Select-control {
-        border: 1px solid $red;
+        height: 40px;
+        border: 2px solid $red;
         border-radius: 0px;
         color: $red;
         font-weight: 500;
@@ -44,18 +59,61 @@
         }
         .Select-value .Select-value-label,
         .Select-value {
-            color: $red;
+            font-family: $sans;
+            color: $red !important;
+            font-size: 14px;
             font-weight: 500;
+        }
+        .Select-value{
+            transform:translateY(3px);
+        }
+    }
+}
+
+.item--cake-options {
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    div:first-child{
+        width:49%;
+        margin-right:0.5%;
+        margin-bottom:1%;
+    }
+    div:not([class]){
+        &:nth-child(2n+1){
+            width:49%;
+            margin-right:0.5%;
+            margin-bottom:1%;
+        }
+        &:nth-child(2n){
+            width:49%;
+            margin-left:0.5%;
+            margin-bottom:1%;
+        }
+        div{
+            width: 100%;
         }
     }
 }
 
 .modal-footer {
+    border-top:none !important;
+    padding: 0rem 2rem 3rem 2rem !important;
     button {
-        border: 1px solid $red;
+        height: 40px;
+        width: 25%;
+        margin: 0 !important;
+        border: 2px solid $red;
         border-radius: 0px;
         color: $red;
+        font-family: $sans;
         font-weight: 500;
         text-transform: uppercase;
+    }
+    .btn-add {
+        width: 73%;
+        margin: 0 2% 0 0 !important;
+        color: $green;
+        border: 2px solid $green;
     }
 }
