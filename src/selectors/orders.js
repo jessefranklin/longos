@@ -10,7 +10,7 @@ export const filterByCounter = (orderItems, {counter = ''}) => {
     return orderItems;
   }
   return orderItems.filter((orderItem) => {
-    const textMatch = orderItem.counters.find(x => x.counterName.toLowerCase() === counter);
+    const textMatch = orderItem.counters.find(x => x.counterName === counter);
     return textMatch;
   });
 };
@@ -28,7 +28,7 @@ export const orderFilterByCounter = (orderItems, text) => {
     return orderItems;
   }
   return orderItems.filter((orderItem) => {
-    const textMatch = orderItem.product.counter.toLowerCase() === text;
+    const textMatch = orderItem.product.counter === text;
     return textMatch;
   });
 };
