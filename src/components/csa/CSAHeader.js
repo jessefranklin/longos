@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => (
+export const Header = ({ startLogout }) => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">
@@ -15,5 +15,7 @@ const Header = () => (
     </div>
   </header>
 );
+
+
 
 export default Header;

@@ -28,11 +28,12 @@ export class OrderCounterFilters extends React.Component {
         <div className="counterFilter">
             <ul>
                 <li><button className={this.activeHandlers('')} onClick={() => this.props.handleCounter('')} disabled={this.isDisabled()}>All Dept.</button></li>
-                <li><button className={this.activeHandlers('deli')} onClick={() => this.props.handleCounter('deli')} disabled={this.isDisabled('deli')}>Deli</button></li>
-                <li><button className={this.activeHandlers('kitchen')} onClick={() => this.props.handleCounter('kitchen')} disabled={this.isDisabled('kitchen')}>Kitchen</button></li>
-                <li><button className={this.activeHandlers('salad')} onClick={() => this.props.handleCounter('salad')} disabled={this.isDisabled('salad')}>Salad bar</button></li>
-                <li><button className={this.activeHandlers('sushi')} onClick={() => this.props.handleCounter('sushi')} disabled={this.isDisabled('sushi')}>Sushi</button></li>
-                <li><button className={this.activeHandlers('cake')} onClick={() => this.props.handleCounter('cakes')} disabled={this.isDisabled('cakes')}>Cakes</button></li>
+                <li><button className={this.activeHandlers('Bakery')} onClick={() => this.props.handleCounter('Bakery')} disabled={this.isDisabled('Bakery')}>Bakery</button></li>
+                <li><button className={this.activeHandlers('Deli')} onClick={() => this.props.handleCounter('Deli')} disabled={this.isDisabled('Deli')}>Deli</button></li>
+                <li><button className={this.activeHandlers('Kitchen')} onClick={() => this.props.handleCounter('Kitchen')} disabled={this.isDisabled('Kitchen')}>Kitchen</button></li>
+                <li><button className={this.activeHandlers('Salad Bar')} onClick={() => this.props.handleCounter('Salad Bar')} disabled={this.isDisabled('Salad Bar')}>Salad bar</button></li>
+                <li><button className={this.activeHandlers('Sushi')} onClick={() => this.props.handleCounter('Sushi')} disabled={this.isDisabled('Sushi')}>Sushi</button></li>
+                <li><button className={this.activeHandlers('Cake')} onClick={() => this.props.handleCounter('Cake')} disabled={this.isDisabled('Cake')}>Cakes</button></li>
             </ul>
         </div>
         );

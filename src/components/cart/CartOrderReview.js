@@ -67,8 +67,15 @@ class CartOrderReview extends React.Component {
 
         <CartProgress progress="2" />
 
-        <h2>Place Order</h2>
-        <div className="cart--item">
+        <div className="cart--col-names cart--col-alt">
+          <h4 className="cart--col-item grey-border">Item</h4>
+          <h4 className="cart--col-qty grey-border">Qty</h4>
+          <h4 className="cart--col-price grey-border">Price</h4>
+          <h4 className="cart--col-remove">Remove</h4>
+        </div>
+
+        <h2 className="checkout--title">Place Order</h2>
+        <div className="cart--items">
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}

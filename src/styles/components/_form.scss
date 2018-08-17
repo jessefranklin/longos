@@ -1,4 +1,5 @@
 .form-group {
+    font-family:$sans;
     .form-control {
         padding: 10px 0;
         width: 100%;
@@ -6,18 +7,20 @@
         height: auto;
         background: transparent;
         border: none;
-        border-bottom: 1px solid #000;
+        border-bottom: 2px solid $dark-grey;
         font-size: 18px;
         font-weight: 400;
         padding: 20px 0;
         margin-bottom: 20px;
         box-shadow: none;
         &.error {
-            border-bottom:1px solid $red;
+            border-bottom:2px solid $red;
+        }
+        &::placeholder{
+            font-family: $sans;
         }
     }
 }
-
 
 .error { border: 1px solid $red; }
 
@@ -33,7 +36,7 @@ input[type="text"] {
     .search {
         box-shadow: none;
         border: none;
-        border-radius: 15px;
+        border-radius: 27px !important;
         line-height: 1em;
         font-size: 16px;
         padding: 10px;
@@ -41,8 +44,8 @@ input[type="text"] {
     }
     .close {
         position: absolute;
-        right: 0;
-        top: 5px;
+        right: 11px;
+        top: 6px;
     }
 }
 

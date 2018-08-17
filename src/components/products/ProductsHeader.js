@@ -79,17 +79,17 @@ const CartHeader = ({profile,showMenu,toggleMenu,cartLength,handleClick,total}) 
          
         </div> 
         <div className="cart--container" >
-          <Link className="btn" to="/cart" onClick={handleClick} disabled={cartLength?'':'disabled'}>
+          <Link className="btn btn-cart" to="/cart" onClick={handleClick} disabled={cartLength?'':'disabled'}>
             <FontAwesome
               className='super-crazy-colors'
               name='shopping-cart'
               size='2x'
             />
+            {cartLength >= 1 && <div className="cart__indicator">{total} </div>}
           </Link>
-          {cartLength >= 1 && <div className="cart__indicator">{total} </div>}
         </div>
         <div className="place-order--container">
-          {total >= 1 ? <Link to="/order" className="link--place-order">Place Order</Link> : null }
+          {total >= 1 ? <Link to="/order" className="link--place-order">Place Order</Link> : <p className="empty--place-order">Cart Empty</p> }
         </div>
       </div>
     );

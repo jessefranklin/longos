@@ -5,14 +5,14 @@ import { orderDate } from '../../selectors/orderDate';
 import OrderListCounterItem  from './OrderListCounterItem';
 
 
-const OrderListItem = ({item}) => {
+const OrderListItem = ({item, pastOrders}) => {
 
     const counters = sortByCounter(item.counters);
     const dateNotification = orderDate(item.pickupDate);
     return(
         <div className='orders--item divTableRow'>
             <div className="cell-id">
-                {dateNotification ? <Indicator notification={dateNotification} />: ''}
+                {dateNotification && !pastOrders ? <Indicator notification={dateNotification} />: ''}
                 {item.id}
             </div>
 

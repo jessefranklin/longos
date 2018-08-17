@@ -1,8 +1,135 @@
 .cart--header  {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+    background-color: #fff;
 }
+
+.grey-border{
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px; 
+        height: 200px; 
+        background-color: $light-grey;
+      }
+}
+
+.cart--col-names {
+    padding:1rem 5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: $dark-grey;
+    color:#fff;
+    .cart--col-item {
+        width:40%;
+        text-align: left;
+    }
+    .cart--col-qty {
+        width:24%;
+    }
+    .cart--col-price {
+        width:24%;
+    }
+    .cart--col-remove {
+        width:12%;
+    }
+    h4{
+        font-size: 20px;
+    }
+    .grey-border{
+        &:after {
+            height: 25px;
+          }
+    }
+    &.cart--col-alt{
+        color: $grey;
+        background-color: #fff;
+    }
+}
+
+.link--continue-shopping {
+    text-transform: uppercase;
+    padding-right: 15px;
+    position: relative;
+    color: $red;
+    font-family: $sans;
+    font-weight: 600;
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 3px;
+      width: 0; 
+      height: 0; 
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid $red;
+    }
+  }
+
+.cart--items{
+    margin: 5rem;
+}
+
 .cart--item {
     background: #fff;
     margin-bottom: 1rem;
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    text-align: center;
+    .btn-qu{
+        width:12%;
+    }
+    .fa-trash {
+        color: $red;
+    }
+}
+
+.cart--item-row1 {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:1rem 0rem;
+    h4.grey-border {
+        width: 24%;
+        font-size: 36px;
+    }
+}
+
+.cart--item-img {
+    width: 40%;
+    img{
+        max-width: 100%;
+        max-height: 220px;
+    }
+}
+
+.cart--item-qty {
+    width: 24%;
+    .qty--container{
+        display:flex;
+        justify-content: center;
+    }
+    h4{
+        font-size:32px;
+    }
+}
+
+.cart--item-comment{
+    font-family: $sans;
+    font-size:16px;
+    padding:1rem 4rem 3rem 4rem;
 }

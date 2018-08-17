@@ -40,16 +40,17 @@ class CartListItem extends Component {
 const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
   return (
     <div className="cart--item">
-        <img src={item.productImage} alt={item.name} />
-        <h4>{item.productName}</h4>
-        <div>
-          {item.comment}  
-          
+      <div className="cart--item-row1">
+        <div className="cart--item-img grey-border">
+          <img src={item.productImage} alt={item.name} />
+          <h4>{item.productName}</h4>
+        </div>
+        <div className="cart--item-qty grey-border">
           {quantityEditable}
 
           {item.name}
         </div>
-        {formattedItemTotal}
+        <h4 className="grey-border">{formattedItemTotal}</h4>
         <button onClick={onRemove} className="btn-qu">
             <FontAwesome
             className='fa fa-trash'
@@ -58,6 +59,12 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
             aria-hidden='true'
           />
         </button>
+      </div>
+      <div className="cart--item-row2">
+        <div className="cart--item-comment">
+          {item.comment}
+        </div>
+      </div>
     </div>
   );
 };

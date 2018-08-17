@@ -95,8 +95,10 @@ class OrderDetailItem extends Component {
                   clearable={false} 
                 />
 
-                
-                <Barcode value="88888" />
+                <Barcode 
+                  format="UPC" 
+                  value="123456789999" />
+
               </div>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
                 <div className="my-collapsible__content-inner">

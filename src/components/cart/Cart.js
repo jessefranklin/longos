@@ -27,7 +27,14 @@ class Cart extends React.Component {
         <Announcements message={this.state.announcementMessage} />
         <div className="cart--header">
           <h2>Shopping Cart ({total} {itemWord})</h2> 
-          <Link to="/products" className="btn btn-secondary">Continue Shopping</Link>
+          <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
+        </div>
+
+        <div className="cart--col-names">
+          <h4 className="cart--col-item grey-border">Item</h4>
+          <h4 className="cart--col-qty grey-border">Qty</h4>
+          <h4 className="cart--col-price grey-border">Price</h4>
+          <h4 className="cart--col-remove">Remove</h4>
         </div>
 
         <div className="cart--items">
