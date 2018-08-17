@@ -111,7 +111,7 @@ class CartOrder extends React.Component {
               onChange={this.handleChange.bind(this)}
             />
 
-            <div className='disclaimer--checkout'>
+            <div className='checkout--disclaimer'>
               Allow for 24 hour notice or call in store for other accommodations."
             </div>
           </div>

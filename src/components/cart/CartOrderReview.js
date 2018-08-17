@@ -80,32 +80,38 @@ class CartOrderReview extends React.Component {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}
         </div>
-        <div>
-          Total price: {formattedCartTotal}
-          {store.tax.name}: {taxAmount}
-          Grand Total: {totalAmount}
+        <h2 className="checkout--title">Confirm Order Information</h2>
+        <div className="checkout--info">
+          <strong>{profile.username}</strong>
+          <div>
+            <span>
+              <strong>Phone</strong><br />
+              {profile.phone}
+            </span>
+            <span>
+              <strong>Email</strong><br />
+              {profile.email != 0 ? profile.email : 'N/A' }
+            </span>
+            <span>
+              <strong>Pickup Date</strong><br />
+              {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
+            </span>
+            <span>
+              <strong>Pickup Time</strong><br />
+              {time}
+              {profile.time}
+            </span>
+            <span>
+              at {store.location.address} {store.location.city}
+            </span>
+          </div>
         </div>
-        <div>
-          {profile.username}
-          {profile.phone}
-          {profile.email}
-          {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
-          <br />
-          {time}
-          <br />
-
-          {profile.time}
-
-          at {store.location.address} {store.location.city}
-
-        </div>
-        <div>
+        <div className="checkout--terms">
           <h5>{store.terms.header}</h5>
-          <p>{store.terms.body}
-          
-          </p>
-
-          <div className="checkbox">
+          <p>{store.terms.body}</p>
+        </div>
+        <div>
+          <div className="checkbox checkbox-fullwidth">
           <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
           <input
             name="terms"
@@ -116,10 +122,13 @@ class CartOrderReview extends React.Component {
           </div>
 
         </div>
-
-        <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
-        <Link to="/products" className="btn btn-secondary">Cancel</Link>
-
+        <div className="checkout--submit">
+          {/* Total price: {formattedCartTotal}
+          {store.tax.name}: {taxAmount} */}
+          <span>Grand Total: {totalAmount}</span>
+          <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
+          <Link to="/products" className="btn btn-secondary">Cancel</Link>
+        </div>
       </div>
     )
   }
