@@ -15,7 +15,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import LoginRoute from './LoginRoute';
 import OrderDetail from  '../components/csa/OrderDetail';
-
+import CSALogin from '../components/csa/CSALogin';
 
 export const history = createHistory();
 
@@ -24,12 +24,13 @@ const AppRouter = () => (
     <div>
       <Switch>
         <LoginRoute path="/" component={LoginPage} exact={true} />
-        <PublicRoute path="/settings" component={Settings} />
         <PublicRoute path="/products" component={Products} />
         <PublicRoute path="/cart" component={Cart} />
         <PublicRoute path="/orderreview" component={CartOrderReview} />
         <PublicRoute path="/order" component={Order} />
         <PublicRoute path="/orderConfirmation" component={OrderConfirmation} />
+        <PublicRoute path="/CSALogin" component={CSALogin} />
+        <PrivateRoute path="/settings" component={Settings} />
         <PrivateRoute path="/orderDashboard" component={DashboardPage} />
         <PrivateRoute path="/orderDetail/:id" component={OrderDetail} />
         <PrivateRoute path="/pastOrders" component={PastOrders} />

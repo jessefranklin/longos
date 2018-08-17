@@ -23,7 +23,7 @@
     "express": "4.15.4",
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "^1.1.11",
-    "firebase": "4.2.0",
+    "firebase": "^5.4.0",
     "history": "4.7.2",
     "lodash-object": "^4.17.7",
     "moment": "2.18.1",

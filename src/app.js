@@ -7,6 +7,8 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import LoadingPage from './components/LoadingPage';
+import { login,logout } from './actions/csa/auth';
+import { firebase } from './firebase/firebase';
 
 const store = configureStore();
 
@@ -27,4 +29,20 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
-renderApp();
+firebase.auth().onAuthStateChanged((user) => {
+  if(user){
+    console.log('logged in');
+    store.dispatch(login(user.uid));
+    renderApp();
+    if( history.location.pathname === '/CSALogin' ){
+      history.push('/orderDashboard');
+    } 
+
+  } else {
+    console.log('logged out');
+    store.dispatch(logout());
+    renderApp();
+    history.push('/CSALogin');
+  }
+})
+
