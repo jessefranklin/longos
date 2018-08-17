@@ -66,52 +66,54 @@ class CartOrder extends React.Component {
         <CartProgress progress="1" />
 
         <div className="form-group">
-          <SingleDatePicker
-            date={this.state.pickUpDate} 
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
+          <div className="form-inputs">
+            <SingleDatePicker
+              date={this.state.pickUpDate} 
+              onDateChange={this.onDateChange}
+              focused={this.state.calendarFocused}
+              onFocusChange={this.onFocusChange}
+              numberOfMonths={1}
+              isOutsideRange={() => false}
+            />
 
-          <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
+            <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
 
-          <input
-            type="text"
-            name="username" 
-            className='form-control'
-            placeholder="username"
-            value={this.state.username}
-            onChange={this.handleChange.bind(this)}
-          />
-          <input
-            type="email"
-            name="email"
-            className='form-control' 
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.handleChange.bind(this)}
-          />
-          <input
-            type="phone"
-            name="phone" 
-            className='form-control'
-            placeholder="phone"
-            value={this.state.phone}
-            onChange={this.handleChange.bind(this)}
-          />
-          <input
-            type="number" 
-            name="rewards" 
-            className='form-control'
-            value={this.state.rewards}
-            placeholder="rewards number"
-            onChange={this.handleChange.bind(this)}
-          />
+            <input
+              type="text"
+              name="username" 
+              className='form-control'
+              placeholder="username"
+              value={this.state.username}
+              onChange={this.handleChange.bind(this)}
+            />
+            <input
+              type="email"
+              name="email"
+              className='form-control' 
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.handleChange.bind(this)}
+            />
+            <input
+              type="phone"
+              name="phone" 
+              className='form-control'
+              placeholder="phone"
+              value={this.state.phone}
+              onChange={this.handleChange.bind(this)}
+            />
+            <input
+              type="number" 
+              name="rewards" 
+              className='form-control'
+              value={this.state.rewards}
+              placeholder="rewards number"
+              onChange={this.handleChange.bind(this)}
+            />
 
-          <div>
-            Allow for 24 hour notice or call in store for other accommodations."
+            <div className='disclaimer--checkout'>
+              Allow for 24 hour notice or call in store for other accommodations."
+            </div>
           </div>
 
           <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
