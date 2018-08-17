@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
+import CSAHeader from './CSAHeader';
+import CSAFooter from './CSAFooter';
 
 class Settings extends React.Component {
   constructor(props) {
@@ -26,18 +28,22 @@ class Settings extends React.Component {
     console.log(options);
     return( 
       <div>
-        <div className="box-layout">
-          <h1>Settings</h1>
-          <Select
-            name="option"
-            value={this.state.selectedOption}
-            onChange={this.onSelectChange}
-            options={options}
-            searchable={false}
-            clearable={false} 
-          />
-          <button>Save</button>
+        <CSAHeader />
+        <div className="content--container">
+          <div className="box-layout">
+            <h1>Settings</h1>
+            <Select
+              name="option"
+              value={this.state.selectedOption}
+              onChange={this.onSelectChange}
+              options={options}
+              searchable={false}
+              clearable={false} 
+            />
+            <button>Save</button>
+          </div>
         </div>
+        <CSAFooter />
       </div>
     )
   }
