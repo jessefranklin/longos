@@ -37,6 +37,7 @@ class Settings extends React.Component {
         <div className="content--container">
           <div className="box-layout">
             <h1>Settings</h1>
+            <h3>Store Location</h3>
             <Select
               name="option"
               value={this.state.selectedOption.value}
