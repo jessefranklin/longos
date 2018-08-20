@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import ProductsHeader from '../components/products/ProductsHeader';
+import HOC from '../components/HOC';
 
 export const PublicRoute = ({
   component: Component,
@@ -12,6 +13,7 @@ export const PublicRoute = ({
       <div className="content--container">
         <Component {...props} />
       </div>
+      <HOC />
     </div>
   )} />
 );
