@@ -1,4 +1,5 @@
-[{
+[{  
+    "id": 0,
     "name": "store1",
     "store_id": "store1",
     "zone": "5",
@@ -74,13 +75,14 @@
         }]
     }
 },{
+    "id": 1,
     "name": "store2",
     "store_id": "store2",
     "zone": "6",
     "location": {
         "provence": "alberta",
         "city": "calgary",
-        "address": "123 yonge st."
+        "address": "500 Bloor St."
     },
     "tax": {
         "name": "PST",

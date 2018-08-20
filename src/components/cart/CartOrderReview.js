@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { dispatchOrder } from '../../actions/order';
-import config from '../../server/config.json';
 import cartTotal from '../../selectors/cartTotal';
 import moment from 'moment';
 import numeral from 'numeral';
@@ -10,6 +9,7 @@ import CartListItem from './CartListItem';
 import CartProgress from './CartProgress';
 import { Checkbox } from 'react-bootstrap';
 
+import config from '../../server/config.json';
 
 const store = config[0];
 
@@ -37,6 +37,10 @@ class CartOrderReview extends React.Component {
 
     this.handleCheck = this.handleCheck.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
+  }
+  componentDidMount() {
+    
   }
   componentDidUpdate() {
     if (this.props.cart.length < 1) {
@@ -135,6 +139,7 @@ class CartOrderReview extends React.Component {
 }
   
 const mapStateToProps = (state) => ({
+    settings: state.settings,
     profile: state.profile,
     cart: state.cart,
     cartTotal: cartTotal(state.cart),

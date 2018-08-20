@@ -39,7 +39,7 @@ export class OrdersFilters extends React.Component {
             <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} />
           </div>
           
-          <OrderStatusFilters />
+          <OrderStatusFilters pastOrders={this.props.pastOrders} />
             
         </div>
       );

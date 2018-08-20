@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { startLogout } from '../../actions/csa/auth';
 
-const Header = () => (
+export const Header = ({ startLogout }) => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">
@@ -10,10 +12,18 @@ const Header = () => (
             <span className="longos-logo-white"></span>
           </h1>
         </Link>
-        <Link to="/" className="customer-login">Go to Customer Login</Link>
+        <div className="">
+          <button className="btn-link  customer-login" onClick={startLogout}>Logout</button>
+          <Link to="/" className="customer-login">Go to Customer Login</Link>
+        </div>
       </div>
     </div>
   </header>
 );
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+  startLogout: () => dispatch(startLogout())
+});
+
+
+export default connect(undefined,mapDispatchToProps)(Header);

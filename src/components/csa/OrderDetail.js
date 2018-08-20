@@ -56,7 +56,6 @@ class OrderDetail extends Component {
     axios.get(url, headers).then(
         (response) => {
             this.setState(response.data);
-            console.log(response.data);
             if(this.state.counter != ''){
               this.handleCounter(this.state.counter);
             }
