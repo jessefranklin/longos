@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchCSAPastOrders }  from '../../actions/csa/pastOrders';
 import OrderListItem from './OrderListItem';
 import CSAHeader from './CSAHeader';
+import CSAFooter from './CSAFooter';
 import OrdersFilters from './OrdersFilters';
 import config from '../../server/config.json';
 import { Pagination } from '../partials/Pagination';
@@ -119,6 +120,8 @@ class PastOrders extends React.Component {
 
           <Pagination onPaginationChange={this.onPaginationChange} page={this.state.page} />
         </div>
+        <CSAFooter />
+
       </div>
     )
   }

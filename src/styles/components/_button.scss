@@ -31,7 +31,14 @@
   display: block;
 }
 
-.btn-qu {
+.btn-link {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  display: inline-block;
+}
+
+.btn-sq {
   border: none;
   box-shadow: none;
   background: transparent;

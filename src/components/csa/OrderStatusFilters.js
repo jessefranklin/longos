@@ -23,7 +23,7 @@ export class OrderStatusFilters extends React.Component {
             <ul className="statusFilter">
                 <li><button onClick={() => this.handleStatus(0)}>Pending</button></li>
                 <li><button onClick={() => this.handleStatus(1)}>Ready for pickup</button></li>
-                <li><Link to="/pastOrders">Picked Up</Link></li>
+                <li><Link to="/pastOrders" className={this.props.pastOrders ? 'active' : ''}>Picked Up</Link></li>
             </ul>
         </div>
     );
