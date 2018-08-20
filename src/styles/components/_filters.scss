@@ -1,28 +1,70 @@
 .rowFilter {
+    position: fixed;
+    top:10rem;
+    height:10rem;
+    width:100%;
+    padding:0 5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+    background-color: #fff; 
+    font-family: $sans; 
 }
 
 .counterFilter {
-    li {
-        display: inline-block;
-        list-style: none;
-        button {
-            &.active {
-                border: 1px solid $red;
-            } 
+    ul{
+        padding:0;
+        margin:0;
+        li {
+            display: inline-block;
+            list-style: none;
+            margin-left:5px;
+            button {
+                padding: 1rem;
+                background-color: #fff;
+                border-radius: 27px;
+                border:none;
+                font-size: 14px;
+                font-weight: 600;
+                color: $dark-grey;
+                text-transform: uppercase;
+                &.active {
+                    background-color: $off-white;
+                } 
+            }
         }
     }
 }
 
 .statusFilter {
+    margin:0;
+    padding:0;
+    font-family: $sans;
+    font-size: 18px;
+    font-weight: 500;
     li {
+        width:32%;
+        margin: 0 1% 0 0;
         display: inline-block;
         list-style: none;
-        button {
-            &.active {
+        text-align: center;
+        &:first-child{
+            margin-left:1%;
+        }
+        button,
+        a {
+            display:block;
+            width:100%;
+            height:100%;
+            background-color: $offwhite-light;
+            border:none;
+            border-top-right-radius: 18px;
+            border-top-left-radius: 18px;
+            padding: 1rem 0;
+            color: $dark-grey;
+            &:active {
                 border: 1px solid $red;
+                background-color: #fff;
             } 
         }
     }

@@ -14,7 +14,7 @@ export const Header = ({ startLogout }) => (
         </Link>
         <div className="">
           <button className="btn-link  customer-login" onClick={startLogout}>Logout</button>
-          <Link to="/" className="customer-login">Go to Customer Login</Link>
+          <Link to="/" className="customer-login">Customer Login</Link>
         </div>
       </div>
     </div>

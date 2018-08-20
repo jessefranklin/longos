@@ -27,6 +27,7 @@ export class OrdersFilters extends React.Component {
         <div>
           <div className="rowFilter">
             <h3>Orders</h3>
+            <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} />
             <div className="searchContainer">
               <input
                   type="text"
@@ -34,9 +35,9 @@ export class OrdersFilters extends React.Component {
                   onChange={this.onTextChange}
                   className="search"
                   />
+              <i className="fas fa-search"></i>
               <button className="close" onClick={this.onClearField}>x</button>
             </div>
-            <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} />
           </div>
           
           <OrderStatusFilters pastOrders={this.props.pastOrders} />
