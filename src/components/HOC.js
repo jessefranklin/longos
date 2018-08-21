@@ -1,36 +1,81 @@
 import React, { Component } from 'react'
 import IdleTimer from 'react-idle-timer'
- 
-export default class HOC extends Component {
-  constructor(props) {
+import { connect } from "react-redux";
+
+
+class HOC extends Component {
+  constructor (props) {
     super(props)
     this.idleTimer = null
+    this.state = {
+      timeout: this.props.settings ? this.props.settings.timeOut : 30000,
+      remaining: null,
+      isIdle: false,
+      lastActive: null,
+      elapsed: null
+    }
+    // Bind event handlers and methods
     this.onActive = this._onActive.bind(this)
     this.onIdle = this._onIdle.bind(this)
+    this.reset = this._reset.bind(this)
+    this.changeTimeout = this._changeTimeout.bind(this)
   }
- 
-  render() {
-    return (
-      <IdleTimer
-        ref={ref => { this.idleTimer = ref }}
-        element={document}
-        onActive={this.onActive}
-        onIdle={this.onIdle}
-        timeout={1000 *2}>
- 
-        <h5>Time out modal goes here</h5>
- 
-      </IdleTimer>
-    )
+
+  componentDidMount () {
+    this.setState({
+      remaining: this.idleTimer.getRemainingTime(),
+      lastActive: this.idleTimer.getLastActiveTime(),
+      elapsed: this.idleTimer.getElapsedTime()
+    })
+
+    setInterval(() => {
+      this.setState({
+        remaining: this.idleTimer.getRemainingTime(),
+        lastActive: this.idleTimer.getLastActiveTime(),
+        elapsed: this.idleTimer.getElapsedTime()
+      })
+    }, 1000)
   }
- 
-  _onActive(e) {
-    console.log('user is active', e)
-    console.log('time remaining', this.idleTimer.getRemainingTime())
+
+  render () {
+      return (
+        <IdleTimer
+          ref={ref => { this.idleTimer = ref }}
+          onActive={this.onActive}
+          onIdle={this.onIdle}
+          timeout={this.state.timeout}
+          startOnLoad>
+          <div>
+            <div>
+              <h4>Timeout: {this.state.timeout}ms</h4>
+              <h4>Time Remaining: {this.state.remaining}</h4>
+            </div>
+          </div>
+        </IdleTimer>
+      )
   }
- 
-  _onIdle(e) {
-    console.log('user is idle', e)
-    console.log('last active', this.idleTimer.getLastActiveTime())
+
+  _onActive () {
+    this.setState({ isIdle: false })
+  }
+
+  _onIdle () {
+    this.setState({ isIdle: true })
+  }
+
+  _changeTimeout () {
+    this.setState({
+      timeout: this.refs.timeoutInput.state.value()
+    })
+  }
+
+  _reset () {
+    this.idleTimer.reset()
   }
 }
+
+const mapStateToProps = state => ({
+  settings: state.settings
+});
+
+export default connect(mapStateToProps)(HOC);
