@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import IdleTimer from 'react-idle-timer';
 import { Modal } from 'react-bootstrap';
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import moment from 'moment';
 
 class HOC extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  } 
   constructor (props) {
     super(props)
     this.idleTimer = null
     this.state = {
-      timeout: this.props.settings ? this.props.settings.timeOut : 30000,
+      timeoutActive: false,
+      timeout: this.props.settings ? this.props.settings.timeOut : 120000,
       remaining: null,
       isIdle: false,
       lastActive: null,
@@ -23,25 +29,35 @@ class HOC extends Component {
   }
 
   componentDidMount () {
+    if(this.context.router.history.location.pathname === "/products"){
+      this.setState({timeoutActive: true});
+    }
+    if(this.context.router.history.location.pathname === "/"){
+      this.setState({timeoutActive: false});
+    }
     this.setState({
       remaining: this.idleTimer.getRemainingTime(),
       lastActive: this.idleTimer.getLastActiveTime(),
       elapsed: this.idleTimer.getElapsedTime()
     })
-
-    setInterval(() => {
-      if(this.idleTimer.getRemainingTime() <= 1000){
-
-      }
-      this.setState({
-        remaining: this.idleTimer.getRemainingTime(),
-        lastActive: this.idleTimer.getLastActiveTime(),
-        elapsed: this.idleTimer.getElapsedTime(),
-        showTimeout: this.idleTimer.getRemainingTime() < 60000 ? true : false
-      })
-    }, 1000)
+    if(this.state.timeoutActive){
+      setInterval(() => {
+        console.log(this.context.router.history.location.pathname);
+        if(this.idleTimer.getRemainingTime() <= 1000){
+          this.onCancelOrder();
+        }
+        this.setState({
+          remaining: this.idleTimer.getRemainingTime(),
+          lastActive: this.idleTimer.getLastActiveTime(),
+          elapsed: this.idleTimer.getElapsedTime(),
+          showTimeout: this.idleTimer.getRemainingTime() < 10000 ? true : false
+        })
+      }, 1000)
+    }
   }
-
+  onCancelOrder(){
+    this.context.router.history.push('/');
+  }
   render () {
       return (
         <div>
@@ -52,18 +68,17 @@ class HOC extends Component {
             timeout={this.state.timeout}
             startOnLoad>
             <div>
-              {
-                this.state.showTimeout
-                  ? (
-                    <div>
-                      <h4>Timeout: {this.state.timeout}ms</h4>
-                      <h4>Time Remaining: {this.state.remaining}</h4>
-                    </div>
-                  )
-                  : (
-                    null
-                  )
-              }
+              <Modal show={this.state.showTimeout}>
+                <div className="">
+                  <h3>Timeout Warning</h3>
+                  <h4>Your current order will be cancelled in {moment.duration(this.state.remaining).seconds()} sec</h4>
+                  <div>
+                    <button>Resume Order</button>
+                    <button onClick={this.onCancelOrder}>Cancel Order</button>
+                  </div>
+                </div>
+              </Modal>
+             
             </div>
           </IdleTimer>
         </div>

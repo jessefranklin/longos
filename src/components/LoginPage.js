@@ -20,9 +20,6 @@ const headers = {
 }
 
 class LoginPage extends React.Component {
-  state = {
-    
-  };
   constructor(props) {
     super(props);
 
