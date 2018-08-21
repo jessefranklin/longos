@@ -20,7 +20,7 @@ class CartOrderReview extends React.Component {
     super(props);
 
     this.state = {
-      showTerms: true,
+      showTerms: false,
       agreedTerms: false,
       orderId: null,
       storeId: store.store_id,
@@ -63,6 +63,12 @@ class CartOrderReview extends React.Component {
   };
   handleCheck(e) {
     this.setState({agreedTerms: !!e.target.checked});
+  }
+  handleClose = () =>{
+    this.setState({showTerms: false});
+  }
+  onShowTerms =() =>{
+    this.setState({showTerms: true});
   }
   render() {
     const { profile, cart, cartTotal, order } = this.props;
@@ -118,6 +124,7 @@ class CartOrderReview extends React.Component {
         <div className="checkout--terms">
           <h5>{store.terms.header}</h5>
           <p>{store.terms.body}</p>
+          <button onClick={this.onShowTerms}>Show Terms</button>
         </div>
         <div>
           <div className="checkbox checkbox-fullwidth">
@@ -138,7 +145,7 @@ class CartOrderReview extends React.Component {
           <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>
-        <TOC showTerms={this.state.showTerms} />
+        <TOC showTerms={this.state.showTerms} handleClose={this.handleClose} />
       </div>
     )
   }
