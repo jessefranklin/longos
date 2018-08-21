@@ -15,7 +15,7 @@
         top: 50%;
         transform: translateY(-50%);
         width: 1px; 
-        height: 200px; 
+        height: 120px; 
         background-color: $light-grey;
       }
 }
@@ -29,7 +29,7 @@
     background-color: $dark-grey;
     color:#fff;
     .cart--col-item {
-        width:40%;
+        width:35%;
         text-align: left;
     }
     .cart--col-qty {
@@ -39,10 +39,10 @@
         width:24%;
     }
     .cart--col-remove {
-        width:12%;
+        width:17%;
     }
     h4{
-        font-size: 20px;
+        font-size: 18px;
     }
     .grey-border{
         &:after {
@@ -62,11 +62,16 @@
     color: $red;
     font-family: $sans;
     font-weight: 600;
+    &:hover{
+        color:$red;
+        opacity: .75;
+        text-decoration: none;
+    }
     &:after {
       content: '';
       position: absolute;
       right: 0;
-      top: 3px;
+      top: 5px;
       width: 0; 
       height: 0; 
       border-top: 5px solid transparent;
@@ -89,7 +94,7 @@
     border-radius: 15px;
     text-align: center;
     .btn-qu{
-        width:12%;
+        width:17%;
         background: transparent;
         border:none;
     }
@@ -107,14 +112,14 @@
     padding:1rem 0rem;
     h4.grey-border {
         width: 24%;
-        font-size: 36px;
+        font-size: 22px;
     }
 }
 
 .cart--item-img {
-    width: 40%;
+    width: 35%;
     img{
-        max-width: 100%;
+        max-width: 60%;
         max-height: 220px;
     }
 }
@@ -129,7 +134,7 @@
         justify-content: center;
     }
     h4{
-        font-size:32px;
+        font-size:20px;
     }
 }
 
@@ -137,4 +142,37 @@
     font-family: $sans;
     font-size:16px;
     padding:1rem 4rem 3rem 4rem;
+}
+
+.cart--summary{
+    width:100%;
+    position: fixed;
+    bottom:0;
+    span,
+    a{
+        padding: 3rem;
+        color:white;
+        font-family: $sans;
+        font-size:24px;
+        font-weight:600;
+        line-height: 32px;
+        background-color: $red;
+    }
+    span{
+        width:70%;
+        border-bottom: 1px solid $red;
+        display: inline-block;
+    }
+    .btn{
+        width:30%;
+        background-color: $green;
+        border:none;
+        border-radius:0;
+        border-bottom: 1px solid $green;
+        text-transform: uppercase;
+        vertical-align: baseline;
+        &:hover{
+            color:#ddd;
+        }
+    }
 }

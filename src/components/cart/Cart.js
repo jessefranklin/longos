@@ -42,10 +42,12 @@ class Cart extends React.Component {
             return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
           })}
         </div>
-        <div>
-        Total price: {formattedCartTotal}
+        <div className="cart--summary">
+          <span>
+            Total price: {formattedCartTotal}
+          </span>
+          <Link to="/order" className="btn">Place Order</Link>
         </div>
-        <Link to="/order" className="btn">Place Order</Link>
       </div>
     )
   }
