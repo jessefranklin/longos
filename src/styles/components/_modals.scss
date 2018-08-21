@@ -1,13 +1,17 @@
 
 .modal-header{
-    height: 200px;
+    height: 400px;
     overflow: hidden;
     img {
-        
+        max-height:400px;
     }
     .close {
         font-size:50px;
         color:$red;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        z-index: 1;
         &:hover {
             color:$red;
         }
@@ -67,6 +71,9 @@
         .Select-value{
             transform:translateY(3px);
         }
+    }
+    .Select-menu-outer{
+        color:$red !important;
     }
 }
 

@@ -8,7 +8,6 @@ import ProductsSidebar from './ProductsSidebar';
 import ProductsList from './ProductsList';
 import ProductsHeader from './ProductsHeader';
 
-
 class Products extends React.Component {
   render() {
     const {loading, products, categories } = this.props;
@@ -20,6 +19,7 @@ class Products extends React.Component {
           <ProductsSidebar categories={categories} />
         </aside>
         <ProductsList products={products} loading={loading} />
+
       </div>
     );
   }

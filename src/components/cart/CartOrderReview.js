@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { dispatchOrder } from '../../actions/order';
-import config from '../../server/config.json';
 import cartTotal from '../../selectors/cartTotal';
 import moment from 'moment';
 import numeral from 'numeral';
@@ -10,8 +9,9 @@ import CartListItem from './CartListItem';
 import CartProgress from './CartProgress';
 import { Checkbox } from 'react-bootstrap';
 
+import config from '../../server/config.json';
 
-const store = config[0];
+let store = config[0];
 
 class CartOrderReview extends React.Component {
   constructor(props) {
@@ -37,6 +37,12 @@ class CartOrderReview extends React.Component {
 
     this.handleCheck = this.handleCheck.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
+  }
+  componentDidMount() {
+    if(this.props.settings.store){
+      store = this.props.settings.store
+    }
   }
   componentDidUpdate() {
     if (this.props.cart.length < 1) {
@@ -80,32 +86,38 @@ class CartOrderReview extends React.Component {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}
         </div>
-        <div>
-          Total price: {formattedCartTotal}
-          {store.tax.name}: {taxAmount}
-          Grand Total: {totalAmount}
+        <h2 className="checkout--title">Confirm Order Information</h2>
+        <div className="checkout--info">
+          <strong>{profile.username}</strong>
+          <div>
+            <span>
+              <strong>Phone</strong><br />
+              {profile.phone}
+            </span>
+            <span>
+              <strong>Email</strong><br />
+              {profile.email != 0 ? profile.email : 'N/A' }
+            </span>
+            <span>
+              <strong>Pickup Date</strong><br />
+              {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
+            </span>
+            <span>
+              <strong>Pickup Time</strong><br />
+              {time}
+              {profile.time}
+            </span>
+            <span>
+              at {store.location.address} {store.location.city}
+            </span>
+          </div>
         </div>
-        <div>
-          {profile.username}
-          {profile.phone}
-          {profile.email}
-          {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
-          <br />
-          {time}
-          <br />
-
-          {profile.time}
-
-          at {store.location.address} {store.location.city}
-
-        </div>
-        <div>
+        <div className="checkout--terms">
           <h5>{store.terms.header}</h5>
-          <p>{store.terms.body}
-          
-          </p>
-
-          <div className="checkbox">
+          <p>{store.terms.body}</p>
+        </div>
+        <div>
+          <div className="checkbox checkbox-fullwidth">
           <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
           <input
             name="terms"
@@ -116,16 +128,20 @@ class CartOrderReview extends React.Component {
           </div>
 
         </div>
-
-        <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
-        <Link to="/products" className="btn btn-secondary">Cancel</Link>
-
+        <div className="checkout--submit">
+          {/* Total price: {formattedCartTotal}
+          {store.tax.name}: {taxAmount} */}
+          <span>Grand Total: {totalAmount}</span>
+          <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
+          <Link to="/products" className="btn btn-secondary">Cancel</Link>
+        </div>
       </div>
     )
   }
 }
   
 const mapStateToProps = (state) => ({
+    settings: state.settings,
     profile: state.profile,
     cart: state.cart,
     cartTotal: cartTotal(state.cart),

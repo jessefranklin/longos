@@ -3,12 +3,15 @@ $dark-grey: #494c4f;
 $grey: #808284;
 $dark-grey: #494c4f;
 $light-grey: #999b9c;
-$off-white: #f2eedd;
+$lighter-grey: #e1ddcf;
 $red: #d0141e;
 $green: #52aa4f;
 $light-green: #c1da0f;
 $yellow: #c5a513;
+$yellow-alt: #c3b32c;
 $offwhite: #f5f1e4;
+$off-white: #f2eedd;
+$offwhite-light: #f9f7ee;
 
 // Font Size
 $font-size-large: 1.8rem;
@@ -23,5 +26,6 @@ $xl-size: 4.8rem;
 $desktop-breakpoint: 45rem;
 
 $serif: Times, serif;
-$sans: "josefin",helvetica,sans-serif;
+$sans: 'Open Sans', sans-serif;
+$header: "josefin",helvetica,sans-serif;
 $body: "helvetica neue",helvetica,sans-serif;

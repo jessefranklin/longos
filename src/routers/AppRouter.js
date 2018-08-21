@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
+
 import DashboardPage from '../components/csa/DashboardPage';
 import Products from '../components/products/Products';
 import Settings from '../components/csa/Settings';
@@ -15,7 +16,8 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import LoginRoute from './LoginRoute';
 import OrderDetail from  '../components/csa/OrderDetail';
-
+import CSALogin from '../components/csa/CSALogin';
+import HOC from '../components/HOC';
 
 export const history = createHistory();
 
@@ -24,17 +26,19 @@ const AppRouter = () => (
     <div>
       <Switch>
         <LoginRoute path="/" component={LoginPage} exact={true} />
-        <PublicRoute path="/settings" component={Settings} />
         <PublicRoute path="/products" component={Products} />
         <PublicRoute path="/cart" component={Cart} />
         <PublicRoute path="/orderreview" component={CartOrderReview} />
         <PublicRoute path="/order" component={Order} />
         <PublicRoute path="/orderConfirmation" component={OrderConfirmation} />
+        <LoginRoute path="/CSALogin" component={CSALogin} />
+        <PrivateRoute path="/settings" component={Settings} />
         <PrivateRoute path="/orderDashboard" component={DashboardPage} />
         <PrivateRoute path="/orderDetail/:id" component={OrderDetail} />
         <PrivateRoute path="/pastOrders" component={PastOrders} />
         <Route component={NotFoundPage} />
       </Switch>
+      <HOC />
     </div>
   </Router>
 );
