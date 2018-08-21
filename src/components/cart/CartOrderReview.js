@@ -11,7 +11,7 @@ import { Checkbox } from 'react-bootstrap';
 
 import config from '../../server/config.json';
 
-const store = config[0];
+let store = config[0];
 
 class CartOrderReview extends React.Component {
   constructor(props) {
@@ -40,7 +40,9 @@ class CartOrderReview extends React.Component {
 
   }
   componentDidMount() {
-    
+    if(this.props.settings.store){
+      store = this.props.settings.store
+    }
   }
   componentDidUpdate() {
     if (this.props.cart.length < 1) {

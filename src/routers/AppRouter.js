@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
+import HOC from '../components/HOC';
 import DashboardPage from '../components/csa/DashboardPage';
 import Products from '../components/products/Products';
 import Settings from '../components/csa/Settings';
