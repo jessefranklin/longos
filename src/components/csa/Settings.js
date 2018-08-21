@@ -14,7 +14,7 @@ class Settings extends React.Component {
     super(props);
 
     this.state = {
-      timeOut: 2000,
+      timeOut: 60000,
       selectedOption: this.props.settings.selectedOption ? this.props.settings.selectedOption.value : defaultSelect,
       store: stores[0]
     };
