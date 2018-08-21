@@ -7,6 +7,8 @@ import moment from 'moment';
 import numeral from 'numeral';
 import CartListItem from './CartListItem';
 import CartProgress from './CartProgress';
+import { TOC } from '../TermsAndConditions';
+
 import { Checkbox } from 'react-bootstrap';
 
 import config from '../../server/config.json';
@@ -18,6 +20,7 @@ class CartOrderReview extends React.Component {
     super(props);
 
     this.state = {
+      showTerms: true,
       agreedTerms: false,
       orderId: null,
       storeId: store.store_id,
@@ -135,6 +138,7 @@ class CartOrderReview extends React.Component {
           <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>
+        <TOC showTerms={this.state.showTerms} />
       </div>
     )
   }

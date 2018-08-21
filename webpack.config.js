@@ -49,6 +49,9 @@ module.exports = (env) => {
             loader: 'url-loader'
           }
         ]
+      },{ 
+        test: /\.html$/, 
+        loader: 'html-loader' 
       },{
         test: /\.s?css$/,
         use: CSSExtract.extract({
