@@ -65,10 +65,13 @@ class CartOrderReview extends React.Component {
     this.setState({agreedTerms: !!e.target.checked});
   }
   handleClose = () =>{
-    this.setState({showTerms: false});
+    this.setState({showTerms: false}, () => {
+      document.removeEventListener('click', this.handleClose);
+    });
   }
   onShowTerms =() =>{
     this.setState({showTerms: true});
+    document.addEventListener("click", this.handleClose);
   }
   render() {
     const { profile, cart, cartTotal, order } = this.props;
