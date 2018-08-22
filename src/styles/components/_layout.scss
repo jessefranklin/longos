@@ -3,15 +3,17 @@
 }
 
 .products {
+    margin-top: 3rem;
     aside {
         position: fixed;
-        top: 10rem;
+        top: 12rem;
         width: 25rem;
         height: 100vh;
         
         padding: $s-size 0 $s-size $s-size;
     }
     .product--container {
+        margin-right: 1.2rem;
         margin-left: 27rem;
         padding-bottom: 60rem;
     }

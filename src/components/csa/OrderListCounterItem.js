@@ -8,11 +8,13 @@ const OrderListCounterItem = ({item}) => {
     const statusClass = (status) => {
         switch (status){
             case 0:
-                return 'unassigned';
+                return 'icon-unassigned';
             case 1: 
-                return 'assigned';
+                return 'icon-assigned';
             case 2:
-                return 'completed';
+                return 'icon-inprogress';
+            case 3:
+                return 'icon-completed';
             default:
                 return 'unassigned';
         }

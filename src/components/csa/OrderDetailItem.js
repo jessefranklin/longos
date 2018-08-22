@@ -7,9 +7,10 @@ import { SlideToggle } from 'react-slide-toggle';
 let axios = require('axios');
 
 const options = [
-    { value: 0, label: 'Not ready', disabled: true  },
-    { value: 1, label: 'Mark item ready' },
-    { value: 2, label: 'Ready' }
+    { value: 0, label: 'Not assigned', disabled: true  },
+    { value: 1, label: 'Assigned' },
+    { value: 2, label: 'In Progress' },
+    { value: 3, label: 'Ready' }
 ]
 
 const employees = [
@@ -53,6 +54,7 @@ class OrderDetailItem extends Component {
     
     axios.put(url, headers).then(
         (response) => {
+          console.log(response.data);
           this.props.updateState(response.data);
         },
         (err) => {
@@ -97,7 +99,7 @@ class OrderDetailItem extends Component {
 
                 <Barcode 
                   format="UPC" 
-                  value="123456789999" />
+                  value={order.upc} />
 
               </div>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>

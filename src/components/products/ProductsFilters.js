@@ -21,6 +21,7 @@ export class ProductListFilters extends React.Component {
               onChange={this.onTextChange}
               className="search"
             />
+            <i className="fas fa-search"></i>
             <button className="close" onClick={this.onClearField}>x</button>
           </div>
         </div>
