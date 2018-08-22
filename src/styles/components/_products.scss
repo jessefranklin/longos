@@ -8,13 +8,16 @@
 }
 
 .product--item {
-    width: 30%;
+    width: 32%;
     margin-right: 2%;
     margin-bottom: 2%;
     display: inline-block;
     vertical-align: top;
     position: relative;
     border-radius: 15px;
+    &:nth-child(3n+1){
+        margin-right:0;
+    }
     &.active {
         border: 1px solid $red;
     }

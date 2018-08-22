@@ -67,17 +67,24 @@ class CartOrder extends React.Component {
 
         <div className="form-group">
           <div className="form-inputs">
-            <SingleDatePicker
-              date={this.state.pickUpDate} 
-              onDateChange={this.onDateChange}
-              focused={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-            />
+            <div className="time-inputs">
+              <div className="date-picker">
+                <i className="fa fa-calendar" aria-hidden="true"></i>
+                <SingleDatePicker
+                  date={this.state.pickUpDate} 
+                  onDateChange={this.onDateChange}
+                  focused={this.state.calendarFocused}
+                  onFocusChange={this.onFocusChange}
+                  numberOfMonths={1}
+                  isOutsideRange={() => false}
+                />
+              </div>
 
-            <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
-
+              <div className="time-picker">
+                <i className="fa fa-clock" aria-hidden="true"></i>
+                <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
+              </div>
+            </div>
             <input
               type="text"
               name="username" 

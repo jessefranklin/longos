@@ -1,20 +1,34 @@
 .subheader--checkout{
     width:100%;
-    padding:1rem 5rem;
+    // padding:1rem 0;
     background-color: $dark-grey;
     div{
-        width:33%;     
+        width:33%;
+        height:100%;
+        // padding:1rem 0;     
         display: inline-block;
         text-align: center;
         color:$grey;
         font-family: $sans;
         font-size:20px;
-        a{
-            color:$grey;
-        }
-        &:active{
+        &.active{
             background-color: $green;
-            a{
+            color:white;
+            padding: 1rem;
+            width: 34%;
+        }
+        a{
+            padding:1rem 0;  
+            color:$grey;
+            display:block;
+            width:100%;
+            height:100%;
+            &:hover{
+                text-decoration: none;
+                opacity: .75;
+            }
+            &.active{
+                background-color: $green;
                 color:white;
             }
         }
@@ -25,7 +39,7 @@
             &:after{
                 content:'';
                 position: absolute;
-                top:-10px;
+                top:0px;
                 right:0;
                 width:2px;
                 height:48px;
@@ -42,29 +56,82 @@
             width:60%;
             margin:5rem auto;
         }
+        .time-inputs{
+            display:flex;
+            .date-picker,
+            .time-picker{
+                position: relative;
+            }
+            .fa{
+                position: absolute;
+                top:35%;
+                left:15px;
+                height: 30px;
+                width:30px;
+                color:$red;
+                z-index: -1;
+            }
+        }
         .SingleDatePicker{
-            width:50%;
-            transform: translate(-5%, -3px);
+            display: block;
+            width:100%;
+            height:50px;
             border: 2px solid $red;
+            &:after {
+                content: '';
+                position: absolute;
+                right: 5%;
+                top: 45%;
+                width: 0; 
+                height: 0; 
+                border-top: 5px solid $red;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+            }
             .SingleDatePickerInput{
                 background-color: transparent;
+                border:none;
             }
             .DateInput{
                 font-weight: 400;
                 background-color: transparent;
                 width: 100%;
+                padding: 8px 8px 8px 30px;
                 .DateInput__display-text{
                     color: $red;
                 }
             }
         }
-        select.form-control{
-            display:inline-block;
-            height:52px;
+        .date-picker{
+            height: 50px;
+            width: 50%;
+            transform: translateX(-5%);
+        }
+        .time-picker{
+            height:50px;
             width:50%;
             transform: translateX(5%);
+            &:after {
+                content: '';
+                position: absolute;
+                right: 5%;
+                top: 45%;
+                width: 0; 
+                height: 0; 
+                border-top: 5px solid $red;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                z-index: -1;
+            }
+        }
+        select.form-control{
+            display:block;
+            // height:50px;
+            // width:50%;
+            height:100%;
+            width:100%;   
             border: 2px solid $red;
-            padding:8px;
+            padding: 8px 8px 8px 35px;
             color:$red;
         }
         input{

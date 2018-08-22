@@ -121,7 +121,7 @@ class OrderDetail extends Component {
         <CSAHeader />
         <div className="content--container">
           <div className="order-detail">
-          <button onClick={this.context.router.history.goBack}>Back to orders</button>
+          <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
           <div className="order-detail--header">
             <div className="">
               <h2>Order # {this.state.id}</h2>
@@ -151,20 +151,20 @@ class OrderDetail extends Component {
           <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
           
           <div className="order-items--header">
-            <div className="">
-              Item
+            <div className="col-item grey-border">
+              <h4>Item</h4>
             </div>
-            <div className="">
-              Assigned To
+            <div className="col-qty grey-border">
+              <h4>Qty</h4>
             </div>
-            <div className="">
-              Qty
+            <div className="col-assign grey-border">
+              <h4>Assigned To</h4>
             </div>
-            <div className="">
-              Status
+            <div className="col-status grey-border">
+              <h4>Status</h4>
             </div>
-            <div className="">
-              Barcode
+            <div className="col-barcode">
+              <h4>Barcode</h4>
             </div>
           </div>
           
