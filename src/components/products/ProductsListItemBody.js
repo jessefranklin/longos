@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startAddToCart, startEditItem }  from '../../actions/cart';
-
+import en from '../../server/en-lang';
 import Select from 'react-select';
 import { QuantitySelect } from '../partials/QuantitySelect';
 import uuid from 'uuid/v1';
@@ -153,6 +153,12 @@ class ProductsListItemBody extends Component {
         <Modal.Footer>
           <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>  
           <Button onClick={this.handleClose}>Close</Button>
+          {item.servedColdMessage === 'True' ? (
+            <div className="item--disclaimer">
+                {en.product.served}
+            </div>
+            ) :''}
+         
         </Modal.Footer>
             
       </div>
