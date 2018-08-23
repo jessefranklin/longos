@@ -11,7 +11,7 @@ export const TOC = ({showTerms, handleClose}) => {
                 </div>
 
                 <Modal.Footer>
-                    <Button onClick={handleClose}>Accept Terms</Button>
+                    <Button className="btn-add" onClick={handleClose}>Accept Terms</Button>
                     <Button onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
