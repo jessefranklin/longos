@@ -13,14 +13,14 @@ export const PrivateRoute = ({
           <Component {...props} />
         </div>
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/CSALogin" />
       )
     )} />
   );
 
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: true
+  isAuthenticated: !!state.auth.uid
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

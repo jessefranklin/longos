@@ -1,13 +1,17 @@
 
 .modal-header{
-    height: 200px;
+    height: 400px;
     overflow: hidden;
     img {
-        
+        max-height:400px;
     }
     .close {
         font-size:50px;
         color:$red;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        z-index: 1;
         &:hover {
             color:$red;
         }
@@ -68,6 +72,9 @@
             transform:translateY(3px);
         }
     }
+    .Select-menu-outer{
+        color:$red !important;
+    }
 }
 
 .item--cake-options {
@@ -96,9 +103,15 @@
     }
 }
 
+.item--disclaimer {
+    font-style: italic;
+    font-size: 12px;
+}
+
 .modal-footer {
     border-top:none !important;
     padding: 0rem 2rem 3rem 2rem !important;
+    text-align: left !important;
     button {
         height: 40px;
         width: 25%;
@@ -115,5 +128,15 @@
         margin: 0 2% 0 0 !important;
         color: $green;
         border: 2px solid $green;
+    }
+    .toc{
+        button{
+            position: relative;
+            left:50%;
+            transform: translateX(-50%);
+        }
+    }
+    .item--disclaimer {
+        padding: 2rem 0;
     }
 }

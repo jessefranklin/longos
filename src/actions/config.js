@@ -1,14 +1,14 @@
 import configjson from '../server/config.json';
 
 // SET_CONFIG
-export const setConfig = (config) => ({
+export const setConfig = (settings) => ({
     type: 'SET_CONFIG',
-    config
+    settings
 });
 
 export function fetchConfigs() {
     return dispatch => {
-        dispatch(fetchConfigSuccess(configjson));
+        // dispatch(fetchConfigSuccess(configjson));
     };
 }
 

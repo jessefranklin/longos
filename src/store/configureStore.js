@@ -9,6 +9,8 @@ import configReducer from '../reducers/config';
 import { StateLoader } from '../state.loader';
 import ordersReducer from '../reducers/csa/orders';
 import pastOrdersReducer from '../reducers/csa/pastOrders';
+import authReducer from '../reducers/csa/auth';
+import {reducer as notifications} from 'react-notification-system-redux';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -22,7 +24,9 @@ const reducers = {
     order: orderReducer,
     cart: cartReducer,
     orders: ordersReducer,
-    pastorders: pastOrdersReducer
+    pastorders: pastOrdersReducer,
+    auth: authReducer,
+    notifications
 }
 
 
@@ -39,9 +43,9 @@ export default () => {
     store.subscribe(() => {
         // State persist
         // TOTO bring in throttle
+        console.log(store.getState());
         stateLoader.saveState(store.getState());
 
-        console.log(store.getState());
     });
     
     return store;
