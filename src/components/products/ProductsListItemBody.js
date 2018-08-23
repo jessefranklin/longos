@@ -126,6 +126,7 @@ class ProductsListItemBody extends Component {
         
         <p>
           {item.description}
+          {item.servedColdMessage === 'True' ? '*':''}
         </p>
         
         <div className="item--options">

@@ -10,6 +10,7 @@ import { StateLoader } from '../state.loader';
 import ordersReducer from '../reducers/csa/orders';
 import pastOrdersReducer from '../reducers/csa/pastOrders';
 import authReducer from '../reducers/csa/auth';
+import {reducer as notifications} from 'react-notification-system-redux';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -24,7 +25,8 @@ const reducers = {
     cart: cartReducer,
     orders: ordersReducer,
     pastorders: pastOrdersReducer,
-    auth: authReducer
+    auth: authReducer,
+    notifications
 }
 
 

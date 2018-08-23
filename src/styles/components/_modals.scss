@@ -103,6 +103,11 @@
     }
 }
 
+.item--disclaimer {
+    font-style: italic;
+    font-size: 12px;
+}
+
 .modal-footer {
     border-top:none !important;
     padding: 0rem 2rem 3rem 2rem !important;
@@ -130,5 +135,8 @@
             left:50%;
             transform: translateX(-50%);
         }
+    }
+    .item--disclaimer {
+        padding: 2rem 0;
     }
 }
