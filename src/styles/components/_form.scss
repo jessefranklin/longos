@@ -1,4 +1,13 @@
-.form-group {
+textarea:focus, input:focus{
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+
+body .form-group {
     font-family:$sans;
     .form-control {
         padding: 10px 0;
@@ -7,45 +16,51 @@
         height: auto;
         background: transparent;
         border: none;
-        border-bottom: 2px solid $dark-grey;
+        border-bottom: 2px solid $lighter-grey !important;
         font-size: 18px;
         font-weight: 400;
-        padding: 20px 0;
-        margin-bottom: 20px;
+        padding: 1rem 0;
+        margin-bottom: 4rem;
         box-shadow: none;
+        border-color: inherit;
+        box-shadow: none;
+        outline: none;
         &.error {
-            border-bottom:2px solid $red;
+            // border-bottom:2px solid $red;
+        }
+        &:focus {
+            border-color: none;
+            border-bottom: 2px solid $light-grey !important;
+            box-shadow: none;
         }
         &::placeholder{
             font-family: $sans;
+            color: $light-grey;
+            font-size: 2.3rem;
         }
     }
 }
 
-.error { border: 1px solid $red; }
 
-input[type="number"],
-input[type="phone"],
-input[type="text"] {
-   
-}
-
-.searchContainer {
-    display: inline-block;
+#app .searchContainer {
+    display: block;
     position: relative;
     background-color: #fff;
     border-radius:27px;
-    .search {
+    .search-products {
         position: relative;
         z-index: 20;
         box-shadow: none;
-        border: none;
-        border-radius: 27px !important;
-        background-color: transparent;
+        color: $dark-grey;
+        display: block;
+        font-family: $sans;
+        border-radius: 27px;
         line-height: 1em;
         font-size: 16px;
-        padding: 10px;
-        font-weight: 600;
+        padding: 8px 30px;
+        border-radius: 2.7rem !important;
+        font-weight: 400;
+        border: 1px solid $light-grey;
     }
     .fa-search{
         position: absolute;
@@ -56,29 +71,27 @@ input[type="text"] {
         z-index: 10;
         transition: opacity .3s ease-in-out, left .5s ease-in-out;
     }
-    .close {
+    .closer {
         position: absolute;
         right: 11px;
         top: 6px;
         opacity:0;
         z-index: 20;
+        border: none;
+        box-shadow: none;
         transition: opacity .4s ease-in-out;
         color:$dark-grey;
+        display: block;
     }
     &:focus-within{
-        .close{
+        .closer{
             opacity:1;
         }
         .fa-search{
             opacity:0;
-            //z-index: -1;
             left:100%;
         }
     }
-}
-
-input[type="text"].search {
-
 }
 
 .checkbox {
