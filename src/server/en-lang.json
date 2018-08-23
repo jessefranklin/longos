@@ -6,6 +6,12 @@
     "cakes": {
         "characterDisclaimer": "Character cakes may not be exactly as shown."
     },
+    "notifications": {
+        "timeout": {
+            "title" : "Did you forget about us?",
+            "body" : ""
+        }
+    },
     "terms" : {
         "header": "Order agreement confirmation",
         "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."

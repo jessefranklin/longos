@@ -1,23 +1,27 @@
 .content--container {
-    padding-top: 10rem;
+    padding-top: 7rem;
 }
 
 .products {
-    margin-top: 3rem;
+    margin-top: 2rem;
     aside {
         position: fixed;
-        top: 12rem;
-        width: 25rem;
+        top: 8rem;
+        width: 18rem;
         height: 100vh;
-        
-        padding: $s-size 0 $s-size $s-size;
+        padding: $s-size 0 $s-size 1.5rem;
     }
     .product--container {
         margin-right: 1.2rem;
-        margin-left: 27rem;
+        margin-left: 20rem;
         padding-bottom: 60rem;
     }
     .product--item {
         background: #fff;
     }
+}
+
+.wrap-eq-height {
+    display: flex;
+    flex-wrap: wrap;
 }

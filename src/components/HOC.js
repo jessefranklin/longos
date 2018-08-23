@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import IdleTimer from 'react-idle-timer';
 import { Modal } from 'react-bootstrap';
 import { connect } from "react-redux";
+import en from '../server/en-lang';
 import PropTypes from "prop-types";
 import moment from 'moment';
 
@@ -29,12 +30,7 @@ class HOC extends Component {
   }
 
   componentDidMount () {
-    if(this.context.router.history.location.pathname === "/products"){
-      this.setState({timeoutActive: true});
-    }
-    if(this.context.router.history.location.pathname === "/"){
-      this.setState({timeoutActive: false});
-    }
+    
     this.setState({
       remaining: this.idleTimer.getRemainingTime(),
       lastActive: this.idleTimer.getLastActiveTime(),
@@ -42,7 +38,6 @@ class HOC extends Component {
     })
     if(this.state.timeoutActive){
       setInterval(() => {
-        console.log(this.context.router.history.location.pathname);
         if(this.idleTimer.getRemainingTime() <= 1000){
           this.onCancelOrder();
         }
@@ -50,7 +45,7 @@ class HOC extends Component {
           remaining: this.idleTimer.getRemainingTime(),
           lastActive: this.idleTimer.getLastActiveTime(),
           elapsed: this.idleTimer.getElapsedTime(),
-          showTimeout: this.idleTimer.getRemainingTime() < 10000 ? true : false
+          showTimeout: this.idleTimer.getRemainingTime() < 50000 ? true : false
         })
       }, 1000)
     }
@@ -70,7 +65,7 @@ class HOC extends Component {
             <div>
               <Modal show={this.state.showTimeout}>
                 <div className="">
-                  <h3>Timeout Warning</h3>
+                  <h3>{en.notifications.timeout.title}</h3>
                   <h4>Your current order will be cancelled in {moment.duration(this.state.remaining).seconds()} sec</h4>
                   <div>
                     <button>Resume Order</button>

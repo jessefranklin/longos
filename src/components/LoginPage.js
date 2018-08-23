@@ -81,7 +81,6 @@ class LoginPage extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     
-    console.log(this.canBeSubmitted());
     if (!this.canBeSubmitted()) {
       e.preventDefault();
       return;
@@ -112,7 +111,7 @@ class LoginPage extends React.Component {
 
     return(
       <div className="login-scene">
-        <a href="/">
+        <a href="/" className="brand--container">
           <span className="longos-logo"></span>
         </a>
         <h1>Welcome to the<br /> in-store pre-order experience</h1>
@@ -183,7 +182,7 @@ const Card = ({handleChange, onSubmit}) => (
       className="form-control"
       type="number" 
       name="rewards" 
-      placeholder="rewards number"
+      placeholder="Rewards Number"
       onChange={handleChange}
     />
 
