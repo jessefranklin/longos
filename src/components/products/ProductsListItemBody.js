@@ -25,6 +25,7 @@ class ProductsListItemBody extends Component {
       selectedProduct: {
         id: uuid(),
         type: 'item',
+        counter: this.props.item.counter,
         productId: this.props.item.id,
         productName: this.props.item.name,
         productImage: this.props.item.imageLink,
@@ -32,7 +33,9 @@ class ProductsListItemBody extends Component {
         optionName: this.props.item.options[0].name,
         priceId: this.props.item.options[0].price.id,
         price: this.props.item.options[0].price.price,
-        tax: 0,
+        tax: this.props.item.options[0].price.tax,
+        taxName: this.props.item.options[0].price.taxName,
+        upc: this.props.item.options[0].price.upc,
         quantity: 1,
         comment: ''
       }

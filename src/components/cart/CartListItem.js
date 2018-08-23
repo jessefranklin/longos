@@ -43,7 +43,7 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
       <div className="cart--item-row1">
         <div className="cart--item-img grey-border">
           <img src={item.productImage} alt={item.name} />
-          <h4>{item.productName}</h4>
+          <h4>{item.productName} - {item.optionName}</h4>
         </div>
         <div className="cart--item-qty grey-border">
           {quantityEditable}
