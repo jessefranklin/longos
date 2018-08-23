@@ -69,6 +69,10 @@ class CartOrderReview extends React.Component {
       // document.removeEventListener('click', this.handleClose);
     });
   }
+  handleCloseAccept = () =>{
+    this.setState({agreedTerms: true});
+    this.setState({showTerms: false});
+  }
   onShowTerms =() =>{
     this.setState({showTerms: true});
     // document.addEventListener("click", this.handleClose);
@@ -148,7 +152,7 @@ class CartOrderReview extends React.Component {
           <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>
-        <TOC showTerms={this.state.showTerms} handleClose={this.handleClose} />
+        <TOC showTerms={this.state.showTerms} handleClose={this.handleClose} handleCloseAccept={this.handleCloseAccept}/>
       </div>
     )
   }
