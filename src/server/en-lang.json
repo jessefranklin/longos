@@ -1,6 +1,10 @@
 {
     "product": {
-        "served": "Appetizers from Longo’s are made with only the highest-quality ingredients and come in a wide assortment of options, some cold and others ready to warm up."
+        "nutfree": "We are not a nut free env.",
+        "served": "*Appetizers from Longo’s are made with only the highest-quality ingredients and come in a wide assortment of options, some cold and others ready to warm up."
+    },
+    "cakes": {
+        "characterDisclaimer": "Character cakes may not be exactly as shown."
     },
     "terms" : {
         "header": "Order agreement confirmation",
