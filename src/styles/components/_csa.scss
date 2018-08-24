@@ -41,48 +41,30 @@
     background-color: transparent;
     border:none;
     &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 5px;
-      width: 0; 
-      height: 0; 
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-right: 5px solid $red;
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 0; 
+        height: 0; 
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid $red;
     }
-  }
+}
 
-  .order-items--header {
-    padding:1rem 5rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    background-color: $dark-grey;
-    color:#fff;
-    .col-item {
-        width:25%;
-        text-align: left;
-    }
-    .col-qty {
-        width:16%;
-    }
-    .col-assign {
-        width:14%;
-    }
-    .col-status {
-        width:14%;
-    }
-    .col-barcode {
-        width:31%;
-    }
-    h4{
-        font-size: 20px;
-    }
-    .grey-border{
-        &:after {
-            height: 25px;
-          }
+.arrow--down-red {
+    position: relative;
+    padding-right: 20px;
+    &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 10px;
+        width: 0; 
+        height: 0; 
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $red;
     }
 }

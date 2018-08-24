@@ -1,4 +1,4 @@
-import { baseUrl } from "../../const/global";
+import { baseUrl } from "../const/global";
 let axios = require('axios');
 
 const orderApi  = baseUrl+"/order";

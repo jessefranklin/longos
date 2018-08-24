@@ -7,7 +7,12 @@ import OrderStatusFilters from './OrderStatusFilters';
 export class OrdersFilters extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state = {
+          showCounters: false
+        }
         this.handleCounter = this.handleCounter.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
     }
     onTextChange = (e) => {
       this.props.setOrderFilter(e.target.value);
@@ -15,6 +20,18 @@ export class OrdersFilters extends React.Component {
     onClearField = (e) => {
       this.props.setOrderFilter('');
     };
+    toggleMenu(e) {
+      e.preventDefault();
+      this.setState({
+        showCounters: true
+      });
+      document.addEventListener("click", this.closeMenu);
+    }
+    closeMenu() {
+      this.setState({ showCounters: false }, () => {
+        document.removeEventListener('click', this.closeMenu);
+      });
+    }
     handleCounter(value){
       if(this.props.pastOrders){
         this.props.filterByCounter(value);
@@ -25,9 +42,20 @@ export class OrdersFilters extends React.Component {
     render() {
       return (
         <div>
-          <div className="rowFilter">
-            <h3>Orders</h3>
-            <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} />
+          <div className="rowFilter orders--filter-row">
+            <div className="counter--container">
+              <h3 className="arrow--down-red" onClick={this.toggleMenu}>{this.props.filters.counter === ''? 'All Dept.' : this.props.filters.counter} Orders</h3>
+              {
+                this.state.showCounters
+                  ? (
+                    <OrderCounterFilters handleCounter={this.handleCounter} activeHandler={true} isDashboard={true} />
+                  )
+                  : (
+                    null
+                  )
+              }
+            </div>
+            
             <div className="searchContainer">
               <input
                   type="text"

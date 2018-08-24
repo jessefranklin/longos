@@ -34,3 +34,38 @@
 .my-collapsible__content { 
     overflow: hidden;
 }
+
+
+.order-items--header {
+    padding:1rem 5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: $dark-grey;
+    color:#fff;
+    .col-item {
+        width:25%;
+        text-align: left;
+    }
+    .col-qty {
+        width:16%;
+    }
+    .col-assign {
+        width:14%;
+    }
+    .col-status {
+        width:14%;
+    }
+    .col-barcode {
+        width:31%;
+    }
+    h4{
+        font-size: 20px;
+    }
+    .grey-border{
+        &:after {
+            height: 25px;
+          }
+    }
+}
