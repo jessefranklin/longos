@@ -1,5 +1,6 @@
 .orders--filter-row {
     position: relative;
+    z-index: 5;
     .counter--container {
         position: relative;
         padding-left: 15px;
@@ -19,11 +20,14 @@
                 list-style: none;
                 display: block;
                 button {
+                    @extend .clear-button-styling;
                     display: block;
                     color: $red;
                     font-size: 20px;
                     font-weight: 600;
                     padding: 10px 0 10px 15px;
+                    width: 100%;
+                    text-align: left;
                 }
             }
         }
