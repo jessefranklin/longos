@@ -96,10 +96,12 @@ class OrderDetailItem extends Component {
                   disabled={order.status === 0 ? true:false}
                   clearable={false} 
                 />
-
-                <Barcode 
-                  format="UPC" 
-                  value={order.upc} />
+                {order.upc ? (
+                  <Barcode 
+                    format="UPC" 
+                    value={order.upc}
+                    />
+                ) : ''}
 
               </div>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
