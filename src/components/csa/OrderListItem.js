@@ -62,7 +62,7 @@ export default OrderListItem;
 
 const Indicator = ({notification}) => {
     return (
-        <div className={ notification.class }>
+        <div className={ notification.class + ' order--indicator' }>
             { notification.title }
         </div>  
     );

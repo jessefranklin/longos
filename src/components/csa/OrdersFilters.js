@@ -55,17 +55,19 @@ export class OrdersFilters extends React.Component {
                   )
               }
             </div>
-            
-            <div className="searchContainer">
-              <input
+            <div className={this.props.filters.text.length >= 1 ? 'searchContainer active' :'searchContainer'}>
+                <input
                   type="text"
                   value={this.props.filters.order}
                   onChange={this.onTextChange}
                   className="search"
-                  />
-              <i className="fas fa-search"></i>
-              <button className="close" onClick={this.onClearField}>x</button>
+                />
+                <i className="fas fa-search"></i>
+                {this.props.filters.order.length >= 1 ? (
+                  <button className="closer icon--close" onClick={this.onClearField}></button>
+                ) : ''}
             </div>
+            
           </div>
           
           <OrderStatusFilters pastOrders={this.props.pastOrders} />
