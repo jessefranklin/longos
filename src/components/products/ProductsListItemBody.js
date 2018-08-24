@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startAddToCart, startEditItem }  from '../../actions/cart';
-import en from '../../server/en-lang';
+import en from '../../const/en-lang';
 import Select from 'react-select';
 import { QuantitySelect } from '../partials/QuantitySelect';
 import uuid from 'uuid/v1';

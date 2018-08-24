@@ -1,6 +1,7 @@
+import { baseUrl } from "../../const/global";
 let axios = require('axios');
-const orderApi  = "http://digitalpreorder.azurewebsites.net/api/order";
 
+const orderApi  = baseUrl+"/order";
 const headers = {
     headers: {
         'Content-Type': 'application/json',
