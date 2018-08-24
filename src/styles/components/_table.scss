@@ -11,30 +11,17 @@
 	background-color: $offwhite-light;
 	font-size: 16px;
 	font-weight: 500;
-	.past-due{
-		width:75%;
-		padding: 5px;
-		background-color: $red;
-		border-radius: 18px;
-		text-transform: uppercase;
-		color: #fff;
-		font-size: 14px;
-		text-align: center;
+	.cell-id {
+		position: relative;
+		overflow: visible;
 	}
-	.pick-up-today{
-		width:100%;
-		padding: 5px;
-		background-color: $yellow-alt;
-		border-radius: 18px;
-		text-transform: uppercase;
-		color: #fff;
-		font-size: 14px;
-		text-align: center;
+	.cell-date {
+		white-space: nowrap;
 	}
 	> div {
         display: table-cell;
-		padding: 10px 10px;
 		vertical-align: middle;
+		padding: 20px 0;
 		&:nth-child(n+3):nth-child(-n+8){
 			text-align: center;
 		}

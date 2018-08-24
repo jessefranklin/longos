@@ -19,3 +19,23 @@
         background-color: #fff;
     }
 }
+
+.past-due{
+    padding: 5px;
+    background-color: $red;
+    border-radius: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+.pick-up-today{
+    padding: 5px;
+    background-color: $yellow-alt;
+    border-radius: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
