@@ -1,16 +1,9 @@
-
-// import productsjson from '../server/products.json';
-
-// export function fetchProducts() {
-//     return dispatch => {
-//         dispatch(fetchProductsSuccess(productsjson));
-//     };
-// }
+import { baseUrl } from "../../const/global";
 
 let axios = require('axios');
 import config from '../../server/config.json';
 
-const apiUrl = "http://digitalpreorder.azurewebsites.net/api/product";
+const apiUrl = baseUrl+"/product";
 const store = `?store=${config[0].store_id}`;
 let url = apiUrl + store;
 

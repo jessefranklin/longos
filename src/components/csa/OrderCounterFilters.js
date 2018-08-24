@@ -11,6 +11,7 @@ export class OrderCounterFilters extends React.Component {
         }
     }
     activeHandlers (value) {
+        
         if(this.state.instance){
             return this.props.filters.counter === value ? 'active' : '';
         } else {
@@ -25,7 +26,7 @@ export class OrderCounterFilters extends React.Component {
     }
     render() {
       return (
-        <div className="counterFilter">
+        <div className={this.props.isDashboard?'counter--dropdown':"counterFilter"}>
             <ul>
                 <li><button className={this.activeHandlers('')} onClick={() => this.props.handleCounter('')} disabled={this.isDisabled()}>All Dept.</button></li>
                 <li><button className={this.activeHandlers('Bakery')} onClick={() => this.props.handleCounter('Bakery')} disabled={this.isDisabled('Bakery')}>Bakery</button></li>

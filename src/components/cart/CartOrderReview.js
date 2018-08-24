@@ -53,6 +53,7 @@ class CartOrderReview extends React.Component {
     }
   }
   onSubmit = (e) => {
+    console.log(this.state);
     if(!this.state.agreedTerms){e.preventDefault(); return; }
     this.props.dispatchOrder(this.state).then(() => {
       if(this.props.order.orderId){
@@ -126,7 +127,6 @@ class CartOrderReview extends React.Component {
         </div>
         <div className="checkout--terms">
           <h5>{store.terms.header}</h5>
-          <p>{store.terms.body}</p>
           <button onClick={this.onShowTerms}>Show Terms</button>
         </div>
         <div>

@@ -6,6 +6,7 @@ export const startAddToCart = (productData = {}) => {
     const {
       id = 0,
       type= '',
+      counter= '',
       productId = '',
       productName = '',
       productImage = '',
@@ -15,11 +16,13 @@ export const startAddToCart = (productData = {}) => {
       priceId = '',
       price = '',
       tax = 0,
+      taxName = '',
+      upc='',
       quantity = 0,
       comment = ''
     } = productData;
     
-    const product = {id,type,productId,productName,productImage,optionId,optionName,options,priceId,price,tax,quantity,comment}
+    const product = {id,type,counter,productId,productName,productImage,optionId,optionName,options,priceId,price,tax,taxName,upc,quantity,comment}
 
     dispatch(addToCart({
       id: uuid(),

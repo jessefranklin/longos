@@ -8,6 +8,7 @@ import { QuantitySelect } from '../partials/QuantitySelect';
 import { OptionsSelect } from '../partials/OptionsSelect';
 import { CreateableSelect } from '../partials/CreateableSelect';
 import { TextField } from '../partials/TextField';
+import en from '../../const/en-lang';
 import uuid from 'uuid/v1';
 import _ from 'lodash';
 
@@ -144,9 +145,8 @@ class ProductsListItemCake extends Component {
           </div>;
         })}
 
-        {cakeOptions.disclaimers.map(disclaimers => {
-          return disclaimers.header;
-        })}
+        {en.product.nutfree}
+        {en.cakes.characterDisclaimer}
 
         </Modal.Body>
         <Modal.Footer>
