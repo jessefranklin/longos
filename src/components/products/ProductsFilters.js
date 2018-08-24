@@ -14,15 +14,17 @@ export class ProductListFilters extends React.Component {
       return (
         <div>
          
-          <div className="searchContainer">
+          <div className={this.props.filters.text.length >= 1 ? 'searchContainer active' :'searchContainer'}>
             <input
               type="text"
               value={this.props.filters.text}
               onChange={this.onTextChange}
-              className="search-products"
+              className="search"
             />
             <i className="fas fa-search"></i>
-            <button className="closer icon--close" onClick={this.onClearField}></button>
+            {this.props.filters.text.length >= 1 ? (
+              <button className="closer icon--close" onClick={this.onClearField}></button>
+            ) : ''}
           </div>
         </div>
       );

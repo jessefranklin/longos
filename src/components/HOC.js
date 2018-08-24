@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import IdleTimer from 'react-idle-timer';
 import { Modal } from 'react-bootstrap';
 import { connect } from "react-redux";
-import en from '../server/en-lang';
+import en from '../const/en-lang';
 import PropTypes from "prop-types";
 import moment from 'moment';
 

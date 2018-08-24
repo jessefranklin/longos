@@ -47,9 +47,9 @@ body .form-group {
     position: relative;
     background-color: #fff;
     border-radius:27px;
-    .search-products {
+    .search {
         position: relative;
-        z-index: 20;
+        z-index: 3;
         box-shadow: none;
         color: $dark-grey;
         display: block;
@@ -61,6 +61,7 @@ body .form-group {
         border-radius: 2.7rem !important;
         font-weight: 400;
         border: 1px solid $light-grey;
+        width: 100%;
     }
     .fa-search{
         position: absolute;
@@ -69,6 +70,7 @@ body .form-group {
         transform: translate(-50%, -50%);
         opacity:0.5;
         z-index: 10;
+        pointer-events: none;
         transition: opacity .3s ease-in-out, left .5s ease-in-out;
     }
     .closer {

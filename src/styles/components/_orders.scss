@@ -1,0 +1,31 @@
+.orders--filter-row {
+    position: relative;
+    .counter--container {
+        position: relative;
+        padding-left: 15px;
+        margin-left: -25px;
+    }
+    .counter--dropdown {
+        position: absolute;
+        left: 0;
+        top: 60px;
+        width: 100%;
+        ul {
+            padding: 0 0 15px 0;
+            margin: 0;
+            background: #fff;
+            width: 100%;
+            li {
+                list-style: none;
+                display: block;
+                button {
+                    display: block;
+                    color: $red;
+                    font-size: 20px;
+                    font-weight: 600;
+                    padding: 10px 0 10px 15px;
+                }
+            }
+        }
+    }
+}

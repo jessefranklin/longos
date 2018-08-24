@@ -10,6 +10,7 @@ import { resetOrder }  from '../actions/order';
 import { resetProfile }  from '../actions/profile';
 import { fetchConfigs } from '../actions/config';
 import { fetchProducts } from '../actions/customer/products';
+import { setTextFilter, setOrderFilter } from '../actions/filter';
 
 const headers = {
   mode: "no-cors",
@@ -46,6 +47,8 @@ class LoginPage extends React.Component {
     this.props.resetOrder();
     this.props.resetProfile();
     this.props.fetchProducts();
+    this.props.setTextFilter('');
+    this.props.setOrderFilter('');
   };
 
   handleBlur = (field) => (evt) => {
@@ -199,7 +202,9 @@ const mapDispatchToProps = (dispatch) => ({
   removeCart: () => dispatch(removeCart()),
   resetOrder: () => dispatch(resetOrder()),
   resetProfile: () => dispatch(resetProfile()),
-  fetchConfigs: () => dispatch(fetchConfigs())
+  fetchConfigs: () => dispatch(fetchConfigs()),
+  setTextFilter: (text) => dispatch(setTextFilter(text)),
+  setOrderFilter: (text) => dispatch(setOrderFilter(text))
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);
