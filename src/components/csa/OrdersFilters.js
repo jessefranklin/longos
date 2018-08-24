@@ -64,7 +64,7 @@ export class OrdersFilters extends React.Component {
                   className="search"
                   />
               <i className="fas fa-search"></i>
-              <button className="close" onClick={this.onClearField}>x</button>
+              <button className="closer icon--close" onClick={this.onClearField}></button>
             </div>
           </div>
           

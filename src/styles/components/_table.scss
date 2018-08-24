@@ -12,7 +12,7 @@
 	font-size: 16px;
 	font-weight: 500;
 	.past-due{
-		width:75%;
+		width:100%;
 		padding: 5px;
 		background-color: $red;
 		border-radius: 18px;
@@ -25,6 +25,16 @@
 		width:100%;
 		padding: 5px;
 		background-color: $yellow-alt;
+		border-radius: 18px;
+		text-transform: uppercase;
+		color: #fff;
+		font-size: 14px;
+		text-align: center;
+	}
+	.pick-up-tmrw{
+		width:100%;
+		padding: 5px;
+		background-color: $green;
 		border-radius: 18px;
 		text-transform: uppercase;
 		color: #fff;
@@ -47,8 +57,18 @@
 		div{
 			&:nth-child(n+3):nth-child(-n+8){
 				div{
+					height:30px;
+					width:55px;
+					margin: auto;
 					border-radius:27px;
 					background-color: #fff;
+					h4{
+						vertical-align: middle;
+					}
+					.fa{
+						position: relative;
+						top:10%;
+					}
 				}
 			}
 		}
@@ -61,6 +81,21 @@
 					background-color: $offwhite-light;
 				}
 			}
+		}
+	}
+	h4{
+		display:inline;
+		font-size: 18px;
+		margin-right: 0.5rem;
+		&.red{
+			color:$red;
+		}
+	}
+	.fa{
+		font-size:14px;
+		transform: translateY(-1px);
+		&.green{
+			color:$green;
 		}
 	}
 }

@@ -73,33 +73,38 @@ class OrderDetailItem extends Component {
           {({onToggle, setCollapsibleElement}) => (
             <div className="my-collapsible">
               <div className="order-item--row">
-                <div className="" onClick={onToggle}>
+                <div className="order-item--item" onClick={onToggle}>
                   <h4>{order.product.counter}</h4>
                   {order.product.name}
                 </div>
-                <Select
-                    name="assigned"
-                    value={order.assignee}
-                    onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
-                    options={employees}
-                    isSearchable={true}
+                <div className="order-item--qty">
+                  {order.quantity}
+                </div>
+                <div className="order-item--assign">
+                  <Select
+                      name="assigned"
+                      value={order.assignee}
+                      onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
+                      options={employees}
+                      isSearchable={true}
+                      clearable={false} 
+                  />
+                </div>
+                <div className="order-item--status">
+                  <Select
+                    name="status"
+                    value={order.status}
+                    onChange={(e)=>this.onSelectChange(e.value, 'status')}
+                    options={options}
+                    disabled={order.status === 0 ? true:false}
                     clearable={false} 
-                />
-
-                {order.quantity}
-
-                <Select
-                  name="status"
-                  value={order.status}
-                  onChange={(e)=>this.onSelectChange(e.value, 'status')}
-                  options={options}
-                  disabled={order.status === 0 ? true:false}
-                  clearable={false} 
-                />
-
-                <Barcode 
-                  format="UPC" 
-                  value={order.upc} />
+                  />
+                </div>
+                <div className="order-item--barcode">
+                  <Barcode 
+                    format="UPC" 
+                    value={order.upc} />
+                </div>
 
               </div>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
