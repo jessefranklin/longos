@@ -14,9 +14,11 @@ class ProductsList extends React.Component {
           const refKey = key.replace(/\s+/g, '').toLowerCase();
           return <div key={index} id={refKey} className="element">
             <h2>{key}</h2> 
-            {products[key].map(product => {
-              return <ProductsListItem key={product.id} item={product} />;
-            })}
+            <div className="wrap-eq-height">
+              {products[key].map(product => {
+                return <ProductsListItem key={product.id} item={product} />;
+              })}
+            </div>
           </div>;
         })}
       </div>

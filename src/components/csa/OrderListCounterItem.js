@@ -8,21 +8,21 @@ const OrderListCounterItem = ({item}) => {
     const statusClass = (status) => {
         switch (status){
             case 0:
-                return 'icon-unassigned';
+                return (<h4 className="red">?</h4>);
             case 1: 
-                return 'icon-assigned';
+                return <i className="fa fa-user" aria-hidden="true"></i>;
             case 2:
-                return 'icon-inprogress';
+                return <i className="fa fa-user green" aria-hidden="true"></i>;
             case 3:
-                return 'icon-completed';
+                return <i className="fa fa-check green" aria-hidden="true"></i>;
             default:
-                return 'unassigned';
+                return (<h4 className="red">?</h4>);
         }
     }
 
     return(
         <div>
-            {item.itemsCount}  
+            <h4>{item.itemsCount}</h4>  
             {statusClass(item.status)}
         </div>
     )

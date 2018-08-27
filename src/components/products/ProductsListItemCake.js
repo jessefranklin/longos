@@ -8,7 +8,7 @@ import { QuantitySelect } from '../partials/QuantitySelect';
 import { OptionsSelect } from '../partials/OptionsSelect';
 import { CreateableSelect } from '../partials/CreateableSelect';
 import { TextField } from '../partials/TextField';
-import en from '../../server/en-lang';
+import en from '../../const/en-lang';
 import uuid from 'uuid/v1';
 import _ from 'lodash';
 

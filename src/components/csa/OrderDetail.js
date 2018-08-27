@@ -124,14 +124,15 @@ class OrderDetail extends Component {
           <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
           <div className="order-detail--header">
             <div className="">
-              <h2>Order # {this.state.id}</h2>
+              <h4>Order #</h4><h2>{this.state.id}</h2>
+              <PaidButton isPaid={this.state.isPaid} orderPaid={this.orderPaid} />
             </div>
 
             <div className="">
               <h4>Customer</h4>
-              {this.state.client.name}
+              {this.state.client.name}<br />
 
-              {this.state.client.email && this.state.client.email}
+              {this.state.client.email && this.state.client.email}<br />
               {this.state.client.phone && this.state.client.phone}
             </div>
 
@@ -143,8 +144,6 @@ class OrderDetail extends Component {
              
 
               <StatusState status={this.state.status} onSelectChange={this.onSelectChange} isPaid={this.state.isPaid} />
-
-              <PaidButton isPaid={this.state.isPaid} orderPaid={this.orderPaid} />
             </div>
           </div>
 
@@ -167,10 +166,11 @@ class OrderDetail extends Component {
               <h4>Barcode</h4>
             </div>
           </div>
-          
-          {itemsFiltered.map(order => {
-            return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
-          })}
+          <div className="order--items">
+            {itemsFiltered.map(order => {
+              return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
+            })}
+          </div>
         </div>
       </div>
     </div>
@@ -199,10 +199,10 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
 
 const PaidButton = ({isPaid,orderPaid}) => {
   return (
-    <div>
+    <div className="btn--container">
       {isPaid ? ( 
         <div>
-          Order is Paid <button onClick={() => orderPaid(false)}>X</button>
+          <button className="checked" onClick={() => orderPaid(false)}>Order is Paid </button>
         </div>
       ):(
         <button onClick={() => orderPaid(true)}>Order is not paid</button>

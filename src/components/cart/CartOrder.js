@@ -19,7 +19,7 @@ class CartOrder extends React.Component {
       phone: props.profile ? props.profile.phone : '',
       rewards: props.profile.rewards ? props.profile.rewards : '',
       calendarFocused: false,
-      pickUpDate: props.order.pickUpDate?moment(props.order.pickUpDate):moment(),
+      pickUpDate: props.order.pickUpDate?moment(props.order.pickUpDate):moment(new Date()).add(1,'days'),
       time: props.order.time?props.order.time:32400,
       status: 'pending',
       createdAt: moment(),
@@ -119,7 +119,8 @@ class CartOrder extends React.Component {
             />
 
             <div className='checkout--disclaimer'>
-              Allow for 24 hour notice or call in store for other accommodations."
+              Allow for 24 hour notice or call in store for other accommodations.
+              
             </div>
           </div>
 

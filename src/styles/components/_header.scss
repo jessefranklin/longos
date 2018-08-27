@@ -1,12 +1,12 @@
 .header {
-  height: 10rem;
+  height: 7rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background: $red;
-  z-index: 2;
-  padding: 0 5rem;
+  z-index: 50;
+  padding:0 1rem;
   a,
   .profile--container,
   .cart__indicator {
@@ -142,26 +142,14 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: $s-size 0;
+  padding: 1rem 0;
 }
 
 .header__title {
   text-decoration: none;
+  margin-left: 3rem;
   h1 { 
     margin: 0;
   }
 }
 
-.longos-logo {
-  display: block;
-  width: 200px;
-  height: 80px;
-  background: transparent url('/images/longos.svg') no-repeat 0 0;
-}
-
-.longos-logo-white {
-  display: block;
-  width: 200px;
-  height: 80px;
-  background: transparent url('/images/longos-white.svg') no-repeat 0 0;
-}

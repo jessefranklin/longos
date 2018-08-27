@@ -1,0 +1,1 @@
+export const baseUrl = "//digitalpreorder.azurewebsites.net/api"

@@ -1,11 +1,10 @@
-
-let axios = require('axios');
+import { baseUrl } from "../../const/global";
 import config from '../../server/config.json';
+let axios = require('axios');
 
-const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order`;
 const orderID = `?orderId=O8184008`;
 const orderIDs = `?storeid=${config[0].store_id}`;
-let url = orderAPI + orderID;
+let url = baseUrl + '/order' + orderID;
 
 const headers = {
     header: {

@@ -10,6 +10,7 @@ import { resetOrder }  from '../actions/order';
 import { resetProfile }  from '../actions/profile';
 import { fetchConfigs } from '../actions/config';
 import { fetchProducts } from '../actions/customer/products';
+import { setTextFilter, setOrderFilter } from '../actions/filter';
 
 const headers = {
   mode: "no-cors",
@@ -46,6 +47,8 @@ class LoginPage extends React.Component {
     this.props.resetOrder();
     this.props.resetProfile();
     this.props.fetchProducts();
+    this.props.setTextFilter('');
+    this.props.setOrderFilter('');
   };
 
   handleBlur = (field) => (evt) => {
@@ -81,7 +84,6 @@ class LoginPage extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     
-    console.log(this.canBeSubmitted());
     if (!this.canBeSubmitted()) {
       e.preventDefault();
       return;
@@ -112,7 +114,7 @@ class LoginPage extends React.Component {
 
     return(
       <div className="login-scene">
-        <a href="/">
+        <a href="/" className="brand--container">
           <span className="longos-logo"></span>
         </a>
         <h1>Welcome to the<br /> in-store pre-order experience</h1>
@@ -183,7 +185,7 @@ const Card = ({handleChange, onSubmit}) => (
       className="form-control"
       type="number" 
       name="rewards" 
-      placeholder="rewards number"
+      placeholder="Rewards Number"
       onChange={handleChange}
     />
 
@@ -200,7 +202,9 @@ const mapDispatchToProps = (dispatch) => ({
   removeCart: () => dispatch(removeCart()),
   resetOrder: () => dispatch(resetOrder()),
   resetProfile: () => dispatch(resetProfile()),
-  fetchConfigs: () => dispatch(fetchConfigs())
+  fetchConfigs: () => dispatch(fetchConfigs()),
+  setTextFilter: (text) => dispatch(setTextFilter(text)),
+  setOrderFilter: (text) => dispatch(setOrderFilter(text))
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);

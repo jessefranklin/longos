@@ -4,6 +4,7 @@
         color: $dark-grey;
         padding-top: 10px;
         border-top: 2px solid $dark-grey;
+        padding-bottom: 18px;
     }
 }
 
@@ -15,7 +16,8 @@
     vertical-align: top;
     position: relative;
     border-radius: 15px;
-    &:nth-child(3n+1){
+    padding: 1.5rem;
+    &:nth-child(3n){
         margin-right:0;
     }
     &.active {

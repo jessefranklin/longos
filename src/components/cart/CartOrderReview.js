@@ -53,6 +53,7 @@ class CartOrderReview extends React.Component {
     }
   }
   onSubmit = (e) => {
+    console.log(this.state);
     if(!this.state.agreedTerms){e.preventDefault(); return; }
     this.props.dispatchOrder(this.state).then(() => {
       if(this.props.order.orderId){
@@ -68,6 +69,10 @@ class CartOrderReview extends React.Component {
     this.setState({showTerms: false}, () => {
       // document.removeEventListener('click', this.handleClose);
     });
+  }
+  handleCloseAccept = () =>{
+    this.setState({agreedTerms: true});
+    this.setState({showTerms: false});
   }
   onShowTerms =() =>{
     this.setState({showTerms: true});
@@ -126,7 +131,6 @@ class CartOrderReview extends React.Component {
         </div>
         <div className="checkout--terms">
           <h5>{store.terms.header}</h5>
-          <p>{store.terms.body}</p>
           <button onClick={this.onShowTerms}>Show Terms</button>
         </div>
         <div>
@@ -148,7 +152,7 @@ class CartOrderReview extends React.Component {
           <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>
-        <TOC showTerms={this.state.showTerms} handleClose={this.handleClose} />
+        <TOC showTerms={this.state.showTerms} handleClose={this.handleClose} handleCloseAccept={this.handleCloseAccept}/>
       </div>
     )
   }
