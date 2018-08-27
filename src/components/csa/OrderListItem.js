@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { sortByCounter } from '../../selectors/sortByCounter';
 import { orderDate } from '../../selectors/orderDate';
 import OrderListCounterItem  from './OrderListCounterItem';
@@ -13,8 +14,8 @@ const OrderListItem = ({item, pastOrders}) => {
         <div className='orders--item divTableRow'>
             <div className="cell-id">
                 {dateNotification && !pastOrders ? <Indicator notification={dateNotification} />: ''}
-                {item.id}<br />
-                {item.pickupDate}<br />
+                <strong>{item.id}</strong><br />
+                {moment(item.pickupDate).format('MMMM Do, YYYY')}<br />
                 {item.pickupTime}
             </div>
 
@@ -47,7 +48,7 @@ const OrderListItem = ({item, pastOrders}) => {
             </div>
 
             <div>
-                <Link to={`/orderDetail/${item.id}`}>></Link>
+                <Link to={`/orderDetail/${item.id}`}></Link>
             </div>
         </div>
 
