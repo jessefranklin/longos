@@ -3,8 +3,63 @@
     justify-content: space-around;
     font-family: $sans;
     font-size: 16px;
+    font-weight: 600;
     background: #fff;
     padding-bottom: 3rem;
+
+    .btn--container{
+        position: relative;
+        button {
+            cursor: pointer;
+            padding-left: 30px;
+            border: none;
+            background: none;
+            min-width: 165px;
+            text-align: left;
+            color:$red;
+            &:before {
+                content: ' ';
+                width: 25px;
+                height: 25px;
+                top: 0;
+                left: 0;
+                position: absolute;
+                line-height: 1.2em;
+                border-radius: 1px;
+                border: 2px solid $red;
+            }
+            &.checked {
+                color:$green;
+                &:before {
+                    border: 2px solid $green;
+                }
+                &:after {
+                    content: '';
+                    width: 14px;
+                    height: 7px;
+                    position: absolute;
+                    top: 8px;
+                    left: 6px;
+                    border: 3px solid $green;
+                    border-top: none;
+                    border-right: none;
+                    background: transparent;
+                    opacity: 1;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+    .state--not-ready{
+        color:$red;
+    }
+    .state--completed{
+        color:$green;
+    }
+    h4{
+        font-size:18px;
+        text-transform:uppercase;
+    }
 }
 
 .order-item--row {
@@ -13,8 +68,12 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
+    font-family: $sans;
+    font-weight: 600;
+    color: $dark-grey;
     .Select {
-        width: 100%;
+        width: 90%;
+        margin:auto;
     }
 }
 
@@ -49,17 +108,17 @@
     background-color: $dark-grey;
     color:#fff;
     .col-item {
-        width:25%;
+        width:22%;
         text-align: left;
     }
     .col-qty {
-        width:16%;
+        width:10%;
     }
     .col-assign {
-        width:14%;
+        width:20%;
     }
     .col-status {
-        width:14%;
+        width:17%;
     }
     .col-barcode {
         width:31%;
@@ -89,16 +148,18 @@
     padding:1rem 0rem;
     margin-bottom: 1rem;
     .order-item--item{
-        width:25%;
+        width:22%;
+        padding:1rem;
     }
     .order-item--qty{
-        width:16%;
+        width:10%;
+        font-size: 18px;
     }
     .order-item--assign{
-        width:14%;
+        width:20%;
     }
     .order-item--status{
-        width:14%;
+        width:17%;
     }
     .order-item--barcode{
         width:31%;

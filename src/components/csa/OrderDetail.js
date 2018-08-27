@@ -130,9 +130,9 @@ class OrderDetail extends Component {
 
             <div className="">
               <h4>Customer</h4>
-              {this.state.client.name}
+              {this.state.client.name}<br />
 
-              {this.state.client.email && this.state.client.email}
+              {this.state.client.email && this.state.client.email}<br />
               {this.state.client.phone && this.state.client.phone}
             </div>
 
@@ -199,10 +199,10 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
 
 const PaidButton = ({isPaid,orderPaid}) => {
   return (
-    <div>
+    <div className="btn--container">
       {isPaid ? ( 
         <div>
-          Order is Paid <button onClick={() => orderPaid(false)}>X</button>
+          <button className="checked" onClick={() => orderPaid(false)}>Order is Paid </button>
         </div>
       ):(
         <button onClick={() => orderPaid(true)}>Order is not paid</button>
