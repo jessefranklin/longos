@@ -199,10 +199,10 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
 
 const PaidButton = ({isPaid,orderPaid}) => {
   return (
-    <div>
+    <div className="btn--container">
       {isPaid ? ( 
         <div>
-          Order is Paid <button onClick={() => orderPaid(false)}>X</button>
+          <button className="checked" onClick={() => orderPaid(false)}>Order is Paid </button>
         </div>
       ):(
         <button onClick={() => orderPaid(true)}>Order is not paid</button>
