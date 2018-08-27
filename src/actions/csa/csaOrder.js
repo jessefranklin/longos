@@ -1,7 +1,5 @@
 import { baseUrl, headers } from "../../const/global";
-import config from '../../server/config.json';
 let axios = require('axios');
-
 
 export let fetchCSAOrders = (oId) => {
     return (dispatch) => {
@@ -25,7 +23,7 @@ export const fetchCSAOrdersBegin = () => ({
   type: 'FETCH_ORDERS_BEGIN'
 });
 
-export const fetchCSAOrdersSuccess = orders => ({
+export const fetchCSAOrdersSuccess = order => ({
   type: 'FETCH_ORDERS_SUCCESS',
-  payload: { orders }
+  payload: { order }
 });

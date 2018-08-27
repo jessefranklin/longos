@@ -3,6 +3,7 @@ import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap
 import Barcode from 'react-barcode';
 import Select from 'react-select';
 import { SlideToggle } from 'react-slide-toggle';
+import { baseUrl, headers } from "../../const/global";
 
 let axios = require('axios');
 
@@ -18,13 +19,6 @@ const employees = [
     { value: 'Sandy Longo', label: 'John Longo' },
     { value: 'Alex Longo', label: 'Alex Longo' }
 ]
-
-const headers = {
-  header: {
-      "Content-Type":"application/json",
-      "Access-Control-Allow-Origin": "*"
-  }
-}
 
 class OrderDetailItem extends Component {
   constructor(props, context) {
@@ -48,13 +42,12 @@ class OrderDetailItem extends Component {
   }
 
   updateOrder (orderUpdate) {
-    const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/${this.props.oid}/item/${this.props.order.id}/`;
+    const orderAPI = `${baseUrl}/order/${this.props.oid}/item/${this.props.order.id}/`;
     
     let url = orderAPI + orderUpdate;
     
     axios.put(url, headers).then(
         (response) => {
-          console.log(response.data);
           this.props.updateState(response.data);
         },
         (err) => {
@@ -72,14 +65,14 @@ class OrderDetailItem extends Component {
           {({onToggle, setCollapsibleElement}) => (
             <div className="my-collapsible">
               <div className="order-item--row">
-                <div className="order-item--item" onClick={onToggle}>
+                <div className="order-item--item grey-border" onClick={onToggle}>
                   <h4>{order.product.counter}</h4>
                   {order.product.name}
                 </div>
-                <div className="order-item--qty">
+                <div className="order-item--qty grey-border">
                   {order.quantity}
                 </div>
-                <div className="order-item--assign">
+                <div className="order-item--assign grey-border">
                   <Select
                       name="assigned"
                       value={order.assignee}
@@ -89,7 +82,7 @@ class OrderDetailItem extends Component {
                       clearable={false} 
                   />
                 </div>
-                <div className="order-item--status">
+                <div className="order-item--status grey-border">
                   <Select
                     name="status"
                     value={order.status}
@@ -99,23 +92,14 @@ class OrderDetailItem extends Component {
                     clearable={false} 
                 />
                 </div>
-                {order.quantity}
-     
-                <Select
-                  name="status"
-                  value={order.status}
-                  onChange={(e)=>this.onSelectChange(e.value, 'status')}
-                  options={options}
-                  disabled={order.status === 0 ? true:false}
-                  clearable={false} 
-                />
-
-                {order.upc ? (
-                  <Barcode 
-                    format="UPC" 
-                    value={order.upc}
-                    />
-                ) : ''}
+                <div className="order-item--barcode">
+                  {order.upc ? (
+                    <Barcode 
+                      format="UPC" 
+                      value={order.upc}
+                      />
+                  ) : ''}
+                </div>
 
               </div>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
