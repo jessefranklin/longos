@@ -3,6 +3,7 @@ import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap
 import Barcode from 'react-barcode';
 import Select from 'react-select';
 import { SlideToggle } from 'react-slide-toggle';
+import { baseUrl, headers } from "../../const/global";
 
 let axios = require('axios');
 
@@ -18,13 +19,6 @@ const employees = [
     { value: 'Sandy Longo', label: 'John Longo' },
     { value: 'Alex Longo', label: 'Alex Longo' }
 ]
-
-const headers = {
-  header: {
-      "Content-Type":"application/json",
-      "Access-Control-Allow-Origin": "*"
-  }
-}
 
 class OrderDetailItem extends Component {
   constructor(props, context) {
@@ -48,13 +42,12 @@ class OrderDetailItem extends Component {
   }
 
   updateOrder (orderUpdate) {
-    const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/${this.props.oid}/item/${this.props.order.id}/`;
+    const orderAPI = `${baseUrl}/order/${this.props.oid}/item/${this.props.order.id}/`;
     
     let url = orderAPI + orderUpdate;
     
     axios.put(url, headers).then(
         (response) => {
-          console.log(response.data);
           this.props.updateState(response.data);
         },
         (err) => {

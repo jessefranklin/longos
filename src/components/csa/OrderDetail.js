@@ -8,16 +8,9 @@ import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import { orderFilterByCounter } from '../../selectors/orders';
 import CSAHeader from './CSAHeader';
+import { baseUrl, headers } from "../../const/global";
 
-
-const headers = {
-    header: {
-        "Content-Type":"application/json",
-        "Access-Control-Allow-Origin": "*"
-    }
-}
-
-const orderAPI = 'http://digitalpreorder.azurewebsites.net/api/order';
+const orderAPI = baseUrl+'/order';
 
 const options = [
   { value: 1, label: 'Ready For Pickup' },
@@ -55,6 +48,7 @@ class OrderDetail extends Component {
     
     axios.get(url, headers).then(
         (response) => {
+            console.log(response.data);
             this.setState(response.data);
             if(this.state.counter != ''){
               this.handleCounter(this.state.counter);
@@ -95,6 +89,7 @@ class OrderDetail extends Component {
   };
   updateState = (data) => {
     this.setState(data);
+    this.handleCounter(this.state.counter);
   }
   orderPaid = (data) => {
     let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
@@ -213,7 +208,8 @@ const PaidButton = ({isPaid,orderPaid}) => {
 
 
 const mapStateToProps = (state) => ({
-  filters: state.filters
+  filters: state.filters,
+  csaOrder: state.csaOrder
 });
 
 
