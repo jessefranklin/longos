@@ -99,23 +99,14 @@ class OrderDetailItem extends Component {
                     clearable={false} 
                 />
                 </div>
-                {order.quantity}
-     
-                <Select
-                  name="status"
-                  value={order.status}
-                  onChange={(e)=>this.onSelectChange(e.value, 'status')}
-                  options={options}
-                  disabled={order.status === 0 ? true:false}
-                  clearable={false} 
-                />
-
-                {order.upc ? (
-                  <Barcode 
-                    format="UPC" 
-                    value={order.upc}
-                    />
-                ) : ''}
+                <div className="order-item--barcode">
+                  {order.upc ? (
+                    <Barcode 
+                      format="UPC" 
+                      value={order.upc}
+                      />
+                  ) : ''}
+                </div>
 
               </div>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
