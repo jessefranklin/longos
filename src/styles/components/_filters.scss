@@ -39,7 +39,7 @@
     padding:0;
     font-family: $sans;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     li {
         width:32%;
         margin: 0 1% 0 0;
@@ -60,8 +60,7 @@
             border-top-left-radius: 18px;
             padding: 1rem 0;
             color: $dark-grey;
-            &:active {
-                border: 1px solid $red;
+            &.active {
                 background-color: #fff;
             } 
         }

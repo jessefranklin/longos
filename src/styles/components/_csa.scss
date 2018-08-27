@@ -37,19 +37,23 @@
     position: relative;
     font-family: $sans;
     font-weight: 600;
+    font-size:16px;
     color: $red;
-    background-color: transparent;
+    background-color: #fff;
     border:none;
-    &:after {
+    width:100%;
+    padding:3rem 5rem 3rem 6rem;
+    text-align: left;
+    &:before {
         content: '';
         position: absolute;
-        left: 0;
-        top: 5px;
+        transform: translate(-10px,5px);
         width: 0; 
         height: 0; 
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         border-right: 5px solid $red;
+        margin-right: 1rem;
     }
 }
 

@@ -1,6 +1,10 @@
 .order-detail--header {
     display: flex;
     justify-content: space-around;
+    font-family: $sans;
+    font-size: 16px;
+    background: #fff;
+    padding-bottom: 3rem;
 }
 
 .order-item--row {
@@ -10,7 +14,7 @@
     justify-content: space-around;
     width: 100%;
     .Select {
-        width: 200px;
+        width: 100%;
     }
 }
 
@@ -67,5 +71,51 @@
         &:after {
             height: 25px;
           }
+    }
+}
+
+.order--items{
+    margin: 5rem;
+}
+
+.my-collapsible {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    text-align: center;
+    padding:1rem 0rem;
+    margin-bottom: 1rem;
+    .order-item--item{
+        width:25%;
+    }
+    .order-item--qty{
+        width:16%;
+    }
+    .order-item--assign{
+        width:14%;
+    }
+    .order-item--status{
+        width:14%;
+    }
+    .order-item--barcode{
+        width:31%;
+        svg{
+            max-width: 100%;
+        }
+    }
+}
+
+.order-item--row {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    h4.grey-border {
+        width: 24%;
+        font-size: 22px;
     }
 }
