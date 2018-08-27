@@ -14,6 +14,7 @@
 	.cell-id {
 		position: relative;
 		overflow: visible;
+		padding-left: 2rem;
 	}
 	.cell-status {
 		text-align: center;
@@ -32,13 +33,14 @@
 	}
     &:nth-child(n+2){
 		div{
-			&:nth-child(n+3):nth-child(-n+8){
+			&:nth-child(n+2):nth-child(-n+8){
 				div{
 					height:30px;
 					width:55px;
 					margin: auto;
 					border-radius:27px;
 					background-color: #fff;
+					padding-top: 1px;
 					h4{
 						vertical-align: middle;
 					}
@@ -53,7 +55,7 @@
 	&:nth-child(2n+1){
 		background-color: #fff;
 		div{
-			&:nth-child(n+3):nth-child(-n+8){
+			&:nth-child(n+2):nth-child(-n+8){
 				div{
 					background-color: $offwhite-light;
 				}
@@ -63,14 +65,15 @@
 	h4{
 		display:inline;
 		font-size: 18px;
-		margin-right: 0.5rem;
+		margin-right: 0.3rem;
+		transform: translateY(1px);
 		&.red{
 			color:$red;
 		}
 	}
 	.fa{
-		font-size:14px;
-		transform: translateY(-1px);
+		font-size:16px;
+		transform: translateY(0px);
 		&.green{
 			color:$green;
 		}

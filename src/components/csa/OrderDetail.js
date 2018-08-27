@@ -130,9 +130,9 @@ class OrderDetail extends Component {
 
             <div className="">
               <h4>Customer</h4>
-              {this.state.client.name}
+              {this.state.client.name}<br />
 
-              {this.state.client.email && this.state.client.email}
+              {this.state.client.email && this.state.client.email}<br />
               {this.state.client.phone && this.state.client.phone}
             </div>
 

@@ -3,6 +3,7 @@
     justify-content: space-around;
     font-family: $sans;
     font-size: 16px;
+    font-weight: 600;
     background: #fff;
     padding-bottom: 3rem;
 
@@ -49,6 +50,16 @@
             }
         }
     }
+    .state--not-ready{
+        color:$red;
+    }
+    .state--completed{
+        color:$green;
+    }
+    h4{
+        font-size:18px;
+        text-transform:uppercase;
+    }
 }
 
 .order-item--row {
@@ -61,7 +72,8 @@
     font-weight: 600;
     color: $dark-grey;
     .Select {
-        width: 100%;
+        width: 90%;
+        margin:auto;
     }
 }
 
@@ -137,9 +149,11 @@
     margin-bottom: 1rem;
     .order-item--item{
         width:22%;
+        padding:1rem;
     }
     .order-item--qty{
         width:10%;
+        font-size: 18px;
     }
     .order-item--assign{
         width:20%;
