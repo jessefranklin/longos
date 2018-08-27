@@ -89,7 +89,7 @@ class CartOrder extends React.Component {
               type="text"
               name="username" 
               className='form-control'
-              placeholder="username"
+              placeholder="First and Last Name"
               value={this.state.username}
               onChange={this.handleChange.bind(this)}
             />
