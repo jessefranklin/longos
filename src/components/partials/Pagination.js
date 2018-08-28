@@ -16,7 +16,7 @@ export class Pagination extends React.Component {
     }
     render() {
         return (
-            <div className="qty--container" >
+            <div className="page--container" >
                 <button onClick={this.minusOne}>prev</button>
                 <button onClick={this.addOne}>next</button>
             </div>

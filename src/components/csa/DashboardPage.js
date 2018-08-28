@@ -105,7 +105,7 @@ class DashboardPage extends React.Component {
           </div>
         </div>
 
-        <button onClick={this.sampleNotification}>Add samnple Notification</button>
+        <button className="temp-sample" onClick={this.sampleNotification}>Add sample Notification</button>
 
         <CSAFooter />
 
