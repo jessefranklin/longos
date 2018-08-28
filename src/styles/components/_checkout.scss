@@ -327,8 +327,9 @@
         border:none;
         border-radius:18px;
         padding:4px;
-        height: 40px;
-        width: 10%;
+        height: 50px;
+        width: 12%;
+        min-width: 60px;
         margin-right: 2px;
         background: $offwhite;
     }
@@ -348,7 +349,7 @@
         color:$dark-grey;
         width: 90%;
         background: $offwhite;
-        border:2px solid $dark-grey;
+        border:2px solid $grey;
     }
     div{
         margin-bottom: 1rem;

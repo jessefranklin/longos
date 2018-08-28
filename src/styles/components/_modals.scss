@@ -160,16 +160,16 @@
 }
 
 .modal-content{
-    // textarea{
-    //     font-family: $sans;
-    //     border:none;
-    //     color:$dark-grey;
-    //     width: 90%;
-    //     background: $offwhite;
-    //     position: relative;
-    //     left:50%;
-    //     transform:translateX(-50%); 
-    // }
+    .feedback--csa{
+        font-family: $sans;
+        border:2px solid $grey;
+        color:$dark-grey;
+        width: 90%;
+        margin: 1rem auto 1rem auto;
+        position: relative;
+        left:50%;
+        transform:translateX(-50%); 
+    }
     .btn-submit{
         height: 40px;
         width: 30%;
