@@ -318,7 +318,7 @@
 .feedback--customer{
     font-family: $sans;
     text-align: center;
-    margin: 0 5rem;
+    margin: 0 5rem 5rem 5rem;
     background: #fff;
     padding: 2rem 1rem;
     border-radius: 27px;
@@ -348,6 +348,7 @@
         color:$dark-grey;
         width: 90%;
         background: $offwhite;
+        border:2px solid $dark-grey;
     }
     div{
         margin-bottom: 1rem;
