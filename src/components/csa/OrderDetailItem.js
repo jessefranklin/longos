@@ -68,6 +68,10 @@ class OrderDetailItem extends Component {
                 <div className="order-item--item grey-border" onClick={onToggle}>
                   <h4>{order.product.counter}</h4>
                   {order.product.name}
+                  <div className="img--container">
+                    <img src={order.product.imageLink} alt={order.product.name} />
+                  </div>
+                  
                 </div>
                 <div className="order-item--qty grey-border">
                   {order.quantity}
@@ -134,8 +138,6 @@ const SpecialInstructions = ({order}) => {
   );
 };
 
-
-
 const CakeDescription = ({item}) => {
   return (
     <div>
@@ -143,6 +145,5 @@ const CakeDescription = ({item}) => {
     </div>
   );
 };
-
 
 export default OrderDetailItem;

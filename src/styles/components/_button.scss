@@ -59,6 +59,7 @@
   height: 42px;
 }
 
+
 .page--container{
   display: flex;
   justify-content: space-between;
@@ -71,4 +72,9 @@
     font-weight: 400;
     background-color: #fff;
   }
+.order-detail--action {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: $red;
+  @extend .clear-button-styling
 }
