@@ -14,6 +14,8 @@
     ul{
         padding:2rem 5rem;
         margin:auto;
+        display:flex;
+        justify-content:space-between;
         li {
             display: inline-block;
             list-style: none;

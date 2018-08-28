@@ -13,21 +13,29 @@
     }
     .customer-login{
         text-transform: uppercase;
-        padding-right: 15px;
+        padding-right: 6.5rem;
         position: relative;
         font-family: $sans;
         font-size: 18px;
         &:after {
           content: '';
           position: absolute;
-          right: 0;
-          top: 5px;
+          right: 5rem;
+          top: 7px;
           width: 0; 
           height: 0; 
           border-top: 5px solid transparent;
           border-bottom: 5px solid transparent;
           border-left: 8px solid #fff;
         }
+    }
+    .customer-logout{
+        text-transform: uppercase;
+        padding-right: 2rem;
+        position: relative;
+        font-family: $sans;
+        font-size: 18px;
+        color:#fff;
     }
 }
 
