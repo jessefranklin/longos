@@ -2,7 +2,40 @@
     .header {
         .customer-login {
             color: #fff;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding-right: 6.5rem;
+            position: relative;
+            font-family: $sans;
+            font-size: 18px;
+            &:after {
+                content: '';
+                position: absolute;
+                right: 5rem;
+                top: 7px;
+                width: 0; 
+                height: 0; 
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                border-left: 8px solid #fff;
+            }
+            &:hover{
+                text-decoration: none;
+                opacity: .7;
+            }
+        }
+        .customer-logout{
+            text-transform: uppercase;
+            padding-right: 2rem;
+            position: relative;
+            font-family: $sans;
+            font-size: 18px;
+            font-weight:600;
+            color:#fff;
+            &:hover{
+                text-decoration: none;
+                opacity: .7;
+            }
         }
     }
     .content--container {
@@ -10,32 +43,6 @@
     }
     .search{
         border: 1px solid $light-grey;
-    }
-    .customer-login{
-        text-transform: uppercase;
-        padding-right: 6.5rem;
-        position: relative;
-        font-family: $sans;
-        font-size: 18px;
-        &:after {
-          content: '';
-          position: absolute;
-          right: 5rem;
-          top: 7px;
-          width: 0; 
-          height: 0; 
-          border-top: 5px solid transparent;
-          border-bottom: 5px solid transparent;
-          border-left: 8px solid #fff;
-        }
-    }
-    .customer-logout{
-        text-transform: uppercase;
-        padding-right: 2rem;
-        position: relative;
-        font-family: $sans;
-        font-size: 18px;
-        color:#fff;
     }
 }
 
