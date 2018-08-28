@@ -117,7 +117,7 @@ class CartOrderReview extends React.Component {
             </span>
             <span>
               <strong>Pickup Date</strong><br />
-              {moment(order.pickUpDate).format('MMMM,Do,YYYY')}
+              {moment(order.pickUpDate).format('MMMM Do, YYYY')}
             </span>
             <span>
               <strong>Pickup Time</strong><br />
