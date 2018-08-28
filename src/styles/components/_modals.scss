@@ -156,3 +156,29 @@
         padding: 2rem 0;
     }
 }
+
+.modal-content{
+    textarea{
+        font-family: $sans;
+        border:none;
+        color:$dark-grey;
+        width: 90%;
+        background: $offwhite;
+        position: relative;
+        left:50%;
+        transform:translateX(-50%); 
+    }
+}
+
+.btn-submit{
+    height: 40px;
+    width: 30%;
+    margin: 1rem auto;
+    border: 2px solid $green;
+    border-radius: 0px;
+    color: $green;
+    font-family: $sans;
+    font-weight: 500;
+    background: #fff;
+    display:block;
+}

@@ -28,13 +28,13 @@ class CSAFeedback extends Component {
                     </Modal.Header>
                     
                     <textarea
-                        placeholder="Feeback is welcome"
+                        placeholder="Feedback is welcome"
                         onChange={this.onFeedback}
                         rows="4"
                         >
                     </textarea>
     
-                    <button onClick={this.onSubmit}>
+                    <button className="btn-submit" onClick={this.onSubmit}>
                         Submit
                     </button>
                 </Modal>
