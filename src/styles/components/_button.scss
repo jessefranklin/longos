@@ -58,3 +58,11 @@
   width: 42px;
   height: 42px;
 }
+
+
+.order-detail--action {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: $red;
+  @extend .clear-button-styling
+}

@@ -1,15 +1,14 @@
 import { baseUrl, headers } from "../../const/global";
 let axios = require('axios');
 
-export let fetchCSAOrders = (oId) => {
+export const fetchCSAOrder = (oId) => {
     return (dispatch) => {
         let orderID = `?orderId=${oId}`;
         let url = baseUrl + '/order' + orderID;
-        dispatch(fetchCSAOrdersBegin())
+        dispatch(fetchCSAOrderBegin())
         return axios.get(url, headers).then(
             (response) => {
-                console.log(response.data);
-                dispatch(fetchCSAOrdersSuccess(response.data));
+                dispatch(fetchCSAOrderSuccess(response.data));
             },
             (err) => {
                 console.log(err);
@@ -19,11 +18,27 @@ export let fetchCSAOrders = (oId) => {
     }
 }
 
-export const fetchCSAOrdersBegin = () => ({
-  type: 'FETCH_ORDERS_BEGIN'
+export const updateCSAOrder = (params,oId) => {
+    return (dispatch) => {
+        let url = baseUrl + '/order' + params;
+        dispatch(fetchCSAOrderBegin())
+        return axios.put(url, headers).then(
+            (response) => {
+                dispatch(fetchCSAOrder(oId));
+            },
+            (err) => {
+                console.log(err);
+            }
+        )
+
+    }
+}
+
+export const fetchCSAOrderBegin = () => ({
+  type: 'FETCH_ORDER_BEGIN'
 });
 
-export const fetchCSAOrdersSuccess = order => ({
-  type: 'FETCH_ORDERS_SUCCESS',
+export const fetchCSAOrderSuccess = order => ({
+  type: 'FETCH_ORDER_SUCCESS',
   payload: { order }
 });
