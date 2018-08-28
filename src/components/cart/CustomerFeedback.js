@@ -23,39 +23,45 @@ class CustomerFeedback extends Component {
  
     render() {
         return (
-            <div className="" >
-                <button onClick={() => this.onRating}>
-                    <FontAwesomeIcon
-                        className='fa-frown'
-                        name='fa-frown'
-                        size='2x'
-                        />
-                </button>
+            <div className="feedback--customer" >
+                <div>
+                    <p>Please rate your experience:</p>
+                    <button onClick={() => this.onRating}>
+                        <FontAwesomeIcon
+                            className='fa-frown'
+                            name='fa-frown'
+                            size='2x'
+                            />
+                    </button>
 
-                <button onClick={() => this.onRating}>
-                    <FontAwesomeIcon
-                        className='fa-meh'
-                        name='fa-meh'
-                        size='2x'
-                        />
-                </button>
+                    <button onClick={() => this.onRating}>
+                        <FontAwesomeIcon
+                            className='fa-meh'
+                            name='fa-meh'
+                            size='2x'
+                            />
+                    </button>
 
-                <button onClick={() => this.onRating}>
-                    <FontAwesomeIcon
-                        className='fa-smile'
-                        name='fa-smile'
-                        size='2x'
-                        />
-                </button>
+                    <button onClick={() => this.onRating}>
+                        <FontAwesomeIcon
+                            className='fa-smile'
+                            name='fa-smile'
+                            size='2x'
+                            />
+                    </button>
+                </div>
 
-                <textarea
-                    placeholder="Feeback is welcome"
-                    onChange={this.onFeedback}
-                    rows="4"
-                    >
-                </textarea>
+                <div>
+                    <p>Do you have any comments or suggestions?</p>
+                    <textarea
+                        placeholder="Feedback is welcome"
+                        onChange={this.onFeedback}
+                        rows="4"
+                        >
+                    </textarea>
+                </div>
 
-                <button onClick={this.onSubmit}>
+                <button className="btn-submit" onClick={this.onSubmit}>
                     Submit
                 </button>
 

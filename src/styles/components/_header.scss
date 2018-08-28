@@ -41,8 +41,13 @@
     .fa-2x {
       font-size: 20px;
     }
-    &:hover {
-      color: #fff;
+    &:hover{
+      div{
+        opacity: 0.7;
+      }
+      span{
+        color: #ee9196;
+      }
     }
   }
 }
