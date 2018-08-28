@@ -75,6 +75,16 @@
     .Select-menu-outer{
         color:$red !important;
     }
+    .is-disabled{
+        background:#fff;
+        .Select-control{
+            border: none;
+            //background:#fff !important;
+        }
+        .Select-arrow-zone{
+            display: none;
+        }
+    }
 }
 
 .item--cake-options {
