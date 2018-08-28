@@ -1,6 +1,6 @@
 
 const initialState = {
-    csaOrder: {},
+    csaOrder: [],
     loading: false,
     error: null
 };
@@ -11,7 +11,7 @@ export default function csaOrderReducer(state = initialState, action) {
         return {
             ...state,
             loading: false,
-            csaOrder: action.order
+            order: action.payload.order
         };
   
       default:

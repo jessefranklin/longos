@@ -38,6 +38,14 @@ export const addToCart = (product) => ({
 });
 
 
+// ADD_TO_CART
+export const CSACart = (products) => ({
+  type: 'ADD_TO_CSA_CART',
+  products
+});
+
+
+
 // Start Remove Item;
 export const startRemoveItem = ({ id } = {}) => {
   return (dispatch, getState) => {
