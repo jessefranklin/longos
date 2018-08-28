@@ -6,7 +6,7 @@ import en from '../const/en-lang';
 import PropTypes from "prop-types";
 import moment from 'moment';
 
-class HOC extends Component {
+class Idle extends Component {
   static contextTypes = {
     router: PropTypes.object
   } 
@@ -103,4 +103,4 @@ const mapStateToProps = state => ({
   settings: state.settings
 });
 
-export default connect(mapStateToProps)(HOC);
+export default connect(mapStateToProps)(Idle);

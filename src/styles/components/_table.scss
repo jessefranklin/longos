@@ -14,6 +14,7 @@
 	.cell-id {
 		position: relative;
 		overflow: visible;
+		padding-left: 5rem;
 	}
 	.cell-status {
 		text-align: center;
@@ -32,10 +33,21 @@
 	}
     &:nth-child(n+2){
 		div{
-			&:nth-child(n+3):nth-child(-n+8){
+			&:nth-child(n+2):nth-child(-n+8){
 				div{
+					height:30px;
+					width:55px;
+					margin: auto;
 					border-radius:27px;
 					background-color: #fff;
+					padding-top: 1px;
+					h4{
+						vertical-align: middle;
+					}
+					.fa{
+						position: relative;
+						top:10%;
+					}
 				}
 			}
 		}
@@ -43,11 +55,50 @@
 	&:nth-child(2n+1){
 		background-color: #fff;
 		div{
-			&:nth-child(n+3):nth-child(-n+8){
+			&:nth-child(n+2):nth-child(-n+8){
 				div{
 					background-color: $offwhite-light;
 				}
 			}
+		}
+	}
+	div{
+		a{
+			display: block;
+			margin-right:3rem;
+			margin-left:1rem;
+			height:30px;
+			width:30px;
+			background-color: $green;
+			border-radius:50%; 
+			&:after{
+				content:'';
+				display: block;
+				position: relative;
+				top:7px;
+				left:5px;
+				height:15px;
+				width:15px;
+				border-right: 5px solid #fff;
+				border-bottom: 5px solid #fff;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+	h4{
+		display:inline;
+		font-size: 18px;
+		margin-right: 0.3rem;
+		transform: translateY(1px);
+		&.red{
+			color:$red;
+		}
+	}
+	.fa{
+		font-size:16px;
+		transform: translateY(0px);
+		&.green{
+			color:$green;
 		}
 	}
 }

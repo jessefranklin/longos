@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   background: $red;
-  z-index: 2;
+  z-index: 50;
   padding:0 1rem;
   a,
   .profile--container,
@@ -41,8 +41,13 @@
     .fa-2x {
       font-size: 20px;
     }
-    &:hover {
-      color: #fff;
+    &:hover{
+      div{
+        opacity: 0.7;
+      }
+      span{
+        color: #ee9196;
+      }
     }
   }
 }

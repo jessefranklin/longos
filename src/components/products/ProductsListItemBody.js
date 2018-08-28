@@ -43,12 +43,21 @@ class ProductsListItemBody extends Component {
   }
 
   onAddToCart = () => {
+    if(this.props.editOrder){
+      //Edit order CSA page add to cart
+      this.onAddToCartCSA();
+    } else {
+      //Customer facing products page add to cart
+      this.onAddToCartCustomer();
+    }
+  };
+  onAddToCartCustomer = () => {
     let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === this.state.selectedProduct.productId) : '';
     if(obj && obj.optionId == this.state.selectedProduct.optionId && obj.comment == this.state.selectedProduct.comment){
       
       const selectedProduct = {...this.state.selectedProduct}
       selectedProduct.quantity = obj.quantity + this.state.selectedProduct.quantity;
-
+  
       this.props.startEditItem(
         obj.id,
         selectedProduct
@@ -59,7 +68,10 @@ class ProductsListItemBody extends Component {
       );
     }
     this.props.handleClose();
-  };
+  }
+  onAddToCartCSA = () => {
+    console.log('uep');
+  }
 
   handleClose(){
     this.props.handleClose();
@@ -113,6 +125,7 @@ class ProductsListItemBody extends Component {
       <div>
         <Modal.Body>
         <div className="item--header">
+          
           <h2>{item.name}</h2>
           <h5>${this.state.selectedProduct.price}</h5>
         </div>

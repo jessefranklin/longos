@@ -6,10 +6,10 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, Row, Col, Button } from 'react-bootstrap';
 import { setOrder } from '../../actions/order';
-import CartProgress from './CartProgress';
+import CartProgress from '../cart/CartProgress';
 import TimePicker from 'react-bootstrap-time-picker';
 
-class CartOrder extends React.Component {
+class EditDateTime extends React.Component {
   constructor(props) {
     super(props);
 
@@ -143,4 +143,4 @@ const mapDispatchToProps = (dispatch) => ({
   setOrder: (order) => dispatch(setOrder(order))
 });
   
-export default connect(mapStateToProps, mapDispatchToProps)(CartOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(EditDateTime);
