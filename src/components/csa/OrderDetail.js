@@ -60,7 +60,7 @@ class OrderDetail extends Component {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`
     axios.put(url, headers).then(
       (response) => {
-        console.log('completed');
+        console.log(response.daata);
         this.props.fetchCSAOrder(this.props.match.params.id);
       },
       (err) => {
@@ -70,6 +70,7 @@ class OrderDetail extends Component {
   }
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
+
   };
   updateState = (data) => {
     this.props.fetchCSAOrder(this.props.match.params.id);
@@ -100,7 +101,7 @@ class OrderDetail extends Component {
     )
   }
   render() {
-    const {csaOrder, csaOrderItems } = this.props;
+    const csaOrder = this.props.csaOrder.order;
 
     return (
       <div>
@@ -154,7 +155,7 @@ class OrderDetail extends Component {
             </div>
           </div>
           <div className="order--items">
-            {csaOrderItems.map(order => {
+            {csaOrder.items.map(order => {
               return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={this.updateState} />;
             })}
             <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
@@ -202,9 +203,7 @@ const PaidButton = ({isPaid,orderPaid}) => {
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
-  loading: state.csaOrder.loading,
-  csaOrder: state.csaOrder.order,
-  csaOrderItems: orderFilterByCounter(state.csaOrder.order.items,state.filters.counter)
+  csaOrder: state.csaOrder
 });
 
 const mapDispatchToProps = (dispatch) => ({
