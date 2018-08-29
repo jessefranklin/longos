@@ -63,7 +63,7 @@ class ProductsListItem extends Component {
         </div>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
-            <Modal.Header closeButton>
+            <Modal.Header className="img--header" closeButton>
               <Modal.Title></Modal.Title>
               <div className="img--container">
                 <img src={item.imageLink} alt={item.name} />

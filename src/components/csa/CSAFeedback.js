@@ -31,6 +31,7 @@ class CSAFeedback extends Component {
                         placeholder="Feedback is welcome"
                         onChange={this.onFeedback}
                         rows="4"
+                        className="feedback--csa"
                         >
                     </textarea>
     
