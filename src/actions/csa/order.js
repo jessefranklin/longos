@@ -1,21 +1,12 @@
-
-let axios = require('axios');
+import { baseUrl, headers } from "../../const/global";
 import config from '../../server/config.json';
+let axios = require('axios');
 
-const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order`;
-const orderID = `?orderId=O8184008`;
-const orderIDs = `?storeid=${config[0].store_id}`;
-let url = orderAPI + orderID;
-
-const headers = {
-    header: {
-        "Content-Type":"application/json",
-        "Access-Control-Allow-Origin": "*"
-    }
-}
 
 export let fetchCSAOrders = (oId) => {
     return (dispatch) => {
+        let orderID = `?orderId=${oId}`;
+        let url = baseUrl + '/order' + orderID;
         dispatch(fetchCSAOrdersBegin())
         return axios.get(url, headers).then(
             (response) => {

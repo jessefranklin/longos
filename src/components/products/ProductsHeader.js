@@ -31,7 +31,9 @@ class Header extends React.Component {
       document.removeEventListener('click', this.closeMenu);
     });
   }
-
+  componentWillUnmount() {
+    document.removeEventListener('click', this.closeMenu);
+  }
   render() {
     const {cart, profile, total} = this.props;
     const cartLength = cart.length > 0;

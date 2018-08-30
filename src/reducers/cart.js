@@ -8,6 +8,8 @@ export default (state = cartReducerDefaultState, action) => {
         ...state,
         action.product
       ];
+    case 'ADD_TO_CSA_CART':
+      return action.products;
     case 'REMOVE_ITEM':
       return state.filter(({ id }) => id !== action.id);
     case 'EMPTY_CART':

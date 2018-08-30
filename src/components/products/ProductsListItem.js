@@ -30,11 +30,11 @@ class ProductsListItem extends Component {
   renderBody = (item) => {
     if(item.category === 'Cake') {
       return (
-        <ProductsListItemCake item={item} handleClose={this.handleClose} />
+        <ProductsListItemCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
       ); 
     } else {
       return (
-        <ProductsListItemBody item={item} handleClose={this.handleClose} />
+        <ProductsListItemBody item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
       );
     }
   }

@@ -75,6 +75,16 @@
     .Select-menu-outer{
         color:$red !important;
     }
+    .is-disabled{
+        background:#fff;
+        .Select-control{
+            border: none;
+            //background:#fff !important;
+        }
+        .Select-arrow-zone{
+            display: none;
+        }
+    }
 }
 
 .item--cake-options {
@@ -108,6 +118,12 @@
     font-size: 12px;
 }
 
+.modal-content{
+    .toc{
+        padding:2rem;
+    }
+}
+
 .modal-footer {
     border-top:none !important;
     padding: 0rem 2rem 3rem 2rem !important;
@@ -139,4 +155,30 @@
     .item--disclaimer {
         padding: 2rem 0;
     }
+}
+
+.modal-content{
+    textarea{
+        font-family: $sans;
+        border:none;
+        color:$dark-grey;
+        width: 90%;
+        background: $offwhite;
+        position: relative;
+        left:50%;
+        transform:translateX(-50%); 
+    }
+}
+
+.btn-submit{
+    height: 40px;
+    width: 30%;
+    margin: 1rem auto;
+    border: 2px solid $green;
+    border-radius: 0px;
+    color: $green;
+    font-family: $sans;
+    font-weight: 500;
+    background: #fff;
+    display:block;
 }

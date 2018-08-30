@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startAddToCart, startEditItem }  from '../../actions/cart';
-import en from '../../server/en-lang';
+import en from '../../const/en-lang';
 import Select from 'react-select';
 import { QuantitySelect } from '../partials/QuantitySelect';
 import uuid from 'uuid/v1';
@@ -25,6 +25,7 @@ class ProductsListItemBody extends Component {
       selectedProduct: {
         id: uuid(),
         type: 'item',
+        counter: this.props.item.counter,
         productId: this.props.item.id,
         productName: this.props.item.name,
         productImage: this.props.item.imageLink,
@@ -32,7 +33,9 @@ class ProductsListItemBody extends Component {
         optionName: this.props.item.options[0].name,
         priceId: this.props.item.options[0].price.id,
         price: this.props.item.options[0].price.price,
-        tax: 0,
+        tax: this.props.item.options[0].price.tax,
+        taxName: this.props.item.options[0].price.taxName,
+        upc: this.props.item.options[0].price.upc,
         quantity: 1,
         comment: ''
       }
@@ -40,12 +43,21 @@ class ProductsListItemBody extends Component {
   }
 
   onAddToCart = () => {
+    if(this.props.editOrder){
+      //Edit order CSA page add to cart
+      this.onAddToCartCSA();
+    } else {
+      //Customer facing products page add to cart
+      this.onAddToCartCustomer();
+    }
+  };
+  onAddToCartCustomer = () => {
     let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === this.state.selectedProduct.productId) : '';
     if(obj && obj.optionId == this.state.selectedProduct.optionId && obj.comment == this.state.selectedProduct.comment){
       
       const selectedProduct = {...this.state.selectedProduct}
       selectedProduct.quantity = obj.quantity + this.state.selectedProduct.quantity;
-
+  
       this.props.startEditItem(
         obj.id,
         selectedProduct
@@ -56,7 +68,10 @@ class ProductsListItemBody extends Component {
       );
     }
     this.props.handleClose();
-  };
+  }
+  onAddToCartCSA = () => {
+    console.log('uep');
+  }
 
   handleClose(){
     this.props.handleClose();
@@ -110,6 +125,7 @@ class ProductsListItemBody extends Component {
       <div>
         <Modal.Body>
         <div className="item--header">
+          
           <h2>{item.name}</h2>
           <h5>${this.state.selectedProduct.price}</h5>
         </div>
