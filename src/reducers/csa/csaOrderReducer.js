@@ -1,6 +1,11 @@
 
 const initialState = {
-    csaOrder: [],
+    order: {
+        client: {
+
+        },
+        items: []
+    },
     loading: false,
     error: null
 };
