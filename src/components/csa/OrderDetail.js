@@ -114,6 +114,7 @@ class OrderDetail extends Component {
   }
   render() {
     const csaOrder = this.props.csaOrder.order;
+    const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
 
     return (
       <div>
@@ -174,7 +175,7 @@ class OrderDetail extends Component {
             </div>
           </div>
           <div className="order--items">
-            {csaOrder.items.map(order => {
+            {csaOrderItems.map(order => {
               return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={this.updateState} />;
             })}
             <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
