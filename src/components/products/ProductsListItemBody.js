@@ -51,6 +51,7 @@ class ProductsListItemBody extends Component {
       this.onAddToCartCustomer();
     }
   };
+  
   onAddToCartCustomer = () => {
     let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === this.state.selectedProduct.productId) : '';
     if(obj && obj.optionId == this.state.selectedProduct.optionId && obj.comment == this.state.selectedProduct.comment){
@@ -69,8 +70,10 @@ class ProductsListItemBody extends Component {
     }
     this.props.handleClose();
   }
+
   onAddToCartCSA = () => {
-    console.log('uep');
+    console.log(this.state.selectedProduct);
+    this.props.csaEditOrder(this.state.selectedProduct);
   }
 
   handleClose(){
@@ -132,13 +135,9 @@ class ProductsListItemBody extends Component {
 
        
 
-        {this.props.item.options[this.state.selectedOption.value].piecesCount !=0 && <p> {this.props.item.options[this.state.selectedOption.value].piecesCount} pieces <OverlayTrigger overlay={tooltip}>
-          <a href="#tooltip">?</a>
-        </OverlayTrigger>{' '}</p>}
+        {this.props.item.options[this.state.selectedOption.value].piecesCount !=0 && <p> {this.props.item.options[this.state.selectedOption.value].piecesCount} pieces </p>}
 
-        {this.props.item.options[this.state.selectedOption.value].servingSize && <p>Serves {this.props.item.options[this.state.selectedOption.value].servingSize} people <OverlayTrigger overlay={tooltip}>
-          <a href="#popover">?</a>
-        </OverlayTrigger>{' '}</p>}
+        {this.props.item.options[this.state.selectedOption.value].servingSize && <p>Serves {this.props.item.options[this.state.selectedOption.value].servingSize} people </p>}
         
         <p>
           {item.description}

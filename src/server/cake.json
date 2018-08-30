@@ -148,61 +148,14 @@
                     "label": "Conffetti",
                     "value": "conffetti"
                 }]
-        }, {
-            "label": "Decoration",
-            "name": "decorationType",
-            "descriptions": "descriptions",
-            "placeholder": "Decoration Type",
-            "target": "decorationTypeNote",
-            "options": [{
-                    "label": "Character Cake",
-                    "value": "characterCake"
-                },{
-                    "label": "Edible Image",
-                    "value": "editableImage"
-                },{
-                    "label": "Other",
-                    "value": "other"
-                }]
-        }, {
-            "label": "Writing on cake",
-            "name": "writingPlaceholder",
-            "descriptions": "descriptions",
-            "placeholder": "Writing on Cake",
-            "target": "writigOnCakeTypeNote",
-            "options": [{
-                    "label": "Happy Birthday",
-                    "value": "Happy ___ Birthday ______"
-                },{
-                    "label": "Happy Anniversary",
-                    "value": "Happy ___ Anniversary ______"
-                },{
-                    "label": "Congradulations _______",
-                    "value": "Congradulations _______"
-                },{
-                    "label": "God bless you _____ on your ______",
-                    "value": "God bless you _____ on your ______"
-                },{
-                    "label": "Pink or blue we welcome you",
-                    "value": "Pink or blue we welcome you"
-                },{
-                    "label": "Showers of happiness",
-                    "value": "Showers of happiness"
-                }]
         }], 
     "details":[{
-            "label": "Decoration",
-            "name": "decorationTypeNote",
-            "descriptions": "descriptions",
-            "placeholder": "",
-            "type": "textarea"
-        },{
             "label": "Writing on Cake",
             "name": "writigOnCakeTypeNote",
             "descriptions": "descriptions",
             "type": "textarea"
         },{
-            "label": "Extras",
+            "label": "Special Instructions",
             "name": "extras",
             "descriptions": "descriptions",
             "type": "textarea"

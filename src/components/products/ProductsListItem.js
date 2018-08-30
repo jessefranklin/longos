@@ -3,11 +3,15 @@ import { connect } from 'react-redux'
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startAddToCart }  from '../../actions/cart';
 import Select from 'react-select';
+import PropTypes from "prop-types";
 import ProductsListItemBody from './ProductsListItemBody';
 import ProductsListItemCake from './ProductsListItemCake';
-
+import ProductsListItemClassicCake from './ProductsListItemClassicCake';
 
 class ProductsListItem extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  } 
   constructor(props, context) {
     super(props, context);
 
@@ -27,14 +31,23 @@ class ProductsListItem extends Component {
     this.setState({ show: false });
   }
 
+  csaEditOrder = (payload) => {
+    console.log(this.props.csaOrder.order.id,payload);
+    this.context.router.history.goBack();
+  }
+
   renderBody = (item) => {
-    if(item.category === 'Cake') {
+    if(item.category === 'Signature Cakes') {
       return (
-        <ProductsListItemCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
+        <ProductsListItemCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} csaEditOrder={this.csaEditOrder}/>
+      ); 
+    } else if(item.category === 'Classic Cakes' || item.category === 'Cupcake Cakes' ) {
+      return (
+        <ProductsListItemClassicCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
       ); 
     } else {
       return (
-        <ProductsListItemBody item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
+        <ProductsListItemBody item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} csaEditOrder={this.csaEditOrder}/>
       );
     }
   }
@@ -105,8 +118,10 @@ const CakeDescription = ({item}) => {
 };
 
 const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart,
+  csaOrder: state.csaOrder
 });
+
 
 
 export default connect(mapStateToProps)(ProductsListItem);

@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
+import {Button, Modal} from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import { fetchCSAOrder, updateCSAOrder } from '../../actions/csa/csaOrder';
 import { orderFilterByCounter } from '../../selectors/orders';
 import { CSACart } from '../../actions/cart';
 import CSAHeader from './CSAHeader';
+import groupByCounter from '../../selectors/groupByCounter';
 
 import { baseUrl, headers } from "../../const/global";
 let axios = require('axios');
@@ -39,13 +41,14 @@ class OrderDetail extends Component {
       pickupTime: '',
       status: '',
       isPaid: this.props.csaOrder.isPaid,
-      items: []
+      items: [],
+      show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
+
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
-  componentWillMount() {
-    this.props.fetchCSAOrder(this.props.match.params.id);
-  };
   componentWillMount() {
     this.props.fetchCSAOrder(this.props.match.params.id);
   };
@@ -72,12 +75,19 @@ class OrderDetail extends Component {
     this.setState({ 'counter' : value });
 
   };
+  handleShow() {
+    this.setState({ show: true });
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
   updateState = (data) => {
     this.props.fetchCSAOrder(this.props.match.params.id);
   }
   addToOrder = () => {
     let cart = []
-    this.props.csaOrderItems.map(cartItem => {
+    this.props.csaOrder.order.items.map(cartItem => {
       cart.push({
         ...cartItem,
         counter: cartItem.product.counter,
@@ -100,8 +110,13 @@ class OrderDetail extends Component {
       }
     )
   }
+  
   render() {
     const csaOrder = this.props.csaOrder.order;
+    const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
+    const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
+    console.log(groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))) ;
+    const updateState = this.updateState;
 
     return (
       <div>
@@ -111,7 +126,14 @@ class OrderDetail extends Component {
           <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
           <div className="order-detail--header">
             <div className="">
-              <h4>Order #</h4><h2>{csaOrder.id} <button className="order-detail--action">cancel order</button></h2>
+              <h4>Order #</h4><h2>{csaOrder.id} <button className="order-detail--action" onClick={this.handleShow}>cancel order</button></h2>
+              <Modal show={this.state.show} onHide={this.handleClose}>
+                <p className="cancel--text">Are you sure you want to cancel this order?</p>
+                <Modal.Footer>
+                  <Button className="btn-add">Yes, Cancel</Button>  
+                  <Button onClick={this.handleClose}>No</Button>
+                </Modal.Footer>
+              </Modal>
               <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} />
             </div>
 
@@ -136,7 +158,7 @@ class OrderDetail extends Component {
           </div>
 
           <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
-          
+
           <div className="order-items--header">
             <div className="col-item grey-border">
               <h4>Item</h4>
@@ -155,10 +177,21 @@ class OrderDetail extends Component {
             </div>
           </div>
           <div className="order--items">
-            {csaOrder.items.map(order => {
-              return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={this.updateState} />;
+          
+            {Object.keys(csaOrderSortedItems).map(function(key, index) {
+              return <div key={index} className="element">
+                <h2>{key}</h2> 
+                <div className="counter-items--container">
+                  {csaOrderSortedItems[key].map(order => {
+                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} />;
+                  })}
+                </div>
+              </div>;
             })}
-            <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
+
+            {!csaOrder.isPaid? 
+              <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
+            :'' }
           </div>
         </div>
       </div>
@@ -191,10 +224,10 @@ const PaidButton = ({isPaid,orderPaid}) => {
     <div className="btn--container">
       {isPaid ? ( 
         <div>
-          <button className="checked" onClick={() => orderPaid(false)}>Order is Paid </button>
+          <button className="checkbox-red checked" onClick={() => orderPaid(false)}>Order is Paid </button>
         </div>
       ):(
-        <button onClick={() => orderPaid(true)}>Order is not paid</button>
+        <button className="checkbox-red"  onClick={() => orderPaid(true)}>Order is not paid</button>
       )}
     </div>
   );

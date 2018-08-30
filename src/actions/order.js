@@ -1,7 +1,7 @@
 import { baseUrl } from "../const/global";
 let axios = require('axios');
 
-const orderApi  = baseUrl+"/order";
+const orderApi  = baseUrl+"/order/add";
 const headers = {
     headers: {
         'Content-Type': 'application/json',

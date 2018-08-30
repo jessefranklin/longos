@@ -29,6 +29,7 @@ class LoginPage extends React.Component {
       email: '',
       phone: '',
       username: '',
+      rewards: '',
       touched: {
         email: false,
         phone: false,
@@ -82,13 +83,13 @@ class LoginPage extends React.Component {
   }
 
   onSubmit = (e) => {
+    console.log(this.state);  
     e.preventDefault();
     
-    if (!this.canBeSubmitted()) {
+    if (!this.canBeSubmitted() && !this.state.rewards) {
       e.preventDefault();
       return;
     }
-    
     this.props.setProfile(this.state);
     let val = e.target.getAttribute('data')
     history.push(val);
@@ -128,7 +129,7 @@ class LoginPage extends React.Component {
           
           {this.state.active ==='guest' && <Guest state={this.state} handleChange={this.handleChange} handleBlur={this.handleBlur} shouldMarkError={shouldMarkError} onSubmit={this.onSubmit} errors={errors} />}
 
-          {this.state.active ==='card' && <Card handleChange={this.handleChange} />}
+          {this.state.active ==='card' && <Card state={this.state} handleChange={this.handleChange} onSubmit={this.onSubmit}  />}
   
           
 
@@ -179,12 +180,13 @@ const Guest = ({state, handleChange, handleBlur, shouldMarkError, onSubmit, erro
   </div>
 )
 
-const Card = ({handleChange, onSubmit}) => (
+const Card = ({state, handleChange, onSubmit}) => (
   <div className="rewards-container form-group">
     <input
       className="form-control"
       type="number" 
       name="rewards" 
+      value={state.rewards}
       placeholder="Rewards Number"
       onChange={handleChange}
     />

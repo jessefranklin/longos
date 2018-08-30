@@ -25,7 +25,7 @@ export const updateCSAOrder = (params,oId) => {
         dispatch(fetchCSAOrderBegin())
         return axios.put(url, headers).then(
             (response) => {
-                dispatch(fetchCSAOrder(oId));
+                console.log(response.data)
             },
             (err) => {
                 console.log(err);
