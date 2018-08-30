@@ -1,6 +1,6 @@
 
 
-export default (item) => {
+export const cartTotal = (item) => {
     return item
         .map((item) => (item.quantity * item.price))
         .reduce((sum, value) => sum+value,0);
@@ -16,3 +16,12 @@ export const totalCount = (item) => {
         return 0;
     }
 }
+
+
+export const cartTax = (item) => {
+    return item
+        .map((item) => (item.quantity * item.tax))
+        .reduce((sum, value) => sum+value,0);
+}
+
+

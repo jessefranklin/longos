@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import CartListItem from './CartListItem';
-import cartTotal from '../../selectors/cartTotal';
+import { cartTotal, cartTax } from '../../selectors/cartTotal';
 import numeral from 'numeral';
 import { totalCount } from '../../selectors/cartTotal';
 import Announcements from '../Announcements';
@@ -18,8 +18,10 @@ class Cart extends React.Component {
     this.setState({ announcementMessage: `Checkout: ${this.props.cart.length}`} );
   }
   render() {
-    const { cart, cartTotal, total } = this.props;
+    const { cart, cartTotal, total, cartTax } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
+    const formattedCartTax = numeral(cartTax).format('$0,0.00');
+    const totalWithTax = numeral(cartTotal+cartTax).format('$0,0.00');
     const itemWord = total === 1 ? 'item' : 'items' ;
 
     return (
@@ -41,10 +43,13 @@ class Cart extends React.Component {
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
           })}
+          { formattedCartTax }
+        </div>
+        <div>
         </div>
         <div className="cart--summary">
           <span>
-            Total price: {formattedCartTotal}
+            Total price: {totalWithTax}
           </span>
           <Link to="/order" className="btn">Place Order</Link>
         </div>
@@ -56,6 +61,7 @@ class Cart extends React.Component {
 const mapStateToProps = (state) => ({
   cart: state.cart,
   cartTotal: cartTotal(state.cart),
+  cartTax: cartTax(state.cart),
   total: totalCount(state.cart)
 });
   

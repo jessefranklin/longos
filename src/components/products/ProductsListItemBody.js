@@ -159,7 +159,7 @@ class ProductsListItemBody extends Component {
         </div>
 
         <textarea
-          placeholder="Add a note for your"
+          placeholder={en.product.textarea}
           onChange={this.onNoteChange}
           rows="4"
         >

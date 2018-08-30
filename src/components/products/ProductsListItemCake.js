@@ -123,7 +123,7 @@ class ProductsListItemCake extends Component {
           />
 
         {cakeOptions.fields.map(options => {
-          return <CreateableSelect 
+          return <Select 
             key={options.label} 
             options={options}
             value={this.state.cakeOptions[options.name]}
