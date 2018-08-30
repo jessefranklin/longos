@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
+import {Button, Modal} from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import { fetchCSAOrder, updateCSAOrder } from '../../actions/csa/csaOrder';
@@ -39,9 +40,13 @@ class OrderDetail extends Component {
       pickupTime: '',
       status: '',
       isPaid: this.props.csaOrder.isPaid,
-      items: []
+      items: [],
+      show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
+
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
   componentWillMount() {
     this.props.fetchCSAOrder(this.props.match.params.id);
@@ -72,6 +77,13 @@ class OrderDetail extends Component {
     this.setState({ 'counter' : value });
 
   };
+  handleShow() {
+    this.setState({ show: true });
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
   updateState = (data) => {
     this.props.fetchCSAOrder(this.props.match.params.id);
   }
@@ -111,7 +123,14 @@ class OrderDetail extends Component {
           <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
           <div className="order-detail--header">
             <div className="">
-              <h4>Order #</h4><h2>{csaOrder.id} <button className="order-detail--action">cancel order</button></h2>
+              <h4>Order #</h4><h2>{csaOrder.id} <button className="order-detail--action" onClick={this.handleShow}>cancel order</button></h2>
+              <Modal show={this.state.show} onHide={this.handleClose}>
+                <p className="cancel--text">Are you sure you want to cancel this order?</p>
+                <Modal.Footer>
+                  <Button className="btn-add">Yes, Cancel</Button>  
+                  <Button onClick={this.handleClose}>No</Button>
+                </Modal.Footer>
+              </Modal>
               <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} />
             </div>
 
