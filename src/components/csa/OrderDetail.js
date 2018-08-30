@@ -77,7 +77,7 @@ class OrderDetail extends Component {
   }
   addToOrder = () => {
     let cart = []
-    this.props.csaOrderItems.map(cartItem => {
+    this.props.csaOrder.order.items.map(cartItem => {
       cart.push({
         ...cartItem,
         counter: cartItem.product.counter,
