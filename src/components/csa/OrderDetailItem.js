@@ -8,8 +8,6 @@ import { baseUrl, headers } from "../../const/global";
 let axios = require('axios');
 
 const options = [
-    { value: 0, label: 'Not assigned', disabled: true  },
-    { value: 1, label: 'Assigned' },
     { value: 2, label: 'In Progress' },
     { value: 3, label: 'Ready' }
 ]
@@ -26,7 +24,8 @@ class OrderDetailItem extends Component {
     this.state = {
       show: false,
       status: this.props.order.status,
-      assigned: 'unassigned'
+      assigned: 'unassigned',
+      reassign: false
     };
   }
   onSelectChange = (value, name) => {
@@ -37,7 +36,15 @@ class OrderDetailItem extends Component {
   }
   onAssignedChange = (value, name) => {
     this.setState({ [name] : value });
+    this.setState({ 'reassign' : false });
     let orderUpdate = `assign?assignee=${value}`;
+    this.updateOrder(orderUpdate);
+  }
+  onReassign=()=>{
+    this.setState({ 'reassign' : true });
+  }
+  statusAssigned = () => {
+    let orderUpdate = `setstatus?status=2`;
     this.updateOrder(orderUpdate);
   }
 
@@ -61,11 +68,10 @@ class OrderDetailItem extends Component {
 
     return (
         <div>
-        <SlideToggle collapsed={true} >
-          {({onToggle, setCollapsibleElement}) => (
+
             <div className="my-collapsible">
               <div className="order-item--row">
-                <div className="order-item--item grey-border" onClick={onToggle}>
+                <div className="order-item--item grey-border">
                   <h4>{order.product.counter}</h4>
                   {order.product.name}
                   <div className="img--container">
@@ -77,24 +83,34 @@ class OrderDetailItem extends Component {
                   {order.quantity}
                 </div>
                 <div className="order-item--assign grey-border">
-                  <Select
-                      name="assigned"
-                      value={order.assignee}
-                      onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
-                      options={employees}
-                      isSearchable={true}
-                      clearable={false} 
-                  />
+                  {order.assignee && !this.state.reassign ? (
+                    <OrderAssignee assignee={order.assignee} reassign={this.onReassign} />
+                  ):(
+                    <Select
+                        name="assigned"
+                        value={order.assignee}
+                        onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
+                        options={employees}
+                        isSearchable={true}
+                        clearable={false} 
+                    />)
+                  }
+
                 </div>
                 <div className="order-item--status grey-border">
-                  <Select
-                    name="status"
-                    value={order.status}
-                    onChange={(e)=>this.onSelectChange(e.value, 'status')}
-                    options={options}
-                    disabled={order.status === 0 ? true:false}
-                    clearable={false} 
-                />
+                  {order.status <= 1 ? (
+                    <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
+                  ) : (
+                    <Select
+                      name="status"
+                      value={order.status}
+                      onChange={(e)=>this.onSelectChange(e.value, 'status')}
+                      options={options}
+                      disabled={order.status === 0 ? true:false}
+                      clearable={false} 
+                  />
+                  )}
+                  
                 </div>
                 <div className="order-item--barcode">
                   {order.upc ? (
@@ -106,7 +122,7 @@ class OrderDetailItem extends Component {
                 </div>
 
               </div>
-              <div className="my-collapsible__content" ref={setCollapsibleElement}>
+              <div className="my-collapsible__content">
                 <div className="my-collapsible__content-inner">
                   <div className="order-item--meta">
                     {order.option.name && <ItemDescription order={order} />}
@@ -115,8 +131,6 @@ class OrderDetailItem extends Component {
                 </div>
               </div>
             </div>
-          )}
-        </SlideToggle>
       </div>
     );
   }
@@ -126,6 +140,27 @@ const ItemDescription = ({order}) => {
   return (
     <div>
       <h6>Item Option:</h6> {order.option.name}
+    </div>
+  );
+};
+
+const OrderAssignee = ({assignee,reassign}) => {
+  return (
+    <div>
+      {assignee}
+      <button className="order-detail--action" onClick={reassign}>Re-assign</button>
+    </div>
+  );
+};
+
+const OrderStatus = ({status,statusAssigned}) => {
+  return (
+    <div>
+      {status === 1 ? (
+        <button className="checkbox-red" onClick={statusAssigned} disabled={status===0?'disabled':''}>Inprogress</button>
+      ) : (
+        <button className="checkbox-red" onClick={statusAssigned} disabled='disabled'>Not Ready</button>
+      )}
     </div>
   );
 };

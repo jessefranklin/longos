@@ -10,6 +10,11 @@ import CSAFooter from './CSAFooter';
 import OrdersFilters from './OrdersFilters';
 import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
 
+import { baseUrl, headers } from "../../const/global";
+const orderAPI = baseUrl+'/order';
+
+let axios = require('axios');
+
 import uuid from 'uuid/v1';
 import Notifications, { success, error, warning, info, removeAll } from 'react-notification-system-redux';
 
@@ -23,6 +28,7 @@ class DashboardPage extends React.Component {
   }
   componentDidMount() {
     this.props.fetchCSAOrders();
+    
   };
 
   dispatchNotification(fn, timeout) {
@@ -48,7 +54,18 @@ class DashboardPage extends React.Component {
     this.dispatchNotification(warning, 750);
     this.dispatchNotification(info, 1000);
   }
-
+  isPickedUp=(oId)=>{
+    let url = orderAPI +`/${oId}/setstatus?status=2`
+    axios.put(url, headers).then(
+      (response) => {
+        console.log(response.data);
+        this.props.fetchCSAOrders();
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   render(){
     const {notifications} = this.props;
 
@@ -90,7 +107,7 @@ class DashboardPage extends React.Component {
                 </div>
 
                 <div>
-
+                  {this.props.filters.status === 1 ? 'Picked Up' :''}
                 </div>
             
               </div>
@@ -98,7 +115,7 @@ class DashboardPage extends React.Component {
 
 
               {this.props.orders.map(order => {
-                return <OrderListItem key={order.id} item={order} />;
+                return <OrderListItem key={order.id} item={order} status={this.props.filters.status} isPickedUp={this.isPickedUp} />;
               })}
 
             </div>
@@ -130,7 +147,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = state => ({
   orders: filterByStatus(filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),state.filters),
-  notifications: state.notifications 
+  notifications: state.notifications,
+  filters: state.filters
 });
 
 

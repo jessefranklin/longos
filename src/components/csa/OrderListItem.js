@@ -6,7 +6,7 @@ import { orderDate } from '../../selectors/orderDate';
 import OrderListCounterItem  from './OrderListCounterItem';
 
 
-const OrderListItem = ({item, pastOrders}) => {
+const OrderListItem = ({item, pastOrders, status, isPickedUp}) => {
 
     const counters = sortByCounter(item.counters);
     const dateNotification = orderDate(item.pickupDate);
@@ -48,7 +48,12 @@ const OrderListItem = ({item, pastOrders}) => {
             </div>
 
             <div>
+                {status === 1 ? (
+                    <PickedupButton oId={item.id} isPickedUp={isPickedUp} checked={false} isPaid={item.isPaid}/>
+                ):''}
+
                 <Link to={`/orderDetail/${item.id}`}></Link>
+
             </div>
         </div>
 
@@ -56,6 +61,22 @@ const OrderListItem = ({item, pastOrders}) => {
 };
   
 export default OrderListItem;
+
+
+const PickedupButton = ({oId,isPickedUp,checked,isPaid}) => {
+    return (
+      <div className="btn--container">
+            {checked?(
+                
+                <button className="checkbox-red checked"></button>
+            ):(
+                <button className="checkbox-red" onClick={() => isPickedUp(oId)} disabled={isPaid?'':'disabled'}></button>
+            )}
+      </div>
+    );
+  };
+  
+  
 
 
 const Indicator = ({notification}) => {
