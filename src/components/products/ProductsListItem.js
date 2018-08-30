@@ -5,7 +5,7 @@ import { startAddToCart }  from '../../actions/cart';
 import Select from 'react-select';
 import ProductsListItemBody from './ProductsListItemBody';
 import ProductsListItemCake from './ProductsListItemCake';
-
+import ProductsListItemClassicCake from './ProductsListItemClassicCake';
 
 class ProductsListItem extends Component {
   constructor(props, context) {
@@ -28,9 +28,13 @@ class ProductsListItem extends Component {
   }
 
   renderBody = (item) => {
-    if(item.category === 'Cake') {
+    if(item.category === 'Signature Cakes') {
       return (
         <ProductsListItemCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
+      ); 
+    } else if(item.category === 'Classic Cakes' || item.category === 'Cupcake Cakes' ) {
+      return (
+        <ProductsListItemClassicCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
       ); 
     } else {
       return (
