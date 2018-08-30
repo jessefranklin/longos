@@ -36,12 +36,13 @@ class OrderDetailItem extends Component {
   }
   onAssignedChange = (value, name) => {
     this.setState({ [name] : value });
-    this.setState({ 'reassign' : false });
+    // this.setState({ 'reassign' : false });
     let orderUpdate = `assign?assignee=${value}`;
+    console.log(orderUpdate);
     this.updateOrder(orderUpdate);
   }
   onReassign=()=>{
-    this.setState({ 'reassign' : true });
+    // this.setState({ 'reassign' : true });
   }
   statusAssigned = () => {
     let orderUpdate = `setstatus?status=2`;
@@ -52,9 +53,9 @@ class OrderDetailItem extends Component {
     const orderAPI = `${baseUrl}/order/${this.props.oid}/item/${this.props.order.id}/`;
     
     let url = orderAPI + orderUpdate;
-    
     axios.put(url, headers).then(
         (response) => {
+          console.log(response.data);
           this.props.updateState(response.data);
         },
         (err) => {
@@ -69,7 +70,7 @@ class OrderDetailItem extends Component {
     return (
         <div>
 
-            <div className="my-collapsible">
+            <div className="order-detail-item--container">
               <div className="order-item--row">
                 <div className="order-item--item grey-border">
                   <h4>{order.product.counter}</h4>
@@ -79,38 +80,38 @@ class OrderDetailItem extends Component {
                   </div>
                   
                 </div>
-                <div className="order-item--qty grey-border">
-                  {order.quantity}
-                </div>
                 <div className="order-item--assign grey-border">
-                  {order.assignee && !this.state.reassign ? (
-                    <OrderAssignee assignee={order.assignee} reassign={this.onReassign} />
-                  ):(
-                    <Select
-                        name="assigned"
-                        value={order.assignee}
-                        onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
-                        options={employees}
-                        isSearchable={true}
-                        clearable={false} 
-                    />)
-                  }
-
+                {order.assignee && !this.state.reassign ? (
+                  <OrderAssignee assignee={order.assignee} reassign={this.onReassign} />
+                ):(
+                  <Select
+                  name="assigned"
+                  value={order.assignee}
+                  onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
+                  options={employees}
+                  isSearchable={true}
+                  clearable={false} 
+                  />)
+                }
+                
                 </div>
                 <div className="order-item--status grey-border">
-                  {order.status <= 1 ? (
-                    <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
-                  ) : (
-                    <Select
-                      name="status"
-                      value={order.status}
-                      onChange={(e)=>this.onSelectChange(e.value, 'status')}
-                      options={options}
-                      disabled={order.status === 0 ? true:false}
-                      clearable={false} 
+                {order.status <= 1 ? (
+                  <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
+                ) : (
+                  <Select
+                  name="status"
+                  value={order.status}
+                  onChange={(e)=>this.onSelectChange(e.value, 'status')}
+                  options={options}
+                  disabled={order.status === 0 ? true:false}
+                  clearable={false} 
                   />
-                  )}
-                  
+                )}
+                
+                </div>
+                <div className="order-item--qty grey-border">
+                  {order.quantity}
                 </div>
                 <div className="order-item--barcode">
                   {order.upc ? (
@@ -122,13 +123,9 @@ class OrderDetailItem extends Component {
                 </div>
 
               </div>
-              <div className="my-collapsible__content">
-                <div className="my-collapsible__content-inner">
-                  <div className="order-item--meta">
-                    {order.option.name && <ItemDescription order={order} />}
-                    {order.comment && <SpecialInstructions order={order} />}
-                  </div>
-                </div>
+              <div className="order-item--meta">
+                {order.option.name && <ItemDescription order={order} />}
+                {order.comment && <SpecialInstructions order={order} />}
               </div>
             </div>
       </div>

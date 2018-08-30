@@ -28,16 +28,19 @@ class CartListItem extends Component {
   render() {
     const item = this.props.item;
     const formattedItemTotal = numeral(item.quantity * item.price).format('$0,0.00');
+    const formattedItemTotalwithTax = numeral(item.quantity * item.tax).format('$0,0.00');
+
     const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={item.quantity} /> : item.quantity; 
     return (
       <div className="cart--row">
-        {item.type === 'cake' ? <CakeItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} />:<CartItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} /> }
+        {item.type === 'cake' ? <CakeItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} />
+        :<CartItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} /> }
       </div>
     );
   }
 }
 
-const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
+const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove,formattedItemTotalwithTax}) => {
   return (
     <div className="cart--item">
       <div className="cart--item-row1">
@@ -50,7 +53,12 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
 
           {item.name}
         </div>
-        <h4 className="grey-border">{formattedItemTotal}</h4>
+        <h4 className="grey-border">{formattedItemTotal}<br />
+          {/*item.tax != 0 ?
+            <span className="sml-red">Tax {formattedItemTotalwithTax}</span>
+          :''*/}
+
+        </h4>
         <button onClick={onRemove} className="btn-qu">
             <FontAwesome
             className='fa fa-trash'

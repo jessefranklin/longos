@@ -63,7 +63,6 @@ class OrderDetail extends Component {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`
     axios.put(url, headers).then(
       (response) => {
-        console.log(response.daata);
         this.props.fetchCSAOrder(this.props.match.params.id);
       },
       (err) => {
@@ -82,8 +81,10 @@ class OrderDetail extends Component {
   handleClose() {
     this.setState({ show: false });
   }
-  updateState = (data) => {
+  updateState = () => {
+    console.log(this.props.match.params.id);
     this.props.fetchCSAOrder(this.props.match.params.id);
+
   }
   addToOrder = () => {
     let cart = []
@@ -115,7 +116,6 @@ class OrderDetail extends Component {
     const csaOrder = this.props.csaOrder.order;
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
     const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
-    console.log(groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))) ;
     const updateState = this.updateState;
 
     return (
@@ -151,7 +151,7 @@ class OrderDetail extends Component {
               {csaOrder.pickupDate} @ {csaOrder.pickupTime} 
               
 
-              <h4>Status</h4> 
+              <h4>Order Status</h4> 
              
               <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
             </div>
@@ -163,14 +163,14 @@ class OrderDetail extends Component {
             <div className="col-item grey-border">
               <h4>Item</h4>
             </div>
-            <div className="col-qty grey-border">
-              <h4>Qty</h4>
-            </div>
             <div className="col-assign grey-border">
               <h4>Assigned To</h4>
             </div>
             <div className="col-status grey-border">
               <h4>Status</h4>
+            </div>
+            <div className="col-qty grey-border">
+              <h4>Qty</h4>
             </div>
             <div className="col-barcode">
               <h4>Barcode</h4>

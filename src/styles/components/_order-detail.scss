@@ -39,6 +39,7 @@
 }
 
 .order-item--meta {
+    text-align: left;
     h6 {
         display: inline-block;
     }
@@ -98,7 +99,7 @@
     margin: 5rem;
 }
 
-.my-collapsible {
+.order-detail-item--container {
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -111,6 +112,7 @@
     .order-item--item{
         width:22%;
         padding:1rem;
+        text-align: left;
     }
     .order-item--qty{
         width:10%;

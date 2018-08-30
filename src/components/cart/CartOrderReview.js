@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { dispatchOrder } from '../../actions/order';
-import cartTotal from '../../selectors/cartTotal';
+import { cartTotal, cartTax } from '../../selectors/cartTotal';
 import moment from 'moment';
 import numeral from 'numeral';
 import CartListItem from './CartListItem';
@@ -79,11 +79,14 @@ class CartOrderReview extends React.Component {
     // document.addEventListener("click", this.handleClose);
   }
   render() {
-    const { profile, cart, cartTotal, order } = this.props;
+    const { profile, cart, cartTotal, cartTax, order } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
     const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
     const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
     const time = moment().startOf('day').seconds(order.time).format('h:mm A');
+    
+    const formattedCartTax = numeral(cartTax).format('$0,0.00');
+    const totalWithTax = numeral(cartTotal+cartTax).format('$0,0.00');
 
     return (
       <div>
@@ -103,6 +106,7 @@ class CartOrderReview extends React.Component {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}
         </div>
+        {formattedCartTax}
         <h2 className="checkout--title">Confirm Order Information</h2>
         <div className="checkout--info">
           <strong>{profile.username}</strong>
@@ -148,7 +152,8 @@ class CartOrderReview extends React.Component {
         <div className="checkout--submit">
           {/* Total price: {formattedCartTotal}
           {store.tax.name}: {taxAmount} */}
-          <span>Grand Total: {totalAmount}</span>
+
+          <span>Grand Total: {totalWithTax}</span>
           <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>
@@ -163,6 +168,7 @@ const mapStateToProps = (state) => ({
     profile: state.profile,
     cart: state.cart,
     cartTotal: cartTotal(state.cart),
+    cartTax: cartTax(state.cart),
     order: state.order
 });
 
