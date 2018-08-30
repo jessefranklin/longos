@@ -1,0 +1,76 @@
+{
+    "title": "Cake Options",
+    "description": "these are your config options for a cake.",
+    "fields": [{
+            "label": "Trim",
+            "name": "trim",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "White",
+                    "value": "white"
+                },{
+                    "label": "Chocolate",
+                    "value": "chocolate"
+                }]
+        },{
+            "label": "Writing Color",
+            "name": "color",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "White",
+                    "value": "white"
+                },{
+                    "label": "Chocolate",
+                    "value": "chocolate"
+                },{
+                    "label": "Pink",
+                    "value": "pink"
+                },{
+                    "label": "Blue",
+                    "value": "blue"
+                }]
+        },{
+            "label": "Side",
+            "name": "side",
+            "descriptions": "descriptions",
+            "options": [{
+                    "label": "White chocolate shavings",
+                    "value": "white-chocolate-shavings"
+                },{
+                    "label": "Dark chocolate shavings",
+                    "value": "dark-chocolate-shavings"
+                },{
+                    "label": "Almonds",
+                    "value": "almonds"
+                },{
+                    "label": "Vanilla Biscrunch",
+                    "value": "vanilla-biscrunch"
+                },{
+                    "label": "Chocolate Biscrunch",
+                    "value": "chocolate-bidcrunch"
+                },{
+                    "label": "Conffetti",
+                    "value": "conffetti"
+                }]
+        }], 
+    "details":[{
+            "label": "Writing on Cake",
+            "name": "writigOnCakeTypeNote",
+            "descriptions": "descriptions",
+            "type": "textarea"
+        },{
+            "label": "Special Instructions",
+            "name": "extras",
+            "descriptions": "descriptions",
+            "type": "textarea"
+        }],
+    "disclaimers" : [{
+            "type":"bold",
+            "header": "We are not a nut free env.",
+            "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+        },{
+            "type":"script",
+            "header": "Character cakes may not beexactly as shown",
+            "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+        }]
+}
