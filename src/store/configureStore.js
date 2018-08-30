@@ -10,6 +10,7 @@ import { StateLoader } from '../state.loader';
 import ordersReducer from '../reducers/csa/orders';
 import pastOrdersReducer from '../reducers/csa/pastOrders';
 import authReducer from '../reducers/csa/auth';
+import csaOrderReducer from '../reducers/csa/csaOrderReducer';
 import {reducer as notifications} from 'react-notification-system-redux';
 
 
@@ -26,6 +27,7 @@ const reducers = {
     orders: ordersReducer,
     pastorders: pastOrdersReducer,
     auth: authReducer,
+    csaOrder: csaOrderReducer,
     notifications
 }
 

@@ -2,8 +2,8 @@
 $dark-grey: #494c4f;
 $grey: #808284;
 $dark-grey: #494c4f;
-$light-grey: #999b9c;
-$lighter-grey: #e1ddcf;
+$light-grey: #9d9d96;
+$lighter-grey: #a7a69f;
 $red: #d0141e;
 $green: #52aa4f;
 $light-green: #c1da0f;
@@ -17,11 +17,18 @@ $offwhite-light: #f9f7ee;
 $font-size-large: 1.8rem;
 $font-size-small: 1.4rem;
 
+$gutter: 8.3333%;
+
 // Spacing
 $s-size: 1.2rem;
 $m-size: 1.6rem;
-$l-size: 3.2rem;
+$l-size: 3.2rem 5rem;
 $xl-size: 4.8rem;
+
+$m-spacer: 4rem;
+
+//Form APadding
+$login-vert-pad: 2rem;
 
 $desktop-breakpoint: 45rem;
 

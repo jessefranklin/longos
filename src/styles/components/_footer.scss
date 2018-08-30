@@ -1,0 +1,28 @@
+.footer{
+    //position: fixed;
+    //bottom: 0;
+    //display: block;
+    background-color: $red;
+    width:100%;
+    padding:1rem 5rem;
+    text-align: right;
+    a,
+    button{
+        color:#fff;
+        font-family: $sans;
+        padding:1rem;
+        &:hover{
+            color:#fff;
+            opacity:0.7;
+            text-decoration: none;
+        }
+        &:nth-child(4){
+            padding-right:0;
+        }
+    }
+}
+
+.temp-sample{
+    // position: fixed;
+    // bottom: 6rem;
+}

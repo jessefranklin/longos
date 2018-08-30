@@ -1,24 +1,20 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-let axios = require('axios');
 import { Link } from 'react-router-dom';
 import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
+import {Button, Modal} from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
+import { fetchCSAOrder, updateCSAOrder } from '../../actions/csa/csaOrder';
 import { orderFilterByCounter } from '../../selectors/orders';
+import { CSACart } from '../../actions/cart';
 import CSAHeader from './CSAHeader';
 
+import { baseUrl, headers } from "../../const/global";
+let axios = require('axios');
 
-const headers = {
-    header: {
-        "Content-Type":"application/json",
-        "Access-Control-Allow-Origin": "*"
-    }
-}
-
-const orderAPI = 'http://digitalpreorder.azurewebsites.net/api/order';
-
+const orderAPI = baseUrl+'/order';
 const options = [
   { value: 1, label: 'Ready For Pickup' },
   { value: 2, label: 'Order Has been picked up' }
@@ -43,27 +39,20 @@ class OrderDetail extends Component {
       pickupDate: '',
       pickupTime: '',
       status: '',
-      isPaid: false,
-      items: []
+      isPaid: this.props.csaOrder.isPaid,
+      items: [],
+      show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
+
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
   componentWillMount() {
-    const orderID = `?orderId=${this.props.match.params.id}`;
-    
-    let url = orderAPI + orderID;
-    
-    axios.get(url, headers).then(
-        (response) => {
-            this.setState(response.data);
-            if(this.state.counter != ''){
-              this.handleCounter(this.state.counter);
-            }
-        },
-        (err) => {
-            console.log(err);
-        }
-    )
+    this.props.fetchCSAOrder(this.props.match.params.id);
+  };
+  componentWillMount() {
+    this.props.fetchCSAOrder(this.props.match.params.id);
   };
   onSelectChange = (value) => {
     this.setState({ 'status' : value });
@@ -76,7 +65,8 @@ class OrderDetail extends Component {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`
     axios.put(url, headers).then(
       (response) => {
-        console.log('completed');
+        console.log(response.daata);
+        this.props.fetchCSAOrder(this.props.match.params.id);
       },
       (err) => {
         console.log(err);
@@ -85,23 +75,37 @@ class OrderDetail extends Component {
   }
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
-    let itemsFiltered = orderFilterByCounter(this.state.items,value);
-    
-    let status = event.target.value
-    this.setState({
-        filtered: status !== ' ' ? true : false,
-        visible: itemsFiltered
-    })
+
   };
+  handleShow() {
+    this.setState({ show: true });
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
   updateState = (data) => {
-    this.setState(data);
+    this.props.fetchCSAOrder(this.props.match.params.id);
+  }
+  addToOrder = () => {
+    let cart = []
+    this.props.csaOrderItems.map(cartItem => {
+      cart.push({
+        ...cartItem,
+        counter: cartItem.product.counter,
+        productId: cartItem.product.id,
+        quantity: cartItem.quantity
+      })
+    })
+    this.props.CSACart(cart);
+    this.props.history.push('/editOrder');
   }
   orderPaid = (data) => {
     let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
 
     axios.put(url, headers).then(
       (response) => {
-        this.setState(response.data);
+        this.props.fetchCSAOrder(this.props.match.params.id);
       },
       (err) => {
         console.log(err);
@@ -109,12 +113,7 @@ class OrderDetail extends Component {
     )
   }
   render() {
-
-    let itemsFiltered = this.state.items;
-
-    if (this.state.filtered) {
-      itemsFiltered = this.state.visible
-    }
+    const csaOrder = this.props.csaOrder.order;
 
     return (
       <div>
@@ -124,27 +123,34 @@ class OrderDetail extends Component {
           <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
           <div className="order-detail--header">
             <div className="">
-              <h2>Order # {this.state.id}</h2>
+              <h4>Order #</h4><h2>{csaOrder.id} <button className="order-detail--action" onClick={this.handleShow}>cancel order</button></h2>
+              <Modal show={this.state.show} onHide={this.handleClose}>
+                <p className="cancel--text">Are you sure you want to cancel this order?</p>
+                <Modal.Footer>
+                  <Button className="btn-add">Yes, Cancel</Button>  
+                  <Button onClick={this.handleClose}>No</Button>
+                </Modal.Footer>
+              </Modal>
+              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} />
             </div>
 
             <div className="">
-              <h4>Customer</h4>
-              {this.state.client.name}
+              <h4>Customer <button className="order-detail--action">edit</button></h4>
+              {csaOrder.client.name}<br />
 
-              {this.state.client.email && this.state.client.email}
-              {this.state.client.phone && this.state.client.phone}
+              {csaOrder.client.email && csaOrder.client.email}<br />
+              {csaOrder.client.phone && csaOrder.client.phone}<br />
+              
             </div>
 
             <div className="">
-              <h4>Pickup Date & Time</h4>
-              {this.state.pickupDate} @ {this.state.pickupTime}
+              <h4>Pickup Date & Time <button className="order-detail--action">edit</button></h4>
+              {csaOrder.pickupDate} @ {csaOrder.pickupTime} 
+              
 
               <h4>Status</h4> 
              
-
-              <StatusState status={this.state.status} onSelectChange={this.onSelectChange} isPaid={this.state.isPaid} />
-
-              <PaidButton isPaid={this.state.isPaid} orderPaid={this.orderPaid} />
+              <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
             </div>
           </div>
 
@@ -167,10 +173,12 @@ class OrderDetail extends Component {
               <h4>Barcode</h4>
             </div>
           </div>
-          
-          {itemsFiltered.map(order => {
-            return <OrderDetailItem key={order.id} order={order} oid={this.state.id} updateState={this.updateState} />;
-          })}
+          <div className="order--items">
+            {csaOrder.items.map(order => {
+              return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={this.updateState} />;
+            })}
+            <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
+          </div>
         </div>
       </div>
     </div>
@@ -199,10 +207,10 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
 
 const PaidButton = ({isPaid,orderPaid}) => {
   return (
-    <div>
+    <div className="btn--container">
       {isPaid ? ( 
         <div>
-          Order is Paid <button onClick={() => orderPaid(false)}>X</button>
+          <button className="checked" onClick={() => orderPaid(false)}>Order is Paid </button>
         </div>
       ):(
         <button onClick={() => orderPaid(true)}>Order is not paid</button>
@@ -213,8 +221,14 @@ const PaidButton = ({isPaid,orderPaid}) => {
 
 
 const mapStateToProps = (state) => ({
-  filters: state.filters
+  filters: state.filters,
+  csaOrder: state.csaOrder
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  fetchCSAOrder:(oId) => dispatch(fetchCSAOrder(oId)),
+  updateCSAOrder:(oId) => dispatch(updateCSAOrder(oId)),
+  CSACart:(products) => dispatch(CSACart(products))
+});
 
-export default connect(mapStateToProps)(OrderDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderDetail);

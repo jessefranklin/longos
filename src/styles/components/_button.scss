@@ -14,6 +14,18 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+    background: $red;
+  }
+}
+
+.clear-button-styling {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  display: block;
 }
 
 .button--link {
@@ -45,4 +57,24 @@
   display: block;
   width: 42px;
   height: 42px;
+}
+
+.order-detail--action {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: $red;
+  @extend .clear-button-styling
+}
+.page--container{
+  display: flex;
+  justify-content: space-between;
+  padding:1rem 5rem 0 5rem;
+  button{
+    border: 2px solid $red;
+    border-radius: 0px;
+    color: $red;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #fff;
+  }
 }

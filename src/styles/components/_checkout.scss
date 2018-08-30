@@ -162,7 +162,7 @@
     padding: 5rem  0 0 5rem;
     text-transform: uppercase;
     color:$red;
-    font-size:32px;
+    //font-size:32px;
 }
 
 .checkout--info{
@@ -172,7 +172,7 @@
     border-bottom: 2px solid $dark-grey;
     color:$dark-grey;
     font-family:$sans;
-    font-size:30px;
+    font-size:22px;
     div{
         width:60%;
         display:flex;
@@ -183,7 +183,7 @@
             width: 40%;
             margin-right:10%;
             margin-bottom:4rem;
-            font-size:28px;
+            font-size:22px;
         }
     }
     strong{
@@ -196,7 +196,7 @@
     padding: 1rem 0 5rem 0;
     color:$dark-grey;
     h5{
-        font-size:30px;
+        font-size:22px;
         margin-bottom: 4rem;
     }
     p{
@@ -253,7 +253,7 @@
         padding: 4rem;
         color:white;
         font-family: $sans;
-        font-size:30px;
+        font-size:22px;
         font-weight:600;
         line-height: 32px;
         background-color: $red;
@@ -287,7 +287,7 @@
 .checkout--confirmation{
     position: relative;
     width: 80%;
-    margin: 10rem auto;
+    margin: 10rem auto 5rem auto;
     text-align: center;
     font-family: $sans;
     font-size: 30px;
@@ -312,5 +312,58 @@
     p{
         font-size: 32px;
         line-height: 1.2;
+    }
+}
+
+.feedback--customer{
+    font-family: $sans;
+    text-align: center;
+    margin: 0 5rem 5rem 5rem;
+    background: #fff;
+    padding: 2rem 1rem;
+    border-radius: 27px;
+    button{
+        background: $offwhite;
+        border:none;
+        border-radius:18px;
+        padding:4px;
+        height: 50px;
+        width: 12%;
+        min-width: 60px;
+        margin-right: 2px;
+        background: $offwhite;
+    }
+    .btn-submit{
+        height: 40px;
+        width: 30%;
+        margin: 0 !important;
+        border: 2px solid $green;
+        border-radius: 0px;
+        color: $green;
+        font-family: $sans;
+        font-weight: 500;
+        background: #fff;
+    }
+    textarea{
+        border:none;
+        color:$dark-grey;
+        width: 90%;
+        background: $offwhite;
+        border:2px solid $grey;
+    }
+    div{
+        margin-bottom: 1rem;
+    }
+    p{
+        font-size:15px;
+    }
+    .fa-frown{
+        color:$red;
+    }
+    .fa-meh{
+        color:$yellow;
+    }
+    .fa-smile{
+        color:$green;
     }
 }

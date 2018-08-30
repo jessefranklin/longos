@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import { totalCount } from '../../selectors/cartTotal';
 
 class Header extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
+  } 
   constructor(props) {
     super(props);
 
@@ -31,7 +35,9 @@ class Header extends React.Component {
       document.removeEventListener('click', this.closeMenu);
     });
   }
-
+  componentWillUnmount() {
+    document.removeEventListener('click', this.closeMenu);
+  }
   render() {
     const {cart, profile, total} = this.props;
     const cartLength = cart.length > 0;
@@ -40,13 +46,22 @@ class Header extends React.Component {
       <header className="header">
         <div className="content-container">
           <div className="header__content">
-            <Link className="header__title" to="/">
-              <h1>
-                <span className="longos-logo-white"></span>
-              </h1>
-            </Link>
-
-            {!this.props.order.orderId ? <CartHeader profile={profile} showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : null }
+            {!this.props.editOrder ? (
+              <Link className="header__title" to="/">
+                <h1>
+                  <span className="longos-logo-white"></span>
+                </h1>
+              </Link>
+            ) : (
+              <div className="header__title">
+                <h1>
+                  <span className="longos-logo-white"></span>
+                </h1>
+              </div>
+            )}
+            
+            
+            {!this.props.order.orderId && !this.props.editOrder ? <CartHeader profile={profile} showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : <EditOrderHeader context={this.context} /> }
 
           </div>
         </div>
@@ -55,6 +70,16 @@ class Header extends React.Component {
     )
   }
 }
+
+const EditOrderHeader = ({context}) => {
+  return (
+    <div className="header--row">
+      
+         <button className="btn-link  customer-logout" onClick={context.router.history.goBack}>Back to Order Detail</button>
+     
+    </div>
+  );
+};
 
 const CartHeader = ({profile,showMenu,toggleMenu,cartLength,handleClick,total}) => {
     const itemWord = total === 1 ? 'item' : 'items' ;

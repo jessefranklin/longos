@@ -30,11 +30,11 @@ class ProductsListItem extends Component {
   renderBody = (item) => {
     if(item.category === 'Cake') {
       return (
-        <ProductsListItemCake item={item} handleClose={this.handleClose} />
+        <ProductsListItemCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
       ); 
     } else {
       return (
-        <ProductsListItemBody item={item} handleClose={this.handleClose} />
+        <ProductsListItemBody item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
       );
     }
   }
@@ -63,7 +63,7 @@ class ProductsListItem extends Component {
         </div>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
-            <Modal.Header closeButton>
+            <Modal.Header className="img--header" closeButton>
               <Modal.Title></Modal.Title>
               <div className="img--container">
                 <img src={item.imageLink} alt={item.name} />

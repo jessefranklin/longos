@@ -6,6 +6,7 @@ import DashboardPage from '../components/csa/DashboardPage';
 import Products from '../components/products/Products';
 import Settings from '../components/csa/Settings';
 import PastOrders from '../components/csa/PastOrders';
+import EditOrder from '../components/csa/EditOrder';
 import Cart from '../components/cart/Cart';
 import Order from '../components/cart/CartOrder';
 import OrderConfirmation from '../components/cart/CartOrderConfirmation';
@@ -17,7 +18,6 @@ import PublicRoute from './PublicRoute';
 import LoginRoute from './LoginRoute';
 import OrderDetail from  '../components/csa/OrderDetail';
 import CSALogin from '../components/csa/CSALogin';
-import HOC from '../components/HOC';
 
 export const history = createHistory();
 
@@ -36,9 +36,10 @@ const AppRouter = () => (
         <PrivateRoute path="/orderDashboard" component={DashboardPage} />
         <PrivateRoute path="/orderDetail/:id" component={OrderDetail} />
         <PrivateRoute path="/pastOrders" component={PastOrders} />
+        <PrivateRoute path="/EditOrder" component={EditOrder} />
         <Route component={NotFoundPage} />
       </Switch>
-      <HOC />
+
     </div>
   </Router>
 );

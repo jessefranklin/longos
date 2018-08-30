@@ -63,34 +63,29 @@ class DashboardPage extends React.Component {
               <div className="divTableRow">
 
                 <div className="cell-id">
-                    Order #
+                    Order
                 </div>
-
-                <div className="cell-date">
-                    Pickup Date
-                </div>
-
-                <div>
+                <div  className="cell-status">
                     Bakery
                 </div>
 
-                <div>
+                <div className="cell-status">
                     Deli
                 </div>
                 
-                <div>
+                <div className="cell-status">
                     Kitchen
                 </div>
 
-                <div>
+                <div className="cell-status">
                     Salad Bar
                 </div>
 
-                <div>
+                <div className="cell-status">
                     Sushi
                 </div>
 
-                <div>
+                <div className="cell-status">
                     Cake
                 </div>
 
@@ -110,7 +105,7 @@ class DashboardPage extends React.Component {
           </div>
         </div>
 
-        <button onClick={this.sampleNotification}>Add samnple Notification</button>
+        <button className="temp-sample" onClick={this.sampleNotification}>Add sample Notification</button>
 
         <CSAFooter />
 

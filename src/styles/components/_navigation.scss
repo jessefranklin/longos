@@ -6,17 +6,20 @@
         display: inline-block;
         margin-right: 20px;
         button {
-            padding: 10px 0;
+            padding: 0px 0 $login-vert-pad;
             line-height: 1em;
             text-transform: uppercase;
             font-family: $sans;
             font-weight: 500;
+            font-size: 2.2rem;
             background: transparent;
             border: none;
-            color:$light-grey;
+            margin-right: 20px;
+            color: $light-grey;
             &.active {
                 color:$dark-grey;
                 border: none;
+                font-weight: 600;
                 border-bottom:2px solid $dark-grey;
                 background: transparent;
             }
