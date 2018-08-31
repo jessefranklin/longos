@@ -249,7 +249,9 @@
 .checkout--submit{
     width:100%;
     span,
-    a{
+    a{  
+        height: 112px;
+        vertical-align: middle;
         padding: 4rem;
         color:white;
         font-family: $sans;
@@ -259,6 +261,7 @@
         background-color: $red;
     }
     span{
+        padding:2.4rem 4rem 2.4rem 4rem;
         width:50%;
         border-bottom: 1px solid $red;
         display: inline-block;
@@ -269,7 +272,6 @@
         border:none;
         border-radius:0;
         text-transform: uppercase;
-        vertical-align: baseline;
     }
     .btn-secondary{
         width:20%;
