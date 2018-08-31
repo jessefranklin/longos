@@ -106,22 +106,33 @@
             height: 50px;
             width: 50%;
             transform: translateX(-5%);
+            input{
+                display:block;
+                height:100%;
+                width:100%;   
+                border: 2px solid $red;
+                padding: 8px 8px 8px 35px;
+                color:$red;
+                background: transparent;
+            }
         }
         .time-picker{
             height:50px;
             width:50%;
             transform: translateX(5%);
-            &:after {
-                content: '';
-                position: absolute;
-                right: 5%;
-                top: 45%;
-                width: 0; 
-                height: 0; 
-                border-top: 5px solid $red;
-                border-right: 5px solid transparent;
-                border-left: 5px solid transparent;
-                z-index: -1;
+            &:focus-within{
+                &:after {
+                    content: '';
+                    position: absolute;
+                    right: 5%;
+                    top: 40%;
+                    width: 0; 
+                    height: 0; 
+                    border-top: 12px solid $red;
+                    border-right: 7px solid transparent;
+                    border-left: 7px solid transparent;
+                    z-index: -1;
+                }
             }
         }
         select.form-control{
