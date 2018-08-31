@@ -152,7 +152,7 @@ const OrderAssignee = ({assignee,reassign}) => {
 
 const OrderStatus = ({status,statusAssigned}) => {
   return (
-    <div>
+    <div className="checkbox--container">
       {status === 1 ? (
         <button className="checkbox-red" onClick={statusAssigned} disabled={status===0?'disabled':''}>Inprogress</button>
       ) : (
