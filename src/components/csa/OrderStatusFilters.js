@@ -11,11 +11,6 @@ export class OrderStatusFilters extends React.Component {
       
     constructor(props, context) {
         super(props, context);
-
-        this.state = {
-            status: 0
-        }
-
         this.handleStatus = this.handleStatus.bind(this);
     }
     handleStatus(value){
@@ -27,8 +22,13 @@ export class OrderStatusFilters extends React.Component {
       return (
         <div>
             <ul className="statusFilter">
-                <li><button className={this.state.status == 0 ? 'active': ''} onClick={() => this.handleStatus(0)}>Pending</button></li>
-                <li><button className={this.state.status == 1 ? 'active': ''}  onClick={() => this.handleStatus(1)}>Ready for pickup</button></li>
+                <li><button className={this.props.status == 0 ? 'active': ''} onClick={() => this.handleStatus(0)}>
+                    Pending ({this.props.pendingCount})
+                    
+                </button></li>
+                <li><button className={this.props.status == 1 ? 'active': ''}  onClick={() => this.handleStatus(1)}>
+                    Ready for pickup ({this.props.readyCount})
+                </button></li>
                 <li><Link to="/pastOrders" className={this.props.pastOrders ? 'active' : ''}>Picked Up</Link></li>
             </ul>
         </div>

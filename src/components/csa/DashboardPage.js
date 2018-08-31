@@ -67,20 +67,23 @@ class DashboardPage extends React.Component {
     )
   }
   render(){
-    const {notifications} = this.props;
+    const {notifications, orders, filters} = this.props;
+    let ordersList = filterByStatus(orders,filters);
+    let pendingCount = filterByStatus(orders,0).length;
+    let readyCount = filterByStatus(orders,{status:1}).length;
 
     return(
       <div>
         <CSAHeader />
         <div className="content--container">
-          <OrdersFilters />
+          <OrdersFilters pendingCount={pendingCount} readyCount={readyCount} />
           <div className="divTable">
             <div className="divTableBody">
 
               <div className="divTableRow">
 
                 <div className="cell-id">
-                    Order
+                    Order {readyCount}
                 </div>
                 <div  className="cell-status">
                     Bakery
@@ -114,7 +117,7 @@ class DashboardPage extends React.Component {
             
 
 
-              {this.props.orders.map(order => {
+              {ordersList.map(order => {
                 return <OrderListItem key={order.id} item={order} status={this.props.filters.status} isPickedUp={this.isPickedUp} />;
               })}
 
@@ -146,7 +149,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = state => ({
-  orders: filterByStatus(filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),state.filters),
+  orders: filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),
   notifications: state.notifications,
   filters: state.filters
 });

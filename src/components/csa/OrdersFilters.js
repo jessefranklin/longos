@@ -54,6 +54,7 @@ export class OrdersFilters extends React.Component {
                     null
                   )
               }
+
             </div>
             <div className={this.props.filters.text.length >= 1 ? 'searchContainer active' :'searchContainer'}>
                 <input
@@ -70,7 +71,7 @@ export class OrdersFilters extends React.Component {
             
           </div>
           
-          <OrderStatusFilters pastOrders={this.props.pastOrders} />
+          <OrderStatusFilters status={this.props.filters.status} pastOrders={this.props.pastOrders} pendingCount={this.props.pendingCount} readyCount={this.props.readyCount} />
             
         </div>
       );
