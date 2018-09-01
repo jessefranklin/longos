@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn yarn add react-idle-timer
+  /usr/local/bin/node /usr/local/bin/yarn add registerServiceWorker
 
 PATH: 
   /usr/local/php5/bin:/Users/jessefrankling/.rbenv/shims:/Users/jessefrankling/.rbenv/bin:/Users/jessefrankling/.rvm/gems/ruby-2.2.7/bin:/Users/jessefrankling/.rvm/gems/ruby-2.2.7@global/bin:/Users/jessefrankling/.rvm/rubies/ruby-2.2.7/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Library/PostgreSQL/9.1/bin:/Users/jessefrankling/.rvm/bin
@@ -41,6 +41,7 @@ npm manifest:
       "file-loader": "^1.1.11",
       "firebase": "^5.4.0",
       "history": "4.7.2",
+      "html-loader": "^0.5.5",
       "lodash-object": "^4.17.7",
       "moment": "2.18.1",
       "node-sass": "4.5.3",
@@ -54,8 +55,11 @@ npm manifest:
       "react-dates": "12.3.0",
       "react-dom": "15.6.1",
       "react-fontawesome": "^1.6.1",
+      "react-idle-timer": "^4.0.8",
       "react-inputs-validation": "^1.0.1",
       "react-modal": "2.2.2",
+      "react-notification-system": "^0.2.17",
+      "react-notification-system-redux": "^1.2.0",
       "react-redux": "5.0.5",
       "react-router-dom": "4.1.2",
       "react-scroll": "^1.7.9",
@@ -447,6 +451,10 @@ Lockfile:
   ast-types@0.8.15:
     version "0.8.15"
     resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.8.15.tgz#8eef0827f04dff0ec8857ba925abe3fea6194e52"
+  
+  ast-types@0.9.6:
+    version "0.9.6"
+    resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.9.6.tgz#102c9e9e9005d3e7e3829bf0c4fa24ee862ee9b9"
   
   async-each@^1.0.0:
     version "1.0.1"
@@ -1329,6 +1337,13 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
   
+  camel-case@3.0.x:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-3.0.0.tgz#ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73"
+    dependencies:
+      no-case "^2.2.0"
+      upper-case "^1.1.1"
+  
   camelcase-keys@^2.0.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/camelcase-keys/-/camelcase-keys-2.1.0.tgz#308beeaffdf28119051efa1d932213c91b8f92e7"
@@ -1459,6 +1474,12 @@ Lockfile:
     version "2.2.5"
     resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
   
+  clean-css@4.2.x:
+    version "4.2.1"
+    resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
+    dependencies:
+      source-map "~0.6.0"
+  
   cliui@^2.1.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"
@@ -1548,9 +1569,17 @@ Lockfile:
     dependencies:
       delayed-stream "~1.0.0"
   
+  commander@2.17.x:
+    version "2.17.1"
+    resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
+  
   commander@^2.8.1:
     version "2.11.0"
     resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
+  
+  commander@~2.16.0:
+    version "2.16.0"
+    resolved "https://registry.yarnpkg.com/commander/-/commander-2.16.0.tgz#f16390593996ceb4f3eeb020b31d78528f7f8a50"
   
   commondir@^1.0.1:
     version "1.0.1"
@@ -1677,6 +1706,14 @@ Lockfile:
       ripemd160 "^2.0.0"
       safe-buffer "^5.0.1"
       sha.js "^2.4.8"
+  
+  create-react-class@^15.5.1:
+    version "15.6.3"
+    resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
+    dependencies:
+      fbjs "^0.8.9"
+      loose-envify "^1.3.1"
+      object-assign "^4.1.1"
   
   create-react-class@^15.5.3, create-react-class@^15.6.0:
     version "15.6.0"
@@ -2190,6 +2227,13 @@ Lockfile:
       d "1"
       es5-ext "~0.10.14"
   
+  es6-templates@^0.2.3:
+    version "0.2.3"
+    resolved "https://registry.yarnpkg.com/es6-templates/-/es6-templates-0.2.3.tgz#5cb9ac9fb1ded6eb1239342b81d792bbb4078ee4"
+    dependencies:
+      recast "~0.11.12"
+      through "~2.3.6"
+  
   es6-weak-map@^2.0.1:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/es6-weak-map/-/es6-weak-map-2.0.2.tgz#5e3ab32251ffd1538a1f8e5ffa1357772f92d96f"
@@ -2242,6 +2286,10 @@ Lockfile:
   esprima@^2.6.0, esprima@^2.7.1:
     version "2.7.3"
     resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
+  
+  esprima@~3.1.0:
+    version "3.1.3"
+    resolved "https://registry.yarnpkg.com/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
   
   esrecurse@^4.1.0:
     version "4.2.0"
@@ -2781,6 +2829,10 @@ Lockfile:
       hoek "2.x.x"
       sntp "1.x.x"
   
+  he@1.1.x:
+    version "1.1.1"
+    resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+  
   history@4.7.2:
     version "4.7.2"
     resolved "https://registry.yarnpkg.com/history/-/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
@@ -2850,6 +2902,28 @@ Lockfile:
   html-entities@^1.2.0:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
+  
+  html-loader@^0.5.5:
+    version "0.5.5"
+    resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-0.5.5.tgz#6356dbeb0c49756d8ebd5ca327f16ff06ab5faea"
+    dependencies:
+      es6-templates "^0.2.3"
+      fastparse "^1.1.1"
+      html-minifier "^3.5.8"
+      loader-utils "^1.1.0"
+      object-assign "^4.1.1"
+  
+  html-minifier@^3.5.8:
+    version "3.5.20"
+    resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.20.tgz#7b19fd3caa0cb79f7cde5ee5c3abdf8ecaa6bb14"
+    dependencies:
+      camel-case "3.0.x"
+      clean-css "4.2.x"
+      commander "2.17.x"
+      he "1.1.x"
+      param-case "2.1.x"
+      relateurl "0.2.x"
+      uglify-js "3.4.x"
   
   htmlparser2@^3.9.1:
     version "3.9.2"
@@ -3836,6 +3910,10 @@ Lockfile:
       currently-unhandled "^0.4.1"
       signal-exit "^3.0.0"
   
+  lower-case@^1.1.1:
+    version "1.1.4"
+    resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
+  
   lru-cache@^4.0.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
@@ -4038,6 +4116,12 @@ Lockfile:
   negotiator@0.6.1:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+  
+  no-case@^2.2.0:
+    version "2.3.2"
+    resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
+    dependencies:
+      lower-case "^1.1.1"
   
   node-fetch@^1.0.1:
     version "1.7.1"
@@ -4410,6 +4494,12 @@ Lockfile:
   pako@~0.2.0:
     version "0.2.9"
     resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
+  
+  param-case@2.1.x:
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/param-case/-/param-case-2.1.1.tgz#df94fd8cf6531ecf75e6bef9a0858fbc72be2247"
+    dependencies:
+      no-case "^2.2.0"
   
   parse-asn1@^5.0.0:
     version "5.1.0"
@@ -4846,7 +4936,7 @@ Lockfile:
       fbjs "^0.8.9"
       loose-envify "^1.3.1"
   
-  prop-types@^15.5.6, prop-types@^15.6.2:
+  prop-types@^15.5.6, prop-types@^15.6.0, prop-types@^15.6.2:
     version "15.6.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
     dependencies:
@@ -5042,6 +5132,10 @@ Lockfile:
     dependencies:
       prop-types "^15.5.6"
   
+  react-idle-timer@^4.0.8:
+    version "4.0.8"
+    resolved "https://registry.yarnpkg.com/react-idle-timer/-/react-idle-timer-4.0.8.tgz#23f4c77731a13c68a719a1039bc34260a59aedad"
+  
   react-input-autosize@^2.1.2:
     version "2.2.1"
     resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.1.tgz#ec428fa15b1592994fb5f9aa15bb1eb6baf420f8"
@@ -5075,6 +5169,21 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-moment-proptypes/-/react-moment-proptypes-1.5.0.tgz#4a448cd6479efc5dd509283f361f3753c3abe60e"
     dependencies:
       moment ">=1.6.0"
+  
+  react-notification-system-redux@^1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/react-notification-system-redux/-/react-notification-system-redux-1.2.0.tgz#14fb0915c72e4c12d9983ffe07254e2cd19ec5df"
+    dependencies:
+      prop-types "^15.6.0"
+      react-notification-system "^0.2.x"
+  
+  react-notification-system@^0.2.17, react-notification-system@^0.2.x:
+    version "0.2.17"
+    resolved "https://registry.yarnpkg.com/react-notification-system/-/react-notification-system-0.2.17.tgz#a60eddbb62225ad8f9fc5d7837546bf6cdb36818"
+    dependencies:
+      create-react-class "^15.5.1"
+      object-assign "^4.0.1"
+      prop-types "^15.5.6"
   
   react-overlays@^0.8.0:
     version "0.8.3"
@@ -5237,6 +5346,15 @@ Lockfile:
       private "~0.1.5"
       source-map "~0.5.0"
   
+  recast@~0.11.12:
+    version "0.11.23"
+    resolved "https://registry.yarnpkg.com/recast/-/recast-0.11.23.tgz#451fd3004ab1e4df9b4e4b66376b2a21912462d3"
+    dependencies:
+      ast-types "0.9.6"
+      esprima "~3.1.0"
+      private "~0.1.5"
+      source-map "~0.5.0"
+  
   redent@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/redent/-/redent-1.0.0.tgz#cf916ab1fd5f1f16dfb20822dd6ec7f730c2afde"
@@ -5339,6 +5457,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/regjsparser/-/regjsparser-0.1.5.tgz#7ee8f84dc6fa792d3fd0ae228d24bd949ead205c"
     dependencies:
       jsesc "~0.5.0"
+  
+  relateurl@0.2.x:
+    version "0.2.7"
+    resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   
   remove-trailing-separator@^1.0.1:
     version "1.0.2"
@@ -5677,6 +5799,10 @@ Lockfile:
     version "0.5.7"
     resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   
+  source-map@~0.6.0, source-map@~0.6.1:
+    version "0.6.1"
+    resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+  
   spdx-correct@~1.0.0:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-1.0.2.tgz#4b3073d933ff51f3912f03ac5519498a4150db40"
@@ -5918,7 +6044,7 @@ Lockfile:
       readable-stream ">=1.0.33-1 <1.1.0-0"
       xtend ">=4.0.0 <4.1.0-0"
   
-  through@~2.3.4:
+  through@~2.3.4, through@~2.3.6:
     version "2.3.8"
     resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   
@@ -6001,6 +6127,13 @@ Lockfile:
     version "0.7.13"
     resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.13.tgz#cd9dd2f86493b3f44dbeeef3780fda74c5ee14be"
   
+  uglify-js@3.4.x:
+    version "3.4.7"
+    resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.4.7.tgz#4df6b92e54789aa921a254cb1e33704d6ec12b89"
+    dependencies:
+      commander "~2.16.0"
+      source-map "~0.6.1"
+  
   uglify-js@^2.6, uglify-js@^2.8.29:
     version "2.8.29"
     resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
@@ -6057,6 +6190,10 @@ Lockfile:
       esmangle-evaluator "^1.0.0"
       recast "^0.10.1"
       through2 "^0.6.2"
+  
+  upper-case@^1.1.1:
+    version "1.1.3"
+    resolved "https://registry.yarnpkg.com/upper-case/-/upper-case-1.1.3.tgz#f6b4501c2ec4cdd26ba78be7222961de77621598"
   
   uri-js@^4.2.1:
     version "4.2.2"
@@ -6462,14 +6599,14 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: Command "yarn" not found.
-      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:87307:17
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:116:14
-      at new Promise (<anonymous>)
-      at new F (/usr/local/lib/node_modules/yarn/lib/cli.js:23451:28)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:95:12
-      at runCommand (/usr/local/lib/node_modules/yarn/lib/cli.js:87312:22)
-      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:87412:14)
+  Error: https://registry.npmjs.org/registerServiceWorker: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:65019:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:132430:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:133413:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:133333:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)

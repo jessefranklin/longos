@@ -124,7 +124,7 @@ class CartOrder extends React.Component {
             </div>
           </div>
 
-          <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
+          <Link className="btn" to="/products/orderreview" onClick={this.onSubmit}>Next step</Link>
           
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>

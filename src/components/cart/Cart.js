@@ -51,7 +51,7 @@ class Cart extends React.Component {
           <span>
             Total price: {totalWithTax}
           </span>
-          <Link to="/order" className="btn">Place Order</Link>
+          <Link to="/products/order" className="btn">Place Order</Link>
         </div>
       </div>
     )

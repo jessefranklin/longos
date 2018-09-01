@@ -56,7 +56,7 @@ class CartOrderReview extends React.Component {
     if(!this.state.agreedTerms){e.preventDefault(); return; }
     this.props.dispatchOrder(this.state).then(() => {
       if(this.props.order.orderId){
-        this.props.history.push('/orderConfirmation');
+        this.props.history.push('/products/orderConfirmation');
       }
     })
     e.preventDefault();
