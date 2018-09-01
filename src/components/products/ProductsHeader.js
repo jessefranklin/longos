@@ -61,7 +61,11 @@ class Header extends React.Component {
             )}
             
             
-            {!this.props.order.orderId && !this.props.editOrder ? <CartHeader profile={profile} showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : <EditOrderHeader context={this.context} /> }
+            {!this.props.editOrder ? 
+              !this.props.order.orderId ? (
+                <CartHeader profile={profile} showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} />
+              ) : ''
+              : <EditOrderHeader context={this.context} /> }
 
           </div>
         </div>

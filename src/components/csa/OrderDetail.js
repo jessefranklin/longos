@@ -82,9 +82,7 @@ class OrderDetail extends Component {
     this.setState({ show: false });
   }
   updateState = () => {
-    console.log(this.props.match.params.id);
     this.props.fetchCSAOrder(this.props.match.params.id);
-
   }
   addToOrder = () => {
     let cart = []

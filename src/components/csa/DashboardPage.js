@@ -13,11 +13,11 @@ import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/o
 import { baseUrl, headers } from "../../const/global";
 const orderAPI = baseUrl+'/order';
 
-let axios = require('axios');
+import axios from 'axios';
 
 import uuid from 'uuid/v1';
 import Notifications, { success, error, warning, info, removeAll } from 'react-notification-system-redux';
-
+import PollApi from './PollApi';
 
 
 
@@ -58,7 +58,6 @@ class DashboardPage extends React.Component {
     let url = orderAPI +`/${oId}/setstatus?status=2`
     axios.put(url, headers).then(
       (response) => {
-        console.log(response.data);
         this.props.fetchCSAOrders();
       },
       (err) => {
@@ -130,7 +129,6 @@ class DashboardPage extends React.Component {
         <CSAFooter />
 
         <Notifications notifications={notifications} />
-
       </div>
     )
   }
