@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from "react-redux";
 
-import { fetchCSAOrders }  from '../../actions/csa/orders';
+import { fetchCSAOrders }  from '../actions/csa/orders';
 import uuid from 'uuid/v1';
 import Notifications, { success, error, warning, info, removeAll } from 'react-notification-system-redux';
 

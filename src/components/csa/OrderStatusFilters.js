@@ -29,7 +29,7 @@ export class OrderStatusFilters extends React.Component {
                 <li><button className={this.props.status == 1 ? 'active': ''}  onClick={() => this.handleStatus(1)}>
                     Ready for pickup ({this.props.readyCount})
                 </button></li>
-                <li><Link to="/pastOrders" className={this.props.pastOrders ? 'active' : ''}>Picked Up</Link></li>
+                <li><Link to="/orderDashboard/pastOrders" className={this.props.pastOrders ? 'active' : ''}>Picked Up</Link></li>
             </ul>
         </div>
     );

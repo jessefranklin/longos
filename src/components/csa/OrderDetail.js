@@ -95,7 +95,7 @@ class OrderDetail extends Component {
       })
     })
     this.props.CSACart(cart);
-    this.props.history.push('/editOrder');
+    this.props.history.push('/orderDashboard/editOrder');
   }
   orderPaid = (data) => {
     let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;

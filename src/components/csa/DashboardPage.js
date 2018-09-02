@@ -5,55 +5,24 @@ import { connect } from "react-redux";
 import ReactDOM from 'react-dom';
 import { fetchCSAOrders }  from '../../actions/csa/orders';
 import OrderListItem from './OrderListItem';
-import CSAHeader from './CSAHeader';
-import CSAFooter from './CSAFooter';
+
 import OrdersFilters from './OrdersFilters';
 import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
 
+import axios from 'axios';
 import { baseUrl, headers } from "../../const/global";
 const orderAPI = baseUrl+'/order';
-
-import axios from 'axios';
-
-import uuid from 'uuid/v1';
-import Notifications, { success, error, warning, info, removeAll } from 'react-notification-system-redux';
-import PollApi from './PollApi';
-
-
 
 class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
-    this.sampleNotification = this.sampleNotification.bind(this);
   }
   componentDidMount() {
     this.props.fetchCSAOrders();
     
   };
 
-  dispatchNotification(fn, timeout) {
-    let notificationOpts = {
-      uid: uuid(),
-      title: 'A new order has been placed',
-      message: 'A new order has been placed',
-      position: 'tr',
-      autoDismiss: 0,
-      action: {
-        label: 'View Order',
-        callback: () => alert('clicked!')
-      }
-    };
-    setTimeout(() => {
-      this.context.store.dispatch(fn(notificationOpts));
-    }, timeout);
-  }
-
-  sampleNotification() {
-    this.dispatchNotification(success, 250);
-    this.dispatchNotification(error, 500);
-    this.dispatchNotification(warning, 750);
-    this.dispatchNotification(info, 1000);
-  }
+  
   isPickedUp=(oId)=>{
     let url = orderAPI +`/${oId}/setstatus?status=2`
     axios.put(url, headers).then(
@@ -66,14 +35,13 @@ class DashboardPage extends React.Component {
     )
   }
   render(){
-    const {notifications, orders, filters} = this.props;
+    const { orders, filters} = this.props;
     let ordersList = filterByStatus(orders,filters);
     let pendingCount = filterByStatus(orders,0).length;
     let readyCount = filterByStatus(orders,{status:1}).length;
 
     return(
       <div>
-        <CSAHeader />
         <div className="content--container">
           <OrdersFilters pendingCount={pendingCount} readyCount={readyCount} />
           <div className="divTable">
@@ -123,12 +91,6 @@ class DashboardPage extends React.Component {
             </div>
           </div>
         </div>
-
-        <button className="temp-sample" onClick={this.sampleNotification}>Add sample Notification</button>
-
-        <CSAFooter />
-
-        <Notifications notifications={notifications} />
       </div>
     )
   }

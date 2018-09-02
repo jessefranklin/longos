@@ -9,7 +9,7 @@ export const PrivateRoute = ({
   }) => (
     <Route {...rest} component={(props) => (
       isAuthenticated ? (
-        <div className="csa--app">
+        <div>
           <Component {...props} />
         </div>
       ) : (
