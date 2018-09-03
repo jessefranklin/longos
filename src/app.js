@@ -9,6 +9,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import LoadingPage from './components/shared/LoadingPage';
 import { login,logout } from './actions/csa/auth';
 import { firebase } from './firebase/firebase';
+import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore();
 
@@ -23,6 +24,7 @@ let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'));
+    registerServiceWorker();
     hasRendered = true;
   }
 };
