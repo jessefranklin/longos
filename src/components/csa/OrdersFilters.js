@@ -36,11 +36,7 @@ export class OrdersFilters extends React.Component {
       document.removeEventListener('click', this.closeMenu);
     }
     handleCounter(value){
-      if(this.props.pastOrders){
-        this.props.filterByCounter(value);
-      } else {
-        this.props.filterByCounter(value);
-      }
+      this.props.filterByCounter(value);
     };
     render() {
       return (
