@@ -69,6 +69,7 @@ class LoginPage extends React.Component {
     ]);
 
     this.validator = guestValidation;
+    this.cardValidator = cartValidation;
 
     this.state = {
       active: 'guest',
@@ -77,9 +78,11 @@ class LoginPage extends React.Component {
       username: '',
       rewards: '',
       validation: this.validator.valid(),
+      cardValidation: this.cardValidator.valid(),
     }
 
     this.submitted = false;
+    this.cardSubmitted = false;
   }
 
   handleInputChange = e => {
@@ -93,15 +96,30 @@ class LoginPage extends React.Component {
   handleFormSubmit = e => {
     e.preventDefault();
 
-    const validation = this.validator.validate(this.state);
-    this.setState({ validation });
-    this.submitted = true;
+    if(this.state.active === 'guest'){
 
-    if (validation.isValid) {
-      // handle actual form submission here
-      this.props.setProfile(this.state);
-      history.push('/products');  
+      const validation = this.validator.validate(this.state);
+      this.setState({ validation });
+  
+      this.submitted = true;
+      if (validation.isValid) {
+        // handle actual form submission here
+        this.props.setProfile(this.state);
+        history.push('/products');  
+      }
+    } else {
+      const cardValidation = this.cardValidator.validate(this.state);
+      this.setState({ cardValidation });
+  
+      this.cardSubmitted = true;
+      if (cardValidation.isValid) {
+        // handle actual form submission here
+        this.props.setProfile(this.state);
+        history.push('/products');  
+      }
     }
+
+   
   }
 
   componentDidMount() {
@@ -123,8 +141,11 @@ class LoginPage extends React.Component {
 
   render(){
     let validation = this.submitted ?                         // if the form has been submitted at least once
-                      this.validator.validate(this.state) :   // then check validity every time we render
-                      this.state.validation    
+                    this.validator.validate(this.state) :   // then check validity every time we render
+                    this.state.validation  
+    let cardValidation = this.cardSubmitted ?                         // if the form has been submitted at least once
+                    this.cardValidator.validate(this.state) :   // then check validity every time we render
+                    this.state.cardValidation    
 
     return(
       <div className="login-scene">
@@ -140,10 +161,8 @@ class LoginPage extends React.Component {
             <li><button className={this.state.active ==='card'?'active':''} onClick={() => this.swapLogin('card')}>Sign In with Rewards Card</button></li>
           </ul>
           
-          {this.state.active ==='guest' && <Guest state={this.state} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  validation={this.state.validation}  />}
-
-          {this.state.active ==='card' && <Card state={this.state} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  validation={this.state.validation}  />}
-          
+          {this.state.active ==='guest' ? <Guest state={this.state} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  validation={this.state.validation}  /> 
+          : <Card state={this.state} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  validation={this.state.cardValidation}  /> }
 
           <div className="csa-container">
             <Link to="/orderDashboard">CSA Dashboard</Link><br /><br />
@@ -207,7 +226,7 @@ const Guest = ({state, handleInputChange, handleFormSubmit, validation}) => (
 
 const Card = ({state, handleInputChange, handleFormSubmit, validation}) => (
   <div className="rewards-container form-group">
-  <div className='f-con'>
+  <div className={validation.rewards.isInvalid ? 'f-con has-error' : 'f-con'}>
     <label htmlFor="rewards">Phone</label>
       <input
         className="form-control"
@@ -218,6 +237,7 @@ const Card = ({state, handleInputChange, handleFormSubmit, validation}) => (
         placeholder="Rewards Number"
         onChange={handleInputChange}
       />
+      <span className="help-block">{validation.rewards.message}</span>
     </div>
 
     <button className="button"
