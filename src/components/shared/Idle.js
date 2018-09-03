@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Modal } from 'react-bootstrap';
 import { connect } from "react-redux";
-import en from '../const/en-lang';
+import en from '../../const/en-lang';
 import PropTypes from "prop-types";
 import moment from 'moment';
 import IdleTimer from './IdleTimer';
@@ -17,7 +17,7 @@ class Idle extends Component {
     this.idleTimer = null
     this.state = {
       timeoutActive: true,
-      timeout: 60000,
+      timeout: this.props.settings ? this.props.settings.timeOut : 120000,
       remaining: null,
       isIdle: false,
       lastActive: null,
@@ -32,7 +32,6 @@ class Idle extends Component {
   }
 
   componentDidMount () {
-    console.log('ht');
     this.setState({
       remaining: this.idleTimer.getRemainingTime(),
       lastActive: this.idleTimer.getLastActiveTime(),
@@ -47,7 +46,7 @@ class Idle extends Component {
           remaining: this.idleTimer.getRemainingTime(),
           lastActive: this.idleTimer.getLastActiveTime(),
           elapsed: this.idleTimer.getElapsedTime(),
-          showTimeout: this.idleTimer.getRemainingTime() < 58000 ? true : false
+          showTimeout: this.idleTimer.getRemainingTime() < 10000 ? true : false
         })
       }, 1000)
     }
@@ -57,7 +56,7 @@ class Idle extends Component {
     clearInterval(interval);
   }
   onCancelOrder(){
-    this.context.router.history.push('/');
+    // this.context.router.history.push('/');
   }
   render () {
       return (

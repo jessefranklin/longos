@@ -5,7 +5,7 @@ import CartListItem from './CartListItem';
 import { cartTotal, cartTax } from '../../selectors/cartTotal';
 import numeral from 'numeral';
 import { totalCount } from '../../selectors/cartTotal';
-import Announcements from '../Announcements';
+import Announcements from '../shared/Announcements';
 
 class Cart extends React.Component {
   componentDidUpdate() {

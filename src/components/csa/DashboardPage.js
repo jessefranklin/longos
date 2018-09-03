@@ -22,7 +22,6 @@ class DashboardPage extends React.Component {
     
   };
 
-  
   isPickedUp=(oId)=>{
     let url = orderAPI +`/${oId}/setstatus?status=2`
     axios.put(url, headers).then(

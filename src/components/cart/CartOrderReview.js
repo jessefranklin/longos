@@ -7,7 +7,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import CartListItem from './CartListItem';
 import CartProgress from './CartProgress';
-import { TOC } from '../TermsAndConditions';
+import { TOC } from '../shared/TermsAndConditions';
 
 import { Checkbox } from 'react-bootstrap';
 

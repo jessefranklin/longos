@@ -41,7 +41,6 @@ class CartOrder extends React.Component {
     this.setState({ [e.target.name]: e.target.value});
   };
   handleTimeChange(time) {
-    console.log(time);
     this.setState({ time });
   }
   onSubmit = (e) => {

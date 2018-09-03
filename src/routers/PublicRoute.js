@@ -6,7 +6,7 @@ import Cart from '../components/cart/Cart';
 import Order from '../components/cart/CartOrder';
 import OrderConfirmation from '../components/cart/CartOrderConfirmation';
 import CartOrderReview from '../components/cart/CartOrderReview';
-import Idle from '../components/Idle';
+import Idle from '../components/shared/Idle';
 
 export const PublicRoute = ({match}) => {
   return(
