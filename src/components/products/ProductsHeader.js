@@ -61,7 +61,11 @@ class Header extends React.Component {
             )}
             
             
-            {!this.props.order.orderId && !this.props.editOrder ? <CartHeader profile={profile} showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} /> : <EditOrderHeader context={this.context} /> }
+            {!this.props.editOrder ? 
+              !this.props.order.orderId ? (
+                <CartHeader profile={profile} showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} handleClick={this.handleClick.bind(this)} cartLength={cartLength} total={total} />
+              ) : ''
+              : <EditOrderHeader context={this.context} /> }
 
           </div>
         </div>
@@ -105,7 +109,7 @@ const CartHeader = ({profile,showMenu,toggleMenu,cartLength,handleClick,total}) 
          
         </div> 
         <div className="cart--container" >
-          <Link className="btn btn-cart" to="/cart" onClick={handleClick} disabled={cartLength?'':'disabled'}>
+          <Link className="btn btn-cart" to="/products/cart" onClick={handleClick} disabled={cartLength?'':'disabled'}>
             <FontAwesome
               className='super-crazy-colors'
               name='shopping-cart'
@@ -115,7 +119,7 @@ const CartHeader = ({profile,showMenu,toggleMenu,cartLength,handleClick,total}) 
           </Link>
         </div>
         <div className="place-order--container">
-          {total >= 1 ? <Link to="/order" className="link--place-order">Place Order</Link> : <p className="empty--place-order">Cart Empty</p> }
+          {total >= 1 ? <Link to="/products/order" className="link--place-order">Place Order</Link> : <p className="empty--place-order">Cart Empty</p> }
         </div>
       </div>
     );

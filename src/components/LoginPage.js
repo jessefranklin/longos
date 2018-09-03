@@ -83,7 +83,6 @@ class LoginPage extends React.Component {
   }
 
   onSubmit = (e) => {
-    console.log(this.state);  
     e.preventDefault();
     
     if (!this.canBeSubmitted() && !this.state.rewards) {

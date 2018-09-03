@@ -7,7 +7,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import CartListItem from './CartListItem';
 import CartProgress from './CartProgress';
-import { TOC } from '../TermsAndConditions';
+import { TOC } from '../shared/TermsAndConditions';
 
 import { Checkbox } from 'react-bootstrap';
 
@@ -34,7 +34,7 @@ class CartOrderReview extends React.Component {
         email: this.props.profile.email
       },
       pickUpDate: moment(this.props.order.pickUpDate).format('YYYY-MM-DD'),
-      pickUpTime: moment(this.props.order.time).format('hh:mm:ss'),
+      pickUpTime: moment().startOf('day').seconds(this.props.order.time).format('hh:mm:ss'),
       orderItems: this.props.cart
     }
 
@@ -53,11 +53,10 @@ class CartOrderReview extends React.Component {
     }
   }
   onSubmit = (e) => {
-    console.log(this.state);
     if(!this.state.agreedTerms){e.preventDefault(); return; }
     this.props.dispatchOrder(this.state).then(() => {
       if(this.props.order.orderId){
-        this.props.history.push('/orderConfirmation');
+        this.props.history.push('/products/orderConfirmation');
       }
     })
     e.preventDefault();
@@ -126,7 +125,6 @@ class CartOrderReview extends React.Component {
             <span>
               <strong>Pickup Time</strong><br />
               {time}
-              {profile.time}
             </span>
             <span>
               at {store.location.address} {store.location.city}

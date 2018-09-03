@@ -52,7 +52,7 @@ const OrderListItem = ({item, pastOrders, status, isPickedUp}) => {
                     <PickedupButton oId={item.id} isPickedUp={isPickedUp} checked={false} isPaid={item.isPaid}/>
                 ):''}
 
-                <Link to={`/orderDetail/${item.id}`}></Link>
+                <Link to={`orderDashboard/orderDetail/${item.id}`}></Link>
 
             </div>
         </div>

@@ -2,32 +2,6 @@
     "title": "Cake Options",
     "description": "these are your config options for a cake.",
     "fields": [{
-            "label": "Cake Layers",
-            "name": "cakelayers",
-            "descriptions": "descriptions",
-            "options": [{
-                    "label": "Single Layer White",
-                    "value": "single layer white "
-                },{
-                    "label": "Single Layer Chocolate",
-                    "value": "Single Layer Chocolate"
-                },{
-                    "label": "3 Layer White",
-                    "value": "3 Layer White"
-                },{
-                    "label": "3 Layer Choclate",
-                    "value": "3 Layer Choclate"
-                },{
-                    "label": "2 Layer White 1 Layer Chocolate",
-                    "value": "2 Layer White 1 Layer Chocolate"
-                },{
-                    "label": "2 Layer Chocolate 1 Layer White",
-                    "value": "2 Layer Chocolate 1 Layer White"
-                },{
-                    "label": "3 Layer SFOLIA",
-                    "value": "3 Layer SFOLIA"
-                }]
-        },{
             "label": "Icing",
             "name": "icing",
             "descriptions": "descriptions",

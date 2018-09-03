@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+import { history } from '../../routers/AppRouter';
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startAddToCart, startEditItem }  from '../../actions/cart';
 import en from '../../const/en-lang';
 import Select from 'react-select';
 import { QuantitySelect } from '../partials/QuantitySelect';
 import uuid from 'uuid/v1';
+import axios from 'axios';
+import { baseUrl, headers } from "../../const/global";
+const orderAPI = baseUrl+'/order';
 
 class ProductsListItemBody extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  } 
   constructor(props, context) {
     super(props, context);
 
@@ -72,8 +80,18 @@ class ProductsListItemBody extends Component {
   }
 
   onAddToCartCSA = () => {
-    console.log(this.state.selectedProduct);
-    this.props.csaEditOrder(this.state.selectedProduct);
+    const orderid = this.props.csaOrder.order.id;
+    let url = orderAPI +`/${orderid}/updateitem`;
+
+    axios.put(url,this.state.selectedProduct, headers).then(
+      (response) => {
+        this.props.handleClose();
+        history.push(`/orderDetail/${orderid}`);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
   handleClose(){
@@ -188,7 +206,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart,
+  csaOrder: state.csaOrder
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsListItemBody);

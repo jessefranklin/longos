@@ -41,7 +41,6 @@ class CartOrder extends React.Component {
     this.setState({ [e.target.name]: e.target.value});
   };
   handleTimeChange(time) {
-    console.log(time);
     this.setState({ time });
   }
   onSubmit = (e) => {
@@ -124,7 +123,7 @@ class CartOrder extends React.Component {
             </div>
           </div>
 
-          <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
+          <Link className="btn" to="/products/orderreview" onClick={this.onSubmit}>Next step</Link>
           
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>

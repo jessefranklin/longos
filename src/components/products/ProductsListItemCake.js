@@ -57,7 +57,6 @@ class ProductsListItemCake extends Component {
   onAddToCart = () => {
     const cakeOrder = {...this.state.selectedProduct}
     cakeOrder.options = this.state.cakeOptions;
-    console.log(cakeOrder);
     this.props.handleClose();
     this.props.startAddToCart(
       cakeOrder
@@ -123,13 +122,14 @@ class ProductsListItemCake extends Component {
           />
 
         {cakeOptions.fields.map(options => {
-          return <Select 
+          return <CreateableSelect 
             key={options.label} 
             options={options}
             value={this.state.cakeOptions[options.name]}
             onChange={this.onChange}
             />
         })}
+
         </div>
 
         {cakeOptions.details.map((textfield,index) => {
