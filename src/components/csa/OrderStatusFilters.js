@@ -16,7 +16,7 @@ export class OrderStatusFilters extends React.Component {
     handleStatus(value){
         this.setState({'status':value});
         this.props.filterByStatus(value);
-        if(value < 2) this.context.router.history.push("/orderDashboard");
+        value < 2 ? this.context.router.history.push("/orderDashboard") : this.context.router.history.push("/orderDashboard/pastOrders");
     };
     render() {
       return (
@@ -29,7 +29,7 @@ export class OrderStatusFilters extends React.Component {
                 <li><button className={this.props.status == 1 ? 'active': ''}  onClick={() => this.handleStatus(1)}>
                     Ready for pickup ({this.props.readyCount})
                 </button></li>
-                <li><Link to="/orderDashboard/pastOrders" className={this.props.pastOrders ? 'active' : ''}>Picked Up</Link></li>
+                <li><button className={this.props.pastOrders ? 'active' : ''} onClick={() => this.handleStatus(2)}>Picked Up</button></li>
             </ul>
         </div>
     );

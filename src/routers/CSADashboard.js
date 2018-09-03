@@ -64,10 +64,11 @@ class CSADashboard extends React.Component {
         </Switch>
 
         <CSAFooter />
-        <button className="temp-sample" onClick={this.sampleNotification}>Add sample Notification</button>
 
+        <button className="temp-sample" onClick={this.sampleNotification}>Add sample Notification</button>
         <Notifications notifications={notifications} />        
         <PollApi />
+        
       </div>
     );
   }

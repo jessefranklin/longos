@@ -80,10 +80,6 @@ class PastOrders extends React.Component {
                     Order #
                 </div>
 
-                <div className="cell-date">
-                    Pickup Date
-                </div>
-
                 <div>
                     Bakery
                 </div>

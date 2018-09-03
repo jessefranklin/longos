@@ -17,7 +17,7 @@ export const PublicRoute = ({match}) => {
           <Route exact path={match.url} component={Products} />
           <Route exact path={match.url+'/cart'} component={Cart} />
           <Route exact path={match.url+'/order'} component={Order} />
-          <Route exact path={match.url+'/orderreview'} component={CartOrderReview} />
+          <Route exact path={match.url+'/orderReview'} component={CartOrderReview} />
           <Route exact path={match.url+'/orderConfirmation'} component={OrderConfirmation} />
         </Switch>
       </div>

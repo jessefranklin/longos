@@ -23,7 +23,8 @@ class Footer extends React.Component {
     const {startLogout} = this.props;
     return(
       <footer className="footer">
-        <Link to="/settings">Settings</Link>
+        <Link to="/orderDashboard">Order Dashboard</Link>
+        <Link to="/orderDashboard/settings">Settings</Link>
         <button className="btn clear-button-styling" onClick={this.toggleModal}>Feedback</button>
         <button className="btn btn-qu" onClick={startLogout}>Logout</button>
         <Link to="/" className="customer-login">Go to Customer Login</Link>
