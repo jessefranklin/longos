@@ -26,10 +26,10 @@ class PollApi extends React.Component {
   }
   
   componentWillReceiveProps(prevProps,nextProps) {
-    console.log(prevProps);
-    console.log(nextProps);
-    console.log(this.props.orders !== prevProps.orders)
-    console.log(this.props.orders)
+    // console.log(prevProps);
+    // console.log(nextProps);
+    // console.log(this.props.orders !== prevProps.orders)
+    // console.log(this.props.orders)
     // if (this.props.data !== nextProps.data) {
 
     //     clearTimeout(this.timeout);

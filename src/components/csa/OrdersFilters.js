@@ -32,6 +32,9 @@ export class OrdersFilters extends React.Component {
         document.removeEventListener('click', this.closeMenu);
       });
     }
+    componentWillUnmount(){
+      document.removeEventListener('click', this.closeMenu);
+    }
     handleCounter(value){
       if(this.props.pastOrders){
         this.props.filterByCounter(value);
