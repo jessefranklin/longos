@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import stores from '../../server/config';
 import CSAHeader from './CSAHeader';
-import CSAFooter from './CSAFooter';
 import { setConfig } from '../../actions/config';
 
 let storeList = [];
@@ -53,7 +52,6 @@ class Settings extends React.Component {
             <button onClick={this.onSaveSettings}>Save</button>
           </div>
         </div>
-        <CSAFooter />
       </div>
     )
   }

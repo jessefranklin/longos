@@ -49,7 +49,7 @@ class DashboardPage extends React.Component {
               <div className="divTableRow">
 
                 <div className="cell-id">
-                    Order {readyCount}
+                    Order
                 </div>
                 <div  className="cell-status">
                     Bakery

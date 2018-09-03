@@ -51,9 +51,14 @@ textarea:focus, input:focus{
     }
 }
 
-body .guest-container.form-group {
-    label {
-        visibility: hidden;
+body .form-group {
+    &.rewards-container,
+    &.guest-container{
+        label {
+            visibility: hidden;
+            position: absolute;
+            pointer-events: none;
+        }
     }
 }
 
