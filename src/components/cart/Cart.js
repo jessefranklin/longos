@@ -43,7 +43,9 @@ class Cart extends React.Component {
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
           })}
-          <div className="cart--row-tax">Tax: {formattedCartTax}</div>
+          <div className="cart--row-tax">
+            <span className="align-left">Tax: {formattedCartTax}</span>
+          </div>
         </div>
         <div>
         </div>

@@ -9,7 +9,7 @@
     },
     "notifications": {
         "timeout": {
-            "title" : "Did you forget about us?",
+            "title" : "Timeout Warning",
             "body" : ""
         }
     },

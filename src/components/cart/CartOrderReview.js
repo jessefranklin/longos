@@ -104,7 +104,9 @@ class CartOrderReview extends React.Component {
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}
-          <div className="cart--row-tax">Tax: {formattedCartTax} </div>
+          <div className="cart--row-tax">
+            <span className="align-left">Tax: {formattedCartTax}</span>
+          </div>
         </div>
         <h2 className="checkout--title">Confirm Order Information</h2>
         <div className="checkout--info">
