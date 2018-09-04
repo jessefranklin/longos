@@ -42,12 +42,15 @@ class OrderDetail extends Component {
       status: '',
       isPaid: this.props.csaOrder.isPaid,
       items: [],
+      editClient: false,
+      editPickup: false, 
       show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.updateClient = this.updateClient.bind(this);
   }
   componentWillMount() {
     this.props.fetchCSAOrder(this.props.match.params.id);
@@ -70,12 +73,41 @@ class OrderDetail extends Component {
       }
     )
   }
+  updateClient = (val, name) => {
+    const client = {...this.state.client}
+    client[name] = val;
+    this.setState(() => ({ client }));
+  };
+
+  updateClientPickup = (payload) => {
+    // PUT http://digitalpreorder-staging.azurewebsites.net/api/order/updateorder
+    let url = orderAPI +`/updateorder`
+    axios.put(url, payload, headers).then(
+      (response) => {
+        // Add notification
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+  updateItem = (payload) => {
+    // http://digitalpreorder-staging.azurewebsites.net/api/order/O17375337/updateitem 
+    let url = orderAPI +`/${this.props.match.params.id}/updateitem`
+    axios.put(url, payload, headers).then(
+      (response) => {
+        // Add notification
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   cancelOrder(value){
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`
     axios.put(url, headers).then(
       (response) => {
         // Add notification
-        
       },
       (err) => {
         console.log(err);
@@ -86,16 +118,22 @@ class OrderDetail extends Component {
     this.setState({ 'counter' : value });
 
   };
+  handleEdit = (name) =>{
+    this.setState({ [name]: true })
+  }
+  handleSave = (name) => {
+    this.setState({ [name]: false })
+  }
   handleShow() {
     this.setState({ show: true });
   }
-
   handleClose() {
     this.setState({ show: false });
   }
   updateState = () => {
     this.props.fetchCSAOrder(this.props.match.params.id);
   }
+
   addToOrder = () => {
     let cart = []
     this.props.csaOrder.order.items.map(cartItem => {
@@ -137,30 +175,47 @@ class OrderDetail extends Component {
           <div className="order-detail--header">
             <div className="">
               <h4>Order #</h4><h2>{csaOrder.id} <button className="order-detail--action" onClick={this.handleShow}>cancel order</button></h2>
-              <Modal show={this.state.show} onHide={this.handleClose}>
-                <p className="cancel--text">Are you sure you want to cancel this order?</p>
-                <Modal.Footer>
-                  <Button className="btn-add">Yes, Cancel</Button>  
-                  <Button onClick={this.handleClose}>No</Button>
-                </Modal.Footer>
-              </Modal>
+              
+              <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder} />
+              
               <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} />
+            
             </div>
 
             <div className="">
-              <h4>Customer <button className="order-detail--action">edit</button></h4>
-              {csaOrder.client.name}<br />
+              <h4>Customer 
+                {this.state.editClient ? (
+                    <div>
+                      <button className="order-detail--action" onClick={() => this.handleSave('editClient')}>Cancel</button>
+                      <button className="order-detail--action" onClick={() => this.handleSave('editClient')}>Save</button>
+                    </div>
+                  ):(
+                  <button className="order-detail--action" onClick={() => this.handleEdit('editClient')}>edit</button>
+                  )}
+                </h4>
+              
 
-              {csaOrder.client.email && csaOrder.client.email}<br />
-              {csaOrder.client.phone && csaOrder.client.phone}<br />
+              {this.state.editClient ? (
+                <EditClientFields client={this.props.csaOrder.order} updateClient={this.updateClient} />
+              ) : (
+                <div>
+                  {csaOrder.client.name}<br />
+                  {csaOrder.client.email && csaOrder.client.email}<br />
+                  {csaOrder.client.phone && csaOrder.client.phone}<br />
+                  {csaOrder.client.tyrNumber && csaOrder.client.tyrNumber}
+                </div>
+              )}
+
               
             </div>
 
             <div className="">
-              <h4>Pickup Date & Time <button className="order-detail--action">edit</button></h4>
+              <h4>Pickup Date & Time <button className="order-detail--action" onClick={() => this.handleEdit('editPickup')}>edit</button></h4>
               {csaOrder.pickupDate} @ {csaOrder.pickupTime} 
-              
 
+              {this.state.editPickup}
+
+              <button className="order-detail--action" onClick={() => this.handleSave('editPickup')}>Save</button>
               <h4>Order Status</h4> 
              
               <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
@@ -185,9 +240,14 @@ class OrderDetail extends Component {
             <div className="col-barcode">
               <h4>Barcode</h4>
             </div>
+            <div className="">
+            </div>
           </div>
           <div className="order--items">
-          
+            {!csaOrder.isPaid? 
+              <button onClick={this.addToOrder} className="">Add to order</button>
+            :'' }
+            
             {Object.keys(csaOrderSortedItems).map(function(key, index) {
               return <div key={index} className="element">
                 <h2>{key}</h2> 
@@ -199,9 +259,7 @@ class OrderDetail extends Component {
               </div>;
             })}
 
-            {!csaOrder.isPaid? 
-              <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
-            :'' }
+            
           </div>
         </div>
       </div>
@@ -227,6 +285,61 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
     </div>
   );
 };
+
+const CancelModal = ({show,handleClose,cancel}) => {
+  return (
+    <div>
+      <Modal show={show} onHide={handleClose}>
+        <p className="cancel--text">Are you sure you want to cancel this order?</p>
+        <Modal.Footer>
+          <Button className="btn-add" onClick={handleClose}>Yes, Cancel</Button>  
+          <Button onClick={handleClose}>No</Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
+  );
+};
+
+
+const EditClientFields = ({client,updateClient}) => {
+  return (
+    <div>
+      <input
+        type="text"
+        name="name" 
+        className='form-control'
+        placeholder="First and Last Name"
+        value={client.client.name}
+        onChange={updateClient}
+      />
+      <input
+        type="email"
+        name="email"
+        className='form-control' 
+        placeholder="email"
+        value={client.client.email}
+        onChange={updateClient}
+      />
+      <input
+        type="phone"
+        name="phone" 
+        className='form-control'
+        placeholder="phone"
+        value={client.client.phone}
+        onChange={updateClient}
+      />
+      <input
+        type="number" 
+        name="rewards" 
+        className='form-control'
+        value={client.client.tyrNumber ? client.client.tyrNumber : '' }
+        placeholder="rewards number"
+        onChange={updateClient}
+      />
+    </div>
+  );
+};
+
 
 
 const PaidButton = ({isPaid,orderPaid}) => {

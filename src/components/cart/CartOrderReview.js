@@ -104,8 +104,7 @@ class CartOrderReview extends React.Component {
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}
-        </div>
-        {formattedCartTax}
+        </div> 
         <h2 className="checkout--title">Confirm Order Information</h2>
         <div className="checkout--info">
           <strong>{profile.username}</strong>
@@ -150,8 +149,9 @@ class CartOrderReview extends React.Component {
         <div className="checkout--submit">
           {/* Total price: {formattedCartTotal}
           {store.tax.name}: {taxAmount} */}
-
-          <span>Grand Total: {totalWithTax}</span>
+          <span>
+            Tax: {formattedCartTax} <br />Total: {totalWithTax}
+          </span>
           <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>

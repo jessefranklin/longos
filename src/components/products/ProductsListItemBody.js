@@ -86,7 +86,7 @@ class ProductsListItemBody extends Component {
     axios.put(url,this.state.selectedProduct, headers).then(
       (response) => {
         this.props.handleClose();
-        history.push(`/orderDetail/${orderid}`);
+        history.push(`/orderDashboard/orderDetail/${orderid}`);
       },
       (err) => {
         console.log(err);

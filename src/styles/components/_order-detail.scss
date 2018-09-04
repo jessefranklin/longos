@@ -83,7 +83,7 @@
         width:17%;
     }
     .col-barcode {
-        width:31%;
+        width:20%;
     }
     h4{
         font-size: 20px;
@@ -123,9 +123,18 @@
     }
     .order-item--status{
         width:17%;
+        .checkbox--container{
+            width: 110px;
+            margin:auto;
+            position: relative;
+            .checkbox-red{
+                width:100%;
+                min-width: 100%;
+            }
+        }
     }
     .order-item--barcode{
-        width:31%;
+        width:20%;
         svg{
             max-width: 100%;
         }

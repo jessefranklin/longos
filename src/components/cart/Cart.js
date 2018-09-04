@@ -43,13 +43,12 @@ class Cart extends React.Component {
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
           })}
-          { formattedCartTax }
         </div>
         <div>
         </div>
         <div className="cart--summary">
           <span>
-            Total price: {totalWithTax}
+            Tax: {formattedCartTax} Total price: {totalWithTax}
           </span>
           <Link to="/products/order" className="btn">Place Order</Link>
         </div>

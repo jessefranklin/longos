@@ -120,8 +120,6 @@ class PastOrders extends React.Component {
 
           <Pagination onPaginationChange={this.onPaginationChange} page={this.state.page} />
         </div>
-        <CSAFooter />
-
       </div>
     )
   }

@@ -9,13 +9,18 @@
 	display: table-row;
 	padding: 0 5rem;
 	background-color: $offwhite-light;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 500;
 	.cell-id {
 		position: relative;
 		overflow: visible;
 		padding-left: 5rem;
+		strong {
+			font-size: 21px;
+			font-weight: 600;
+		}
 	}
+	
 	.cell-status {
 		text-align: center;
 	}
@@ -24,8 +29,11 @@
 		vertical-align: middle;
 		padding: 20px 0;
 		position: relative;
-		&:nth-child(n+2):nth-child(-n+8){
+		&:nth-child(n+3):nth-child(-n+8){
 			text-align: center;
+		}
+		&.cell-pickup {
+			text-align: left;
 		}
 	}
 	&:first-child{

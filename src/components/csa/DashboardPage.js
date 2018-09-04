@@ -51,6 +51,9 @@ class DashboardPage extends React.Component {
                 <div className="cell-id">
                     Order
                 </div>
+                <div className="cell-pickup">
+                    Pickup
+                </div>
                 <div  className="cell-status">
                     Bakery
                 </div>
@@ -76,7 +79,6 @@ class DashboardPage extends React.Component {
                 </div>
 
                 <div>
-                  {this.props.filters.status === 1 ? 'Picked Up' :''}
                 </div>
             
               </div>

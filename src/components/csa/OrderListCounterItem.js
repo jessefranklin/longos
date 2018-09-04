@@ -12,7 +12,7 @@ const OrderListCounterItem = ({item}) => {
             case 1: 
                 return <i className="fa fa-user" aria-hidden="true"></i>;
             case 2:
-                return <i className="fa fa-user green" aria-hidden="true"></i>;
+                return <i className="fa fa-sync-alt green" aria-hidden="true"></i>;
             case 3:
                 return <i className="fa fa-check green" aria-hidden="true"></i>;
             default:
