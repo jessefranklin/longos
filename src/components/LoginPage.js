@@ -32,6 +32,13 @@ class LoginPage extends React.Component {
         method: 'isEmpty', 
         validWhen: false, 
         message: 'Pleave provide a number.'
+      },
+      {
+        field: 'rewards', 
+        method: 'matches',
+        args: [/^[0-9]{8}$/], 
+        validWhen: true, 
+        message: 'That is not a valid rewards number.'
       }
     ])
 
