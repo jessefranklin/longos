@@ -70,6 +70,18 @@ class OrderDetail extends Component {
       }
     )
   }
+  cancelOrder(value){
+    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`
+    axios.put(url, headers).then(
+      (response) => {
+        // Add notification
+        
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
 
@@ -82,9 +94,7 @@ class OrderDetail extends Component {
     this.setState({ show: false });
   }
   updateState = () => {
-    console.log(this.props.match.params.id);
     this.props.fetchCSAOrder(this.props.match.params.id);
-
   }
   addToOrder = () => {
     let cart = []
@@ -97,7 +107,7 @@ class OrderDetail extends Component {
       })
     })
     this.props.CSACart(cart);
-    this.props.history.push('/editOrder');
+    this.props.history.push('/orderDashboard/editOrder');
   }
   orderPaid = (data) => {
     let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;

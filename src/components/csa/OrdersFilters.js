@@ -32,12 +32,11 @@ export class OrdersFilters extends React.Component {
         document.removeEventListener('click', this.closeMenu);
       });
     }
+    componentWillUnmount(){
+      document.removeEventListener('click', this.closeMenu);
+    }
     handleCounter(value){
-      if(this.props.pastOrders){
-        this.props.filterByCounter(value);
-      } else {
-        this.props.filterByCounter(value);
-      }
+      this.props.filterByCounter(value);
     };
     render() {
       return (
@@ -54,6 +53,7 @@ export class OrdersFilters extends React.Component {
                     null
                   )
               }
+
             </div>
             <div className={this.props.filters.text.length >= 1 ? 'searchContainer active' :'searchContainer'}>
                 <input
@@ -70,7 +70,7 @@ export class OrdersFilters extends React.Component {
             
           </div>
           
-          <OrderStatusFilters pastOrders={this.props.pastOrders} />
+          <OrderStatusFilters status={this.props.filters.status} pastOrders={this.props.pastOrders} pendingCount={this.props.pendingCount} readyCount={this.props.readyCount} />
             
         </div>
       );

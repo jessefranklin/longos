@@ -5,7 +5,7 @@ import CartListItem from './CartListItem';
 import { cartTotal, cartTax } from '../../selectors/cartTotal';
 import numeral from 'numeral';
 import { totalCount } from '../../selectors/cartTotal';
-import Announcements from '../Announcements';
+import Announcements from '../shared/Announcements';
 
 class Cart extends React.Component {
   componentDidUpdate() {
@@ -50,7 +50,7 @@ class Cart extends React.Component {
           <span>
             Tax: {formattedCartTax} Total price: {totalWithTax}
           </span>
-          <Link to="/order" className="btn">Place Order</Link>
+          <Link to="/products/order" className="btn">Place Order</Link>
         </div>
       </div>
     )

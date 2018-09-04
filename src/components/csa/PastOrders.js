@@ -7,6 +7,7 @@ import CSAFooter from './CSAFooter';
 import OrdersFilters from './OrdersFilters';
 import config from '../../server/config.json';
 import { Pagination } from '../partials/Pagination';
+import { selectOrders, filterByStatus, filterByCounter } from '../../selectors/orders';
 
 let axios = require('axios');
 
@@ -18,7 +19,8 @@ const headers = {
 }
 
 // api/order/pickedup?storeId=store1&[perpage=20]‌&[page=0]‌&[counter=[counter]]
-
+// Cancled orders
+// GET http://digitalpreorder-staging.azurewebsites.net/api/order/bystatus?storeId=store1&status=3&[perpage=20]‌&[page=0‌]&[counter=Kitchen]
 
 class PastOrders extends React.Component {
   constructor(props) {
@@ -60,13 +62,15 @@ class PastOrders extends React.Component {
       this.setState({ 'page' : val });
   }
   render(){
-    const {pastorders} = this.props;
+    const { orders, filters, pastorders} = this.props;
+    let pendingCount = filterByStatus(orders,0).length;
+    let readyCount = filterByStatus(orders,{status:1}).length;
 
     return(
       <div>
         <CSAHeader />
         <div className="content--container">
-          <OrdersFilters pastOrders={true} />
+          <OrdersFilters pastOrders={true} pendingCount={pendingCount} readyCount={readyCount} />
             
           <div className="divTable">
             <div className="divTableBody">
@@ -75,10 +79,6 @@ class PastOrders extends React.Component {
 
                 <div className="cell-id">
                     Order #
-                </div>
-
-                <div className="cell-date">
-                    Pickup Date
                 </div>
 
                 <div>
@@ -130,6 +130,7 @@ class PastOrders extends React.Component {
 
 
 const mapStateToProps = (state) => ({
+    orders: filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),
     filters: state.filters,
     pastorders: state.pastorders
 });

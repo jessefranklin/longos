@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import IdleTimer from 'react-idle-timer';
 import { Modal } from 'react-bootstrap';
 import { connect } from "react-redux";
-import en from '../const/en-lang';
+import en from '../../const/en-lang';
 import PropTypes from "prop-types";
 import moment from 'moment';
+import IdleTimer from './IdleTimer';
+
+let interval;
 
 class Idle extends Component {
   static contextTypes = {
@@ -14,7 +16,7 @@ class Idle extends Component {
     super(props)
     this.idleTimer = null
     this.state = {
-      timeoutActive: false,
+      timeoutActive: true,
       timeout: this.props.settings ? this.props.settings.timeOut : 120000,
       remaining: null,
       isIdle: false,
@@ -30,14 +32,13 @@ class Idle extends Component {
   }
 
   componentDidMount () {
-    
     this.setState({
       remaining: this.idleTimer.getRemainingTime(),
       lastActive: this.idleTimer.getLastActiveTime(),
       elapsed: this.idleTimer.getElapsedTime()
     })
     if(this.state.timeoutActive){
-      setInterval(() => {
+      interval =  setInterval(() => {
         if(this.idleTimer.getRemainingTime() <= 1000){
           this.onCancelOrder();
         }
@@ -45,13 +46,17 @@ class Idle extends Component {
           remaining: this.idleTimer.getRemainingTime(),
           lastActive: this.idleTimer.getLastActiveTime(),
           elapsed: this.idleTimer.getElapsedTime(),
-          showTimeout: this.idleTimer.getRemainingTime() < 50000 ? true : false
+          showTimeout: this.idleTimer.getRemainingTime() < 10000 ? true : false
         })
       }, 1000)
     }
   }
+  componentWillUnmount(){
+    this.idleTimer = null;
+    clearInterval(interval);
+  }
   onCancelOrder(){
-    this.context.router.history.push('/');
+    // this.context.router.history.push('/');
   }
   render () {
       return (
@@ -90,7 +95,7 @@ class Idle extends Component {
 
   _changeTimeout () {
     this.setState({
-      timeout: this.refs.timeoutInput.state.value()
+      // timeout: this.refs.timeoutInput.state.value()
     })
   }
 

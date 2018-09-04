@@ -19,7 +19,6 @@ class CustomerFeedback extends Component {
         this.setState({ feedback: notes });
     };
     onSubmit = (e) => {
-        console.log(this.state);
         // this.props.dispatchFeedback(this.state);
         e.preventDefault();
     };   

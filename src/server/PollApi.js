@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from "react-redux";
 
-import { fetchCSAOrders }  from '../../actions/csa/orders';
+import { fetchCSAOrders }  from '../actions/csa/orders';
 import uuid from 'uuid/v1';
 import Notifications, { success, error, warning, info, removeAll } from 'react-notification-system-redux';
 
@@ -12,35 +12,40 @@ class PollApi extends React.Component {
     super(props);
 
   }
+
   componentDidMount() {
-    this.timer = setInterval(()=> this.pollOrders(), 1000);
-    
+    // this.timer = setInterval(()=> this.pollOrders(), 100000);
+    this.pollOrders();
   };
+
   pollOrders(){
     this.props.fetchCSAOrders();
   }
-
   componentWillUnmount() {
     this.timer = null;
   }
+  
+  componentWillReceiveProps(prevProps,nextProps) {
+    // console.log(prevProps);
+    // console.log(nextProps);
+    // console.log(this.props.orders !== prevProps.orders)
+    // console.log(this.props.orders)
+    // if (this.props.data !== nextProps.data) {
 
-  componentDidUpdate(prevProps) {
-    console.log(prevProps);  
+    //     clearTimeout(this.timeout);
+
+    //     // Optionally do something with data
+
+    //     if (!nextProps.isFetching) {
+    //         this.startPoll();
+    //     }
+    // }
+  }
+  render(){
+    return(<div>
+      </div>);
 
   }
-  componentWillReceiveProps(nextProps) {
-    if (this.props.data !== nextProps.data) {
-
-        clearTimeout(this.timeout);
-
-        // Optionally do something with data
-
-        if (!nextProps.isFetching) {
-            this.startPoll();
-        }
-    }
-  }
-
   dispatchNotification(fn, timeout) {
     let notificationOpts = {
       uid: uuid(),
@@ -58,9 +63,7 @@ class PollApi extends React.Component {
 
   sampleNotification() {
     this.dispatchNotification(success, 250);
-    this.dispatchNotification(error, 500);
-    this.dispatchNotification(warning, 750);
-    this.dispatchNotification(info, 1000);
+ 
   }
 }
 
@@ -77,7 +80,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = state => ({
-  notifications: state.notifications 
+  notifications: state.notifications,
+  orders: state.orders
 });
 
 

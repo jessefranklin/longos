@@ -11,25 +11,25 @@ export class OrderStatusFilters extends React.Component {
       
     constructor(props, context) {
         super(props, context);
-
-        this.state = {
-            status: 0
-        }
-
         this.handleStatus = this.handleStatus.bind(this);
     }
     handleStatus(value){
         this.setState({'status':value});
         this.props.filterByStatus(value);
-        if(value < 2) this.context.router.history.push("/orderDashboard");
+        value < 2 ? this.context.router.history.push("/orderDashboard") : this.context.router.history.push("/orderDashboard/pastOrders");
     };
     render() {
       return (
         <div>
             <ul className="statusFilter">
-                <li><button className={this.state.status == 0 ? 'active': ''} onClick={() => this.handleStatus(0)}>Pending</button></li>
-                <li><button className={this.state.status == 1 ? 'active': ''}  onClick={() => this.handleStatus(1)}>Ready for pickup</button></li>
-                <li><Link to="/pastOrders" className={this.props.pastOrders ? 'active' : ''}>Picked Up</Link></li>
+                <li><button className={this.props.status == 0 ? 'active': ''} onClick={() => this.handleStatus(0)}>
+                    Pending ({this.props.pendingCount})
+                    
+                </button></li>
+                <li><button className={this.props.status == 1 ? 'active': ''}  onClick={() => this.handleStatus(1)}>
+                    Ready for pickup ({this.props.readyCount})
+                </button></li>
+                <li><button className={this.props.pastOrders ? 'active' : ''} onClick={() => this.handleStatus(2)}>Picked Up</button></li>
             </ul>
         </div>
     );

@@ -7,7 +7,7 @@ textarea:focus, input:focus{
 }
 
 
-body .form-group {
+.form-group {
     font-family:$sans;
     .form-control {
         padding: 10px 0;
@@ -20,13 +20,12 @@ body .form-group {
         font-size: 18px;
         font-weight: 400;
         padding: 1rem 0;
-        margin-bottom: 4rem;
         box-shadow: none;
         border-color: inherit;
         box-shadow: none;
         outline: none;
         &.error {
-            // border-bottom:2px solid $red;
+            border-bottom:2px solid $red;
         }
         &:focus {
             border-color: none;
@@ -39,8 +38,29 @@ body .form-group {
             font-size: 2.3rem;
         }
     }
+    
+    .f-con {
+        position: relative;
+        margin-bottom: 4rem;
+    }
+    .has-error {
+        .form-control {
+            border-bottom:2px solid $red !important;
+            box-shadow: none !important;
+        }
+    }
 }
 
+body .form-group {
+    &.rewards-container,
+    &.guest-container{
+        label {
+            visibility: hidden;
+            position: absolute;
+            pointer-events: none;
+        }
+    }
+}
 
 #app .searchContainer {
     display: block;
