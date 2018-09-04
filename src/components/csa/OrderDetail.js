@@ -70,6 +70,18 @@ class OrderDetail extends Component {
       }
     )
   }
+  cancelOrder(value){
+    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`
+    axios.put(url, headers).then(
+      (response) => {
+        // Add notification
+        
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
 

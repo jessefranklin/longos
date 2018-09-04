@@ -19,7 +19,8 @@ const headers = {
 }
 
 // api/order/pickedup?storeId=store1&[perpage=20]‌&[page=0]‌&[counter=[counter]]
-
+// Cancled orders
+// GET http://digitalpreorder-staging.azurewebsites.net/api/order/bystatus?storeId=store1&status=3&[perpage=20]‌&[page=0‌]&[counter=Kitchen]
 
 class PastOrders extends React.Component {
   constructor(props) {
