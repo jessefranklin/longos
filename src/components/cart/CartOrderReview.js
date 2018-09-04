@@ -83,7 +83,7 @@ class CartOrderReview extends React.Component {
     const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
     const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
     const time = moment().startOf('day').seconds(order.time).format('h:mm A');
-    
+
     const formattedCartTax = numeral(cartTax).format('$0,0.00');
     const totalWithTax = numeral(cartTotal+cartTax).format('$0,0.00');
 
@@ -104,7 +104,10 @@ class CartOrderReview extends React.Component {
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="false" />
           })}
-        </div> 
+          <div className="cart--row-tax">
+            <span className="align-left">Tax: {formattedCartTax}</span>
+          </div>
+        </div>
         <h2 className="checkout--title">Confirm Order Information</h2>
         <div className="checkout--info">
           <strong>{profile.username}</strong>
@@ -150,7 +153,7 @@ class CartOrderReview extends React.Component {
           {/* Total price: {formattedCartTotal}
           {store.tax.name}: {taxAmount} */}
           <span>
-            Tax: {formattedCartTax} <br />Total: {totalWithTax}
+            Total: {totalWithTax}
           </span>
           <Link className="btn" to="/orderconfirmation" onClick={this.onSubmit} disabled={this.state.agreedTerms?'':'disabled'} >Submit Order</Link>
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
@@ -160,7 +163,7 @@ class CartOrderReview extends React.Component {
     )
   }
 }
-  
+
 const mapStateToProps = (state) => ({
     settings: state.settings,
     profile: state.profile,

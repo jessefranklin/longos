@@ -35,6 +35,11 @@ export const updateCSAOrder = (params,oId) => {
     }
 }
 
+// EMPTY CART
+export const clearCSAOrder = () => ({
+    type: 'EMPTY_ORDER'
+});
+
 export const fetchCSAOrderBegin = () => ({
   type: 'FETCH_ORDER_BEGIN'
 });

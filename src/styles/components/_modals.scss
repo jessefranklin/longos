@@ -173,7 +173,7 @@
         margin: 1rem auto 1rem auto;
         position: relative;
         left:50%;
-        transform:translateX(-50%); 
+        transform:translateX(-50%);
     }
     .btn-submit{
         height: 40px;
@@ -189,3 +189,46 @@
     }
 }
 
+.modal--cancel{
+  padding:3rem;
+  text-align: center;
+  position: relative;
+  h3{
+    color:$dark-grey;
+    text-transform: none;
+  }
+  h4{
+    margin-bottom: 4rem;
+    font-weight: 300;
+    width:50%;
+    text-align: center;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+  }
+  .red{
+    color:$red;
+  }
+  .modal--buttons{
+    width:100%;
+    button{
+      width:48%;
+      background: none;
+      border:2px solid $green;
+      padding:1rem;
+      color:$green;
+      font-family: $sans;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: none !important;
+      &:first-child{
+        margin-right: 4%;
+      }
+    }
+    .btn-cancel{
+      color:$red;
+      border:2px solid $red;
+    }
+  }
+}

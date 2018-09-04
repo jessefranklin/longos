@@ -5,7 +5,7 @@
     div{
         width:33%;
         height:100%;
-        // padding:1rem 0;     
+        // padding:1rem 0;
         display: inline-block;
         text-align: center;
         color:$grey;
@@ -18,7 +18,7 @@
             width: 34%;
         }
         a{
-            padding:1rem 0;  
+            padding:1rem 0;
             color:$grey;
             display:block;
             width:100%;
@@ -82,8 +82,8 @@
                 position: absolute;
                 right: 5%;
                 top: 45%;
-                width: 0; 
-                height: 0; 
+                width: 0;
+                height: 0;
                 border-top: 5px solid $red;
                 border-right: 5px solid transparent;
                 border-left: 5px solid transparent;
@@ -109,7 +109,7 @@
             input{
                 display:block;
                 height:100%;
-                width:100%;   
+                width:100%;
                 border: 2px solid $red;
                 padding: 8px 8px 8px 35px;
                 color:$red;
@@ -126,8 +126,8 @@
                     position: absolute;
                     right: 5%;
                     top: 40%;
-                    width: 0; 
-                    height: 0; 
+                    width: 0;
+                    height: 0;
                     border-top: 12px solid $red;
                     border-right: 7px solid transparent;
                     border-left: 7px solid transparent;
@@ -140,7 +140,7 @@
             // height:50px;
             // width:50%;
             height:100%;
-            width:100%;   
+            width:100%;
             border: 2px solid $red;
             padding: 8px 8px 8px 35px;
             color:$red;
@@ -164,7 +164,7 @@
         .btn-secondary{
             background-color: $red;
             width:33%;
-            right:0; 
+            right:0;
         }
     }
 }
@@ -260,9 +260,7 @@
 .checkout--submit{
     width:100%;
     span,
-    a{  
-        height: 112px;
-        vertical-align: middle;
+    a{
         padding: 4rem;
         color:white;
         font-family: $sans;
@@ -272,7 +270,6 @@
         background-color: $red;
     }
     span{
-        padding:2.4rem 4rem 2.4rem 4rem;
         width:50%;
         border-bottom: 1px solid $red;
         display: inline-block;
@@ -283,6 +280,7 @@
         border:none;
         border-radius:0;
         text-transform: uppercase;
+        vertical-align: baseline;
     }
     .btn-secondary{
         width:20%;

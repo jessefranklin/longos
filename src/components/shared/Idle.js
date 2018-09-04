@@ -11,7 +11,7 @@ let interval;
 class Idle extends Component {
   static contextTypes = {
     router: PropTypes.object
-  } 
+  }
   constructor (props) {
     super(props)
     this.idleTimer = null
@@ -69,16 +69,16 @@ class Idle extends Component {
             startOnLoad>
             <div>
               <Modal show={this.state.showTimeout}>
-                <div className="">
+                <div className="modal--cancel">
                   <h3>{en.notifications.timeout.title}</h3>
-                  <h4>Your current order will be cancelled in {moment.duration(this.state.remaining).seconds()} sec</h4>
-                  <div>
+                  <h4>Your current order will be cancelled in <span className="red"> {moment.duration(this.state.remaining).seconds()}</span> sec</h4>
+                  <div className="modal--buttons">
                     <button>Resume Order</button>
-                    <button onClick={this.onCancelOrder}>Cancel Order</button>
+                    <button onClick={this.onCancelOrder} className="btn-cancel">Cancel Order</button>
                   </div>
                 </div>
               </Modal>
-             
+
             </div>
           </IdleTimer>
         </div>
