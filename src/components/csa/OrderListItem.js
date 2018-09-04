@@ -14,9 +14,11 @@ const OrderListItem = ({item, pastOrders, status, isPickedUp}) => {
         <div className='orders--item divTableRow'>
             <div className="cell-id">
                 {dateNotification && !pastOrders ? <Indicator notification={dateNotification} />: ''}
-                <strong>#{item.id}</strong><br />
-                {moment(item.pickupDate).format('MMM. Do, /YY')}<br />
-                {item.pickupTime}
+                <strong>{item.id}</strong><br />
+            </div>
+            <div className="cell-pickup">
+                {moment(item.pickupDate).format('MMM. D')} @
+                {moment(item.pickupTime, "HH:mm:ss").format('h:mm a')}
             </div>
 
             <div className="cell-status">
@@ -48,10 +50,7 @@ const OrderListItem = ({item, pastOrders, status, isPickedUp}) => {
             </div>
 
             <div>
-                {status === 1 ? (
-                    <PickedupButton oId={item.id} isPickedUp={isPickedUp} checked={false} isPaid={item.isPaid}/>
-                ):''}
-
+     
                 <Link to={`orderDashboard/orderDetail/${item.id}`}></Link>
 
             </div>

@@ -5,7 +5,7 @@ const CartProgress = ({ progress }) => (
     <div className="subheader--checkout">
       {progress==="2"?(
         <div>
-          <Link to='/order' >Pickup Details</Link>
+          <Link to='/products/order' >Pickup Details</Link>
         </div>
       ):(
         <div className={progress==="1"?'active':''}>
