@@ -42,12 +42,18 @@ class OrderDetail extends Component {
       status: '',
       isPaid: this.props.csaOrder.isPaid,
       items: [],
-      show: false
+      show: false,
+      showInfoEdit: false
     }
     this.orderPaid = this.orderPaid.bind(this);
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+
+    this.showInfoEdit = this.showInfoEdit.bind(this);
+    this.hideInfoEdit = this.hideInfoEdit.bind(this);
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
   componentWillMount() {
     this.props.fetchCSAOrder(this.props.match.params.id);
@@ -81,6 +87,17 @@ class OrderDetail extends Component {
   handleClose() {
     this.setState({ show: false });
   }
+  showInfoEdit() {
+    this.setState({ showInfoEdit: true });
+  }
+  hideInfoEdit() {
+    this.setState({ showInfoEdit: false });
+  }
+  onSubmit = (e) => {
+    this.props.setProfile({
+      name: this.state.name,
+    });
+  };
   updateState = () => {
     console.log(this.props.match.params.id);
     this.props.fetchCSAOrder(this.props.match.params.id);
@@ -138,7 +155,8 @@ class OrderDetail extends Component {
             </div>
 
             <div className="">
-              <h4>Customer <button className="order-detail--action">edit</button></h4>
+              <h4>Customer <button className="order-detail--action" onClick={this.showInfoEdit}>edit</button></h4>
+              <InfoEdit showInfoEdit={this.state.showInfoEdit} cxName={this.state.client.name}/>
               {csaOrder.client.name}<br />
 
               {csaOrder.client.email && csaOrder.client.email}<br />
@@ -233,6 +251,31 @@ const PaidButton = ({isPaid,orderPaid}) => {
   );
 };
 
+const InfoEdit = ({showInfoEdit,cxName}) => {
+  console.log(showInfoEdit,cxName);
+  return (
+    <div>
+    {showInfoEdit ? (
+      <div className="form-group">
+        <div className="form-inputs">
+          <input
+            type="text"
+            name="username" 
+            className='form-control'
+            placeholder="First and Last Name"
+            value={cxName}
+          />
+        </div>
+
+        <Button className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Button>
+        <Button to="/products" className="btn btn-secondary">Cancel</Button>
+      </div>
+    ):(
+      <div>not shown</div>
+    )}
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
