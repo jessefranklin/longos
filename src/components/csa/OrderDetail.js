@@ -11,6 +11,8 @@ import { orderFilterByCounter } from '../../selectors/orders';
 import { CSACart } from '../../actions/cart';
 import CSAHeader from './CSAHeader';
 import groupByCounter from '../../selectors/groupByCounter';
+import TimePicker from 'react-bootstrap-time-picker';
+import { SingleDatePicker } from 'react-dates';
 
 import { baseUrl, headers } from "../../const/global";
 let axios = require('axios');
@@ -73,11 +75,16 @@ class OrderDetail extends Component {
       }
     )
   }
-  updateClient = (val, name) => {
+  updateClient = (name,val) => {
     const client = {...this.state.client}
     client[name] = val;
     this.setState(() => ({ client }));
   };
+
+  updatePickup = (name,val) => {
+    this.setState(() => ({ [name]: val }));
+  };
+
 
   updateClientPickup = (payload) => {
     // PUT http://digitalpreorder-staging.azurewebsites.net/api/order/updateorder
@@ -196,7 +203,7 @@ class OrderDetail extends Component {
               
 
               {this.state.editClient ? (
-                <EditClientFields client={this.props.csaOrder.order} updateClient={this.updateClient} />
+                <EditClient client={this.props.csaOrder.order} updateClient={this.updateClient} />
               ) : (
                 <div>
                   {csaOrder.client.name}<br />
@@ -210,12 +217,25 @@ class OrderDetail extends Component {
             </div>
 
             <div className="">
-              <h4>Pickup Date & Time <button className="order-detail--action" onClick={() => this.handleEdit('editPickup')}>edit</button></h4>
-              {csaOrder.pickupDate} @ {csaOrder.pickupTime} 
+              <h4>Pickup Date & Time 
+                {this.state.editPickup ? (
+                  <div>
+                      <button className="order-detail--action" onClick={() => this.handleSave('editPickup')}>Cancel</button>
+                      <button className="order-detail--action" onClick={() => this.handleSave('editPickup')}>Save</button>
+                    </div>
+                  ):(
+                    <button className="order-detail--action" onClick={() => this.handleEdit('editPickup')}>edit</button>
+                )}    
+              </h4>
 
-              {this.state.editPickup}
+              {this.state.editPickup ? (
+                <EditPickup pickup={this.props.csaOrder.order} updatePickup={this.updatePickup} />
+              ) : (
+                <div>
+                  {csaOrder.pickupDate} @ {csaOrder.pickupTime} 
+                </div>
+              )}
 
-              <button className="order-detail--action" onClick={() => this.handleSave('editPickup')}>Save</button>
               <h4>Order Status</h4> 
              
               <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
@@ -268,6 +288,36 @@ class OrderDetail extends Component {
   }
 }
 
+const EditPickup = ({pickup,updatePickup}) => {
+  return (
+    <div>
+      <div className="date-picker">
+        <i className="fa fa-calendar" aria-hidden="true"></i>
+        {/* <SingleDatePicker
+          date={this.state.pickUpDate} 
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false}
+        /> */}
+        <input
+          type="date"
+          name="pickUpDate"
+          placeholder="Select Date"
+          value={pickup.pickUpDate}
+          onChange={updatePickup}
+        />
+      </div>
+      <div className="time-picker">
+        <i className="fa fa-clock" aria-hidden="true"></i>
+        {pickup.pickupTime}
+        <TimePicker onChange={updatePickup} start="8:00" end="22:00" value={pickup.pickupTime} />
+      </div>
+    </div>
+  );
+};
+
 const StatusState = ({status,onSelectChange,isPaid}) => {
   return (
     <div>
@@ -301,7 +351,9 @@ const CancelModal = ({show,handleClose,cancel}) => {
 };
 
 
-const EditClientFields = ({client,updateClient}) => {
+
+
+const EditClient = ({client,updateClient}) => {
   return (
     <div>
       <input
