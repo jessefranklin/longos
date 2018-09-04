@@ -2,7 +2,7 @@
     "product": {
         "nutfree": "We are not a nut free env.",
         "served": "*Items are picked up cold.",
-        "textarea": "Include special instructions here. Please note additional charges may apply."
+        "textarea": "Include special instructions here. Please note additional charges may apply. A Longos customer service agent may call you to confirm details."
     },
     "cakes": {
         "characterDisclaimer": "Character cakes may not be exactly as shown."

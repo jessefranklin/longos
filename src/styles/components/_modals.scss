@@ -1,5 +1,6 @@
 
 .modal-header{
+  border-bottom: none !important;
     &.img--header{
         height: 400px;
         overflow: hidden;
@@ -11,11 +12,14 @@
         font-size:50px;
         color:$red;
         position: absolute;
-        top: 8px;
+        top: 5px;
         right: 10px;
         z-index: 1;
+        opacity: 1;
+        font-weight: 300;
         &:hover {
             color:$red;
+            opacity: 1;
         }
     }
 }
@@ -23,12 +27,22 @@
 .modal-body {
     font-family: $sans;
     color: $dark-grey !important;
-    padding:2rem 2rem 1.5rem 2rem!important;
+    padding:0rem 3rem 1.5rem 3rem!important;
+    h2{
+      margin-bottom: 4px;
+    }
+    h5{
+      font-size: 33px;
+    }
     p {
-		font-family: $sans;
-		font-size: 17px;
-		font-weight: 400;
+		    font-family: $sans;
+		    font-size: 17px;
+		    font-weight: 400;
         line-height: 1.4em;
+        margin-bottom: 30px;
+        &:first-of-type{
+          margin-bottom: 15px;
+        }
     }
     .item--header {
         display: flex;
@@ -46,10 +60,11 @@
     textarea {
         width: 100%;
         box-shadow: none;
-        border: 2px solid $grey;
+        border: 2px solid $lighter-grey2;
         padding: 1rem;
         &::placeholder{
             font-family: $sans;
+            color:$lighter-grey2;
         }
     }
     .Select-control {
@@ -68,7 +83,9 @@
             font-family: $sans;
             color: $red !important;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
+            position: absolute;
+            transform: translateY(-2px);
         }
         .Select-value{
             transform:translateY(3px);
@@ -81,6 +98,7 @@
         background:#fff;
         .Select-control{
             border: none;
+            color:$dark-grey;
             //background:#fff !important;
         }
         .Select-arrow-zone{
@@ -121,6 +139,7 @@
 }
 
 .modal-content{
+    border-radius: 15px !important;
     .toc{
         padding:2rem;
     }
@@ -133,22 +152,23 @@
 
 .modal-footer {
     border-top:none !important;
-    padding: 0rem 2rem 3rem 2rem !important;
+    padding: 0rem 3rem 3rem 3rem !important;
     text-align: left !important;
     button {
-        height: 40px;
+        height: 70px;
         width: 25%;
         margin: 0 !important;
         border: 2px solid $red;
         border-radius: 0px;
         color: $red;
         font-family: $sans;
-        font-weight: 500;
+        font-weight: 600;
+        font-size:18px;
         text-transform: uppercase;
     }
     .btn-add {
-        width: 73%;
-        margin: 0 2% 0 0 !important;
+        width: 71%;
+        margin: 0 4% 0 0 !important;
         color: $green;
         border: 2px solid $green;
     }

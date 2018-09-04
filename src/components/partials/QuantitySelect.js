@@ -18,8 +18,8 @@ export class QuantitySelect extends React.Component {
         return (
             <div className="qty--container" >
             <button onClick={this.minusOne}>-</button>
-                <h4>{this.props.quantity} </h4>
-                <button onClick={this.addOne}>+</button>
+                <h4>{this.props.copy?'Qty: ':''}{this.props.quantity} </h4>
+                <button onClick={this.addOne} className="btn-plus">+</button>
             </div>
         )
     }

@@ -38,7 +38,7 @@ textarea:focus, input:focus{
             font-size: 2.3rem;
         }
     }
-    
+
     .f-con {
         position: relative;
         margin-bottom: 4rem;
@@ -77,10 +77,10 @@ body .form-group {
         border-radius: 27px;
         line-height: 1em;
         font-size: 16px;
-        padding: 8px 30px;
+        padding: 8px 15px;
         border-radius: 2.7rem !important;
         font-weight: 400;
-        border: 1px solid $light-grey;
+        border: none;
         width: 100%;
     }
     .fa-search{
@@ -95,15 +95,18 @@ body .form-group {
     }
     .closer {
         position: absolute;
-        right: 11px;
-        top: 6px;
+        right: 1px;
+        top: 5px;
         opacity:0;
         z-index: 20;
         border: none;
         box-shadow: none;
         transition: opacity .4s ease-in-out;
-        color:$dark-grey;
+        color:$red;
         display: block;
+    }
+    icon-close{
+      color:$red;
     }
     &:focus-within{
         .closer{
@@ -118,12 +121,12 @@ body .form-group {
 
 .checkbox {
     input[type=checkbox] {
-        
+
     }
     label {
         cursor: pointer;
         padding-left: 40px;
-        border: none; 
+        border: none;
         width: 100%;
         &:before {
           content: ' ';
@@ -153,5 +156,5 @@ body .form-group {
               }
         }
     }
-    
+
 }
