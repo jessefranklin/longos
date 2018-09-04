@@ -24,7 +24,7 @@ const options = [
 class OrderDetail extends Component {
   static contextTypes = {
     router: PropTypes.object
-  } 
+  }
 
   constructor(props) {
     super(props);
@@ -54,7 +54,7 @@ class OrderDetail extends Component {
   };
   onSelectChange = (value) => {
     this.setState({ 'status' : value });
-    
+
     if(value == 2){
       this.completeOrder(value)
     }
@@ -75,7 +75,7 @@ class OrderDetail extends Component {
     axios.put(url, headers).then(
       (response) => {
         // Add notification
-        
+
       },
       (err) => {
         console.log(err);
@@ -121,7 +121,7 @@ class OrderDetail extends Component {
       }
     )
   }
-  
+
   render() {
     const csaOrder = this.props.csaOrder.order;
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
@@ -138,11 +138,13 @@ class OrderDetail extends Component {
             <div className="">
               <h4>Order #</h4><h2>{csaOrder.id} <button className="order-detail--action" onClick={this.handleShow}>cancel order</button></h2>
               <Modal show={this.state.show} onHide={this.handleClose}>
-                <p className="cancel--text">Are you sure you want to cancel this order?</p>
-                <Modal.Footer>
-                  <Button className="btn-add">Yes, Cancel</Button>  
-                  <Button onClick={this.handleClose}>No</Button>
-                </Modal.Footer>
+                <div className="modal--cancel">
+                  <h4>Are you sure you want to cancel this order?</h4>
+                  <div className="modal--buttons">
+                    <Button>Yes, Cancel</Button>
+                    <Button onClick={this.handleClose} className="btn-cancel">No</Button>
+                  </div>
+                </div>
               </Modal>
               <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} />
             </div>
@@ -153,16 +155,16 @@ class OrderDetail extends Component {
 
               {csaOrder.client.email && csaOrder.client.email}<br />
               {csaOrder.client.phone && csaOrder.client.phone}<br />
-              
+
             </div>
 
             <div className="">
               <h4>Pickup Date & Time <button className="order-detail--action">edit</button></h4>
-              {csaOrder.pickupDate} @ {csaOrder.pickupTime} 
-              
+              {csaOrder.pickupDate} @ {csaOrder.pickupTime}
 
-              <h4>Order Status</h4> 
-             
+
+              <h4>Order Status</h4>
+
               <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
             </div>
           </div>
@@ -187,10 +189,10 @@ class OrderDetail extends Component {
             </div>
           </div>
           <div className="order--items">
-          
+
             {Object.keys(csaOrderSortedItems).map(function(key, index) {
               return <div key={index} className="element">
-                <h2>{key}</h2> 
+                <h2>{key}</h2>
                 <div className="counter-items--container">
                   {csaOrderSortedItems[key].map(order => {
                     return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} />;
@@ -199,7 +201,7 @@ class OrderDetail extends Component {
               </div>;
             })}
 
-            {!csaOrder.isPaid? 
+            {!csaOrder.isPaid?
               <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
             :'' }
           </div>
@@ -221,7 +223,7 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
           onChange={(e)=>onSelectChange(e.value)}
           options={options}
           disabled={status === 0 ? true:false}
-          clearable={false} 
+          clearable={false}
         /> }
         {status === 2 && <div className="state--completed">Completed</div> }
     </div>
@@ -232,7 +234,7 @@ const StatusState = ({status,onSelectChange,isPaid}) => {
 const PaidButton = ({isPaid,orderPaid}) => {
   return (
     <div className="btn--container">
-      {isPaid ? ( 
+      {isPaid ? (
         <div>
           <button className="checkbox-red checked" onClick={() => orderPaid(false)}>Order is Paid </button>
         </div>
