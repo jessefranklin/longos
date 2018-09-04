@@ -28,7 +28,7 @@ class Cart extends React.Component {
       <div ref={(contentContainer) => { this.contentContainer = contentContainer; }} tabIndex="-1" aria-labelledby="pageHeading">
         <Announcements message={this.state.announcementMessage} />
         <div className="cart--header">
-          <h2>Shopping Cart ({total} {itemWord})</h2> 
+          <h2>Shopping Cart ({total} {itemWord})</h2>
           <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
         </div>
 
@@ -43,12 +43,13 @@ class Cart extends React.Component {
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="true" cartLength={cart.length} />;
           })}
+          <div className="cart--row-tax">Tax: {formattedCartTax}</div>
         </div>
         <div>
         </div>
         <div className="cart--summary">
           <span>
-            Tax: {formattedCartTax} Total price: {totalWithTax}
+            Total price: {totalWithTax}
           </span>
           <Link to="/products/order" className="btn">Place Order</Link>
         </div>
@@ -56,12 +57,12 @@ class Cart extends React.Component {
     )
   }
 }
-  
+
 const mapStateToProps = (state) => ({
   cart: state.cart,
   cartTotal: cartTotal(state.cart),
   cartTax: cartTax(state.cart),
   total: totalCount(state.cart)
 });
-  
+
 export default connect(mapStateToProps)(Cart);
