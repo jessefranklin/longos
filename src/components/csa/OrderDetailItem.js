@@ -4,10 +4,12 @@ import Barcode from 'react-barcode';
 import Select from 'react-select';
 import { SlideToggle } from 'react-slide-toggle';
 import { baseUrl, headers } from "../../const/global";
+import FontAwesome from 'react-fontawesome';
 
 let axios = require('axios');
 
 const options = [
+    { value: 1, label: 'Not Ready' },  
     { value: 2, label: 'In Progress' },
     { value: 3, label: 'Ready' }
 ]
@@ -44,6 +46,9 @@ class OrderDetailItem extends Component {
   onReassign=()=>{
     // this.setState({ 'reassign' : true });
   }
+  onRemove = () => {
+    
+  }
   statusAssigned = () => {
     let orderUpdate = `setstatus?status=2`;
     this.updateOrder(orderUpdate);
@@ -73,12 +78,12 @@ class OrderDetailItem extends Component {
             <div className="order-detail-item--container">
               <div className="order-item--row">
                 <div className="order-item--item grey-border">
-                  <h4>{order.product.counter}</h4>
-                  {order.product.name}
                   <div className="img--container">
                     <img src={order.product.imageLink} alt={order.product.name} />
                   </div>
                   
+                  <h4>{order.product.counter}</h4>
+                  {order.product.name}
                 </div>
                 <div className="order-item--assign grey-border">
                 {order.assignee && !this.state.reassign ? (
@@ -96,7 +101,7 @@ class OrderDetailItem extends Component {
                 
                 </div>
                 <div className="order-item--status grey-border">
-                {order.status <= 1 ? (
+                {order.status == 0 ? (
                   <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
                 ) : (
                   <Select
@@ -120,6 +125,16 @@ class OrderDetailItem extends Component {
                       value={order.upc}
                       />
                   ) : ''}
+                </div>
+                <div className="order-item--remove-item">
+                  <button onClick={this.onRemove} className="btn-qu">
+                    <FontAwesome
+                    className='fa fa-trash'
+                    name='fa-trash'
+                    size='2x'
+                    aria-hidden='true'
+                  />
+                </button>
                 </div>
 
               </div>
@@ -156,7 +171,7 @@ const OrderStatus = ({status,statusAssigned}) => {
       {status === 1 ? (
         <button className="checkbox-red" onClick={statusAssigned} disabled={status===0?'disabled':''}>Inprogress</button>
       ) : (
-        <button className="checkbox-red" onClick={statusAssigned} disabled='disabled'>Not Ready</button>
+        <button className="bland" onClick={statusAssigned} disabled='disabled'>Not Ready</button>
       )}
     </div>
   );

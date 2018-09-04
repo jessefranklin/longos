@@ -16,8 +16,8 @@ class Idle extends Component {
     super(props)
     this.idleTimer = null
     this.state = {
-      timeoutActive: true,
-      timeout: this.props.settings ? this.props.settings.timeOut : 120000,
+      timeoutActive: false,
+      timeout: 60000,
       remaining: null,
       isIdle: false,
       lastActive: null,
