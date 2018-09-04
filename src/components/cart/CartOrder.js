@@ -69,13 +69,20 @@ class CartOrder extends React.Component {
             <div className="time-inputs">
               <div className="date-picker">
                 <i className="fa fa-calendar" aria-hidden="true"></i>
-                <SingleDatePicker
+                {/* <SingleDatePicker
                   date={this.state.pickUpDate} 
                   onDateChange={this.onDateChange}
                   focused={this.state.calendarFocused}
                   onFocusChange={this.onFocusChange}
                   numberOfMonths={1}
                   isOutsideRange={() => false}
+                /> */}
+                <input
+                  type="date"
+                  name="pickUpDate"
+                  placeholder="Select Date"
+                  value={this.state.pickUpDate}
+                  onChange={this.handleChange.bind(this)}
                 />
               </div>
 
