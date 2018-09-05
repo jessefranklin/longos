@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
-import {Button, Modal} from 'react-bootstrap';
+import {Button, Modal, Panel } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import { fetchCSAOrder, updateCSAOrder, clearCSAOrder } from '../../actions/csa/csaOrder';
@@ -52,6 +52,7 @@ class OrderDetail extends Component {
       showFilter: false,
       showActions: false,
       editState: false,
+      orderUpdated: false,
       show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
@@ -153,7 +154,10 @@ class OrderDetail extends Component {
     this.setState(() => ({ 'pickupDate': date }));
   };
   promptUpdate(){
-    
+    this.setState({ orderUpdated: true });
+    setTimeout(()=> {
+      this.setState({ orderUpdated: false });
+    },30000)
   }
   updateClientPickup = (name) => {
     // PUT http://digitalpreorder-staging.azurewebsites.net/api/order/updateorder
@@ -252,40 +256,50 @@ class OrderDetail extends Component {
     const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
     let editState = this.state.editState;
-    
+
     return (
       <div>
         <CSAHeader />
         <div className="content--container">
           <div className="order-detail">
             <div className="order-detail--actions-row">
+            
               <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
+                <div className="order-detail--actions-container">
+                  <button className="order-detail--action" onClick={this.showActions}>
+                    <FontAwesome
+                        className='fa fa-bars'
+                        name='fa-bars'
+                        size="2x"
+                        aria-hidden='true'
+                      />
+                  </button>
+                  {this.state.showActions? (
+                    <div className="order-detail--actions-list">
+                      <ul>
+                        {this.state.editState?(
+                          <li><button onClick={this.editStateClose}>Exit Edit State</button></li>
+                        ):(
+                          <li><button onClick={this.editState}>Edit Order</button></li>
+                        )}
+                        <li><button onClick={this.handleShow}>Cancel Order</button></li>
+                      </ul>
+                    </div>
+                  ): ''}
+                </div>
 
-              <div className="order-detail--actions-container">
-                <button className="order-detail--action" onClick={this.showActions}>
-                  <FontAwesome
-                      className='fa fa-bars'
-                      name='fa-bars'
-                      size="2x"
-                      aria-hidden='true'
-                    />
-                </button>
-                {this.state.showActions? (
-                  <div className="order-detail--actions-list">
-                    <ul>
-                      {this.state.editState?(
-                        <li><button onClick={this.editStateClose}>Exit Edit State</button></li>
-                      ):(
-                        <li><button onClick={this.editState}>Edit Order</button></li>
-                      )}
-                      <li><button onClick={this.handleShow}>Cancel Order</button></li>
-                    </ul>
-                  </div>
-                ): ''}
-
-              </div>
-
+                
             </div>
+            <div className="order-detail--actions-row">
+              {this.state.orderUpdated? (
+                <Panel bsStyle="success">
+                  <Panel.Heading>
+                    <Panel.Title componentClass="h3">Order Updated</Panel.Title>
+                  </Panel.Heading>
+                </Panel>
+              ) : ''}
+            </div>
+
           <div className="order-detail--header">
             <div className="">
               <h4>Order #</h4>

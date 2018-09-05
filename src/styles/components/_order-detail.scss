@@ -57,6 +57,9 @@
     display: flex;
     justify-content: space-between;
     padding: 0 4rem;
+    .panel {
+        width: 100%;
+    }
 }
 
 .order-detail--actions-container {
@@ -75,6 +78,7 @@
                 list-style: none;
                 button {
                     white-space: nowrap;
+                    
                 }
             }
         }
