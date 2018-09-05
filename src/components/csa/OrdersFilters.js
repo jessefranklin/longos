@@ -8,18 +8,25 @@ export class OrdersFilters extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-          showCounters: false
+          showCounters: false,
+          filterOrder: this.props.filters.order
         }
         this.handleCounter = this.handleCounter.bind(this);
         this.toggleMenu = this.toggleMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
     }
     onTextChange = (e) => {
-      this.props.setOrderFilter(e.target.value);
+      // this.props.setOrderFilter(e.target.value);
+      this.setState({
+        filterOrder: e.target.value
+      });
     };
     onClearField = (e) => {
       this.props.setOrderFilter('');
     };
+    onFilterSubmit = () =>{
+      this.props.setOrderFilter(this.state.filterOrder);
+    }
     toggleMenu(e) {
       e.preventDefault();
       this.setState({
@@ -58,7 +65,7 @@ export class OrdersFilters extends React.Component {
             <div className={this.props.filters.text.length >= 1 ? 'searchContainer active' :'searchContainer'}>
                 <input
                   type="text"
-                  value={this.props.filters.order}
+                  value={this.state.filterOrder}
                   onChange={this.onTextChange}
                   className="search"
                 />
