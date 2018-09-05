@@ -8,6 +8,7 @@ import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, R
 import { setOrder } from '../../actions/order';
 import CartProgress from './CartProgress';
 import TimePicker from 'react-bootstrap-time-picker';
+import MediaQuery from 'react-responsive';
 
 class CartOrder extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class CartOrder extends React.Component {
     const { profile } = this.props;
     return (
       <div>
-      
+
         <CartProgress progress="1" />
 
         <div className="form-group">
@@ -69,21 +70,25 @@ class CartOrder extends React.Component {
             <div className="time-inputs">
               <div className="date-picker">
                 <i className="fa fa-calendar" aria-hidden="true"></i>
-                {/* <SingleDatePicker
-                  date={this.state.pickUpDate} 
-                  onDateChange={this.onDateChange}
-                  focused={this.state.calendarFocused}
-                  onFocusChange={this.onFocusChange}
-                  numberOfMonths={1}
-                  isOutsideRange={() => false}
-                /> */}
-                <input
-                  type="date"
-                  name="pickUpDate"
-                  placeholder="Select Date"
-                  value={this.state.pickUpDate}
-                  onChange={this.handleChange.bind(this)}
-                />
+                <MediaQuery query="(min-device-width: 769px)">
+                  <SingleDatePicker
+                    date={this.state.pickUpDate}
+                    onDateChange={this.onDateChange}
+                    focused={this.state.calendarFocused}
+                    onFocusChange={this.onFocusChange}
+                    numberOfMonths={1}
+                    isOutsideRange={() => false}
+                  />
+                </MediaQuery>
+                <MediaQuery query="(max-device-width: 768px)">
+                  <input
+                    type="date"
+                    name="pickUpDate"
+                    placeholder="Select Date"
+                    value={this.state.pickUpDate}
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </MediaQuery>
               </div>
 
               <div className="time-picker">
@@ -93,7 +98,7 @@ class CartOrder extends React.Component {
             </div>
             <input
               type="text"
-              name="username" 
+              name="username"
               className='form-control'
               placeholder="First and Last Name"
               value={this.state.username}
@@ -102,22 +107,22 @@ class CartOrder extends React.Component {
             <input
               type="email"
               name="email"
-              className='form-control' 
+              className='form-control'
               placeholder="email"
               value={this.state.email}
               onChange={this.handleChange.bind(this)}
             />
             <input
               type="phone"
-              name="phone" 
+              name="phone"
               className='form-control'
               placeholder="phone"
               value={this.state.phone}
               onChange={this.handleChange.bind(this)}
             />
             <input
-              type="number" 
-              name="rewards" 
+              type="number"
+              name="rewards"
               className='form-control'
               value={this.state.rewards}
               placeholder="rewards number"
@@ -126,19 +131,19 @@ class CartOrder extends React.Component {
 
             <div className='checkout--disclaimer'>
               Allow for 24 hour notice or call in store for other accommodations.
-              
+
             </div>
           </div>
 
           <Link className="btn" to="/products/orderReview" onClick={this.onSubmit}>Next step</Link>
-          
+
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>
       </div>
     )
   }
 }
-  
+
 const mapStateToProps = (state) => ({
     profile: state.profile,
     order: state.order
@@ -148,5 +153,5 @@ const mapDispatchToProps = (dispatch) => ({
   setProfile: (profile) => dispatch(setProfile(profile)),
   setOrder: (order) => dispatch(setOrder(order))
 });
-  
+
 export default connect(mapStateToProps, mapDispatchToProps)(CartOrder);

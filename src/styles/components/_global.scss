@@ -12,7 +12,7 @@
         position: absolute;
         width: 80%;
         height: auto;
-        
+
         left: 0;
         top: 0;
         @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
@@ -20,4 +20,15 @@
             height: auto;
         }
     }
+}
+
+.modal-header{
+  .img--container {
+    img {
+        width: 100%;
+        position: absolute;
+        top:50%;
+        transform: translateY(-50%);
+    }
+  }
 }

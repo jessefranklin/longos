@@ -51,7 +51,7 @@ const OrderListItem = ({item, pastOrders, status, isPickedUp}) => {
 
             <div>
      
-                <Link to={`orderDashboard/orderDetail/${item.id}`}></Link>
+                <Link to={`/orderDashboard/orderDetail/${item.id}`}></Link>
 
             </div>
         </div>

@@ -1,93 +1,157 @@
 
-.modal-header{
-    &.img--header{
-        height: 400px;
-        overflow: hidden;
+
+body .modal-content {
+    border-radius: 15px;
+    .toc{
+        padding:2rem;
     }
-    img {
-        max-height:400px;
+    .cancel--text{
+        text-align: center;
+        padding:2rem 2rem 0 2rem;
+        margin-bottom: 2rem;
     }
-    .close {
-        font-size:50px;
-        color:$red;
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        z-index: 1;
-        &:hover {
+    .modal-header{
+        border-bottom: none;
+          &.img--header{
+              height: 400px;
+              overflow: hidden;
+          }
+          img {
+              max-height:400px;
+          }
+          .close {
+              font-size:50px;
+              color:$red;
+              position: absolute;
+              top: 5px;
+              right: 10px;
+              z-index: 1;
+              opacity: 1;
+              font-weight: 300;
+              &:hover {
+                  color:$red;
+                  opacity: 1;
+              }
+          }
+      }
+      
+    .modal-body {
+        font-family: $sans;
+        color: $dark-grey;
+        padding:0rem 3rem 1.5rem 3rem;
+        h2{
+          margin-bottom: 4px;
+        }
+        h5{
+          font-size: 33px;
+        }
+        p {
+                font-family: $sans;
+                font-size: 17px;
+                font-weight: 400;
+            line-height: 1.4em;
+            margin-bottom: 30px;
+            &:first-of-type{
+              margin-bottom: 15px;
+            }
+        }
+        .item--header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .item--options {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            .Select {
+                width: 60%;
+            }
+        }
+        textarea {
+            width: 100%;
+            box-shadow: none;
+            border: 2px solid $lighter-grey2;
+            padding: 1rem;
+            &::placeholder{
+                font-family: $sans;
+                color:$lighter-grey2;
+            }
+        }
+        .Select-control {
+            height: 40px;
+            border: 2px solid $red;
+            border-radius: 0px;
+            color: $red;
+            font-weight: 500;
+            font-size: 12px;
+            text-transform: uppercase;
+            .Select-arrow {
+                border-top:5px solid $red;
+            }
+            .Select-value .Select-value-label,
+            .Select-value {
+                font-family: $sans;
+                color: $red;
+                font-size: 14px;
+                font-weight: 600;
+                position: absolute;
+                transform: translateY(-2px);
+            }
+            .Select-value{
+                transform:translateY(3px);
+            }
+        }
+        .Select-menu-outer{
             color:$red;
+        }
+        .is-disabled{
+            background:#fff;
+            .Select-control{
+                border: none;
+                color:$dark-grey;
+                //background:#fff !important;
+            }
+            .Select-arrow-zone{
+                display: none;
+            }
+        }
+    }
+    .modal-footer {
+        border-top:none ;
+        padding: 0rem 3rem 3rem 3rem ;
+        text-align: left;
+        button {
+            height: 70px;
+            width: 25%;
+            margin: 0 ;
+            border: 2px solid $red;
+            border-radius: 0px;
+            color: $red;
+            font-family: $sans;
+            font-weight: 600;
+            font-size:18px;
+            text-transform: uppercase;
+        }
+        .btn-add {
+            width: 71%;
+            margin: 0 4% 0 0 ;
+            color: $green;
+            border: 2px solid $green;
+        }
+        .toc{
+            button{
+                position: relative;
+                left:50%;
+                transform: translateX(-50%);
+            }
+        }
+        .item--disclaimer {
+            padding: 2rem 0;
         }
     }
 }
 
-.modal-body {
-    font-family: $sans;
-    color: $dark-grey !important;
-    padding:2rem 2rem 1.5rem 2rem!important;
-    p {
-		font-family: $sans;
-		font-size: 17px;
-		font-weight: 400;
-        line-height: 1.4em;
-    }
-    .item--header {
-        display: flex;
-        justify-content: space-between;
-    }
-    .item--options {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin: 2rem 0;
-        .Select {
-            width: 60%;
-        }
-    }
-    textarea {
-        width: 100%;
-        box-shadow: none;
-        border: 2px solid $grey;
-        padding: 1rem;
-        &::placeholder{
-            font-family: $sans;
-        }
-    }
-    .Select-control {
-        height: 40px;
-        border: 2px solid $red;
-        border-radius: 0px;
-        color: $red;
-        font-weight: 500;
-        font-size: 12px;
-        text-transform: uppercase;
-        .Select-arrow {
-            border-top:5px solid $red;
-        }
-        .Select-value .Select-value-label,
-        .Select-value {
-            font-family: $sans;
-            color: $red !important;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .Select-value{
-            transform:translateY(3px);
-        }
-    }
-    .Select-menu-outer{
-        color:$red !important;
-    }
-    .is-disabled{
-        background:#fff;
-        .Select-control{
-            border: none;
-            //background:#fff !important;
-        }
-        .Select-arrow-zone{
-            display: none;
-        }
-    }
-}
 
 .item--cake-options {
     width:100%;
@@ -120,49 +184,8 @@
     font-size: 12px;
 }
 
-.modal-content{
-    .toc{
-        padding:2rem;
-    }
-    .cancel--text{
-        text-align: center;
-        padding:2rem 2rem 0 2rem;
-        margin-bottom: 2rem;
-    }
-}
 
-.modal-footer {
-    border-top:none !important;
-    padding: 0rem 2rem 3rem 2rem !important;
-    text-align: left !important;
-    button {
-        height: 40px;
-        width: 25%;
-        margin: 0 !important;
-        border: 2px solid $red;
-        border-radius: 0px;
-        color: $red;
-        font-family: $sans;
-        font-weight: 500;
-        text-transform: uppercase;
-    }
-    .btn-add {
-        width: 73%;
-        margin: 0 2% 0 0 !important;
-        color: $green;
-        border: 2px solid $green;
-    }
-    .toc{
-        button{
-            position: relative;
-            left:50%;
-            transform: translateX(-50%);
-        }
-    }
-    .item--disclaimer {
-        padding: 2rem 0;
-    }
-}
+
 
 .modal-content{
     .feedback--csa{
@@ -173,7 +196,7 @@
         margin: 1rem auto 1rem auto;
         position: relative;
         left:50%;
-        transform:translateX(-50%); 
+        transform:translateX(-50%);
     }
     .btn-submit{
         height: 40px;
@@ -189,3 +212,46 @@
     }
 }
 
+.modal--cancel{
+  padding:3rem;
+  text-align: center;
+  position: relative;
+  h3{
+    color:$dark-grey;
+    text-transform: none;
+  }
+  h4{
+    margin-bottom: 4rem;
+    font-weight: 300;
+    width:50%;
+    text-align: center;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+  }
+  .red{
+    color:$red;
+  }
+  .modal--buttons{
+    width:100%;
+    button{
+      width:48%;
+      background: none;
+      border:2px solid $green;
+      padding:1rem;
+      color:$green;
+      font-family: $sans;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: none;
+      &:first-child{
+        margin-right: 4%;
+      }
+    }
+    .btn-cancel{
+      color:$red;
+      border:2px solid $red;
+    }
+  }
+}

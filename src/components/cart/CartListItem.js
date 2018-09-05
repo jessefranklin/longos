@@ -30,7 +30,7 @@ class CartListItem extends Component {
     const formattedItemTotal = numeral(item.quantity * item.price).format('$0,0.00');
     const formattedItemTotalwithTax = numeral(item.quantity * item.tax).format('$0,0.00');
 
-    const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={item.quantity} /> : item.quantity; 
+    const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={item.quantity} /> : item.quantity;
     return (
       <div className="cart--row">
         {item.type === 'cake' ? <CakeItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} />
@@ -46,7 +46,8 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove,formattedIt
       <div className="cart--item-row1">
         <div className="cart--item-img grey-border">
           <img src={item.productImage} alt={item.name} />
-          <h4>{item.productName} - {item.optionName}</h4>
+          <h4>{item.productName}</h4>
+          <p>{item.optionName}</p>
         </div>
         <div className="cart--item-qty grey-border">
           {quantityEditable}
@@ -82,19 +83,19 @@ const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
     <div className="cart--item">
         <h4>{item.productName}</h4>
         <div>
-          {item.comment}  
+          {item.comment}
           {item.options.size}
-          {item.options.cakelayers} 
-          {item.options.icing} 
-          {item.options.trim} 
-          {item.options.color} 
-          {item.options.filling} 
+          {item.options.cakelayers}
+          {item.options.icing}
+          {item.options.trim}
+          {item.options.color}
+          {item.options.filling}
           {item.options.side}
-          {item.options.decorationType}  
-          {item.options.decorationTypeNote}  
+          {item.options.decorationType}
+          {item.options.decorationTypeNote}
           {item.options.writigOnCakeType}
           {item.options.extras}
-          
+
           {quantityEditable}
 
           {item.name}
