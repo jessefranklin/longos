@@ -34,7 +34,7 @@ class CartOrderReview extends React.Component {
         email: this.props.profile.email
       },
       pickUpDate: moment(this.props.order.pickUpDate).format('YYYY-MM-DD'),
-      pickUpTime: moment().startOf('day').seconds(this.props.order.time).format('hh:mm:ss'),
+      pickUpTime: moment().startOf('day').seconds(this.props.order.time).format('HH:mm:ss'),
       orderItems: this.props.cart
     }
 
@@ -52,6 +52,9 @@ class CartOrderReview extends React.Component {
       this.props.history.push('/products');
     }
   }
+  componentWillUnmount(){
+    document.removeEventListener('click', this.handleClose);
+  }
   onSubmit = (e) => {
     if(!this.state.agreedTerms){e.preventDefault(); return; }
     this.props.dispatchOrder(this.state).then(() => {
@@ -66,7 +69,7 @@ class CartOrderReview extends React.Component {
   }
   handleClose = () =>{
     this.setState({showTerms: false}, () => {
-      // document.removeEventListener('click', this.handleClose);
+      document.removeEventListener('click', this.handleClose);
     });
   }
   handleCloseAccept = () =>{
@@ -75,7 +78,7 @@ class CartOrderReview extends React.Component {
   }
   onShowTerms =() =>{
     this.setState({showTerms: true});
-    // document.addEventListener("click", this.handleClose);
+    document.addEventListener("click", this.handleClose);
   }
   render() {
     const { profile, cart, cartTotal, cartTax, order } = this.props;

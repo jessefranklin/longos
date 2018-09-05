@@ -2,68 +2,78 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from "react-redux";
-
+import { history } from '../routers/AppRouter';
 import { fetchCSAOrders }  from '../actions/csa/orders';
+import moment from 'moment';
 import uuid from 'uuid/v1';
+import { baseUrl, headers } from "../const/global";
+import axios from 'axios';
+
 import Notifications, { success, error, warning, info, removeAll } from 'react-notification-system-redux';
+
+const pollUrl = baseUrl+'/order';
 
 class PollApi extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      pollActive : true
+    }
   }
 
   componentDidMount() {
-    // this.timer = setInterval(()=> this.pollOrders(), 100000);
-    this.pollOrders();
+    if(this.state.pollActive){
+      // this.pollOrders();
+      // Set interval for every 30 mins
+      this.timer = setInterval(()=> this.pollOrders(), 1000 * 60 * 30);
+    }
   };
 
   pollOrders(){
-    this.props.fetchCSAOrders();
+    // GET order/activesince?storeId=store1&sinceDate=2018-09-03&sinceTime=14:05:00&counter=Kitchen
+    let store = `?storeId=${this.props.settings.store.store_id}`;
+    let sinceDate = `&sinceDate=${moment().format('YYYY-MM-DD')}`;
+    let sinceTime = `&sinceTime=${moment(moment()).subtract(30, "minutes").format('hh:mm:ss')}`;
+    let counter = this.props.filters.counter ? `&counter=${this.props.filters.counter}` : '';
+    let url = pollUrl+`/activesince${store}${sinceDate}${sinceTime}${counter}`;
+
+    console.log(url);
+
+    axios.get(url, headers).then(
+      (response) => {
+        console.log(response.data);
+        this.formatNotification(response.data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
+
+  formatNotification(notifications){
+    {notifications.map(notification => {
+      this.context.store.dispatch(success({
+        uid: uuid(),
+        title: 'A new order has been placed',
+        message: `Pickup: ${moment(notification.pickupDate, 'YYYY MM DD').format('MMM. D')} @ ${moment(notification.pickupTime,'hh:mm:ss').format('h:mm a')}`,
+        position: 'tr',
+        autoDismiss: 0,
+        action: {
+          label: `Assign Order ${notification.id}`,
+          callback: () => {
+            history.push(`/orderDashboard/orderDetail/${notification.id}`);
+          }
+        }
+      }));
+    })}
+  }
+
   componentWillUnmount() {
     this.timer = null;
   }
-  
-  componentWillReceiveProps(prevProps,nextProps) {
-    // console.log(prevProps);
-    // console.log(nextProps);
-    // console.log(this.props.orders !== prevProps.orders)
-    // console.log(this.props.orders)
-    // if (this.props.data !== nextProps.data) {
 
-    //     clearTimeout(this.timeout);
-
-    //     // Optionally do something with data
-
-    //     if (!nextProps.isFetching) {
-    //         this.startPoll();
-    //     }
-    // }
-  }
   render(){
-    return(<div>
-      </div>);
-
-  }
-  dispatchNotification(fn, timeout) {
-    let notificationOpts = {
-      uid: uuid(),
-      title: 'A new order has been placed',
-      message: 'A new order has been placed',
-      position: 'tr',
-      autoDismiss: 0,
-      action: {
-        label: 'View Order',
-        callback: () => alert('clicked!')
-      }
-    };
-    this.context.store.dispatch(fn(notificationOpts));
-  }
-
-  sampleNotification() {
-    this.dispatchNotification(success, 250);
- 
+    return(<div></div>);
   }
 }
 
@@ -80,7 +90,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = state => ({
+  settings: state.settings,
   notifications: state.notifications,
+  filters: state.filters,
   orders: state.orders
 });
 
