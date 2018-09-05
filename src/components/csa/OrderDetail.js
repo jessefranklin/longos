@@ -49,6 +49,9 @@ class OrderDetail extends Component {
       editClient: false,
       editPickup: false,
       promptUpdate: false,
+      showFilter: false,
+      showActions: false,
+      editState: false,
       show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
@@ -56,6 +59,8 @@ class OrderDetail extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.updateClient = this.updateClient.bind(this);
     this.promptUpdate = this.promptUpdate.bind(this);
+    this.toggleCounterFilter = this.toggleCounterFilter.bind(this);
+    this.showActions = this.showActions.bind(this);
   }
 
   componentWillMount() {
@@ -68,6 +73,9 @@ class OrderDetail extends Component {
   
   componentWillUnmount(){
     this.props.clearCSAOrder();
+    document.removeEventListener('click', this.closeCounterFilterMenu);
+    document.removeEventListener('click', this.closeActions);
+    this.setState({ editState: false });
   };
 
   handleCounter = (value) => {
@@ -86,6 +94,37 @@ class OrderDetail extends Component {
   handleClose() {
     this.setState({ show: false });
   }
+
+  editState = () => {
+    this.setState({ editState: true });
+  }
+
+  editStateClose = () => {
+    this.setState({ editState: false });
+  }
+
+  toggleCounterFilter(){
+    this.setState({ showFilter: true });
+    document.addEventListener("click", this.closeCounterFilterMenu);
+  }
+
+  closeCounterFilterMenu = () => {
+    this.setState({ showFilter: false }, () => {
+      document.removeEventListener('click', this.closeCounterFilterMenu);
+    });
+  }
+
+  showActions(){
+    this.setState({ showActions: true });
+    document.addEventListener("click", this.closeActions);
+  }
+
+  closeActions = () => {
+    this.setState({ showActions: false }, () => {
+      document.removeEventListener('click', this.closeActions);
+    });
+  }
+
 
   updateState = () => {
     this.props.fetchCSAOrder(this.props.match.params.id);
@@ -212,37 +251,47 @@ class OrderDetail extends Component {
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
     const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
-    const counter = this.state.counter;
-    const state = this.state;
-
+    let editState = this.state.editState;
+    
     return (
       <div>
         <CSAHeader />
         <div className="content--container">
           <div className="order-detail">
             <div className="order-detail--actions-row">
-            <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
-            <button className="order-detail--action" onClick={this.toggleCounterFilter}>
-              Filtered by {counter === '' ? 'All Dept.' : counter} 
+              <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
+
+              <div className="order-detail--actions-container">
+                <button className="order-detail--action" onClick={this.showActions}>
                   <FontAwesome
-                        className='fa fa-filter'
-                        name='fa-filter'
-                        aria-hidden='true'
-                      />
-            </button>
+                      className='fa fa-bars'
+                      name='fa-bars'
+                      size="2x"
+                      aria-hidden='true'
+                    />
+                </button>
+                {this.state.showActions? (
+                  <div className="order-detail--actions-list">
+                    <ul>
+                      {this.state.editState?(
+                        <li><button onClick={this.editStateClose}>Exit Edit State</button></li>
+                      ):(
+                        <li><button onClick={this.editState}>Edit Order</button></li>
+                      )}
+                      <li><button onClick={this.handleShow}>Cancel Order</button></li>
+                    </ul>
+                  </div>
+                ): ''}
+
+              </div>
+
             </div>
           <div className="order-detail--header">
             <div className="">
               <h4>Order #</h4>
               <h2>
                 {csaOrder.id} 
-                <button className="order-detail--action" onClick={this.handleShow}>
-                  cancel order <FontAwesome
-                    className='fa fa-trash'
-                    name='fa-trash'
-                    aria-hidden='true'
-                  />
-                </button>
+                
               </h2>
               <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder} />
 
@@ -252,22 +301,20 @@ class OrderDetail extends Component {
 
             <div className="">
               <h4>Customer
-                {this.state.editClient ? (
-                    ''
-                  ):(
+                {this.state.editState && !this.state.editClient ? (
                   <button className="order-detail--action" onClick={() => this.handleEdit('editClient')}>
                   edit <FontAwesome
                     className='fa fa-pen'
                     name='fa-trash'
                     aria-hidden='true'
                   /></button>
-                  )}
+                  ): ''}
                 </h4>
 
 
               {this.state.editClient ? (
                 <div>
-                  <EditClient client={state.client} updateClient={this.updateClient} />
+                  <EditClient client={this.state.client} updateClient={this.updateClient} />
                   <button className="order-detail--action" onClick={() => this.handleSave('editClient')}>Cancel</button>
                   <button className="order-detail--action" onClick={() => this.updateClientPickup('editClient')}>Save</button>
                 </div>
@@ -284,21 +331,19 @@ class OrderDetail extends Component {
 
             <div className="">
               <h4>Pickup Date & Time 
-                {this.state.editPickup ? (
-                    ''
-                  ):(
+                {this.state.editState && !this.state.editPickup ? (
                     <button className="order-detail--action" onClick={() => this.handleEdit('editPickup')}>
                     edit <FontAwesome
                       className='fa fa-pen'
                       name='fa-trash'
                       aria-hidden='true'
                     /></button>
-                )}    
+                ): ''}    
               </h4>
 
               {this.state.editPickup ? (
                 <div>
-                  <EditPickup pickup={state} updatePickupDate={this.updatePickupDate} updatePickupTime={this.updatePickupTime} />
+                  <EditPickup pickup={this.state} updatePickupDate={this.updatePickupDate} updatePickupTime={this.updatePickupTime} />
                   <button className="order-detail--action" onClick={() => this.handleSave('editPickup')}>Cancel</button>
                   <button className="order-detail--action" onClick={() => this.updateClientPickup('editPickup')}>Save</button>
                 </div>
@@ -314,8 +359,8 @@ class OrderDetail extends Component {
               <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
             </div>
           </div>
-
-          <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
+          
+          
 
           <div className="order-items--header">
             <div className="col-item grey-border">
@@ -333,20 +378,42 @@ class OrderDetail extends Component {
             <div className="col-barcode">
               <h4>Barcode</h4>
             </div>
-            <div className="">
-            </div>
+            {this.state.editState ? (
+              <div className="col-remove">
+              </div>
+            ) : ''}
           </div>
           <div className="order--items">
-            {!csaOrder.isPaid?
-              <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
-            :'' }
+          
+            <div className="order-detail--actions-row">
+              {!csaOrder.isPaid?
+                <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
+              :'' }
+
+              <div className="filter-by--container">
+                <button className="order-detail--action btn-filter-by" onClick={this.toggleCounterFilter}>
+                  Filtered by {this.state.counter === '' ? 'All Dept.' : this.state.counter} 
+                      <FontAwesome
+                            className='fa fa-filter'
+                            name='fa-filter'
+                            aria-hidden='true'
+                          />
+                </button>
+                {this.state.showFilter?(
+                  <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
+                ) : (
+                  ''
+                )}
+
+              </div>
+            </div>
 
             {Object.keys(csaOrderSortedItems).map(function(key, index) {
               return <div key={index} className="element">
                 <h2>{key}</h2>
                 <div className="counter-items--container">
                   {csaOrderSortedItems[key].map(order => {
-                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} />;
+                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} />;
                   })}
                 </div>
               </div>;
