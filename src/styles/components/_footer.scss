@@ -4,13 +4,14 @@
     //display: block;
     background-color: $red;
     width:100%;
-    padding:1rem 5rem;
+    padding:1rem 4rem;
     text-align: right;
     a,
     button{
         color:#fff;
         font-family: $sans;
         padding:1rem;
+        text-transform: capitalize;
         &:hover{
             color:#fff;
             opacity:0.7;
@@ -19,6 +20,10 @@
         &:nth-child(4){
             padding-right:0;
         }
+    }
+    .pipe-white{
+      color:#fff;
+      padding:1rem;
     }
 }
 

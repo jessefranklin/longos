@@ -43,18 +43,28 @@
                 right:0;
                 width:2px;
                 height:48px;
-                background-color: $offwhite;
+                background-color: #fff;
             }
         }
+        &:nth-child(2){
+          &:after{
+              top:-10px;
+          }
+       }
     }
 }
 
-.content--container{
+body .content--container{
     .form-group{
         // min-height: 900px;
         .form-inputs{
             width:60%;
             margin:5rem auto;
+            input.form-control{
+              &:first-of-type{
+                padding-top: 5rem;
+              }
+            }
         }
         .time-inputs{
             display:flex;
@@ -62,7 +72,8 @@
             .time-picker{
                 position: relative;
             }
-            .fa{
+            .fa,
+            .far{
                 position: absolute;
                 top:35%;
                 left:15px;
@@ -114,26 +125,49 @@
                 padding: 8px 8px 8px 35px;
                 color:$red;
                 background: transparent;
+                font-size: 14px;
+                font-weight: 600;
+            }
+            &:after{
+              content: '';
+              position: absolute;
+              right: 7%;
+              top: 50%;
+              width: 0;
+              height: 0;
+              // border-top: 12px solid $red;
+              // border-right: 7px solid transparent;
+              // border-left: 7px solid transparent;
+              border-top: 5px solid $red;
+              border-right: 5px solid transparent;
+              border-left: 2.5px solid transparent;
+              z-index: -1;
+            }
+            &:focus-within{
+              &:after{
+                border:none;
+              }
             }
         }
         .time-picker{
             height:50px;
             width:50%;
             transform: translateX(5%);
-            &:focus-within{
-                &:after {
-                    content: '';
-                    position: absolute;
-                    right: 5%;
-                    top: 40%;
-                    width: 0;
-                    height: 0;
-                    border-top: 12px solid $red;
-                    border-right: 7px solid transparent;
-                    border-left: 7px solid transparent;
-                    z-index: -1;
-                }
-            }
+              &:after {
+                  content: '';
+                  position: absolute;
+                  right: 7%;
+                  top: 50%;
+                  width: 0;
+                  height: 0;
+                  // border-top: 12px solid $red;
+                  // border-right: 7px solid transparent;
+                  // border-left: 7px solid transparent;
+                  border-top: 5px solid $red;
+                  border-right: 5px solid transparent;
+                  border-left: 2.5px solid transparent;
+                  z-index: -1;
+              }
         }
         select.form-control{
             display:block;
@@ -144,6 +178,8 @@
             border: 2px solid $red !important;
             padding: 8px 8px 8px 35px;
             color:$red;
+            font-size: 14px;
+            font-weight: 600;
         }
         input{
             padding: 3rem 0 1rem 0;
@@ -151,41 +187,47 @@
             border-bottom: 2px solid $light-grey;
         }
         .btn{
-            color:white;
-            background-color: $green;
-            text-transform: uppercase;
-            font-size: 20px;
-            padding: 1rem 0;
-            border-radius: 0;
-            width:67%;
-            position: fixed;
-            bottom:0;
+          padding: 3rem;
+          color:white;
+          font-family: $sans;
+          font-size:24px;
+          font-weight:600;
+          line-height: 32px;
+          background-color: $green;
+          border:4px solid $off-white;
+          width:70%;
+          position: fixed;
+          bottom:0;
+          border-bottom: none;
+          border-left: none;
+          text-transform: uppercase;
         }
         .btn-secondary{
             background-color: $red;
-            width:33%;
+            width:30%;
             right:0;
+            border-right: none;
         }
     }
 }
 
 .checkout--title{
-    padding: 5rem  0 0 5rem;
-    text-transform: uppercase;
+    padding: 3rem  0 0 5rem;
+    //text-transform: uppercase;
     color:$red;
     //font-size:32px;
 }
 
 .checkout--info{
-    margin: 5rem 5rem 0 5rem;
-    padding: 1rem 0 5rem 0;
+    margin: 2rem 5rem 0 5rem;
+    padding: 1rem 0 0rem 0;
     border-top: 2px solid $dark-grey;
     border-bottom: 2px solid $dark-grey;
     color:$dark-grey;
     font-family:$sans;
     font-size:22px;
     div{
-        width:60%;
+        width:100%;
         display:flex;
         flex-wrap:wrap;
         margin-top:4rem;
@@ -203,12 +245,12 @@
 }
 
 .checkout--terms{
-    margin: 1rem 5rem 0 5rem;
-    padding: 1rem 0 5rem 0;
+    margin: 0rem 5rem 0 5rem;
+    padding: 0rem 0 5rem 0;
     color:$dark-grey;
     h5{
         font-size:22px;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
     p{
         font-size:20px;
@@ -222,20 +264,20 @@
         border-radius: 0px;
         color: $red;
         font-family: $sans;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: uppercase;
     }
 }
 
 .checkbox-fullwidth{
     margin:0 !important;
-    padding:5rem;
+    padding:4rem 5rem;
     width:100%;
-    background-color: $lighter-grey;
+    background-color: $grey-alt;
     text-transform:uppercase;
     font-family: $sans;
-    font-size:24px;
-    font-weight:600;
+    font-size:22px;
+    font-weight:700;
     color:$dark-grey;
     label{
         padding-left:60px !important;
@@ -249,25 +291,35 @@
             background-color: #fff;
         }
         &.checked:after{
-            height:15px;
-            width:30px;
+            height:12px;
+            width:22px;
             top: 40%;
-            left: 55px;
+            left: 59px;
+            border:3px solid $red;
+            border-top: none;
+            border-right: none;
         }
     }
+}
+
+.checkout--review{
+  .cart--items{
+    margin: 2rem 5rem;
+  }
 }
 
 .checkout--submit{
     width:100%;
     span,
     a{
-        padding: 4rem;
+        padding: 3rem;
         color:white;
         font-family: $sans;
-        font-size:22px;
+        font-size:24px;
         font-weight:600;
         line-height: 32px;
         background-color: $red;
+        border-top: 4px solid $offwhite;
     }
     span{
         width:50%;
@@ -281,6 +333,12 @@
         border-radius:0;
         text-transform: uppercase;
         vertical-align: baseline;
+        border-left: 4px solid $offwhite;
+    }
+    .btn[disabled]{
+      color:$lighter-grey3;
+      background-color:$grey-alt;
+      opacity: 1;
     }
     .btn-secondary{
         width:20%;
@@ -298,7 +356,7 @@
 .checkout--confirmation{
     position: relative;
     width: 80%;
-    margin: 10rem auto 5rem auto;
+    margin: 6rem auto 5rem auto;
     text-align: center;
     font-family: $sans;
     font-size: 30px;
@@ -307,11 +365,11 @@
         position: relative;
         left:50%;
         transform: translateX(-50%);
-        height:250px;
-        width:250px;
+        height:200px;
+        width:200px;
         border-radius:100%;
         border:5px solid $green;
-        margin-bottom: 8rem;
+        margin-bottom: 6rem;
     }
     .fa-check{
         position: relative;
@@ -323,6 +381,10 @@
     p{
         font-size: 32px;
         line-height: 1.2;
+        &.confirm-text{
+          color:$green;
+          font-weight: 600;
+        }
     }
 }
 
@@ -345,28 +407,31 @@
         background: $offwhite;
     }
     .btn-submit{
-        height: 40px;
+        height: 70px;
         width: 30%;
         margin: 0 !important;
         border: 2px solid $green;
         border-radius: 0px;
         color: $green;
         font-family: $sans;
-        font-weight: 500;
+        font-weight: 600;
+        font-size:18px;
         background: #fff;
+        text-transform: uppercase;
     }
     textarea{
         border:none;
         color:$dark-grey;
         width: 90%;
         background: $offwhite;
-        border:2px solid $grey;
+        border:2px solid $light-grey;
     }
     div{
         margin-bottom: 1rem;
     }
     p{
-        font-size:15px;
+        font-size:17px;
+        padding: 2rem;
     }
     .fa-frown{
         color:$red;

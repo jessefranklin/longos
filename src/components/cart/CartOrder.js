@@ -9,6 +9,7 @@ import { setOrder } from '../../actions/order';
 import CartProgress from './CartProgress';
 import TimePicker from 'react-bootstrap-time-picker';
 import MediaQuery from 'react-responsive';
+import { totalCount } from '../../selectors/cartTotal';
 
 class CartOrder extends React.Component {
   constructor(props) {
@@ -60,8 +61,15 @@ class CartOrder extends React.Component {
   };
   render() {
     const { profile } = this.props;
+    const { cart, cartTotal, total, cartTax } = this.props;
+    const itemWord = total === 1 ? 'item' : 'items' ;
     return (
       <div>
+
+        <div className="cart--header">
+          <h2>Place Order <span className="title-light">({total} {itemWord})</span></h2>
+          <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
+        </div>
 
         <CartProgress progress="1" />
 
@@ -69,7 +77,7 @@ class CartOrder extends React.Component {
           <div className="form-inputs">
             <div className="time-inputs">
               <div className="date-picker">
-                <i className="fa fa-calendar" aria-hidden="true"></i>
+                <i className="far fa-calendar-alt" aria-hidden="true"></i>
                 <MediaQuery query="(min-device-width: 769px)">
                   <SingleDatePicker
                     date={this.state.pickUpDate}
@@ -92,7 +100,7 @@ class CartOrder extends React.Component {
               </div>
 
               <div className="time-picker">
-                <i className="fa fa-clock" aria-hidden="true"></i>
+                <i className="far fa-clock" aria-hidden="true"></i>
                 <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
               </div>
             </div>

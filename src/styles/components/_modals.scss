@@ -34,6 +34,9 @@ body .modal-content {
               }
           }
       }
+      .Select.has-value.Select--single > .Select-control .Select-value .Select-value-label{
+        color:$red;
+      }
 
     .modal-body {
         font-family: $sans;
@@ -41,6 +44,10 @@ body .modal-content {
         padding:0rem 3rem 1.5rem 3rem;
         h2{
           margin-bottom: 4px;
+        }
+        h4{
+          font-size: 17px;
+          font-weight: 400;
         }
         h5{
           font-size: 33px;
@@ -58,6 +65,21 @@ body .modal-content {
         .item--header {
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
+            h2{
+
+            }
+            h5{
+              text-align: right;
+            }
+            .price-text{
+              font-size: 17px;
+              font-weight: 400;
+            }
+            .desc-cake{
+              font-size: 17px;
+              font-weight: 400;
+            }
         }
         .item--options {
             width: 100%;
@@ -100,6 +122,11 @@ body .modal-content {
             }
             .Select-value{
                 transform:translateY(3px);
+            }
+            .Select-placeholder{
+              color:$red;
+              font-size: 14px;
+              font-weight: 600;
             }
         }
         .Select-menu-outer{

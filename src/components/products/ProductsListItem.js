@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import { Button, Modal, Popover, Tooltip, OverlayTrigger, Badge } from 'react-bootstrap';
+import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startAddToCart }  from '../../actions/cart';
 import Select from 'react-select';
 import PropTypes from "prop-types";
@@ -71,7 +71,7 @@ class ProductsListItem extends Component {
           <img src={item.imageLink} alt={item.name} />
         </div>
         <div className="meta--container">
-          <h4><Badge>{item.productNumber}</Badge> {item.name} {item.category === 'Cake'?'Cake':''}</h4>
+          <h4>{item.name} {item.category === 'Cake'?'Cake':''}</h4>
           {item.category === 'Cake'?<CakeDescription item={item}/>:<ItemDescription item={item} />}
         </div>
 

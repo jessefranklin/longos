@@ -22,43 +22,38 @@ const OrderListItem = ({item, pastOrders, status, isPickedUp}) => {
             </div>
 
             <div className="cell-status">
-                {counters.bakery ? <OrderListCounterItem item={counters.bakery[0]} /> : '-'}
+                {counters.bakery ? <OrderListCounterItem item={counters.bakery[0]} /> : <div>-</div>}
             </div>
 
             <div className="cell-status">
-                {counters.deli ? <OrderListCounterItem item={counters.deli[0]} /> : '-'}
-        
+                {counters.deli ? <OrderListCounterItem item={counters.deli[0]} /> : <div>-</div>}
+
             </div>
 
             <div className="cell-status">
-                {counters.kitchen ? <OrderListCounterItem item={counters.kitchen[0]} /> : '-'}
-        
+                {counters.kitchen ? <OrderListCounterItem item={counters.kitchen[0]} /> : <div>-</div>}
+
             </div>
 
             <div className="cell-status">
-                {counters.saladbar ? <OrderListCounterItem item={counters.saladbar[0]} /> : '-'}
-        
+                {counters.saladbar ? <OrderListCounterItem item={counters.saladbar[0]} /> : <div>-</div>}
+
             </div>
 
             <div className="cell-status">
-                {counters.sushi ? <OrderListCounterItem item={counters.sushi[0]} /> : '-'}
-        
+                {counters.sushi ? <OrderListCounterItem item={counters.sushi[0]} /> : <div>-</div>}
+
             </div>
 
             <div className="cell-status">
-                {counters.cake ? <OrderListCounterItem item={counters.cake[0]} /> : '-'}
+                {counters.cake ? <OrderListCounterItem item={counters.cake[0]} /> : <div>-</div>}
             </div>
 
-            <div>
-     
-                <Link to={`/orderDashboard/orderDetail/${item.id}`}></Link>
-
-            </div>
         </div>
 
     )
 };
-  
+
 export default OrderListItem;
 
 
@@ -66,7 +61,7 @@ const PickedupButton = ({oId,isPickedUp,checked,isPaid}) => {
     return (
       <div className="btn--container">
             {checked?(
-                
+
                 <button className="checkbox-red checked"></button>
             ):(
                 <button className="checkbox-red" onClick={() => isPickedUp(oId)} disabled={isPaid?'':'disabled'}></button>
@@ -74,15 +69,14 @@ const PickedupButton = ({oId,isPickedUp,checked,isPaid}) => {
       </div>
     );
   };
-  
-  
+
+
 
 
 const Indicator = ({notification}) => {
     return (
         <div className={ notification.class + ' order--indicator' }>
             { notification.title }
-        </div>  
+        </div>
     );
 };
-  
