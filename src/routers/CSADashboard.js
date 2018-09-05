@@ -65,7 +65,6 @@ class CSADashboard extends React.Component {
 
         <CSAFooter />
 
-        <button className="temp-sample" onClick={this.sampleNotification}>Add sample Notification</button>
         <Notifications notifications={notifications} />        
         <PollApi />
         

@@ -17,7 +17,7 @@ import { SingleDatePicker } from 'react-dates';
 import FontAwesome from 'react-fontawesome';
 
 import { baseUrl, headers } from "../../const/global";
-let axios = require('axios');
+import axios from 'axios';
 
 const orderAPI = baseUrl+'/order';
 const options = [
