@@ -15,7 +15,7 @@ const orderAPI = baseUrl+'/order';
 class ProductsListItemBody extends Component {
   static contextTypes = {
     router: PropTypes.object
-  } 
+  }
   constructor(props, context) {
     super(props, context);
 
@@ -27,8 +27,8 @@ class ProductsListItemBody extends Component {
 
     this.state = {
       selectedOption: {
-        value: 0, 
-        label: itemName 
+        value: 0,
+        label: itemName
       },
       selectedProduct: {
         id: uuid(),
@@ -59,14 +59,14 @@ class ProductsListItemBody extends Component {
       this.onAddToCartCustomer();
     }
   };
-  
+
   onAddToCartCustomer = () => {
     let obj = this.props.cart.length ? this.props.cart.find(x => x.productId === this.state.selectedProduct.productId) : '';
     if(obj && obj.optionId == this.state.selectedProduct.optionId && obj.comment == this.state.selectedProduct.comment){
-      
+
       const selectedProduct = {...this.state.selectedProduct}
       selectedProduct.quantity = obj.quantity + this.state.selectedProduct.quantity;
-  
+
       this.props.startEditItem(
         obj.id,
         selectedProduct
@@ -104,8 +104,8 @@ class ProductsListItemBody extends Component {
     selectedProduct.comment = notes;
     this.setState(() => ({ selectedProduct }));
   };
-  
-  
+
+
   onSelectChange = (selectedOption) => {
     this.setState({ selectedOption });
     if (selectedOption) {
@@ -132,7 +132,7 @@ class ProductsListItemBody extends Component {
         let itemName = item.name +' - '+ pieceorserving;
         options.push({ value: index, label: itemName });
     })}
-    
+
     return options;
   }
 
@@ -146,24 +146,24 @@ class ProductsListItemBody extends Component {
       <div>
         <Modal.Body>
         <div className="item--header">
-          
+
           <h2>{item.name}</h2>
           <h5>${this.state.selectedProduct.price}</h5>
         </div>
 
-       
+
 
         {this.props.item.options[this.state.selectedOption.value].piecesCount !=0 && <p> {this.props.item.options[this.state.selectedOption.value].piecesCount} pieces </p>}
 
         {this.props.item.options[this.state.selectedOption.value].servingSize && <p>Serves {this.props.item.options[this.state.selectedOption.value].servingSize} people </p>}
-        
+
         <p>
           {item.description}
           {item.servedColdMessage === 'True' ? '*':''}
         </p>
-        
+
         <div className="item--options">
-          <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={this.state.selectedProduct.quantity}/> 
+          <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={this.state.selectedProduct.quantity} copy={true}/>
 
           <Select
             name="option"
@@ -172,7 +172,7 @@ class ProductsListItemBody extends Component {
             options={sizeOptions}
             disabled={item.options.length === 1?true:false}
             searchable={false}
-            clearable={false} 
+            clearable={false}
           />
         </div>
 
@@ -185,16 +185,16 @@ class ProductsListItemBody extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>  
-          <Button onClick={this.handleClose}>Close</Button>
+          <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>
+          <Button onClick={this.handleClose}>Cancel</Button>
           {item.servedColdMessage === 'True' ? (
             <div className="item--disclaimer">
                 {en.product.served}
             </div>
             ) :''}
-         
+
         </Modal.Footer>
-            
+
       </div>
     );
   }

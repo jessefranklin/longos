@@ -3,7 +3,7 @@
     ul {
         padding: 0px;
         border-top: 1px solid $lighter-grey;
-       
+
     }
     li {
         list-style: none;
@@ -21,13 +21,14 @@
             position: relative;
             &.active {
                 color: $red;
+                font-weight: 600;
                 &::after{
                     content: '';
                     position: absolute;
                     right: 0;
                     top: 40%;
-                    width: 0; 
-                    height: 0; 
+                    width: 0;
+                    height: 0;
                     border-top: 4px solid transparent;
                     border-bottom: 4px solid transparent;
                     border-left: 6px solid $red;

@@ -28,7 +28,7 @@ class Cart extends React.Component {
       <div ref={(contentContainer) => { this.contentContainer = contentContainer; }} tabIndex="-1" aria-labelledby="pageHeading">
         <Announcements message={this.state.announcementMessage} />
         <div className="cart--header">
-          <h2>Shopping Cart ({total} {itemWord})</h2>
+          <h2>Your Cart <span className="title-light">({total} {itemWord})</span></h2>
           <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
         </div>
 
@@ -51,7 +51,7 @@ class Cart extends React.Component {
         </div>
         <div className="cart--summary">
           <span>
-            Total price: {totalWithTax}
+            Total: {totalWithTax}
           </span>
           <Link to="/products/order" className="btn">Place Order</Link>
         </div>

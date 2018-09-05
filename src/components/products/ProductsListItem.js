@@ -11,7 +11,7 @@ import ProductsListItemClassicCake from './ProductsListItemClassicCake';
 class ProductsListItem extends Component {
   static contextTypes = {
     router: PropTypes.object
-  } 
+  }
   constructor(props, context) {
     super(props, context);
 
@@ -40,11 +40,11 @@ class ProductsListItem extends Component {
     if(item.category === 'Signature Cakes') {
       return (
         <ProductsListItemCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} csaEditOrder={this.csaEditOrder}/>
-      ); 
+      );
     } else if(item.category === 'Classic Cakes' || item.category === 'Cupcake Cakes' ) {
       return (
         <ProductsListItemClassicCake item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} />
-      ); 
+      );
     } else {
       return (
         <ProductsListItemBody item={item} handleClose={this.handleClose} editOrder={this.props.editOrder} csaEditOrder={this.csaEditOrder}/>
@@ -63,7 +63,7 @@ class ProductsListItem extends Component {
   render() {
     const { item, cart } = this.props;
     const isInCart = this.isInCart(item.id);
-    
+
     return (
       <div className={isInCart ? 'product--item active' : 'product--item'} onClick={this.handleShow}>
         {isInCart ? <div className="indicator">{isInCart}</div> : ''}
@@ -82,7 +82,7 @@ class ProductsListItem extends Component {
                 <img src={item.imageLink} alt={item.name} />
               </div>
             </Modal.Header>
-            
+
             {this.renderBody(item)}
 
           </Modal>
@@ -94,17 +94,24 @@ class ProductsListItem extends Component {
 const ItemDescription = ({item}) => {
   return (
     <div>
-      {item.options.map(options => {
-        if(options.servingSize) {
-          return (
-            <p key={options.id}>{options.name} Serves {options.servingSize} people </p>
-          );
-        } else {
-          return (
-            <p key={options.id}>{options.name} {options.piecesCount} pieces</p>
-          );
-        }
-      })}
+      {item.options.length > 1 ? (
+        'Options Available'
+      ) : (
+        <div>
+          {item.options.map(options => {
+            if(options.servingSize) {
+              return (
+                <p key={options.id}>{options.name} Serves {options.servingSize} people </p>
+              );
+            } else {
+              return (
+                <p key={options.id}>{options.name} {options.piecesCount} pieces</p>
+              );
+            }
+          })}
+        </div>
+
+      )}
     </div>
   );
 };
@@ -112,7 +119,7 @@ const ItemDescription = ({item}) => {
 const CakeDescription = ({item}) => {
   return (
     <div>
-      
+
     </div>
   );
 };

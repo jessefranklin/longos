@@ -21,7 +21,7 @@ class ProductsListItemCake extends Component {
 
     this.state = {
       selectedOption: {
-        value: 0, 
+        value: 0,
         label: this.props.item.options[0].name
       },
       selectedProduct: {
@@ -48,7 +48,7 @@ class ProductsListItemCake extends Component {
         decorationType: '',
         decorqationTypeNote: '',
         writingOnCakeType: '',
-        writingOnCakeNote: '', 
+        writingOnCakeNote: '',
         Extras: ''
       }
     };
@@ -90,7 +90,7 @@ class ProductsListItemCake extends Component {
     {item.options.map((item,index) => {
         options.push({ value: index, label: item.name });
     })}
-    
+
     return options;
   }
 
@@ -118,12 +118,12 @@ class ProductsListItemCake extends Component {
             onChange={this.onSelectChange}
             options={options}
             searchable={false}
-            clearable={false} 
+            clearable={false}
           />
 
         {cakeOptions.fields.map(options => {
-          return <CreateableSelect 
-            key={options.label} 
+          return <CreateableSelect
+            key={options.label}
             options={options}
             value={this.state.cakeOptions[options.name]}
             onChange={this.onChange}
@@ -134,9 +134,9 @@ class ProductsListItemCake extends Component {
 
         {cakeOptions.details.map((textfield,index) => {
           return <div key={index}>
-            <h4>{textfield.label}</h4> 
-               <TextField 
-                key={'p'+ index} 
+            <h4>{textfield.label}</h4>
+               <TextField
+                key={'p'+ index}
                 properties={textfield}
                 value={this.state[textfield.name]}
                 onChange={this.onChange}
@@ -150,10 +150,10 @@ class ProductsListItemCake extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>  
-          <Button onClick={this.handleClose}>Close</Button>
+          <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>
+          <Button onClick={this.handleClose}>Cancel</Button>
         </Modal.Footer>
-            
+
       </div>
     );
   }
