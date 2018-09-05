@@ -34,7 +34,7 @@ body .modal-content {
               }
           }
       }
-      
+
     .modal-body {
         font-family: $sans;
         color: $dark-grey;
@@ -132,6 +132,11 @@ body .modal-content {
             font-weight: 600;
             font-size:18px;
             text-transform: uppercase;
+            margin-left: 0;
+        }
+        .btn+.btn{
+          margin: 0;
+          margin-left:0;
         }
         .btn-add {
             width: 71%;
