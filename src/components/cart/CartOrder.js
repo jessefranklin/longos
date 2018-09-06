@@ -107,7 +107,8 @@ class CartOrder extends React.Component {
             <input
               type="text"
               name="username"
-              className='form-control'
+              className='form-control' 
+              autoComplete="off" 
               placeholder="First and Last Name"
               value={this.state.username}
               onChange={this.handleChange.bind(this)}
@@ -115,7 +116,8 @@ class CartOrder extends React.Component {
             <input
               type="email"
               name="email"
-              className='form-control'
+              className='form-control' 
+              autoComplete="off" 
               placeholder="email"
               value={this.state.email}
               onChange={this.handleChange.bind(this)}
@@ -123,7 +125,8 @@ class CartOrder extends React.Component {
             <input
               type="phone"
               name="phone"
-              className='form-control'
+              className='form-control' 
+              autoComplete="off" 
               placeholder="phone"
               value={this.state.phone}
               onChange={this.handleChange.bind(this)}
@@ -131,14 +134,17 @@ class CartOrder extends React.Component {
             <input
               type="number"
               name="rewards"
-              className='form-control'
+              className='form-control' 
+              autoComplete="off" 
               value={this.state.rewards}
               placeholder="rewards number"
               onChange={this.handleChange.bind(this)}
             />
 
             <div className='checkout--disclaimer'>
-              Allow for 24 hour notice or call in store for other accommodations.
+
+                  Allow for 24 hour notice or call in store for other accommodations.
+               
 
             </div>
           </div>

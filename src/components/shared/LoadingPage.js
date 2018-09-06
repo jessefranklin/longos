@@ -1,8 +1,8 @@
 import React from 'react';
 
-const LoadingPage = () => (
+const Loading = () => (
   <div className="loading-element'" tabIndex="-1" >
   </div>
 );
 
-export default LoadingPage;
+export default Loading;

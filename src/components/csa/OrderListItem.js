@@ -6,12 +6,12 @@ import { orderDate } from '../../selectors/orderDate';
 import OrderListCounterItem  from './OrderListCounterItem';
 
 
-const OrderListItem = ({item, pastOrders, status, isPickedUp}) => {
+const OrderListItem = ({item, pastOrders, status, isPickedUp, viewOrder}) => {
 
     const counters = sortByCounter(item.counters);
     const dateNotification = orderDate(item.pickupDate);
     return(
-        <div className='orders--item divTableRow'>
+        <div className='orders--item divTableRow' onClick={() =>viewOrder(item.id)}>
             <div className="cell-id">
                 {dateNotification && !pastOrders ? <Indicator notification={dateNotification} />: ''}
                 <strong>{item.id}</strong><br />
