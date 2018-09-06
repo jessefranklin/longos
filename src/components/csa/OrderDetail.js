@@ -258,6 +258,7 @@ class OrderDetail extends Component {
     const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
     let editState = this.state.editState;
+    let back = this.context.router.history.goBack;
 
     return (
       <div>
@@ -266,7 +267,7 @@ class OrderDetail extends Component {
           <div className="order-detail">
             <div className="order-detail--actions-row">
             
-              <button className="link--go-back" onClick={this.context.router.history.goBack}>Back to orders</button>
+              <button className="link--go-back" onClick={back}>Back to orders</button>
                 <div className="order-detail--actions-container">
                   <button className="order-detail--action" onClick={this.showActions}>
                     <FontAwesome

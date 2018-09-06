@@ -71,6 +71,7 @@ body .content--container{
             .date-picker,
             .time-picker{
                 position: relative;
+                z-index: 9;
             }
             .fa,
             .far{

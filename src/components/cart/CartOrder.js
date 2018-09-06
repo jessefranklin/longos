@@ -73,7 +73,12 @@ class CartOrder extends React.Component {
     this.setState({ time });
   }
   dateWithin = () => {
-    return true;
+    let today = moment().format('YYYY-MM-DD');
+    let tmrw = moment().add(1,'days').format('YYYY-MM-DD');
+    let pdate = moment(this.state.pickUpDate).format('YYYY-MM-DD');
+    if(moment(today).isSame(pdate)|| moment(tmrw).isSame(pdate)){
+        return true;
+    }
   }
   onSubmit = (e) => {
     const validation = this.validator.validate(this.state);
@@ -204,9 +209,7 @@ class CartOrder extends React.Component {
 
             <div className='checkout--disclaimer'>
               {dateWithin ? (
-                <div>
-                  Allow for 24 hour notice or call in store for other accommodations.
-                </div>
+                  'Allow for 24 hour notice or call in store for other accommodations.'
               ): null }
                
 
