@@ -42,6 +42,11 @@ textarea:focus, input:focus{
     .f-con {
         position: relative;
         margin-bottom: 4rem;
+        label {
+            visibility: hidden;
+            position: absolute;
+            pointer-events: none;
+        }
     }
     .has-error {
         .form-control {

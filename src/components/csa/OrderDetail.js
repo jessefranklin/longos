@@ -15,6 +15,7 @@ import TimePicker from 'react-bootstrap-time-picker';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import FontAwesome from 'react-fontawesome';
+import MediaQuery from 'react-responsive';
 
 import { baseUrl, headers } from "../../const/global";
 import axios from 'axios';
@@ -53,6 +54,7 @@ class OrderDetail extends Component {
       showActions: false,
       editState: false,
       orderUpdated: false,
+      promptTime: 10000,
       show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
@@ -157,7 +159,7 @@ class OrderDetail extends Component {
     this.setState({ orderUpdated: true });
     setTimeout(()=> {
       this.setState({ orderUpdated: false });
-    },30000)
+    },this.state.promptTime)
   }
   updateClientPickup = (name) => {
     // PUT http://digitalpreorder-staging.azurewebsites.net/api/order/updateorder
@@ -455,13 +457,23 @@ const EditPickup = ({pickup,updatePickupDate,updatePickupTime}) => {
           numberOfMonths={1}
           isOutsideRange={() => false}
         /> */}
-        <input
-          type="date"
-          name="pickupDate"
-          placeholder="Select Date"
-          value={pickup.pickupDate}
-          onChange={(e) => updatePickupDate(e)}
-        />
+        <MediaQuery query="(min-device-width: 769px)">
+          <SingleDatePicker
+            date={pickup.pickupDate}
+            onDateChange={(e) => updatePickupDate(e)}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
+        </MediaQuery>
+        <MediaQuery query="(max-device-width: 768px)">
+          <input
+            type="date"
+            name="pickUpDate"
+            placeholder="Select Date"
+            value={pickup.pickupDate}
+            onChange={(e) => updatePickupDate(e)}
+          />
+        </MediaQuery>
       </div>
       <div className="time-picker">
         <i className="fa fa-clock" aria-hidden="true"></i>
