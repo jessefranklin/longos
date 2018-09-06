@@ -25,10 +25,11 @@
 .modal-header{
   .img--container {
     img {
-        width: 100%;
+        width: 80%;
         position: absolute;
         top:50%;
-        transform: translateY(-50%);
+        left:50%;
+        transform: translate(-50%,-50%);
     }
   }
 }

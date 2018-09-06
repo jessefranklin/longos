@@ -1,12 +1,12 @@
 .rowFilter {
-    height:10rem;
+    height:82px;
     width:100%;
-    padding:0 5rem;
+    padding:0 4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff; 
-    font-family: $sans; 
+    background-color: #fff;
+    font-family: $sans;
 }
 
 .counterFilter {
@@ -31,7 +31,7 @@
                 text-transform: uppercase;
                 &.active {
                     background-color: $off-white;
-                } 
+                }
             }
         }
     }
@@ -59,14 +59,14 @@
             height:100%;
             background-color: $offwhite-light;
             border:none;
-            border-top-right-radius: 18px;
-            border-top-left-radius: 18px;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
             padding: 1rem 0;
             color: $light-grey;
             &.active {
                 color: $dark-grey;
                 background-color: #fff;
-            } 
+            }
         }
     }
 }

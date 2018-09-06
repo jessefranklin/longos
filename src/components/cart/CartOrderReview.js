@@ -81,7 +81,7 @@ class CartOrderReview extends React.Component {
     document.addEventListener("click", this.handleClose);
   }
   render() {
-    const { profile, cart, cartTotal, cartTax, order } = this.props;
+    const { profile, cart, cartTotal, cartTax, order, total } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
     const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
     const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
@@ -89,9 +89,15 @@ class CartOrderReview extends React.Component {
 
     const formattedCartTax = numeral(cartTax).format('$0,0.00');
     const totalWithTax = numeral(cartTotal+cartTax).format('$0,0.00');
+    const itemWord = total === 1 ? 'item' : 'items' ;
 
     return (
-      <div>
+      <div className="checkout--review">
+
+      <div className="cart--header">
+        <h2>Place Order <span className="title-light">({total} {itemWord})</span></h2>
+        <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
+      </div>
 
         <CartProgress progress="2" />
 
@@ -102,7 +108,7 @@ class CartOrderReview extends React.Component {
           <h4 className="cart--col-remove">Remove</h4>
         </div>
 
-        <h2 className="checkout--title">Place Order</h2>
+        <h2 className="checkout--title">Review Your Order</h2>
         <div className="cart--items">
           {cart.map(product => {
             return <CartListItem key={product.id} item={product} editable="false" />
@@ -129,10 +135,10 @@ class CartOrderReview extends React.Component {
             </span>
             <span>
               <strong>Pickup Time</strong><br />
-              {time}
+              {time} at {store.location.address} {store.location.city}
             </span>
             <span>
-              at {store.location.address} {store.location.city}
+
             </span>
           </div>
         </div>

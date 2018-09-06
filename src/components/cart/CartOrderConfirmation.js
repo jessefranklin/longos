@@ -12,14 +12,15 @@ class CartOrderConfirmation extends React.Component {
     window.onpopstate = function(event) {
         history.go(1);
     };
-  }   
+  }
   render() {
     return (
       <div>
+
         <CartProgress progress="3" />
         <div className="checkout--confirmation">
           <div className="checkout--confirmed"><i className="fas fa-check"></i></div>
-          <p>Thank for your order.</p>
+          <p className="confirm-text">Thanks for your order.</p>
           <p>Order #<strong>{this.props.order.orderId}</strong> has been placed</p>
           <p>We'll see you on <strong>{moment(this.props.order.pickUpDate).format('MMMM Do, YYYY')}</strong> at <strong>{moment().startOf('day').seconds(this.props.order.time).format('h:mm A')}</strong></p>
         </div>
@@ -29,7 +30,7 @@ class CartOrderConfirmation extends React.Component {
   }
 }
 
-  
+
 const mapStateToProps = (state) => ({
     profile: state.profile,
     cart: state.cart,

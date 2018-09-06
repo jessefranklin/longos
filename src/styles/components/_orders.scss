@@ -4,8 +4,8 @@
     margin-bottom: 3rem;
     .counter--container {
         position: relative;
-        padding-left: 15px;
-        margin-left: -25px;
+        //padding-left: 15px;
+        //margin-left: -25px;
     }
     .counter--dropdown {
         position: absolute;
@@ -40,7 +40,7 @@
     top: -5px;
     white-space: nowrap;
     width: auto;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     padding: 5px 10px;
 }

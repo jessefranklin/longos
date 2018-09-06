@@ -49,7 +49,7 @@ class PastOrders extends React.Component {
       let url = this.returnUrlwithParam();
       this.props.fetchCSAPastOrders(url);
     }
-    
+
   }
   returnUrlwithParam(){
     const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/pickedup`;
@@ -71,7 +71,7 @@ class PastOrders extends React.Component {
         <CSAHeader />
         <div className="content--container">
           <OrdersFilters pastOrders={true} pendingCount={pendingCount} readyCount={readyCount} />
-            
+
           <div className="divTable">
             <div className="divTableBody">
 
@@ -81,34 +81,34 @@ class PastOrders extends React.Component {
                     Order #
                 </div>
 
-                <div>
+                <div className="cell-pickup">
+                    Pickup
+                </div>
+
+                <div className="cell-status">
                     Bakery
                 </div>
 
-                <div>
+                <div className="cell-status">
                     Deli
                 </div>
-                
-                <div>
+
+                <div className="cell-status">
                     Kitchen
                 </div>
 
-                <div>
-                    Salad Bar
+                <div className="cell-status">
+                    Salad
                 </div>
 
-                <div>
+                <div className="cell-status">
                     Sushi
                 </div>
 
-                <div>
+                <div className="cell-status">
                     Cake
                 </div>
 
-                <div>
-
-                </div>
-            
               </div>
 
               {pastorders.orders.map(order => {
@@ -136,6 +136,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     fetchCSAPastOrders:(params) => dispatch(fetchCSAPastOrders(params))
 });
-  
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(PastOrders);

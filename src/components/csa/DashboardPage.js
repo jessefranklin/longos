@@ -19,7 +19,7 @@ class DashboardPage extends React.Component {
   }
   componentDidMount() {
     this.props.fetchCSAOrders();
-    
+
   };
 
   isPickedUp=(oId)=>{
@@ -61,13 +61,13 @@ class DashboardPage extends React.Component {
                 <div className="cell-status">
                     Deli
                 </div>
-                
+
                 <div className="cell-status">
                     Kitchen
                 </div>
 
                 <div className="cell-status">
-                    Salad Bar
+                    Salad
                 </div>
 
                 <div className="cell-status">
@@ -78,11 +78,8 @@ class DashboardPage extends React.Component {
                     Cake
                 </div>
 
-                <div>
-                </div>
-            
               </div>
-            
+
 
 
               {ordersList.map(order => {
@@ -117,4 +114,3 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(DashboardPage);
-

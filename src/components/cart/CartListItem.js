@@ -71,7 +71,7 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove,formattedIt
       </div>
       <div className="cart--item-row2">
         <div className="cart--item-comment">
-          {item.comment}
+          {item.comment.length ? item.comment:''}
         </div>
       </div>
     </div>

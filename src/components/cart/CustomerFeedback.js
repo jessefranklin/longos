@@ -21,8 +21,8 @@ class CustomerFeedback extends Component {
     onSubmit = (e) => {
         // this.props.dispatchFeedback(this.state);
         e.preventDefault();
-    };   
- 
+    };
+
     render() {
         return (
             <div className="feedback--customer" >
@@ -62,7 +62,7 @@ class CustomerFeedback extends Component {
                 <div>
                     <p>Do you have any comments or suggestions?</p>
                     <textarea
-                        placeholder="Feedback is welcome"
+                        placeholder=""
                         onChange={this.onFeedback}
                         rows="4"
                         >

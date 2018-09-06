@@ -103,8 +103,8 @@ class ProductsListItemCake extends Component {
       <div>
         <Modal.Body>
         <div className="item--header">
-          <h5>{opt.name} {item.category === 'Cake'?'Cake':''}</h5>
-          <h5>Starting at ${opt.price.price}</h5>
+        <div><h2>{this.state.selectedProduct.productName} {this.state.selectedProduct.type === 'cake'?'Cake':''}</h2><p className="desc-cake">{opt.name}</p></div>
+        <h5><span className="price-text">Starting at</span><br /> ${opt.price.price}</h5>
         </div>
 
         <p>

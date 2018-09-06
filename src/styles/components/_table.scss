@@ -14,23 +14,28 @@
 	.cell-id {
 		position: relative;
 		overflow: visible;
-		padding-left: 5rem;
+		padding-left: 4rem;
+		padding-right: 1rem;
 		strong {
-			font-size: 21px;
+			font-size: 19px;
 			font-weight: 600;
 		}
 	}
-	
+
 	.cell-status {
 		text-align: center;
+		&:last-of-type{
+			padding-right: 4rem;
+		}
 	}
 	> div {
         display: table-cell;
 		vertical-align: middle;
-		padding: 20px 0;
+		padding: 25px 0;
 		position: relative;
 		&:nth-child(n+3):nth-child(-n+8){
 			text-align: center;
+			width:70px;
 		}
 		&.cell-pickup {
 			text-align: left;
@@ -44,8 +49,8 @@
 		div{
 			&:nth-child(n+2):nth-child(-n+8){
 				div{
-					height:30px;
-					width:55px;
+					height:25px;
+					width:50px;
 					margin: auto;
 					border-radius:27px;
 					background-color: #fff;
@@ -79,7 +84,7 @@
 			height:30px;
 			width:30px;
 			background-color: $green;
-			border-radius:50%; 
+			border-radius:50%;
 			&:after{
 				content:'';
 				display: block;
@@ -96,7 +101,7 @@
 	}
 	h4{
 		display:inline;
-		font-size: 18px;
+		font-size: 16px;
 		margin-right: 0.3rem;
 		transform: translateY(1px);
 		&.red{
