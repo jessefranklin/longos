@@ -87,6 +87,12 @@
         right: 1px;
         top: 5px;
     }
+    &:focus-within {
+        .fa-search{
+            opacity:0;        
+            left:100%;
+        }
+    }
     &.active{
         .fa-search{
             opacity:0;        
