@@ -34,10 +34,12 @@ class CSAFeedback extends Component {
                         className="feedback--csa"
                         >
                     </textarea>
-    
-                    <button className="btn-submit" onClick={this.onSubmit}>
-                        Submit
-                    </button>
+
+                    <Modal.Footer>
+                        <button className="btn-primary btn-green btn-center" onClick={this.onSubmit}>
+                            Submit
+                        </button>
+                    </Modal.Footer>
                 </Modal>
 
 
