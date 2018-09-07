@@ -33,6 +33,10 @@ class DashboardPage extends React.Component {
       }
     )
   }
+  viewOrder=(oId)=> {
+    console.log(oId);
+    this.props.history.push(`/orderDashboard/orderDetail/${oId}`);
+  }
   render(){
     const { orders, filters} = this.props;
     let ordersList = filterByStatus(orders,filters);
@@ -83,7 +87,7 @@ class DashboardPage extends React.Component {
 
 
               {ordersList.map(order => {
-                return <OrderListItem key={order.id} item={order} status={this.props.filters.status} isPickedUp={this.isPickedUp} />;
+                return <OrderListItem key={order.id} item={order} status={this.props.filters.status} isPickedUp={this.isPickedUp} viewOrder={this.viewOrder} />;
               })}
 
             </div>

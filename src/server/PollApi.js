@@ -31,7 +31,8 @@ class PollApi extends React.Component {
 
   pollOrders(){
     // GET order/activesince?storeId=store1&sinceDate=2018-09-03&sinceTime=14:05:00&counter=Kitchen
-    let store = `?storeId=${this.props.settings.store.store_id}`;
+    const storeId = this.props.settings? this.props.settings.store.store_id: 'store1';
+    let store = `?storeId=${storeId}`;
     let sinceDate = `&sinceDate=${moment().format('YYYY-MM-DD')}`;
     let sinceTime = `&sinceTime=${moment(moment()).subtract(30, "minutes").format('hh:mm:ss')}`;
     let counter = this.props.filters.counter ? `&counter=${this.props.filters.counter}` : '';

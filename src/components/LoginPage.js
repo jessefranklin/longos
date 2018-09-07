@@ -36,7 +36,7 @@ class LoginPage extends React.Component {
       {
         field: 'rewards', 
         method: 'matches',
-        args: [/^[0-9]{8}$/], 
+        args: [/^[0-9]{11}$/], 
         validWhen: true, 
         message: 'That is not a valid rewards number.'
       }

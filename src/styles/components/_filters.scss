@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
     font-family: $sans;
 }
 
@@ -33,6 +32,106 @@
                     background-color: $off-white;
                 }
             }
+        }
+    }
+}
+
+
+#app .searchContainer {
+    display: block;
+    position: relative;
+    background-color: #fff;
+    border-radius:27px;
+    .search {
+        position: relative;
+        z-index: 3;
+        box-shadow: none;
+        color: $dark-grey;
+        display: block;
+        font-family: $sans;
+        border-radius: 27px;
+        line-height: 1em;
+        font-size: 16px;
+        padding: 8px 15px;
+        border-radius: 15px;
+        font-weight: 400;
+        border: none;
+        width: 100%;
+    }
+    .closer {
+        position: absolute;
+        top: 5px;
+        opacity: 0;
+        z-index: 4;
+        border: none;
+        box-shadow: none;
+        transition: opacity .4s ease-in-out;
+        color:$red;
+        display: block;
+    }
+    
+}
+
+#app .customer--app .searchContainer {
+    .fa-search{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+        z-index: 10;
+        pointer-events: none;
+        transition: opacity .3s ease-in-out, left .5s ease-in-out;
+    }
+    .closer {
+        right: 1px;
+        top: 5px;
+    }
+    &:focus-within {
+        .fa-search{
+            opacity:0;        
+            left:100%;
+        }
+    }
+    &.active{
+        .fa-search{
+            opacity:0;        
+            left:100%;
+        }
+        .closer {
+            opacity: 1;
+        }
+    }
+}
+
+
+#app .csa--app .searchContainer {
+    position: relative;
+    overflow: hidden;
+    .fa-search{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $red;
+        color: #fff;
+        width: 50px;
+        height: 39px;
+        opacity: 1;
+        z-index: 3;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+
+    }
+    .closer {
+        right: 50px;
+        top: 5px;
+    }
+    &.active{
+        .closer {
+            opacity: 1;
         }
     }
 }

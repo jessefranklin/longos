@@ -61,6 +61,9 @@ class PastOrders extends React.Component {
   onPaginationChange = (val) =>{
       this.setState({ 'page' : val });
   }
+  viewOrder=(oId)=> {
+    this.props.history.push(`/orderDashboard/orderDetail/${oId}`);
+  }
   render(){
     const { orders, filters, pastorders} = this.props;
     let pendingCount = filterByStatus(orders,0).length;
@@ -112,7 +115,7 @@ class PastOrders extends React.Component {
               </div>
 
               {pastorders.orders.map(order => {
-                return <OrderListItem key={order.id} item={order} pastOrders={true} />;
+                return <OrderListItem key={order.id} item={order} pastOrders={true} viewOrder={this.viewOrder} />;
               })}
 
             </div>

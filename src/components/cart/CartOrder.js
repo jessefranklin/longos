@@ -9,11 +9,37 @@ import { setOrder } from '../../actions/order';
 import CartProgress from './CartProgress';
 import TimePicker from 'react-bootstrap-time-picker';
 import MediaQuery from 'react-responsive';
+import FormValidator from '../shared/FormValidator';
 import { totalCount } from '../../selectors/cartTotal';
 
 class CartOrder extends React.Component {
   constructor(props) {
     super(props);
+
+    const Validation = new FormValidator([
+      { 
+        field: 'email',
+        method: 'isEmail', 
+        validWhen: true, 
+        message: 'That is not a valid email.'
+      },
+      {
+        field: 'phone', 
+        method: 'matches',
+        args: [/^\(?\d\d\d\)? ?\d\d\d-?\d\d\d\d$/], 
+        validWhen: true, 
+        message: 'That is not a valid phone number.'
+      },
+      {
+        field: 'rewards', 
+        method: 'matches',
+        args: [/^[0-9]{11}$/], 
+        validWhen: true, 
+        message: 'That is not a valid rewards number.'
+      }
+    ]);
+
+    this.validator = Validation;
 
     this.state = {
       username: props.profile ? props.profile.username : '',
@@ -25,11 +51,12 @@ class CartOrder extends React.Component {
       time: props.order.time?props.order.time:32400,
       status: 'pending',
       createdAt: moment(),
+      validation: this.validator.valid(),
       error: ''
     };
 
     this.handleTimeChange = this.handleTimeChange.bind(this);
-
+    this.submitted = false;
   }
   onDateChange = (pickUpDate) => {
     if (pickUpDate) {
@@ -45,24 +72,44 @@ class CartOrder extends React.Component {
   handleTimeChange(time) {
     this.setState({ time });
   }
+  dateWithin = () => {
+    let today = moment().format('YYYY-MM-DD');
+    let tmrw = moment().add(1,'days').format('YYYY-MM-DD');
+    let pdate = moment(this.state.pickUpDate).format('YYYY-MM-DD');
+    if(moment(today).isSame(pdate)|| moment(tmrw).isSame(pdate)){
+        return true;
+    }
+  }
   onSubmit = (e) => {
-    this.props.setProfile({
-      username: this.state.username,
-      email: this.state.email,
-      phone: this.state.phone,
-      rewards: this.state.rewards
-    });
-    this.props.setOrder({
-      pickUpDate: this.state.pickUpDate,
-      time: this.state.time,
-      status: this.state.status,
-      createdAt: this.state.createdAt
-    });
+    const validation = this.validator.validate(this.state);
+    this.setState({ validation });
+
+    this.submitted = true;
+    if (validation.isValid) {
+      this.props.setProfile({
+        username: this.state.username,
+        email: this.state.email,
+        phone: this.state.phone,
+        rewards: this.state.rewards
+      });
+      this.props.setOrder({
+        pickUpDate: this.state.pickUpDate,
+        time: this.state.time,
+        status: this.state.status,
+        createdAt: this.state.createdAt
+      });
+      this.props.history.push("/products/orderReview");
+    }
   };
   render() {
+    let validation = this.submitted ?                        
+                    this.validator.validate(this.state) :   
+                    this.state.validation  
     const { profile } = this.props;
     const { cart, cartTotal, total, cartTax } = this.props;
     const itemWord = total === 1 ? 'item' : 'items' ;
+    let dateWithin = this.dateWithin();
+
     return (
       <div>
 
@@ -104,46 +151,72 @@ class CartOrder extends React.Component {
                 <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
               </div>
             </div>
-            <input
-              type="text"
-              name="username"
-              className='form-control'
-              placeholder="First and Last Name"
-              value={this.state.username}
-              onChange={this.handleChange.bind(this)}
-            />
-            <input
-              type="email"
-              name="email"
-              className='form-control'
-              placeholder="email"
-              value={this.state.email}
-              onChange={this.handleChange.bind(this)}
-            />
-            <input
-              type="phone"
-              name="phone"
-              className='form-control'
-              placeholder="phone"
-              value={this.state.phone}
-              onChange={this.handleChange.bind(this)}
-            />
-            <input
-              type="number"
-              name="rewards"
-              className='form-control'
-              value={this.state.rewards}
-              placeholder="rewards number"
-              onChange={this.handleChange.bind(this)}
-            />
+
+            <div className='f-con'> 
+              <label htmlFor="username">Username</label>   
+              <input
+                type="text"
+                name="username"
+                className="form-control" 
+                autoComplete="off" 
+                placeholder="First and Last Name"
+                value={this.state.username}
+                onChange={this.handleChange.bind(this)}
+              />
+            </div>
+
+            <div className={validation.email.isInvalid ? 'f-con has-error' : 'f-con'}>    
+              <label htmlFor="email">Email</label>   
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                autoComplete="off" 
+                placeholder="email"
+                value={this.state.email}
+                onChange={this.handleChange.bind(this)}
+              />
+              <span className="help-block">{validation.email.message}</span>
+            </div>
+
+            <div className={validation.phone.isInvalid ? 'f-con has-error' : 'f-con'}>
+              <label htmlFor="phone">Phone</label>
+              <input
+                type="phone"
+                name="phone"
+                className="form-control" 
+                autoComplete="off" 
+                placeholder="phone"
+                value={this.state.phone}
+                onChange={this.handleChange.bind(this)}
+              />
+              <span className="help-block">{validation.phone.message}</span>
+            </div>
+
+            <div className={validation.rewards.isInvalid ? 'f-con has-error' : 'f-con'}>
+              <label htmlFor="rewards">Rewards</label>
+              <input
+                type="number"
+                name="rewards"
+                className="form-control" 
+                autoComplete="off" 
+                value={this.state.rewards}
+                placeholder="rewards number"
+                onChange={this.handleChange.bind(this)}
+              />
+              <span className="help-block">{validation.rewards.message}</span>
+            </div>
 
             <div className='checkout--disclaimer'>
-              Allow for 24 hour notice or call in store for other accommodations.
+              {dateWithin ? (
+                  'Allow for 24 hour notice or call in store for other accommodations.'
+              ): null }
+               
 
             </div>
           </div>
 
-          <Link className="btn" to="/products/orderReview" onClick={this.onSubmit}>Next step</Link>
+          <button className="btn" onClick={this.onSubmit}>Next step</button>
 
           <Link to="/products" className="btn btn-secondary">Cancel</Link>
         </div>

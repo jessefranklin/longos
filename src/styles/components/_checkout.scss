@@ -57,20 +57,20 @@
 body .content--container{
     .form-group{
         // min-height: 900px;
+        margin: 4rem 0;
         .form-inputs{
             width:60%;
-            margin:5rem auto;
+            margin:0 auto;
             input.form-control{
-              &:first-of-type{
-                padding-top: 5rem;
-              }
             }
         }
         .time-inputs{
             display:flex;
+            margin-bottom: 4rem;
             .date-picker,
             .time-picker{
                 position: relative;
+                z-index: 9;
             }
             .fa,
             .far{
@@ -182,7 +182,7 @@ body .content--container{
             font-weight: 600;
         }
         input{
-            padding: 3rem 0 1rem 0;
+            padding: 1rem 0;
             font-size: 20px;
             border-bottom: 2px solid $light-grey;
         }
@@ -347,7 +347,7 @@ body .content--container{
 }
 
 .checkout--disclaimer{
-    padding: 4rem;
+    padding: 1rem;
     text-align: center;
     font-size:20px;
     color:$grey;

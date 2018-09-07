@@ -23,9 +23,12 @@ export class OrdersFilters extends React.Component {
     };
     onClearField = (e) => {
       this.props.setOrderFilter('');
+      this.setState({
+        filterOrder: ''
+      });
     };
     onFilterSubmit = () =>{
-      this.props.setOrderFilter(this.state);
+      this.props.setOrderFilter(this.state.filterOrder);
     }
     toggleMenu(e) {
       e.preventDefault();
@@ -62,14 +65,15 @@ export class OrdersFilters extends React.Component {
               }
 
             </div>
-            <div className={this.props.filters.order.length >= 1 ? 'searchContainer active' :'searchContainer'}>
+            <div className={this.state.filterOrder.length >= 1 ? 'searchContainer active' :'searchContainer'}>
                 <input
                   type="text"
+                  placeholder="Search"
                   value={this.state.filterOrder}
                   onChange={this.onTextChange}
                   className="search"
                 />
-                <i className="fas fa-search"></i>
+                <i className="fas fa-search" onClick={this.onFilterSubmit}></i>
                 {this.state.filterOrder.length >= 1 ? (
                   <button className="closer icon--close" onClick={this.onClearField}></button>
                 ) : ''}

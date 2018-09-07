@@ -46,7 +46,7 @@ class Idle extends Component {
           remaining: this.idleTimer.getRemainingTime(),
           lastActive: this.idleTimer.getLastActiveTime(),
           elapsed: this.idleTimer.getElapsedTime(),
-          showTimeout: this.idleTimer.getRemainingTime() < 58000 ? true : false
+          showTimeout: this.idleTimer.getRemainingTime() < 10000 ? true : false
         })
       }, 1000)
     }
@@ -56,7 +56,7 @@ class Idle extends Component {
     clearInterval(interval);
   }
   onCancelOrder(){
-    // this.context.router.history.push('/');
+    this.context.router.history.push('/');
   }
   render () {
       return (

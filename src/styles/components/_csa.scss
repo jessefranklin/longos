@@ -46,30 +46,6 @@
     }
 }
 
-.link--go-back {
-    text-transform: uppercase;
-    padding-right: 15px;
-    position: relative;
-    font-family: $sans;
-    font-weight: 600;
-    font-size:16px;
-    color: $red;
-    background-color: #fff;
-    border:none;
-    padding:3rem 5rem 3rem 6rem;
-    text-align: left;
-    &:before {
-        content: '';
-        position: absolute;
-        transform: translate(-10px,5px);
-        width: 0;
-        height: 0;
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-right: 5px solid $red;
-        margin-right: 1rem;
-    }
-}
 
 .arrow--down-red {
     position: relative;
