@@ -9,7 +9,7 @@ import FontAwesome from 'react-fontawesome';
 let axios = require('axios');
 
 const options = [
-    { value: 1, label: 'Not Ready' },  
+    { value: 1, label: 'Not Ready' },
     { value: 2, label: 'In Progress' },
     { value: 3, label: 'Ready' }
 ]
@@ -47,7 +47,7 @@ class OrderDetailItem extends Component {
     this.setState({ 'reassign' : true });
   }
   onRemove = () => {
-    
+
   }
   statusAssigned = () => {
     let orderUpdate = `setstatus?status=2`;
@@ -56,7 +56,7 @@ class OrderDetailItem extends Component {
 
   updateOrder (orderUpdate) {
     const orderAPI = `${baseUrl}/order/${this.props.oid}/item/${this.props.order.id}/`;
-    
+
     let url = orderAPI + orderUpdate;
     axios.put(url, headers).then(
         (response) => {
@@ -78,10 +78,7 @@ class OrderDetailItem extends Component {
             <div className="order-detail-item--container">
               <div className="order-item--row">
                 <div className="order-item--item grey-border">
-                  <div className="img--container">
-                    <img src={order.product.imageLink} alt={order.product.name} />
-                  </div>
-                  
+                  <img src={order.product.imageLink} alt={order.product.name} />
                   <h4>{order.product.counter}</h4>
                   {order.product.name}
                 </div>
@@ -95,10 +92,10 @@ class OrderDetailItem extends Component {
                   onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
                   options={employees}
                   isSearchable={true}
-                  clearable={false} 
+                  clearable={false}
                   />)
                 }
-                
+
                 </div>
                 <div className="order-item--status grey-border">
                 {order.status == 0 ? (
@@ -110,18 +107,18 @@ class OrderDetailItem extends Component {
                   onChange={(e)=>this.onSelectChange(e.value, 'status')}
                   options={options}
                   disabled={order.status === 0 ? true:false}
-                  clearable={false} 
+                  clearable={false}
                   />
                 )}
-                
+
                 </div>
                 <div className="order-item--qty grey-border">
                   {order.quantity}
                 </div>
                 <div className="order-item--barcode">
                   {order.upc ? (
-                    <Barcode 
-                      format="UPC" 
+                    <Barcode
+                      format="UPC"
                       value={order.upc}
                       />
                   ) : ''}
@@ -190,7 +187,7 @@ const SpecialInstructions = ({order}) => {
 const CakeDescription = ({item}) => {
   return (
     <div>
-      
+
     </div>
   );
 };

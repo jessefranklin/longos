@@ -472,8 +472,8 @@ const CancelModal = ({show,handleClose,cancel}) => {
           <h3>Cancel Modal</h3>
           <h4>Are you sure you want to cancel this order?</h4>
           <div className="modal--buttons">
-            <Button onClick={cancel}>Yes, Cancel</Button>
-            <Button onClick={handleClose} className="btn-cancel">No</Button>
+            <Button onClick={cancel} className="btn-primary btn-left btn-green">Yes, Cancel</Button>
+            <Button onClick={handleClose} className="btn-primary btn-right">No</Button>
           </div>
         </div>
       </Modal>
@@ -497,8 +497,8 @@ const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClose}) => 
           <h3>Order Paid</h3>
           <h4>Please enter your receipt ID below.</h4>
           <div className="modal--buttons">
-            <Button onClick={() => orderPaid(true)}>Yes, Cancel</Button>
-            <Button onClick={handleClose} className="btn-cancel">No</Button>
+            <Button onClick={() => orderPaid(true)} className="btn-primary btn-left btn-green">Confirm</Button>
+            <Button onClick={handleClose} className="btn-primary btn-right">Cancel</Button>
           </div>
         </div>
       </Modal>

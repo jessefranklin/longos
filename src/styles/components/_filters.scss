@@ -37,7 +37,7 @@
 }
 
 
-#app .searchContainer {
+body #app .searchContainer {
     display: block;
     position: relative;
     background-color: #fff;
@@ -49,7 +49,7 @@
         color: $dark-grey;
         display: block;
         font-family: $sans;
-        border-radius: 27px;
+        border-radius: 27px !important;
         line-height: 1em;
         font-size: 16px;
         padding: 8px 15px;
@@ -72,7 +72,7 @@
 
 }
 
-#app .customer--app .searchContainer {
+body #app .customer--app .searchContainer {
     .fa-search{
         position: absolute;
         top:50%;
@@ -105,7 +105,7 @@
 }
 
 
-#app .csa--app .searchContainer {
+body #app .csa--app .searchContainer {
     position: relative;
     overflow: hidden;
     .fa-search{
