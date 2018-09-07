@@ -83,8 +83,8 @@ class CartOrderReview extends React.Component {
   render() {
     const { profile, cart, cartTotal, cartTax, order, total } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
-    const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
-    const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
+    //const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
+    //const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
     const time = moment().startOf('day').seconds(order.time).format('h:mm A');
 
     const formattedCartTax = numeral(cartTax).format('$0,0.00');
@@ -143,7 +143,6 @@ class CartOrderReview extends React.Component {
           </div>
         </div>
         <div className="checkout--terms">
-          <h5>{store.terms.header}</h5>
           <button onClick={this.onShowTerms}>Show Terms</button>
         </div>
         <div>
