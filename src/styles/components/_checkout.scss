@@ -220,9 +220,8 @@ body .content--container{
 
 .checkout--info{
     margin: 2rem 5rem 0 5rem;
-    padding: 1rem 0 0rem 0;
+    padding: 1rem 0 20rem 0;
     border-top: 2px solid $dark-grey;
-    border-bottom: 2px solid $dark-grey;
     color:$dark-grey;
     font-family:$sans;
     font-size:22px;
@@ -308,8 +307,17 @@ body .content--container{
   }
 }
 
+.checkout--terms-container{
+  position: fixed;
+  bottom: 93px;
+  width:100%;
+  border-bottom:4px solid $offwhite;
+}
+
 .checkout--submit{
     width:100%;
+    position: fixed;
+    bottom:0;
     span,
     a{
         padding: 3rem;
@@ -334,6 +342,7 @@ body .content--container{
         text-transform: uppercase;
         vertical-align: baseline;
         border-left: 4px solid $offwhite;
+        border-top: 4px solid $offwhite;
     }
     .btn[disabled]{
       color:$lighter-grey3;
