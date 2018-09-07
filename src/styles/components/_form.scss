@@ -76,7 +76,8 @@ body .form-group {
         cursor: pointer;
         padding-left: 40px;
         border: none;
-        width: 100%;
+        //width: 100%;
+        width:auto;
         &:before {
           content: ' ';
           width: 20px;
@@ -105,5 +106,7 @@ body .form-group {
               }
         }
     }
-
+    span{
+      color: $red;
+    }
 }

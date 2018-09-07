@@ -142,18 +142,16 @@ class CartOrderReview extends React.Component {
             </span>
           </div>
         </div>
-        <div className="checkout--terms">
-          <button onClick={this.onShowTerms}>Show Terms</button>
-        </div>
-        <div>
+        <div className="checkout--terms-container">
           <div className="checkbox checkbox-fullwidth">
-          <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
-          <input
-            name="terms"
-            type="checkbox"
-            checked={this.state.checked}
-            onChange={this.handleCheck} />
-          </label>
+            <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
+              <input
+                name="terms"
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheck} />
+            </label>
+            <span onClick={this.onShowTerms}> Show Terms</span>
           </div>
 
         </div>
