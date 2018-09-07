@@ -83,8 +83,8 @@ class CartOrderReview extends React.Component {
   render() {
     const { profile, cart, cartTotal, cartTax, order, total } = this.props;
     const formattedCartTotal = numeral(cartTotal).format('$0,0.00');
-    const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
-    const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
+    //const taxAmount = numeral(cartTotal * (store.tax.tax/100)).format('$0,0.00');
+    //const totalAmount = numeral(cartTotal + (cartTotal * (store.tax.tax/100))).format('$0,0.00');
     const time = moment().startOf('day').seconds(order.time).format('h:mm A');
 
     const formattedCartTax = numeral(cartTax).format('$0,0.00');
@@ -142,19 +142,16 @@ class CartOrderReview extends React.Component {
             </span>
           </div>
         </div>
-        <div className="checkout--terms">
-          <h5>{store.terms.header}</h5>
-          <button onClick={this.onShowTerms}>Show Terms</button>
-        </div>
-        <div>
+        <div className="checkout--terms-container">
           <div className="checkbox checkbox-fullwidth">
-          <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
-          <input
-            name="terms"
-            type="checkbox"
-            checked={this.state.checked}
-            onChange={this.handleCheck} />
-          </label>
+            <label className={this.state.agreedTerms?'checked':''} >I accept the terms and conditions.
+              <input
+                name="terms"
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheck} />
+            </label>
+            <span onClick={this.onShowTerms}> Show Terms</span>
           </div>
 
         </div>

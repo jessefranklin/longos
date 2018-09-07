@@ -1,24 +1,22 @@
 .subheader--checkout{
     width:100%;
-    // padding:1rem 0;
+    height:48px;
     background-color: $dark-grey;
     div{
         width:33%;
-        height:100%;
-        // padding:1rem 0;
+        height:48px;
         display: inline-block;
         text-align: center;
         color:$grey;
         font-family: $sans;
         font-size:20px;
+        padding-top: 1rem;
         &.active{
             background-color: $green;
             color:white;
-            padding: 1rem;
             width: 34%;
         }
         a{
-            padding:1rem 0;
             color:$grey;
             display:block;
             width:100%;
@@ -34,23 +32,8 @@
         }
         &:nth-child(1),
         &:nth-child(2){
-            // border-right: 2px solid $offwhite;
-            position: relative;
-            &:after{
-                content:'';
-                position: absolute;
-                top:0px;
-                right:0;
-                width:2px;
-                height:48px;
-                background-color: #fff;
-            }
+            border-right: 2px solid $offwhite;
         }
-        &:nth-child(2){
-          &:after{
-              top:-10px;
-          }
-       }
     }
 }
 
@@ -220,9 +203,8 @@ body .content--container{
 
 .checkout--info{
     margin: 2rem 5rem 0 5rem;
-    padding: 1rem 0 0rem 0;
+    padding: 1rem 0 20rem 0;
     border-top: 2px solid $dark-grey;
-    border-bottom: 2px solid $dark-grey;
     color:$dark-grey;
     font-family:$sans;
     font-size:22px;
@@ -308,8 +290,17 @@ body .content--container{
   }
 }
 
+.checkout--terms-container{
+  position: fixed;
+  bottom: 93px;
+  width:100%;
+  border-bottom:4px solid $offwhite;
+}
+
 .checkout--submit{
     width:100%;
+    position: fixed;
+    bottom:0;
     span,
     a{
         padding: 3rem;
@@ -334,6 +325,7 @@ body .content--container{
         text-transform: uppercase;
         vertical-align: baseline;
         border-left: 4px solid $offwhite;
+        border-top: 4px solid $offwhite;
     }
     .btn[disabled]{
       color:$lighter-grey3;
@@ -384,6 +376,9 @@ body .content--container{
         &.confirm-text{
           color:$green;
           font-weight: 600;
+        }
+        &.confirm-note{
+          font-size:17px;
         }
     }
 }

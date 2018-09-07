@@ -185,8 +185,8 @@ class ProductsListItemBody extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.onAddToCart} className="btn-add">+ Add To Cart</Button>
-          <Button onClick={this.handleClose}>Cancel</Button>
+          <Button onClick={this.onAddToCart} className="btn-primary btn-left btn-green">+ Add To Cart</Button>
+          <Button onClick={this.handleClose} className="btn-primary btn-right">Cancel</Button>
           {item.servedColdMessage === 'True' ? (
             <div className="item--disclaimer">
                 {en.product.served}

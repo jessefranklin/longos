@@ -55,36 +55,40 @@
 
 .profile--container {
   position: relative;
-  .profile--actions {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #fff;
-    border-radius: 15px;
-    padding: 0 0.5rem;
-    border: 1px solid $dark-grey;
-    width: 130%;
-    ul {
-      padding: 0px;
-      margin: 0px;
-      li {
-        text-align: center;
-        border-top: 1px solid $dark-grey;
-        list-style: none;
-        &:first-child {
-          border-top: none;
-        }
-        a {
-          color: $red;
-          display: block;
-          padding: 15px;
-          text-transform: capitalize;
-          font-family: $sans;
-          font-size: 17px;
-        }
+}
+
+.profile--actions {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 15px;
+  padding: 0 0.5rem;
+  border: 1px solid $dark-grey;
+  width: 130%;
+  ul {
+    padding: 0px;
+    margin: 0px;
+    li {
+      text-align: center;
+      border-top: 1px solid $lightest-grey;
+      list-style: none;
+      &:first-child {
+        border-top: none;
+      }
+      a {
+        color: $red;
+        display: block;
+        padding: 15px;
+        text-transform: capitalize;
+        font-family: $sans;
+        font-size: 17px;
       }
     }
+  }
+  &.menu--centered{
+    transform: none;
   }
 }
 

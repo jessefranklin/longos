@@ -77,7 +77,7 @@ class OrderDetail extends Component {
   componentWillReceiveProps(props) {
     this.setState(this.props.csaOrder.order);
   }
-  
+
   componentWillUnmount(){
     this.props.clearCSAOrder();
     document.removeEventListener('click', this.closeCounterFilterMenu);
@@ -155,7 +155,7 @@ class OrderDetail extends Component {
       this.completeOrder(value)
     }
   }
-  
+
   promptUpdate(){
     this.setState({ orderUpdated: true });
     setTimeout(()=> {
@@ -173,7 +173,7 @@ class OrderDetail extends Component {
     let url = orderAPI +`/updateorder`;
     axios.put(url, payload, headers).then(
       (response) => {
-        this.props.fetchCSAOrder(this.props.match.params.id);  
+        this.props.fetchCSAOrder(this.props.match.params.id);
         this.promptUpdate('success','This order has been updated');
       },
       (err) => {
@@ -195,7 +195,7 @@ class OrderDetail extends Component {
     this.props.CSACart(cart);
     this.props.history.push('/orderDashboard/editOrder');
   }
-  
+
   completeOrder(value){
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`
     axios.put(url, headers).then(
@@ -220,7 +220,7 @@ class OrderDetail extends Component {
       }
     )
   }
-  
+
   cancelOrder = (value) => {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`
     axios.put(url, headers).then(
@@ -271,16 +271,11 @@ class OrderDetail extends Component {
         <div className="content--container">
           <div className="order-detail">
             <div className="order-detail--actions-row">
-            
+
               <button className="link--go-back" onClick={this.gotoDashboard}>Back to orders</button>
                 <div className="order-detail--actions-container">
                   <button className="order-detail--action" onClick={this.showActions}>
-                    <FontAwesome
-                        className='fa fa-bars'
-                        name='fa-bars'
-                        size="2x"
-                        aria-hidden='true'
-                      />
+                    Order Options
                   </button>
                   {this.state.showActions? (
                     <div className="order-detail--actions-list">
@@ -296,7 +291,7 @@ class OrderDetail extends Component {
                   ): ''}
                 </div>
 
-                
+
             </div>
             <div className="order-detail--actions-row">
               {this.state.orderUpdated? (
@@ -308,8 +303,8 @@ class OrderDetail extends Component {
             <div className="">
               <h4>Order #</h4>
               <h2>
-                {csaOrder.id} 
-                
+                {csaOrder.id}
+
               </h2>
               <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder}  />
 
@@ -333,7 +328,7 @@ class OrderDetail extends Component {
               {this.state.editClient ? (
                 <div>
                   <EditClient csaOrder={csaOrder} updateClient={this.updateClient} handleClose={this.handleSave} updateClientPickup={this.updateClientPickup} />
-                  
+
                 </div>
               ) : (
                 <div>
@@ -346,8 +341,8 @@ class OrderDetail extends Component {
 
             </div>
 
-            <div className="">
-              <h4>Pickup Date & Time 
+            <div className="pickup--info">
+              <h4>Pickup Date & Time
                 {this.state.editState && !this.state.editPickup ? (
                     <button className="order-detail--action" onClick={() => this.handleEdit('editPickup')}>
                     edit <FontAwesome
@@ -355,7 +350,7 @@ class OrderDetail extends Component {
                       name='fa-trash'
                       aria-hidden='true'
                     /></button>
-                ): ''}    
+                ): ''}
               </h4>
 
               {this.state.editPickup ? (
@@ -365,17 +360,17 @@ class OrderDetail extends Component {
               ) : (
                 <div>
                   {csaOrder.pickupDate} @ {moment(csaOrder.pickupTime, "HH:mm:ss").format('h:mm a')}
-                  
+
                 </div>
               )}
-              
 
-              <h4>Order Status</h4> 
-             
+
+              <h4>Order Status</h4>
+
               <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
             </div>
           </div>
-          
+
 
           <div className="order-items--header">
             <div className="col-item grey-border">
@@ -399,20 +394,15 @@ class OrderDetail extends Component {
             ) : ''}
           </div>
           <div className="order--items">
-          
-            <div className="order-detail--actions-row">
+
+            <div className="order-detail--actions-row bg-none pad-none">
               {!csaOrder.isPaid?
-                <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to">Add to order</button>
+                <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to"><strong>+ &nbsp;</strong> Add to order</button>
               :'' }
 
               <div className="filter-by--container">
-                <button className="order-detail--action btn-filter-by" onClick={this.toggleCounterFilter}>
-                  Filtered by {this.state.counter === '' ? 'All Dept.' : this.state.counter} 
-                      <FontAwesome
-                            className='fa fa-filter'
-                            name='fa-filter'
-                            aria-hidden='true'
-                          />
+                <button className="order-detail--action btn-filter-by order-detail--list" onClick={this.toggleCounterFilter}>
+                  {this.state.counter === '' ? 'All Dept.' : this.state.counter}
                 </button>
                 {this.state.showFilter?(
                   <OrderCounterFilters handleCounter={this.handleCounter} counterActive={this.state.counter} />
@@ -434,7 +424,7 @@ class OrderDetail extends Component {
               </div>;
             })}
 
-            
+
           </div>
         </div>
       </div>

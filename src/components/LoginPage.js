@@ -25,52 +25,41 @@ class LoginPage extends React.Component {
   constructor(props) {
     super(props);
 
-    
+
     const cartValidation = new FormValidator([
-      { 
-        field: 'rewards', 
-        method: 'isEmpty', 
-        validWhen: false, 
+      {
+        field: 'rewards',
+        method: 'isEmpty',
+        validWhen: false,
         message: 'Pleave provide a number.'
       },
       {
-        field: 'rewards', 
+        field: 'rewards',
         method: 'matches',
-        args: [/^[0-9]{11}$/], 
-        validWhen: true, 
+        args: [/^[0-9]{11}$/],
+        validWhen: true,
         message: 'That is not a valid rewards number.'
       }
     ])
 
     const guestValidation = new FormValidator([
-      { 
-        field: 'username', 
-        method: 'isEmpty', 
-        validWhen: false, 
-        message: 'Name is required.' 
-      },{ 
-        field: 'email', 
-        method: 'isEmpty', 
-        validWhen: false, 
-        message: 'Email is required.' 
+      {
+        field: 'username',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'Name is required.'
       },
-      { 
-        field: 'email',
-        method: 'isEmail', 
-        validWhen: true, 
-        message: 'That is not a valid email.'
-      },
-      { 
-        field: 'phone', 
-        method: 'isEmpty', 
-        validWhen: false, 
+      {
+        field: 'phone',
+        method: 'isEmpty',
+        validWhen: false,
         message: 'Pleave provide a phone number.'
       },
       {
-        field: 'phone', 
+        field: 'phone',
         method: 'matches',
-        args: [/^\(?\d\d\d\)? ?\d\d\d-?\d\d\d\d$/], 
-        validWhen: true, 
+        args: [/^\(?\d\d\d\)? ?\d\d\d-?\d\d\d\d$/],
+        validWhen: true,
         message: 'That is not a valid phone number.'
       }
     ]);
@@ -99,7 +88,7 @@ class LoginPage extends React.Component {
       [e.target.name]: e.target.value,
     });
   }
-    
+
   handleFormSubmit = e => {
     e.preventDefault();
 
@@ -107,26 +96,26 @@ class LoginPage extends React.Component {
 
       const validation = this.validator.validate(this.state);
       this.setState({ validation });
-  
+
       this.submitted = true;
       if (validation.isValid) {
         // handle actual form submission here
         this.props.setProfile(this.state);
-        history.push('/products');  
+        history.push('/products');
       }
     } else {
       const cardValidation = this.cardValidator.validate(this.state);
       this.setState({ cardValidation });
-  
+
       this.cardSubmitted = true;
       if (cardValidation.isValid) {
         // handle actual form submission here
         this.props.setProfile(this.state);
-        history.push('/products');  
+        history.push('/products');
       }
     }
 
-   
+
   }
 
   componentDidMount() {
@@ -143,16 +132,16 @@ class LoginPage extends React.Component {
 
   swapLogin(val) {
     this.setState({ active: val});
-    
+
   }
 
   render(){
     let validation = this.submitted ?                         // if the form has been submitted at least once
                     this.validator.validate(this.state) :   // then check validity every time we render
-                    this.state.validation  
+                    this.state.validation
     let cardValidation = this.cardSubmitted ?                         // if the form has been submitted at least once
                     this.cardValidator.validate(this.state) :   // then check validity every time we render
-                    this.state.cardValidation    
+                    this.state.cardValidation
 
     return(
       <div className="login-scene">
@@ -162,13 +151,13 @@ class LoginPage extends React.Component {
         <h1>Welcome to the<br /> in-store pre-order experience</h1>
         <h3>Please sign in</h3>
         <div className="box-layout__box">
-          
+
           <ul className="tab-nav">
             <li><button className={this.state.active ==='guest'?'active':''} onClick={() => this.swapLogin('guest')}>Sign In as Guest</button></li>
             <li><button className={this.state.active ==='card'?'active':''} onClick={() => this.swapLogin('card')}>Sign In with Rewards Card</button></li>
           </ul>
-          
-          {this.state.active ==='guest' ? <Guest state={this.state} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  validation={this.state.validation}  /> 
+
+          {this.state.active ==='guest' ? <Guest state={this.state} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  validation={this.state.validation}  />
           : <Card state={this.state} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}  validation={this.state.cardValidation}  /> }
 
           <div className="csa-container">
@@ -184,13 +173,13 @@ class LoginPage extends React.Component {
 
 const Guest = ({state, handleInputChange, handleFormSubmit, validation}) => (
   <div className="guest-container form-group">
-    <div className={validation.username.isInvalid ? 'f-con has-error' : 'f-con'}> 
-      <label htmlFor="username">Username</label>   
+    <div className={validation.username.isInvalid ? 'f-con has-error' : 'f-con'}>
+      <label htmlFor="username">Username</label>
       <input
         className="form-control"
         type="text"
-        name="username" 
-        autoComplete="off" 
+        name="username"
+        autoComplete="off"
         placeholder="First and Last Name"
         value={state.username}
         onChange={handleInputChange}
@@ -198,18 +187,17 @@ const Guest = ({state, handleInputChange, handleFormSubmit, validation}) => (
       <span className="help-block">{validation.username.message}</span>
     </div>
 
-    <div className={validation.email.isInvalid ? 'f-con has-error' : 'f-con'}>    
-      <label htmlFor="email">Email</label>   
+    <div className='f-con'>
+      <label htmlFor="email">Email</label>
       <input
         className="form-control"
         type="text"
         name="email"
-        autoComplete="off" 
+        autoComplete="off"
         placeholder="Email Address"
         value={state.email}
         onChange={handleInputChange}
       />
-      <span className="help-block">{validation.email.message}</span>
     </div>
 
     <div className={validation.phone.isInvalid ? 'f-con has-error' : 'f-con'}>
@@ -217,8 +205,8 @@ const Guest = ({state, handleInputChange, handleFormSubmit, validation}) => (
         <input
         className="form-control"
         type="phone"
-        autoComplete="off" 
-        name="phone" 
+        autoComplete="off"
+        name="phone"
         placeholder="Phone Number"
         onChange={handleInputChange}
       />
@@ -237,9 +225,9 @@ const Card = ({state, handleInputChange, handleFormSubmit, validation}) => (
     <label htmlFor="rewards">Phone</label>
       <input
         className="form-control"
-        type="number" 
-        name="rewards" 
-        autoComplete="off" 
+        type="number"
+        name="rewards"
+        autoComplete="off"
         value={state.rewards}
         placeholder="Rewards Number"
         onChange={handleInputChange}

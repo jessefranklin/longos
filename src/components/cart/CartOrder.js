@@ -17,24 +17,18 @@ class CartOrder extends React.Component {
     super(props);
 
     const Validation = new FormValidator([
-      { 
-        field: 'email',
-        method: 'isEmail', 
-        validWhen: true, 
-        message: 'That is not a valid email.'
-      },
       {
-        field: 'phone', 
+        field: 'phone',
         method: 'matches',
-        args: [/^\(?\d\d\d\)? ?\d\d\d-?\d\d\d\d$/], 
-        validWhen: true, 
+        args: [/^\(?\d\d\d\)? ?\d\d\d-?\d\d\d\d$/],
+        validWhen: true,
         message: 'That is not a valid phone number.'
       },
       {
-        field: 'rewards', 
+        field: 'rewards',
         method: 'matches',
-        args: [/^[0-9]{11}$/], 
-        validWhen: true, 
+        args: [/^[0-9]{11}$/],
+        validWhen: true,
         message: 'That is not a valid rewards number.'
       }
     ]);
@@ -102,9 +96,9 @@ class CartOrder extends React.Component {
     }
   };
   render() {
-    let validation = this.submitted ?                        
-                    this.validator.validate(this.state) :   
-                    this.state.validation  
+    let validation = this.submitted ?
+                    this.validator.validate(this.state) :
+                    this.state.validation
     const { profile } = this.props;
     const { cart, cartTotal, total, cartTax } = this.props;
     const itemWord = total === 1 ? 'item' : 'items' ;
@@ -152,31 +146,30 @@ class CartOrder extends React.Component {
               </div>
             </div>
 
-            <div className='f-con'> 
-              <label htmlFor="username">Username</label>   
+            <div className='f-con'>
+              <label htmlFor="username">Username</label>
               <input
                 type="text"
                 name="username"
-                className="form-control" 
-                autoComplete="off" 
+                className="form-control"
+                autoComplete="off"
                 placeholder="First and Last Name"
                 value={this.state.username}
                 onChange={this.handleChange.bind(this)}
               />
             </div>
 
-            <div className={validation.email.isInvalid ? 'f-con has-error' : 'f-con'}>    
-              <label htmlFor="email">Email</label>   
+            <div className='f-con'>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 name="email"
                 className="form-control"
-                autoComplete="off" 
+                autoComplete="off"
                 placeholder="email"
                 value={this.state.email}
                 onChange={this.handleChange.bind(this)}
               />
-              <span className="help-block">{validation.email.message}</span>
             </div>
 
             <div className={validation.phone.isInvalid ? 'f-con has-error' : 'f-con'}>
@@ -184,8 +177,8 @@ class CartOrder extends React.Component {
               <input
                 type="phone"
                 name="phone"
-                className="form-control" 
-                autoComplete="off" 
+                className="form-control"
+                autoComplete="off"
                 placeholder="phone"
                 value={this.state.phone}
                 onChange={this.handleChange.bind(this)}
@@ -198,8 +191,8 @@ class CartOrder extends React.Component {
               <input
                 type="number"
                 name="rewards"
-                className="form-control" 
-                autoComplete="off" 
+                className="form-control"
+                autoComplete="off"
                 value={this.state.rewards}
                 placeholder="rewards number"
                 onChange={this.handleChange.bind(this)}
@@ -209,9 +202,9 @@ class CartOrder extends React.Component {
 
             <div className='checkout--disclaimer'>
               {dateWithin ? (
-                  'Allow for 24 hour notice or call in store for other accommodations.'
+                  `Allow for 24 hour notice or call in store for other accommodations.${this.props.settings.store.phoneNo}`
               ): null }
-               
+
 
             </div>
           </div>
@@ -227,6 +220,7 @@ class CartOrder extends React.Component {
 
 const mapStateToProps = (state) => ({
     profile: state.profile,
+    settings: state.settings,
     order: state.order
 });
 
