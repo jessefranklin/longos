@@ -23,13 +23,6 @@ class CartOrder extends React.Component {
         args: [/^\(?\d\d\d\)? ?\d\d\d-?\d\d\d\d$/],
         validWhen: true,
         message: 'That is not a valid phone number.'
-      },
-      {
-        field: 'rewards',
-        method: 'matches',
-        args: [/^[0-9]{11}$/],
-        validWhen: true,
-        message: 'That is not a valid rewards number.'
       }
     ]);
 
@@ -186,7 +179,7 @@ class CartOrder extends React.Component {
               <span className="help-block">{validation.phone.message}</span>
             </div>
 
-            <div className={validation.rewards.isInvalid ? 'f-con has-error' : 'f-con'}>
+            <div className='f-con'>
               <label htmlFor="rewards">Rewards</label>
               <input
                 type="number"
@@ -197,7 +190,6 @@ class CartOrder extends React.Component {
                 placeholder="rewards number"
                 onChange={this.handleChange.bind(this)}
               />
-              <span className="help-block">{validation.rewards.message}</span>
             </div>
 
             <div className='checkout--disclaimer'>
