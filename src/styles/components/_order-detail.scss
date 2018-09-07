@@ -9,7 +9,7 @@
 
     .btn--container{
         position: relative;
-        
+
     }
     .state--not-ready{
         color:$red;
@@ -60,6 +60,72 @@
     .panel {
         width: 100%;
     }
+    &.bg-none{
+      background:none;
+    }
+    &.pad-none{
+      padding:0;
+    }
+    .order-detail--action{
+      width:160px;
+      height:40px;
+      padding:1rem;
+      border: 2px solid $red;
+      font-size:14px;
+      line-height: 14px;
+      font-weight: 600;
+      font-family: $sans;
+      text-align: center;
+      position: relative;
+      &.order-detail--list{
+        text-align: left;
+        &:after{
+          content:'';
+          height:0px;
+          width:0px;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid $red;
+          position: absolute;
+          right:1rem;
+          top:16px;
+        }
+      }
+    }
+}
+
+.order-detail--actions-list {
+    position: absolute;
+    background: #fff;
+    width:160px;
+    ul {
+        //order: 2px solid $red;
+        border-radius: 0px;
+        //color: $red;
+        font-weight: 500;
+        font-size: 12px;
+        text-transform: uppercase;
+        width:100%;
+        padding:0;
+        margin-bottom: 0;
+        li {
+            list-style: none;
+            width:100%;
+            height:40px;
+            button {
+              text-align: left;
+              font-family: $sans;
+              // color: $red;
+              font-size: 14px;
+              font-weight: 600;
+              // transform: translateY(-2px);
+              background: #fff;
+              border:1px solid $light-grey;
+              width:100%;
+              height:100%;
+            }
+        }
+    }
 }
 
 .form--action-row {
@@ -72,22 +138,26 @@
     display: inline-block;
     z-index: 2;
     padding: 3rem 1rem 3rem 5rem;
-    .order-detail--actions-list {
+    .order-detail--action{
+      width:160px;
+      padding:1rem;
+      border: 2px solid $red;
+      font-size:14px;
+      font-weight: 600;
+      font-family: $sans;
+      text-align: left;
+      position: relative;
+      &:after{
+        content:'';
+        height:0px;
+        width:0px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $red;
         position: absolute;
-        right: 0;
-        top: 7rem;
-        background: #fff;
-        ul {
-            padding: 0px;
-            margin: 0px;
-            li {
-                list-style: none;
-                button {
-                    white-space: nowrap;
-                    
-                }
-            }
-        }
+        right:1rem;
+        top:18px;
+      }
     }
 }
 
@@ -117,7 +187,7 @@
     width: 100%;
 }
 
-.my-collapsible__content { 
+.my-collapsible__content {
     overflow: hidden;
 }
 
@@ -131,17 +201,17 @@
     background-color: $dark-grey;
     color:#fff;
     .col-item {
-        width:22%;
+        width:25%;
         text-align: left;
     }
     .col-qty {
         width:10%;
     }
     .col-assign {
-        width:20%;
+        width:25%;
     }
     .col-status {
-        width:17%;
+        width:20%;
     }
     .col-barcode {
         width:20%;
@@ -171,7 +241,7 @@
     padding:1rem 0rem;
     margin-bottom: 1rem;
     .order-item--item{
-        width:22%;
+        width:25%;
         padding:1rem;
         text-align: left;
     }
@@ -180,10 +250,10 @@
         font-size: 18px;
     }
     .order-item--assign{
-        width:20%;
+        width:25%;
     }
     .order-item--status{
-        width:17%;
+        width:20%;
         .checkbox--container{
             width: 110px;
             margin:auto;
@@ -217,4 +287,39 @@
         right:2px;
         top:15px;
     }
+}
+
+.order-detail{
+  .fa-calendar,
+  .fa-clock{
+    opacity:.5;
+    position: absolute;
+    left: 7px;
+    top:50%;
+    transform: translateY(-50%);
+  }
+  .date-picker,
+  .time-picker{
+    position: relative;
+    height:34px;
+    input,
+    select{
+      padding-left:3rem;
+    }
+  }
+  input,
+  select{
+    width:100%;
+    font-size: 14px;
+    height:34px;
+  }
+  .element{
+    &:first-of-type{
+      margin-top: 4rem;
+    }
+    h2{
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+  }
 }

@@ -69,7 +69,7 @@
         color:$red;
         display: block;
     }
-    
+
 }
 
 #app .customer--app .searchContainer {
@@ -89,13 +89,13 @@
     }
     &:focus-within {
         .fa-search{
-            opacity:0;        
+            opacity:0;
             left:100%;
         }
     }
     &.active{
         .fa-search{
-            opacity:0;        
+            opacity:0;
             left:100%;
         }
         .closer {
@@ -118,7 +118,7 @@
         height: 39px;
         opacity: 1;
         z-index: 3;
-        border-radius: 15px;
+        border-radius: 27px;
         display: flex;
         align-items: center;
         justify-content: center;

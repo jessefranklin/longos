@@ -108,6 +108,7 @@ body{
   display: inline-block;
   font-size: 1.2rem;
   color: $red;
+  text-transform: uppercase;
   @extend .clear-button-styling
 }
 
@@ -129,12 +130,12 @@ body{
   color: $red;
   background-color: #fff;
   border:none;
-  padding:3rem 5rem 3rem 1rem;
+  padding:3rem 5rem 3rem 2.5rem;
   text-align: left;
   &:before {
       content: '';
       position: absolute;
-      transform: translate(-10px,5px);
+      transform: translate(-25px,5px);
       width: 0;
       height: 0;
       border-top: 5px solid transparent;
