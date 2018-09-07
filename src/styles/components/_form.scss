@@ -118,10 +118,45 @@ body .form-group {
         }
     }
     &.active{
-      .fa-search{
-          opacity:0;        
-          left:100%;
-      }
+        .fa-search{
+            opacity:0;        
+            left:100%;
+        }
+    }
+}
+
+#app .rowFilter .searchContainer{
+    &:after{
+        content:'';
+        width:22%;
+        height:100%;
+        position: absolute;
+        right:0;
+        top:0;
+        border-radius: 2.7rem;
+        background-color: $red;
+        z-index: 5;
+    }
+    .search {
+        border: 1px solid $light-grey;
+    }
+    .fa-search{
+        opacity: 1;
+        left:89%;
+        color:#fff;
+    }
+    .closer {
+        right: 22%;
+    }
+    &:focus-within{
+        .fa-search{
+            opacity:1;
+        }
+    }
+    &.active{
+        .fa-search{
+            opacity:1;
+        }
     }
 }
 
