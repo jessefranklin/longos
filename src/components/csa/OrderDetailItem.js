@@ -38,13 +38,13 @@ class OrderDetailItem extends Component {
   }
   onAssignedChange = (value, name) => {
     this.setState({ [name] : value });
-    // this.setState({ 'reassign' : false });
+    this.setState({ 'reassign' : false });
     let orderUpdate = `assign?assignee=${value}`;
     console.log(orderUpdate);
     this.updateOrder(orderUpdate);
   }
   onReassign=()=>{
-    // this.setState({ 'reassign' : true });
+    this.setState({ 'reassign' : true });
   }
   onRemove = () => {
     

@@ -6,16 +6,15 @@ import Select from 'react-select';
 import {Button, Modal, Panel } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
+import FontAwesome from 'react-fontawesome';
 import { fetchCSAOrder, updateCSAOrder, clearCSAOrder } from '../../actions/csa/csaOrder';
 import { orderFilterByCounter } from '../../selectors/orders';
 import { CSACart } from '../../actions/cart';
 import CSAHeader from './CSAHeader';
+import EditClient from './EditClient';
+import EditDateTime from './EditDateTime';
 import groupByCounter from '../../selectors/groupByCounter';
-import TimePicker from 'react-bootstrap-time-picker';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
-import FontAwesome from 'react-fontawesome';
-import MediaQuery from 'react-responsive';
 
 import { baseUrl, headers } from "../../const/global";
 import axios from 'axios';
@@ -54,16 +53,21 @@ class OrderDetail extends Component {
       showActions: false,
       editState: false,
       orderUpdated: false,
-      promptTime: 10000,
+      showPaidModal: false,
+      promptTime: 3000,
+      promptType: 'success',
+      promptMessage: 'this order has been updated.',
       show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.updateClient = this.updateClient.bind(this);
     this.promptUpdate = this.promptUpdate.bind(this);
     this.toggleCounterFilter = this.toggleCounterFilter.bind(this);
     this.showActions = this.showActions.bind(this);
+    this.gotoDashboard = this.gotoDashboard.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.showPaidModal = this.showPaidModal.bind(this);
   }
 
   componentWillMount() {
@@ -78,6 +82,7 @@ class OrderDetail extends Component {
     this.props.clearCSAOrder();
     document.removeEventListener('click', this.closeCounterFilterMenu);
     document.removeEventListener('click', this.closeActions);
+    document.removeEventListener('click', this.closePaidModal);
     this.setState({ editState: false });
   };
 
@@ -128,6 +133,17 @@ class OrderDetail extends Component {
     });
   }
 
+  showPaidModal = () => {
+    this.setState({ showPaidModal: true });
+    document.addEventListener("click", this.closePaidModal);
+  }
+
+  closePaidModal = () => {
+    this.setState({ showPaidModal: false }, () => {
+      document.removeEventListener('click', this.closePaidModal);
+    });
+  }
+
 
   updateState = () => {
     this.props.fetchCSAOrder(this.props.match.params.id);
@@ -139,53 +155,32 @@ class OrderDetail extends Component {
       this.completeOrder(value)
     }
   }
-
-  updateClient = (e) => {
-    const client = {...this.state.client}
-    client[e.target.name] = e.target.value;
-    this.setState(() => ({ client }));
-  };
-
-  updatePickupTime = (val) => {
-    const time = moment().startOf('day').seconds(val).format('hh:mm:ss');
-    this.setState(() => ({ 'pickupTime': time }));
-  };
-
-  updatePickupDate = (val) => {
-    const date = val.target.value;
-    this.setState(() => ({ 'pickupDate': date }));
-  };
+  
   promptUpdate(){
     this.setState({ orderUpdated: true });
     setTimeout(()=> {
       this.setState({ orderUpdated: false });
     },this.state.promptTime)
   }
-  updateClientPickup = (name) => {
-    // PUT http://digitalpreorder-staging.azurewebsites.net/api/order/updateorder
+
+  updateClientPickup = (name,payload) => {
+    console.log(name,payload)
+    this.setState({ [name]: false });
+    this.updateOrder(payload);
+  }
+
+  updateOrder = (payload) => {
     let url = orderAPI +`/updateorder`;
-   
-    const payload = {
-      id: this.props.csaOrder.order.id,
-      storeId: this.props.csaOrder.order.store.id,
-      client: {
-        ...this.state.client
-      },
-      pickUpDate: this.state.pickupDate,
-      pickUpTime: this.state.pickupTime
-    }
     axios.put(url, payload, headers).then(
       (response) => {
-        this.setState({ [name]: false });
         this.props.fetchCSAOrder(this.props.match.params.id);  
-        this.promptUpdate();
+        this.promptUpdate('success','This order has been updated');
       },
       (err) => {
         console.log(err);
       }
     )
   }
-
 
   addToOrder = () => {
     let cart = []
@@ -206,6 +201,7 @@ class OrderDetail extends Component {
     axios.put(url, headers).then(
       (response) => {
         this.props.fetchCSAOrder(this.props.match.params.id);
+        this.promptUpdate('success','This order has been completed');
       },
       (err) => {
         console.log(err);
@@ -214,7 +210,6 @@ class OrderDetail extends Component {
   }
 
   updateItem = (payload) => {
-    // http://digitalpreorder-staging.azurewebsites.net/api/order/O17375337/updateitem
     let url = orderAPI +`/${this.props.match.params.id}/updateitem`
     axios.put(url, payload, headers).then(
       (response) => {
@@ -226,12 +221,19 @@ class OrderDetail extends Component {
     )
   }
   
-  cancelOrder(value){
+  cancelOrder = (value) => {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`
     axios.put(url, headers).then(
       (response) => {
-        // Add notification
-
+        this.setState({
+          show: false,
+          promptType: 'warning',
+          promptMessage: 'This order has been cancelled and removed.'
+        })
+        this.promptUpdate();
+        setTimeout(()=> {
+          this.props.history.push('/orderDashboard');
+        }, 3000);
       },
       (err) => {
         console.log(err);
@@ -252,13 +254,16 @@ class OrderDetail extends Component {
     )
   }
 
+  gotoDashboard = () => {
+    this.props.history.push('/orderDashboard');
+  }
+
   render() {
     const csaOrder = this.props.csaOrder.order;
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
     const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
     let editState = this.state.editState;
-    let back = this.context.router.history.goBack;
 
     return (
       <div>
@@ -267,7 +272,7 @@ class OrderDetail extends Component {
           <div className="order-detail">
             <div className="order-detail--actions-row">
             
-              <button className="link--go-back" onClick={back}>Back to orders</button>
+              <button className="link--go-back" onClick={this.gotoDashboard}>Back to orders</button>
                 <div className="order-detail--actions-container">
                   <button className="order-detail--action" onClick={this.showActions}>
                     <FontAwesome
@@ -295,11 +300,7 @@ class OrderDetail extends Component {
             </div>
             <div className="order-detail--actions-row">
               {this.state.orderUpdated? (
-                <Panel bsStyle="success">
-                  <Panel.Heading>
-                    <Panel.Title componentClass="h3">Order Updated</Panel.Title>
-                  </Panel.Heading>
-                </Panel>
+                <PromptUpdate type={this.state.promptType} message={this.state.promptMessage} />
               ) : ''}
             </div>
 
@@ -310,9 +311,9 @@ class OrderDetail extends Component {
                 {csaOrder.id} 
                 
               </h2>
-              <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder} />
+              <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder}  />
 
-              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} />
+              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} showPaidModal={this.state.showPaidModal} handleShow={this.showPaidModal} handleClose={this.closePaidModal} />
 
             </div>
 
@@ -331,9 +332,8 @@ class OrderDetail extends Component {
 
               {this.state.editClient ? (
                 <div>
-                  <EditClient client={this.state.client} updateClient={this.updateClient} />
-                  <button className="order-detail--action" onClick={() => this.handleSave('editClient')}>Cancel</button>
-                  <button className="order-detail--action" onClick={() => this.updateClientPickup('editClient')}>Save</button>
+                  <EditClient csaOrder={csaOrder} updateClient={this.updateClient} handleClose={this.handleSave} updateClientPickup={this.updateClientPickup} />
+                  
                 </div>
               ) : (
                 <div>
@@ -360,13 +360,12 @@ class OrderDetail extends Component {
 
               {this.state.editPickup ? (
                 <div>
-                  <EditPickup pickup={this.state} updatePickupDate={this.updatePickupDate} updatePickupTime={this.updatePickupTime} />
-                  <button className="order-detail--action" onClick={() => this.handleSave('editPickup')}>Cancel</button>
-                  <button className="order-detail--action" onClick={() => this.updateClientPickup('editPickup')}>Save</button>
+                  <EditDateTime csaOrder={csaOrder} updateClientPickup={this.updateClientPickup} handleClose={this.handleSave}  />
                 </div>
               ) : (
                 <div>
-                  {csaOrder.pickupDate} @ {csaOrder.pickupTime} 
+                  {csaOrder.pickupDate} @ {moment(csaOrder.pickupTime, "HH:mm:ss").format('h:mm a')}
+                  
                 </div>
               )}
               
@@ -376,7 +375,6 @@ class OrderDetail extends Component {
               <StatusState status={csaOrder.status} onSelectChange={this.onSelectChange} isPaid={csaOrder.isPaid} />
             </div>
           </div>
-          
           
 
           <div className="order-items--header">
@@ -445,44 +443,18 @@ class OrderDetail extends Component {
   }
 }
 
-const EditPickup = ({pickup,updatePickupDate,updatePickupTime}) => {
+const PromptUpdate = ({type,message}) => {
   return (
     <div>
-      <div className="date-picker">
-        <i className="fa fa-calendar" aria-hidden="true"></i>
-        {/* <SingleDatePicker
-          date={this.state.pickUpDate} 
-          onDateChange={this.onDateChange}
-          focused={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-        /> */}
-        <MediaQuery query="(min-device-width: 769px)">
-          <SingleDatePicker
-            date={pickup.pickupDate}
-            onDateChange={(e) => updatePickupDate(e)}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
-        </MediaQuery>
-        <MediaQuery query="(max-device-width: 768px)">
-          <input
-            type="date"
-            name="pickUpDate"
-            placeholder="Select Date"
-            value={pickup.pickupDate}
-            onChange={(e) => updatePickupDate(e)}
-          />
-        </MediaQuery>
-      </div>
-      <div className="time-picker">
-        <i className="fa fa-clock" aria-hidden="true"></i>
-        <TimePicker onChange={updatePickupTime} start="8:00" end="22:00" value={pickup.pickupTime} />
-      </div>
+      <Panel bsStyle={type}>
+        <Panel.Heading>
+          <Panel.Title componentClass="h3">{message}</Panel.Title>
+        </Panel.Heading>
+      </Panel>
     </div>
   );
 };
+
 
 const StatusState = ({status,onSelectChange,isPaid}) => {
   return (
@@ -507,9 +479,10 @@ const CancelModal = ({show,handleClose,cancel}) => {
     <div>
       <Modal show={show} onHide={handleClose}>
         <div className="modal--cancel">
+          <h3>Cancel Modal</h3>
           <h4>Are you sure you want to cancel this order?</h4>
           <div className="modal--buttons">
-            <Button>Yes, Cancel</Button>
+            <Button onClick={cancel}>Yes, Cancel</Button>
             <Button onClick={handleClose} className="btn-cancel">No</Button>
           </div>
         </div>
@@ -518,48 +491,7 @@ const CancelModal = ({show,handleClose,cancel}) => {
   );
 };
 
-const EditClient = ({client,updateClient}) => {
-  return (
-    <div>
-      <input
-        type="text"
-        name="name"
-        className='form-control'
-        placeholder="First and Last Name"
-        value={client.name}
-        onChange={updateClient}
-      />
-      <input
-        type="email"
-        name="email"
-        className='form-control'
-        placeholder="email"
-        value={client.email}
-        onChange={() => updateClient()}
-      />
-      <input
-        type="phone"
-        name="phoneNo"
-        className='form-control'
-        placeholder="phone"
-        value={client.phoneNo}
-        onChange={updateClient}
-      />
-      <input
-        type="number"
-        name="tyrNumber"
-        className='form-control'
-        value={client.tyrNumber ? client.tyrNumber : '' }
-        placeholder="rewards number"
-        onChange={updateClient}
-      />
-    </div>
-  );
-};
-
-
-
-const PaidButton = ({isPaid,orderPaid}) => {
+const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClose}) => {
   return (
     <div className="btn--container">
       {isPaid ? (
@@ -567,8 +499,19 @@ const PaidButton = ({isPaid,orderPaid}) => {
           <button className="checkbox-red checked" onClick={() => orderPaid(false)}>Order is Paid </button>
         </div>
       ):(
-        <button className="checkbox-red"  onClick={() => orderPaid(true)}>Order is not paid</button>
+        <button className="checkbox-red"  onClick={() => handleShow()}>Order is not paid</button>
       )}
+
+      <Modal show={showPaidModal} onHide={handleClose}>
+        <div className="modal--cancel">
+          <h3>Order Paid</h3>
+          <h4>Please enter your receipt ID below.</h4>
+          <div className="modal--buttons">
+            <Button onClick={() => orderPaid(true)}>Yes, Cancel</Button>
+            <Button onClick={handleClose} className="btn-cancel">No</Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

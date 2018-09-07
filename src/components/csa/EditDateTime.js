@@ -1,12 +1,8 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
-import { setProfile } from '../../actions/profile';
-import moment from 'moment';
+import MediaQuery from 'react-responsive';
 import { SingleDatePicker } from 'react-dates';
-import { ListGroup, ListGroupItem, Form, FormControl, FormGroup, ControlLabel, Row, Col, Button } from 'react-bootstrap';
-import { setOrder } from '../../actions/order';
-import CartProgress from '../cart/CartProgress';
+import moment from 'moment';
+
 import TimePicker from 'react-bootstrap-time-picker';
 
 class EditDateTime extends React.Component {
@@ -14,132 +10,63 @@ class EditDateTime extends React.Component {
     super(props);
 
     this.state = {
-      username: props.profile ? props.profile.username : '',
-      email: props.profile ? props.profile.email : '',
-      phone: props.profile ? props.profile.phone : '',
-      rewards: props.profile.rewards ? props.profile.rewards : '',
       calendarFocused: false,
-      pickUpDate: props.order.pickUpDate?moment(props.order.pickUpDate):moment(new Date()).add(1,'days'),
-      time: props.order.time?props.order.time:32400,
-      status: 'pending',
-      createdAt: moment(),
-      error: ''
+      pickupDate: this.props.csaOrder.pickupDate,
+      pickupTime: moment(this.props.csaOrder.pickupTime, 'h:mm a').diff(moment().startOf('day'), 'seconds')
     };
-
-    this.handleTimeChange = this.handleTimeChange.bind(this);
-
   }
-  onDateChange = (pickUpDate) => {
-    if (pickUpDate) {
-      this.setState(() => ({ pickUpDate }));
-    }
+
+  updatePickupTime = (val) => {
+    this.setState(() => ({ 'pickupTime': val }));
   };
-  onFocusChange = ({ focused }) => {
-    this.setState(() => ({ calendarFocused: focused }));
-  };
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
   };
-  handleTimeChange(time) {
-    this.setState({ time });
+  updateClient = () => {
+    
+    const payload = {
+      id: this.props.csaOrder.id,
+      storeId: this.props.csaOrder.store.id,
+      client: {
+        ...this.props.csaOrder.client
+      },
+      pickUpDate: this.state.pickupDate,
+      pickUpTime: moment().startOf('day').seconds(this.state.pickupTime).format('HH:mm:ss')
+    }
+    this.props.updateClientPickup('editPickup',payload);
   }
-  onSubmit = (e) => {
-    this.props.setProfile({
-      username: this.state.username,
-      email: this.state.email,
-      phone: this.state.phone,
-      rewards: this.state.rewards
-    });
-    this.props.setOrder({
-      pickUpDate: this.state.pickUpDate,
-      time: this.state.time,
-      status: this.state.status,
-      createdAt: this.state.createdAt
-    });
-  };
   render() {
     const { profile } = this.props;
+    let date = moment(this.state.pickupDate).format("MM/DD/YYYY");
     return (
       <div>
-      
-        <CartProgress progress="1" />
-
-        <div className="form-group">
-          <div className="form-inputs">
-            <div className="time-inputs">
-              <div className="date-picker">
-                <i className="fa fa-calendar" aria-hidden="true"></i>
-                <SingleDatePicker
-                  date={this.state.pickUpDate} 
-                  onDateChange={this.onDateChange}
-                  focused={this.state.calendarFocused}
-                  onFocusChange={this.onFocusChange}
-                  numberOfMonths={1}
-                  isOutsideRange={() => false}
-                />
-              </div>
-
-              <div className="time-picker">
-                <i className="fa fa-clock" aria-hidden="true"></i>
-                <TimePicker onChange={this.handleTimeChange} start="8:00" end="22:00" value={this.state.time} />
-              </div>
-            </div>
+        <div className="date-picker">
+          <i className="fa fa-calendar" aria-hidden="true"></i>
             <input
-              type="text"
-              name="username" 
-              className='form-control'
-              placeholder="First and Last Name"
-              value={this.state.username}
+              type="date"
+              name="pickupDate"
+              placeholder="Select Date"
+              value={this.state.pickupDate}
               onChange={this.handleChange.bind(this)}
             />
-            <input
-              type="email"
-              name="email"
-              className='form-control' 
-              placeholder="email"
-              value={this.state.email}
-              onChange={this.handleChange.bind(this)}
-            />
-            <input
-              type="phone"
-              name="phone" 
-              className='form-control'
-              placeholder="phone"
-              value={this.state.phone}
-              onChange={this.handleChange.bind(this)}
-            />
-            <input
-              type="number" 
-              name="rewards" 
-              className='form-control'
-              value={this.state.rewards}
-              placeholder="rewards number"
-              onChange={this.handleChange.bind(this)}
-            />
-
-            <div className='checkout--disclaimer'>
-              Allow for 24 hour notice or call in store for other accommodations.
-              
-            </div>
-          </div>
-
-          <Link className="btn" to="/orderreview" onClick={this.onSubmit}>Next step</Link>
-          
-          <Link to="/products" className="btn btn-secondary">Cancel</Link>
+         
         </div>
+        <div className="time-picker">
+          <i className="fa fa-clock" aria-hidden="true"></i>
+          <TimePicker onChange={this.updatePickupTime} start="8:00" end="22:00" value={this.state.pickupTime} />
+        </div>
+
+        <div className="form--action-row">
+
+        <button className="order-detail--action" onClick={() => this.props.handleClose('editPickup')}>Cancel</button>
+        <button className="order-detail--action btn-red" onClick={() => this.updateClient()}>Save</button>
+        </div>
+
       </div>
     )
   }
 }
   
-const mapStateToProps = (state) => ({
-    profile: state.profile,
-    order: state.order
-});
 
-const mapDispatchToProps = (dispatch) => ({
-  setProfile: (profile) => dispatch(setProfile(profile)),
-  setOrder: (order) => dispatch(setOrder(order))
-});
-  
-export default connect(mapStateToProps, mapDispatchToProps)(EditDateTime);
+export default EditDateTime;

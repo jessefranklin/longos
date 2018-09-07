@@ -63,12 +63,21 @@
   white-space: nowrap;
 }
 
+
 .order-detail--action {
   display: inline-block;
   font-size: 1.2rem;
   color: $red;
   @extend .clear-button-styling
 }
+
+.btn-red {
+  background: $red;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 14px;
+}
+
 
 .link--go-back {
   text-transform: uppercase;

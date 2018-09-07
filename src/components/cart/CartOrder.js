@@ -33,7 +33,7 @@ class CartOrder extends React.Component {
       {
         field: 'rewards', 
         method: 'matches',
-        args: [/^[0-9]{8}$/], 
+        args: [/^[0-9]{11}$/], 
         validWhen: true, 
         message: 'That is not a valid rewards number.'
       }
@@ -157,7 +157,7 @@ class CartOrder extends React.Component {
               <input
                 type="text"
                 name="username"
-                className='form-control' 
+                className="form-control" 
                 autoComplete="off" 
                 placeholder="First and Last Name"
                 value={this.state.username}
@@ -170,7 +170,7 @@ class CartOrder extends React.Component {
               <input
                 type="email"
                 name="email"
-                className='form-control' 
+                className="form-control"
                 autoComplete="off" 
                 placeholder="email"
                 value={this.state.email}
@@ -184,7 +184,7 @@ class CartOrder extends React.Component {
               <input
                 type="phone"
                 name="phone"
-                className='form-control' 
+                className="form-control" 
                 autoComplete="off" 
                 placeholder="phone"
                 value={this.state.phone}
@@ -198,7 +198,7 @@ class CartOrder extends React.Component {
               <input
                 type="number"
                 name="rewards"
-                className='form-control' 
+                className="form-control" 
                 autoComplete="off" 
                 value={this.state.rewards}
                 placeholder="rewards number"

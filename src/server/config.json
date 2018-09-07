@@ -1,95 +1,25 @@
 [{  
     "id": 0,
-    "name": "store1",
+    "name": "Maple Leaf Square (MLS)",
     "store_id": "store1",
-    "zone": "5",
-    "location": {
-        "provence": "ontario",
-        "city": "toronto",
-        "address": "123 yonge st."
-    },
-    "tax": {
-        "name": "HST",
-        "tax": 13
-    },
-    "terms" : {
-        "header": "Order agreement confirmation",
-        "body": "Description ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
-    "counters" : {
-        "all" : [{
-            "name":"employee1",
-            "email":"email",
-            "sms":"number"
-        },{
-            "name":"employee2",
-            "email":"email",
-            "sms":"number"
-        }
-        ],
-        "deli" : [{
-            "name":"deli employee1",
-            "email":"email",
-            "sms":"number"
-        },{
-            "name":"deli employee2",
-            "email":"email",
-            "sms":"number"
-        }
-        ],
-        "kitchen" : [{
-            "name":"kitchen employee1",
-            "email":"email",
-            "sms":"number"
-        },{
-            "name":"kitchen employee2",
-            "email":"email",
-            "sms":"number"
-        }],
-        "salad" : [{
-            "name":"salad employee1",
-            "email":"email",
-            "sms":"number"
-        },{
-            "name":"salad employee2",
-            "email":"email",
-            "sms":"number"
-        }],
-        "sushi" : [{
-            "name":"sushi employee1",
-            "email":"email",
-            "sms":"number"
-        },{
-            "name":"sushi employee2",
-            "email":"email",
-            "sms":"number"
-        }],
-        "cakes" : [{
-            "name":"cakes employee1",
-            "email":"email",
-            "sms":"number"
-        },{
-            "name":"cakes employee2",
-            "email":"email",
-            "sms":"number"
-        }]
-    }
-},{
-    "id": 1,
-    "name": "store2",
-    "store_id": "store2",
     "zone": "6",
+    "phoneNo": "(416) 366-1717", 
     "location": {
-        "provence": "alberta",
-        "city": "calgary",
-        "address": "500 Bloor St."
-    },
-    "tax": {
-        "name": "PST",
-        "tax": 5
-    },
-    "terms" : {
-        "header": "Order agreement confirmation",
-        "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
+        "provence": "ON",
+        "city": "Toronto",
+        "address": "15 York Street",
+        "postalCode": "M5J 0A3"
+    }
+},{  
+    "id": 0,
+    "name": "Maple Leaf Square (MLS)",
+    "store_id": "store24",
+    "zone": "6",
+    "phoneNo": "(416) 366-1717", 
+    "location": {
+        "provence": "ON",
+        "city": "Toronto",
+        "address": "15 York Street",
+        "postalCode": "M5J 0A3"
     }
 }]

@@ -19,6 +19,7 @@ class Settings extends React.Component {
     };
   }
   componentDidMount() {
+    // GET: http://digitalpreorder-staging.azurewebsites.net/api/store
     {stores.map((store,index) => {
       storeList.push({ value: store.id, label: store.store_id });
     })}
