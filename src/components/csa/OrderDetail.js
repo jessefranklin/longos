@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import OrderCounterFilters from './OrderCounterFilters';
-import Select from 'react-select';
-import {Button, Modal, Panel } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import FontAwesome from 'react-fontawesome';
@@ -15,7 +13,7 @@ import groupByCounter from '../../selectors/groupByCounter';
 import moment from 'moment';
 import Loading from '../shared/LoadingPage';
 import { PaidButton, CancelModal, StatusState } from './OrderDetailComponents';
-
+import { PromptUpdate } from '../shared/Prompt';
 import { baseUrl, headers } from "../../const/global";
 import axios from 'axios';
 
@@ -145,7 +143,6 @@ class OrderDetail extends Component {
     });
   }
 
-
   updateState = () => {
     this.props.fetchCSAOrder(this.props.match.params.id);
   }
@@ -165,7 +162,6 @@ class OrderDetail extends Component {
   }
 
   updateClientPickup = (name,payload) => {
-    console.log(name,payload)
     this.setState({ [name]: false });
     this.updateOrder(payload);
   }
@@ -411,18 +407,6 @@ class OrderDetail extends Component {
     );
   }
 }
-
-const PromptUpdate = ({type,message}) => {
-  return (
-    <div>
-      <Panel bsStyle={type}>
-        <Panel.Heading>
-          <Panel.Title componentClass="h3">{message}</Panel.Title>
-        </Panel.Heading>
-      </Panel>
-    </div>
-  );
-};
 
 
 const mapStateToProps = (state) => ({

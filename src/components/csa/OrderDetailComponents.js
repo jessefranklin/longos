@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Modal } from 'react-bootstrap';
+import Select from 'react-select';
 
 const options = [
   { value: 1, label: 'Ready For Pickup' },
