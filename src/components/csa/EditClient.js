@@ -7,8 +7,8 @@ class EditClient extends Component {
         this.state = {
             name: this.props.csaOrder.client.name,
             email: this.props.csaOrder.client.email,
-            phoneNo: this.props.csaOrder.client.phoneNo,
-            tyrNumber: this.props.csaOrder.client.tyrNumber
+            phoneNo: this.props.csaOrder.client.phoneNo !== null ? this.props.csaOrder.client.phoneNo : '',
+            tyrNumber: this.props.csaOrder.client.tyrNumber !== null ? this.props.csaOrder.client.tyrNumber : ''
         }
     }
     updateClient = (e) => {
@@ -57,7 +57,7 @@ class EditClient extends Component {
                 type="number"
                 name="tyrNumber"
                 className='form-control'
-                value={this.state.tyrNumber ? this.state.tyrNumber : '' }
+                value={this.state.tyrNumber}
                 placeholder="rewards number"
                 onChange={this.updateClient}
                 />

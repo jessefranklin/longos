@@ -14,15 +14,12 @@ import EditDateTime from './EditDateTime';
 import groupByCounter from '../../selectors/groupByCounter';
 import moment from 'moment';
 import Loading from '../shared/LoadingPage';
+import { PaidButton, CancelModal, StatusState } from './OrderDetailComponents';
 
 import { baseUrl, headers } from "../../const/global";
 import axios from 'axios';
 
 const orderAPI = baseUrl+'/order';
-const options = [
-  { value: 1, label: 'Ready For Pickup' },
-  { value: 2, label: 'Order Has been picked up' }
-]
 
 class OrderDetail extends Component {
   static contextTypes = {
@@ -88,6 +85,7 @@ class OrderDetail extends Component {
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
   };
+
   handleEdit = (name) =>{
     this.setState({ [name]: true })
   }
@@ -107,7 +105,11 @@ class OrderDetail extends Component {
   }
 
   editStateClose = () => {
-    this.setState({ editState: false });
+    this.setState({ 
+      editState: false, 
+      editPickup: false,
+      editClient: false
+    });
   }
 
   toggleCounterFilter(){
@@ -418,67 +420,6 @@ const PromptUpdate = ({type,message}) => {
           <Panel.Title componentClass="h3">{message}</Panel.Title>
         </Panel.Heading>
       </Panel>
-    </div>
-  );
-};
-
-
-const StatusState = ({status,onSelectChange,isPaid}) => {
-  return (
-    <div>
-        {status === 0 && <div className="state--not-ready">Not Ready</div> }
-        {status === 1 && !isPaid && <div className="state--not-ready">Ready for pickup</div> }
-        {status === 1 && isPaid && <Select
-          name="status"
-          value={status}
-          onChange={(e)=>onSelectChange(e.value)}
-          options={options}
-          disabled={status === 0 ? true:false}
-          clearable={false}
-        /> }
-        {status === 2 && <div className="state--completed">Completed</div> }
-    </div>
-  );
-};
-
-const CancelModal = ({show,handleClose,cancel}) => {
-  return (
-    <div>
-      <Modal show={show} onHide={handleClose}>
-        <div className="modal--cancel">
-          <h3>Cancel Modal</h3>
-          <h4>Are you sure you want to cancel this order?</h4>
-          <div className="modal--buttons">
-            <Button onClick={cancel}>Yes, Cancel</Button>
-            <Button onClick={handleClose} className="btn-cancel">No</Button>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-};
-
-const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClose}) => {
-  return (
-    <div className="btn--container">
-      {isPaid ? (
-        <div>
-          <button className="checkbox-red checked" onClick={() => orderPaid(false)}>Order is Paid </button>
-        </div>
-      ):(
-        <button className="checkbox-red"  onClick={() => handleShow()}>Order is not paid</button>
-      )}
-
-      <Modal show={showPaidModal} onHide={handleClose}>
-        <div className="modal--cancel">
-          <h3>Order Paid</h3>
-          <h4>Please enter your receipt ID below.</h4>
-          <div className="modal--buttons">
-            <Button onClick={() => orderPaid(true)}>Yes, Cancel</Button>
-            <Button onClick={handleClose} className="btn-cancel">No</Button>
-          </div>
-        </div>
-      </Modal>
     </div>
   );
 };
