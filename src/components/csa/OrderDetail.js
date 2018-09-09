@@ -418,7 +418,7 @@ class OrderDetail extends Component {
                 <h2>{key}</h2>
                 <div className="counter-items--container">
                   {csaOrderSortedItems[key].map(order => {
-                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} />;
+                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} />;
                   })}
                 </div>
               </div>;

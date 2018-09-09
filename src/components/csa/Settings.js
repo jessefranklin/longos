@@ -28,6 +28,7 @@ class Settings extends React.Component {
     const url = `${baseUrl}/store`;
     axios.get(url, headers).then(
         (response) => {
+          console.log(response.data);
           this.listStoreOptions(response.data);
         },
         (err) => {

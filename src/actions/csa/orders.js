@@ -1,22 +1,16 @@
-import { baseUrl } from "../../const/global";
-let axios = require('axios');
-import config from '../../server/config.json';
+import { baseUrl, headers } from "../../const/global";
+import axios from 'axios';
 
-// const apiUrl = "http://digitalpreorder.azurewebsites.net/api/order/active";
+import config from '../../server/config.json';
 import { connect } from "react-redux";
 
-const apiUrl = baseUrl+"/order/active";
-const store = `?storeid=${config[0].store_id}`;
-let url = apiUrl + store;
 
-const headers = {
-    header: {
-        "Content-Type":"application/json",
-        "Access-Control-Allow-Origin": "*"
-    }
-}
+export let fetchCSAOrders = (storeID) => {
+    let store_id = storeID ? storeID : config[0].store_id;
+    const apiUrl = baseUrl+"/order/active";
+    let store = `?storeid=${store_id}`;
+    let url = apiUrl + store;
 
-export let fetchCSAOrders = () => {
     return (dispatch) => {
         dispatch(fetchCSAOrdersBegin())
         return axios.get(url, headers).then(
@@ -30,7 +24,6 @@ export let fetchCSAOrders = () => {
 
     }
 }
-
 
 
 export const fetchCSAOrdersBegin = () => ({

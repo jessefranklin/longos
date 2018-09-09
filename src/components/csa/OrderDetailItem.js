@@ -128,14 +128,16 @@ class OrderDetailItem extends Component {
                 </div>
                 {this.props.editState ? (
                   <div className="order-item--remove-item">
-                    <button onClick={this.onRemove} className="btn-qu">
-                      <FontAwesome
-                      className='fa fa-trash'
-                      name='fa-trash'
-                      size='2x'
-                      aria-hidden='true'
-                    />
-                  </button>
+                  {!this.props.isPaid?
+                      <button onClick={this.onRemove} className="btn-qu">
+                        <FontAwesome
+                        className='fa fa-trash'
+                        name='fa-trash'
+                        size='2x'
+                        aria-hidden='true'
+                      />
+                    </button>
+                  : null}
                   </div>
                 ): ''}
 

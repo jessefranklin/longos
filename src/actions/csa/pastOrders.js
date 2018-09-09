@@ -1,13 +1,5 @@
-
-let axios = require('axios');
-
-
-const headers = {
-    header: {
-        "Content-Type":"application/json",
-        "Access-Control-Allow-Origin": "*"
-    }
-}
+import { baseUrl, headers } from "../../const/global";
+import axios from 'axios';
 
 export let fetchCSAPastOrders = (url) => {
     return (dispatch) => {
@@ -21,7 +13,6 @@ export let fetchCSAPastOrders = (url) => {
                 console.log(err);
             }
         )
-
     }
 }
 
