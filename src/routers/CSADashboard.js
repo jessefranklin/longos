@@ -22,37 +22,13 @@ import uuid from 'uuid/v1';
 class CSADashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.sampleNotification = this.sampleNotification.bind(this);
-
-  }
-  dispatchNotification(fn, timeout) {
-    let notificationOpts = {
-      uid: uuid(),
-      title: 'A new order has been placed',
-      message: 'A new order has been placed',
-      position: 'tr',
-      autoDismiss: 0,
-      action: {
-        label: 'View Order',
-        callback: () => alert('clicked!')
-      }
-    };
-    setTimeout(() => {
-      this.context.store.dispatch(fn(notificationOpts));
-    }, timeout);
-  }
-
-  sampleNotification() {
-    this.dispatchNotification(success, 250);
-    this.dispatchNotification(error, 500);
-    this.dispatchNotification(warning, 750);
-    this.dispatchNotification(info, 1000);
   }
 
   render(){
     const {notifications, match } = this.props;
     return(
       <div className="csa--app">
+        
         <CSAHeader />
 
         <Switch>

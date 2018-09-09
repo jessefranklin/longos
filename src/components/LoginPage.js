@@ -12,14 +12,7 @@ import { fetchConfigs } from '../actions/config';
 import { fetchProducts } from '../actions/customer/products';
 import { setTextFilter, setOrderFilter } from '../actions/filter';
 import FormValidator from './shared/FormValidator';
-
-const headers = {
-  mode: "no-cors",
-  headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
-  }
-}
+import Loading from './shared/LoadingPage';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -167,6 +160,7 @@ class LoginPage extends React.Component {
           </div>
 
         </div>
+        <Loading loading={this.props.productsLoading} />
       </div>
     )
   }
@@ -240,6 +234,8 @@ const Card = ({state, handleInputChange, handleFormSubmit, validation}) => (
     <button className="button"
       onClick={handleFormSubmit}
         >Sign-In</button>
+    
+    
   </div>
 )
 
@@ -255,7 +251,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = state => ({
-  settings: state.settings
+  settings: state.settings,
+  productsLoading: state.products.loading
 });
 
 

@@ -11,6 +11,8 @@ import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/o
 
 import axios from 'axios';
 import { baseUrl, headers } from "../../const/global";
+
+
 const orderAPI = baseUrl+'/order';
 
 class DashboardPage extends React.Component {
@@ -34,7 +36,6 @@ class DashboardPage extends React.Component {
     )
   }
   viewOrder=(oId)=> {
-    console.log(oId);
     this.props.history.push(`/orderDashboard/orderDetail/${oId}`);
   }
   render(){
@@ -84,8 +85,6 @@ class DashboardPage extends React.Component {
 
               </div>
 
-
-
               {ordersList.map(order => {
                 return <OrderListItem key={order.id} item={order} status={this.props.filters.status} isPickedUp={this.isPickedUp} viewOrder={this.viewOrder} />;
               })}
@@ -113,6 +112,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = state => ({
   orders: filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),
   notifications: state.notifications,
+  
   filters: state.filters
 });
 

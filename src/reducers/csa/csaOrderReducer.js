@@ -19,6 +19,13 @@ const initialState = {
 
 export default function csaOrderReducer(state = initialState, action) {
     switch(action.type) {
+        case 'FETCH_ORDER_BEGIN':
+            return {
+                ...state,
+                loading: true,
+                error: null
+            };
+
         case 'FETCH_ORDER_SUCCESS':
             return {
                 ...state,

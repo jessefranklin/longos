@@ -15,6 +15,7 @@ import EditClient from './EditClient';
 import EditDateTime from './EditDateTime';
 import groupByCounter from '../../selectors/groupByCounter';
 import moment from 'moment';
+import Loading from '../shared/LoadingPage';
 
 import { baseUrl, headers } from "../../const/global";
 import axios from 'axios';
@@ -428,6 +429,7 @@ class OrderDetail extends Component {
           </div>
         </div>
       </div>
+      <Loading loading={this.props.csaOrder.loading} />
     </div>
     );
   }
