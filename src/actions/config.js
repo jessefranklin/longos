@@ -8,7 +8,7 @@ export const setConfig = (settings) => ({
 
 export function fetchConfigs() {
     return dispatch => {
-        // dispatch(fetchConfigSuccess(configjson));
+        dispatch(fetchConfigSuccess({ selectedObj: 0,store: configjson[0] }));
     };
 }
 

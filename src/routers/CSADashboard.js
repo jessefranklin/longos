@@ -8,6 +8,7 @@ import DashboardPage from '../components/csa/DashboardPage';
 import OrderDetail from  '../components/csa/OrderDetail';
 import Settings from '../components/csa/Settings';
 import PastOrders from '../components/csa/PastOrders';
+import CancelledOrders from '../components/csa/CancelledOrders';
 import EditOrder from '../components/csa/EditOrder';
 import PrivateRoute from './PrivateRoute';
 
@@ -22,42 +23,19 @@ import uuid from 'uuid/v1';
 class CSADashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.sampleNotification = this.sampleNotification.bind(this);
-
-  }
-  dispatchNotification(fn, timeout) {
-    let notificationOpts = {
-      uid: uuid(),
-      title: 'A new order has been placed',
-      message: 'A new order has been placed',
-      position: 'tr',
-      autoDismiss: 0,
-      action: {
-        label: 'View Order',
-        callback: () => alert('clicked!')
-      }
-    };
-    setTimeout(() => {
-      this.context.store.dispatch(fn(notificationOpts));
-    }, timeout);
-  }
-
-  sampleNotification() {
-    this.dispatchNotification(success, 250);
-    this.dispatchNotification(error, 500);
-    this.dispatchNotification(warning, 750);
-    this.dispatchNotification(info, 1000);
   }
 
   render(){
     const {notifications, match } = this.props;
     return(
       <div className="csa--app">
+        
         <CSAHeader />
 
         <Switch>
           <PrivateRoute exact path={match.url} component={DashboardPage} />
           <PrivateRoute exact path={match.url+'/pastOrders'} component={PastOrders} />
+          <PrivateRoute exact path={match.url+'/cancelledOrders'} component={CancelledOrders} />
           <PrivateRoute exact path={match.url+'/orderDetail/:id'} component={OrderDetail} />
           <PrivateRoute exact path={match.url+'/EditOrder'} component={EditOrder} />
           <PrivateRoute exact path={match.url+'/settings'} component={Settings} />

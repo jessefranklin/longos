@@ -1,29 +1,23 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import OrderCounterFilters from './OrderCounterFilters';
-import Select from 'react-select';
-import {Button, Modal, Panel } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import FontAwesome from 'react-fontawesome';
-import { fetchCSAOrder, updateCSAOrder, clearCSAOrder } from '../../actions/csa/csaOrder';
+import { fetchCSAOrder, updateCSAOrder, updateCSAOrderState, clearCSAOrder } from '../../actions/csa/csaOrder';
 import { orderFilterByCounter } from '../../selectors/orders';
 import { CSACart } from '../../actions/cart';
-import CSAHeader from './CSAHeader';
 import EditClient from './EditClient';
 import EditDateTime from './EditDateTime';
 import groupByCounter from '../../selectors/groupByCounter';
 import moment from 'moment';
-
+import Loading from '../shared/LoadingPage';
+import { PaidButton, CancelModal, StatusState } from './OrderDetailComponents';
+import { PromptUpdate } from '../shared/Prompt';
 import { baseUrl, headers } from "../../const/global";
 import axios from 'axios';
 
 const orderAPI = baseUrl+'/order';
-const options = [
-  { value: 1, label: 'Ready For Pickup' },
-  { value: 2, label: 'Order Has been picked up' }
-]
 
 class OrderDetail extends Component {
   static contextTypes = {
@@ -89,6 +83,7 @@ class OrderDetail extends Component {
   handleCounter = (value) => {
     this.setState({ 'counter' : value });
   };
+
   handleEdit = (name) =>{
     this.setState({ [name]: true })
   }
@@ -108,7 +103,11 @@ class OrderDetail extends Component {
   }
 
   editStateClose = () => {
-    this.setState({ editState: false });
+    this.setState({ 
+      editState: false, 
+      editPickup: false,
+      editClient: false
+    });
   }
 
   toggleCounterFilter(){
@@ -144,7 +143,6 @@ class OrderDetail extends Component {
     });
   }
 
-
   updateState = () => {
     this.props.fetchCSAOrder(this.props.match.params.id);
   }
@@ -164,7 +162,6 @@ class OrderDetail extends Component {
   }
 
   updateClientPickup = (name,payload) => {
-    console.log(name,payload)
     this.setState({ [name]: false });
     this.updateOrder(payload);
   }
@@ -180,6 +177,7 @@ class OrderDetail extends Component {
         console.log(err);
       }
     )
+
   }
 
   addToOrder = () => {
@@ -197,61 +195,38 @@ class OrderDetail extends Component {
   }
 
   completeOrder(value){
-    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`
-    axios.put(url, headers).then(
-      (response) => {
-        this.props.fetchCSAOrder(this.props.match.params.id);
-        this.promptUpdate('success','This order has been completed');
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`;
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('success','This order has been updated');
+    });
   }
 
   updateItem = (payload) => {
-    let url = orderAPI +`/${this.props.match.params.id}/updateitem`
-    axios.put(url, payload, headers).then(
-      (response) => {
-        // Add notification
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    let url = orderAPI +`/${this.props.match.params.id}/updateitem`;
+    this.props.updateCSAOrder(url, payload).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('success','This order has been updated');
+    });
   }
 
   cancelOrder = (value) => {
-    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`
-    axios.put(url, headers).then(
-      (response) => {
-        this.setState({
-          show: false,
-          promptType: 'warning',
-          promptMessage: 'This order has been cancelled and removed.'
-        })
-        this.promptUpdate();
-        setTimeout(()=> {
-          this.props.history.push('/orderDashboard');
-        }, 3000);
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`;
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('warning','This order has been cancelled and removed.');
+      setTimeout(()=> {
+        this.props.history.push('/orderDashboard');
+      }, 3000);
+    });
   }
 
   orderPaid = (data) => {
     let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
-
-    axios.put(url, headers).then(
-      (response) => {
-        this.props.fetchCSAOrder(this.props.match.params.id);
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('success','This order has been updated.');
+    });
   }
 
   gotoDashboard = () => {
@@ -267,7 +242,6 @@ class OrderDetail extends Component {
 
     return (
       <div>
-        <CSAHeader />
         <div className="content--container">
           <div className="order-detail">
             <div className="order-detail--actions-row">
@@ -418,7 +392,7 @@ class OrderDetail extends Component {
                 <h2>{key}</h2>
                 <div className="counter-items--container">
                   {csaOrderSortedItems[key].map(order => {
-                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} />;
+                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} />;
                   })}
                 </div>
               </div>;
@@ -428,83 +402,11 @@ class OrderDetail extends Component {
           </div>
         </div>
       </div>
+      <Loading loading={this.props.csaOrder.loading} />
     </div>
     );
   }
 }
-
-const PromptUpdate = ({type,message}) => {
-  return (
-    <div>
-      <Panel bsStyle={type}>
-        <Panel.Heading>
-          <Panel.Title componentClass="h3">{message}</Panel.Title>
-        </Panel.Heading>
-      </Panel>
-    </div>
-  );
-};
-
-
-const StatusState = ({status,onSelectChange,isPaid}) => {
-  return (
-    <div>
-        {status === 0 && <div className="state--not-ready">Not Ready</div> }
-        {status === 1 && !isPaid && <div className="state--not-ready">Ready for pickup</div> }
-        {status === 1 && isPaid && <Select
-          name="status"
-          value={status}
-          onChange={(e)=>onSelectChange(e.value)}
-          options={options}
-          disabled={status === 0 ? true:false}
-          clearable={false}
-        /> }
-        {status === 2 && <div className="state--completed">Completed</div> }
-    </div>
-  );
-};
-
-const CancelModal = ({show,handleClose,cancel}) => {
-  return (
-    <div>
-      <Modal show={show} onHide={handleClose}>
-        <div className="modal--cancel">
-          <h3>Cancel Modal</h3>
-          <h4>Are you sure you want to cancel this order?</h4>
-          <div className="modal--buttons">
-            <Button onClick={cancel}>Yes, Cancel</Button>
-            <Button onClick={handleClose} className="btn-cancel">No</Button>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-};
-
-const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClose}) => {
-  return (
-    <div className="btn--container">
-      {isPaid ? (
-        <div>
-          <button className="checkbox-red checked" onClick={() => orderPaid(false)}>Order is Paid </button>
-        </div>
-      ):(
-        <button className="checkbox-red"  onClick={() => handleShow()}>Order is not paid</button>
-      )}
-
-      <Modal show={showPaidModal} onHide={handleClose}>
-        <div className="modal--cancel">
-          <h3>Order Paid</h3>
-          <h4>Please enter your receipt ID below.</h4>
-          <div className="modal--buttons">
-            <Button onClick={() => orderPaid(true)}>Yes, Cancel</Button>
-            <Button onClick={handleClose} className="btn-cancel">No</Button>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-};
 
 
 const mapStateToProps = (state) => ({
@@ -514,6 +416,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCSAOrder:(oId) => dispatch(fetchCSAOrder(oId)),
+  updateCSAOrderState:(url) => dispatch(updateCSAOrderState(url)),
   clearCSAOrder:() => dispatch(clearCSAOrder()),
   updateCSAOrder:(oId) => dispatch(updateCSAOrder(oId)),
   CSACart:(products) => dispatch(CSACart(products))

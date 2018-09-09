@@ -1,23 +1,16 @@
-import React, {Component} from 'react';
-import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Barcode from 'react-barcode';
 import Select from 'react-select';
-import { SlideToggle } from 'react-slide-toggle';
-import { baseUrl, headers } from "../../const/global";
+import { baseUrl } from '../../const/global';
+import { updateCSAOrderState } from '../../actions/csa/csaOrder';
+import { AutoComplete } from '../partials/AutoComplete';
 import FontAwesome from 'react-fontawesome';
-
-let axios = require('axios');
 
 const options = [
     { value: 1, label: 'Not Ready' },  
     { value: 2, label: 'In Progress' },
     { value: 3, label: 'Ready' }
-]
-
-const employees = [
-    { value: 'unassigned', label: 'Unassigned', disabled: true  },
-    { value: 'Sandy Longo', label: 'John Longo' },
-    { value: 'Alex Longo', label: 'Alex Longo' }
 ]
 
 class OrderDetailItem extends Component {
@@ -40,10 +33,10 @@ class OrderDetailItem extends Component {
     this.setState({ [name] : value });
     this.setState({ 'reassign' : false });
     let orderUpdate = `assign?assignee=${value}`;
-    console.log(orderUpdate);
     this.updateOrder(orderUpdate);
   }
   onReassign=()=>{
+    console.log('made it');
     this.setState({ 'reassign' : true });
   }
   onRemove = () => {
@@ -58,15 +51,9 @@ class OrderDetailItem extends Component {
     const orderAPI = `${baseUrl}/order/${this.props.oid}/item/${this.props.order.id}/`;
     
     let url = orderAPI + orderUpdate;
-    axios.put(url, headers).then(
-        (response) => {
-          console.log(response.data);
-          this.props.updateState(response.data);
-        },
-        (err) => {
-            console.log(err);
-        }
-    )
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.updateState();
+    });
   }
 
   render() {
@@ -86,18 +73,8 @@ class OrderDetailItem extends Component {
                   {order.product.name}
                 </div>
                 <div className="order-item--assign grey-border">
-                {order.assignee && !this.state.reassign ? (
-                  <OrderAssignee assignee={order.assignee} reassign={this.onReassign} />
-                ):(
-                  <Select
-                  name="assigned"
-                  value={order.assignee}
-                  onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
-                  options={employees}
-                  isSearchable={true}
-                  clearable={false} 
-                  />)
-                }
+
+                <AutoComplete assignee={order.assignee} reassignState={this.state.reassign} reassign={this.onReassign} onAssignedChange={this.onAssignedChange}/>
                 
                 </div>
                 <div className="order-item--status grey-border">
@@ -128,14 +105,16 @@ class OrderDetailItem extends Component {
                 </div>
                 {this.props.editState ? (
                   <div className="order-item--remove-item">
-                    <button onClick={this.onRemove} className="btn-qu">
-                      <FontAwesome
-                      className='fa fa-trash'
-                      name='fa-trash'
-                      size='2x'
-                      aria-hidden='true'
-                    />
-                  </button>
+                  {!this.props.isPaid?
+                      <button onClick={this.onRemove} className="btn-qu">
+                        <FontAwesome
+                        className='fa fa-trash'
+                        name='fa-trash'
+                        size='2x'
+                        aria-hidden='true'
+                      />
+                    </button>
+                  : null}
                   </div>
                 ): ''}
 
@@ -195,4 +174,9 @@ const CakeDescription = ({item}) => {
   );
 };
 
-export default OrderDetailItem;
+
+const mapDispatchToProps = (dispatch) => ({
+  updateCSAOrderState:(url) => dispatch(updateCSAOrderState(url))
+});
+
+export default connect(undefined, mapDispatchToProps)(OrderDetailItem);

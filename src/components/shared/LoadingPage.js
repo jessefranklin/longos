@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Loading = () => (
-  <div className="loading-element'" tabIndex="-1" >
+const Loading = ({loading}) => (
+  <div className={loading?'loading-container active':'loading-container'}>
+    <div className="loading" tabIndex="-1"></div>
   </div>
 );
 

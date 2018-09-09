@@ -1,17 +1,12 @@
-import { baseUrl } from "../../const/global";
+import { baseUrl, headers } from "../../const/global";
 
-let axios = require('axios');
+import axios from 'axios';
 import config from '../../server/config.json';
 
 const apiUrl = baseUrl+"/product";
 const store = `?store=${config[0].store_id}`;
 let url = apiUrl + store;
 
-const headers = {
-    header: {
-        "Access-Control-Allow-Origin": "*"
-    }
-}
 
 export let fetchProducts = () => {
     return (dispatch) => {

@@ -1,5 +1,5 @@
 [{  
-    "id": 0,
+    "id": "store1",
     "name": "Maple Leaf Square (MLS)",
     "store_id": "store1",
     "zone": "6",
@@ -11,7 +11,7 @@
         "postalCode": "M5J 0A3"
     }
 },{  
-    "id": 0,
+    "id": "store24",
     "name": "Maple Leaf Square (MLS)",
     "store_id": "store24",
     "zone": "6",
