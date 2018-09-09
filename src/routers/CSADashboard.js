@@ -8,6 +8,7 @@ import DashboardPage from '../components/csa/DashboardPage';
 import OrderDetail from  '../components/csa/OrderDetail';
 import Settings from '../components/csa/Settings';
 import PastOrders from '../components/csa/PastOrders';
+import CancelledOrders from '../components/csa/CancelledOrders';
 import EditOrder from '../components/csa/EditOrder';
 import PrivateRoute from './PrivateRoute';
 
@@ -34,6 +35,7 @@ class CSADashboard extends React.Component {
         <Switch>
           <PrivateRoute exact path={match.url} component={DashboardPage} />
           <PrivateRoute exact path={match.url+'/pastOrders'} component={PastOrders} />
+          <PrivateRoute exact path={match.url+'/cancelledOrders'} component={CancelledOrders} />
           <PrivateRoute exact path={match.url+'/orderDetail/:id'} component={OrderDetail} />
           <PrivateRoute exact path={match.url+'/EditOrder'} component={EditOrder} />
           <PrivateRoute exact path={match.url+'/settings'} component={Settings} />

@@ -1,5 +1,5 @@
 import { baseUrl, headers } from "../../const/global";
-let axios = require('axios');
+import axios from 'axios';
 
 export const fetchCSAOrder = (oId) => {
     return (dispatch) => {
@@ -37,6 +37,7 @@ export const updateCSAOrderState = (url) => {
         dispatch(fetchCSAOrderBegin())
         return axios.put(url,headers).then(
             (response) => {
+                console.log(response.data)
             },
             (err) => {
                 console.log(err);
