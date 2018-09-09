@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Barcode from 'react-barcode';
 import Select from 'react-select';
-import { baseUrl, headers } from "../../const/global";
-import { fetchCSAOrder, updateCSAOrderState } from '../../actions/csa/csaOrder';
-
+import { baseUrl } from '../../const/global';
+import { updateCSAOrderState } from '../../actions/csa/csaOrder';
+import { AutoComplete } from '../partials/AutoComplete';
 import FontAwesome from 'react-fontawesome';
-
-let axios = require('axios');
 
 const options = [
     { value: 1, label: 'Not Ready' },  
     { value: 2, label: 'In Progress' },
     { value: 3, label: 'Ready' }
-]
-
-const employees = [
-    { value: 'unassigned', label: 'Unassigned', disabled: true  },
-    { value: 'Sandy Longo', label: 'John Longo' },
-    { value: 'Alex Longo', label: 'Alex Longo' }
 ]
 
 class OrderDetailItem extends Component {
@@ -45,6 +36,7 @@ class OrderDetailItem extends Component {
     this.updateOrder(orderUpdate);
   }
   onReassign=()=>{
+    console.log('made it');
     this.setState({ 'reassign' : true });
   }
   onRemove = () => {
@@ -81,18 +73,8 @@ class OrderDetailItem extends Component {
                   {order.product.name}
                 </div>
                 <div className="order-item--assign grey-border">
-                {order.assignee && !this.state.reassign ? (
-                  <OrderAssignee assignee={order.assignee} reassign={this.onReassign} />
-                ):(
-                  <Select
-                  name="assigned"
-                  value={order.assignee}
-                  onChange={(e)=>this.onAssignedChange(e.value, 'assigned')}
-                  options={employees}
-                  isSearchable={true}
-                  clearable={false} 
-                  />)
-                }
+
+                <AutoComplete assignee={order.assignee} reassignState={this.state.reassign} reassign={this.onReassign} onAssignedChange={this.onAssignedChange}/>
                 
                 </div>
                 <div className="order-item--status grey-border">
