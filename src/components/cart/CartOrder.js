@@ -144,8 +144,8 @@ class CartOrder extends React.Component {
               <input
                 type="text"
                 name="username"
-                className="form-control"
-                autoComplete="off"
+                autoComplete="off"  
+                className="form-control" 
                 placeholder="First and Last Name"
                 value={this.state.username}
                 onChange={this.handleChange.bind(this)}
@@ -156,9 +156,9 @@ class CartOrder extends React.Component {
               <label htmlFor="email">Email</label>
               <input
                 type="email"
-                name="email"
-                className="form-control"
-                autoComplete="off"
+                name="email" 
+                autoComplete="off" 
+                className="form-control" 
                 placeholder="email"
                 value={this.state.email}
                 onChange={this.handleChange.bind(this)}
@@ -169,9 +169,9 @@ class CartOrder extends React.Component {
               <label htmlFor="phone">Phone</label>
               <input
                 type="phone"
-                name="phone"
-                className="form-control"
-                autoComplete="off"
+                name="phone" 
+                autoComplete="off" 
+                className="form-control" 
                 placeholder="phone"
                 value={this.state.phone}
                 onChange={this.handleChange.bind(this)}

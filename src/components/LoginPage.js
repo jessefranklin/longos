@@ -119,7 +119,9 @@ class LoginPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchConfigs();
+    if(!this.props.settings.store){
+      this.props.fetchConfigs();
+    }
     let stateLoader = new StateLoader();
     stateLoader.removeState();
     this.props.removeCart();
@@ -252,4 +254,9 @@ const mapDispatchToProps = (dispatch) => ({
   setOrderFilter: (text) => dispatch(setOrderFilter(text))
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+const mapStateToProps = state => ({
+  settings: state.settings
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

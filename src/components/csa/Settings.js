@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
-import stores from '../../server/config';
 import CSAHeader from './CSAHeader';
 import { setConfig } from '../../actions/config';
+import { baseUrl, headers } from '../../const/global';
 
+import axios from 'axios';
+
+let storesObj =[];
 let storeList = [];
 const defaultSelect = { value : 0, label: "Select a store" };
 
@@ -14,18 +17,34 @@ class Settings extends React.Component {
 
     this.state = {
       timeOut: 60000,
-      selectedOption: this.props.settings.selectedOption ? this.props.settings.selectedOption.value : defaultSelect,
-      store: stores[0]
+      selectedObj: this.props.settings.selectedObj ? this.props.settings.selectedObj : 0,
+      store: this.props.settings.store
     };
   }
   componentDidMount() {
-    // GET: http://digitalpreorder-staging.azurewebsites.net/api/store
-    {stores.map((store,index) => {
-      storeList.push({ value: store.id, label: store.store_id });
-    })}
+    this.fetchStores();
   };
+  fetchStores(){
+    const url = `${baseUrl}/store`;
+    axios.get(url, headers).then(
+        (response) => {
+          this.listStoreOptions(response.data);
+        },
+        (err) => {
+            console.log(err);
+        }
+    )
+  }
+  listStoreOptions(stores){
+    storesObj = stores;
+    {stores.map((store,index) => {
+      storeList.push({ value: index, label: store.name });
+    })}
+  }
   onSelectChange = (selectedOption) => {
-    this.setState({ selectedOption, "store" : stores[selectedOption.value]});
+    let v = selectedOption.value;
+    let l = selectedOption.label;
+    this.setState({ "selectedObj": { value: v, label:l }, "store" : storesObj[v]});
   }
   onSaveSettings = (selectedOption) => {
     this.props.setConfig(this.state);
@@ -40,7 +59,7 @@ class Settings extends React.Component {
             <h3>Store Location</h3>
             <Select
               name="option"
-              value={this.state.selectedOption.value}
+              value={this.state.selectedObj}
               onChange={this.onSelectChange}
               options={storeList}
             />
