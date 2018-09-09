@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import OrderCounterFilters from './OrderCounterFilters';
 import Select from 'react-select';
 import {Button, Modal, Panel } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import OrderDetailItem from './OrderDetailItem';
 import FontAwesome from 'react-fontawesome';
-import { fetchCSAOrder, updateCSAOrder, clearCSAOrder } from '../../actions/csa/csaOrder';
+import { fetchCSAOrder, updateCSAOrder, updateCSAOrderState, clearCSAOrder } from '../../actions/csa/csaOrder';
 import { orderFilterByCounter } from '../../selectors/orders';
 import { CSACart } from '../../actions/cart';
-import CSAHeader from './CSAHeader';
 import EditClient from './EditClient';
 import EditDateTime from './EditDateTime';
 import groupByCounter from '../../selectors/groupByCounter';
@@ -181,6 +179,7 @@ class OrderDetail extends Component {
         console.log(err);
       }
     )
+
   }
 
   addToOrder = () => {
@@ -198,61 +197,38 @@ class OrderDetail extends Component {
   }
 
   completeOrder(value){
-    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`
-    axios.put(url, headers).then(
-      (response) => {
-        this.props.fetchCSAOrder(this.props.match.params.id);
-        this.promptUpdate('success','This order has been completed');
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`;
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('success','This order has been updated');
+    });
   }
 
   updateItem = (payload) => {
-    let url = orderAPI +`/${this.props.match.params.id}/updateitem`
-    axios.put(url, payload, headers).then(
-      (response) => {
-        // Add notification
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    let url = orderAPI +`/${this.props.match.params.id}/updateitem`;
+    this.props.updateCSAOrder(url, payload).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('success','This order has been updated');
+    });
   }
 
   cancelOrder = (value) => {
-    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`
-    axios.put(url, headers).then(
-      (response) => {
-        this.setState({
-          show: false,
-          promptType: 'warning',
-          promptMessage: 'This order has been cancelled and removed.'
-        })
-        this.promptUpdate();
-        setTimeout(()=> {
-          this.props.history.push('/orderDashboard');
-        }, 3000);
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`;
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('warning','This order has been cancelled and removed.');
+      setTimeout(()=> {
+        this.props.history.push('/orderDashboard');
+      }, 3000);
+    });
   }
 
   orderPaid = (data) => {
     let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
-
-    axios.put(url, headers).then(
-      (response) => {
-        this.props.fetchCSAOrder(this.props.match.params.id);
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.promptUpdate('success','This order has been updated.');
+    });
   }
 
   gotoDashboard = () => {
@@ -268,7 +244,6 @@ class OrderDetail extends Component {
 
     return (
       <div>
-        <CSAHeader />
         <div className="content--container">
           <div className="order-detail">
             <div className="order-detail--actions-row">
@@ -516,6 +491,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCSAOrder:(oId) => dispatch(fetchCSAOrder(oId)),
+  updateCSAOrderState:(url) => dispatch(updateCSAOrderState(url)),
   clearCSAOrder:() => dispatch(clearCSAOrder()),
   updateCSAOrder:(oId) => dispatch(updateCSAOrder(oId)),
   CSACart:(products) => dispatch(CSACart(products))

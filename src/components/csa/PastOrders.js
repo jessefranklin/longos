@@ -2,25 +2,11 @@ import React from 'react';
 import { connect } from "react-redux";
 import { fetchCSAPastOrders }  from '../../actions/csa/pastOrders';
 import OrderListItem from './OrderListItem';
-import CSAHeader from './CSAHeader';
-import CSAFooter from './CSAFooter';
 import OrdersFilters from './OrdersFilters';
 import config from '../../server/config.json';
 import { Pagination } from '../partials/Pagination';
 import { selectOrders, filterByStatus, filterByCounter } from '../../selectors/orders';
-
-let axios = require('axios');
-
-const headers = {
-    header: {
-        "Content-Type":"application/json",
-        "Access-Control-Allow-Origin": "*"
-    }
-}
-
-// api/order/pickedup?storeId=store1&[perpage=20]‌&[page=0]‌&[counter=[counter]]
-// Cancled orders
-// GET http://digitalpreorder-staging.azurewebsites.net/api/order/bystatus?storeId=store1&status=3&[perpage=20]‌&[page=0‌]&[counter=Kitchen]
+import Loading from '../shared/LoadingPage';
 
 class PastOrders extends React.Component {
   constructor(props) {
@@ -71,7 +57,6 @@ class PastOrders extends React.Component {
 
     return(
       <div>
-        <CSAHeader />
         <div className="content--container">
           <OrdersFilters pastOrders={true} pendingCount={pendingCount} readyCount={readyCount} />
 
@@ -123,6 +108,7 @@ class PastOrders extends React.Component {
 
           <Pagination onPaginationChange={this.onPaginationChange} page={this.state.page} />
         </div>
+        <Loading loading={this.props.pastorders.loading} />
       </div>
     )
   }

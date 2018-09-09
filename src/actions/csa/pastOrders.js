@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export let fetchCSAPastOrders = (url) => {
     return (dispatch) => {
+        dispatch(fetchPastOrdersBegin())
         return axios.get(url, headers).then(
             (response) => {
                 if(response.data.length){
@@ -15,6 +16,12 @@ export let fetchCSAPastOrders = (url) => {
         )
     }
 }
+
+
+export const fetchPastOrdersBegin = () => ({
+    type: 'FETCH_ORDERS_BEGIN'
+  });
+  
 
 // SET_ORDER
 export const setPastOrder = (order) => ({

@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
-import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Barcode from 'react-barcode';
 import Select from 'react-select';
-import { SlideToggle } from 'react-slide-toggle';
 import { baseUrl, headers } from "../../const/global";
+import { fetchCSAOrder, updateCSAOrderState } from '../../actions/csa/csaOrder';
+
 import FontAwesome from 'react-fontawesome';
 
 let axios = require('axios');
@@ -40,7 +42,6 @@ class OrderDetailItem extends Component {
     this.setState({ [name] : value });
     this.setState({ 'reassign' : false });
     let orderUpdate = `assign?assignee=${value}`;
-    console.log(orderUpdate);
     this.updateOrder(orderUpdate);
   }
   onReassign=()=>{
@@ -58,15 +59,9 @@ class OrderDetailItem extends Component {
     const orderAPI = `${baseUrl}/order/${this.props.oid}/item/${this.props.order.id}/`;
     
     let url = orderAPI + orderUpdate;
-    axios.put(url, headers).then(
-        (response) => {
-          console.log(response.data);
-          this.props.updateState(response.data);
-        },
-        (err) => {
-            console.log(err);
-        }
-    )
+    this.props.updateCSAOrderState(url).then(()=>{
+      this.props.updateState();
+    });
   }
 
   render() {
@@ -197,4 +192,9 @@ const CakeDescription = ({item}) => {
   );
 };
 
-export default OrderDetailItem;
+
+const mapDispatchToProps = (dispatch) => ({
+  updateCSAOrderState:(url) => dispatch(updateCSAOrderState(url))
+});
+
+export default connect(undefined, mapDispatchToProps)(OrderDetailItem);
