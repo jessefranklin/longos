@@ -21,12 +21,11 @@ class CSAFeedback extends Component {
     }
     render() {
         return (
-            <div className="" >
-                <Modal show={this.props.showModal} onHide={this.props.handleClose}>
+            <div>
+                <Modal show={this.props.showModal} onHide={this.props.handleClose} className="modal--feedback">
                     <Modal.Header closeButton>
-                        <Modal.Title>CSA Feedback</Modal.Title>
                     </Modal.Header>
-                    
+                    <h3>CSA Feedback</h3>
                     <textarea
                         placeholder="Feedback is welcome"
                         onChange={this.onFeedback}
