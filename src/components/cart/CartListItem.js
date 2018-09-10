@@ -167,7 +167,7 @@ const ClassicCakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) =>
       </div>
       <div className="cart--item-row2">
         <div className="cart--item-comment">
-          <p>Writing on Cake: {item.options.writigOnCakeTypeNote && item.options.writigOnCakeTypeNote}</p>
+          {item.options.writigOnCakeTypeNote && <p>Writing on Cake: {item.options.writigOnCakeTypeNote}</p>}
           {item.options.extras && <p>Special Instructiopns: {item.options.extras}</p>}
           {item.options.size && <p>Size: {item.options.size}</p>}
           {/* {item.options.cakelayers.length ? <p>Cake Layers: {item.options.cakelayers}</p>:''} */}

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 import { headers } from '../../const/global';
+import { Creatable } from "react-select";
+
 import axios from 'axios';
 
 // POST: http://digitalpreorder-staging.azurewebsites.net/api/assignee?storeId=store1&counter=Kitchen&name=Alex Drenea
@@ -15,7 +17,8 @@ export class AutoComplete extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            assignee: this.props.assignee
+            assignee: this.props.assignee,
+            value: ''
         }
     }
     componentDidMount() {
@@ -26,13 +29,13 @@ export class AutoComplete extends React.Component {
         
         return (
             <div>
-                <Select
-                name="assigned"
-                value={this.state.assignee}
-                onChange={(e)=>this.props.onAssignedChange(e.value, 'assigned')}
-                options={assignees.assignees} 
-                isSearchable={true}
-                clearable={false} 
+                <Creatable
+                    name="assigned"
+                    value={this.state.assignee}
+                    onChange={this.props.onAssignedChange}
+                    options={assignees.assignees} 
+                    isSearchable={true}
+                    clearable={true} 
                 />
             
             </div>
@@ -41,7 +44,12 @@ export class AutoComplete extends React.Component {
 };
 
 
+const mapDispatch = dispatch => ({
+    update: event => dispatch({ type: "UPDATE", value: event })
+  });
+  
 
-export default connect()(AutoComplete);
+
+export default connect(undefined,mapDispatch)(AutoComplete);
   
 

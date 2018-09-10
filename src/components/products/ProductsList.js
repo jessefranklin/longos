@@ -23,7 +23,6 @@ class ProductsList extends React.Component {
           </div>;
         })}
 
-        <h4>Some sort of header for cakes.</h4>
 
         {Object.keys(productsCakes).map(function(key, index) {
           const refKey = key.replace(/\s+/g, '').toLowerCase();
