@@ -37,7 +37,6 @@ export const updateCSAOrderState = (url) => {
         dispatch(fetchCSAOrderBegin())
         return axios.put(url,headers).then(
             (response) => {
-                console.log(response.data)
             },
             (err) => {
                 console.log(err);

@@ -4,18 +4,32 @@ import { Link } from 'react-scroll'
 
 class ProductsSidebar extends React.Component {
     render() {
-        const categories = this.props.categories
+        const { categories, listCakeCategories} = this.props;
         return (
-            <ul>
-                {Object.keys(categories).map(function(key, index) {
-                    const refKey = key.replace(/\s+/g, '').toLowerCase();
-                    return <li key={index}>
-                            <Link activeClass="active" to={refKey} spy={true} smooth={true} offset={-120} duration={400}>
-                                {key}
-                            </Link>
-                        </li>
-                })}
-            </ul>
+            <div>
+                <ul>
+                    {Object.keys(categories).map(function(key, index) {
+                        const refKey = key.replace(/\s+/g, '').toLowerCase();
+                        return <li key={index}>
+                                <Link activeClass="active" to={refKey} spy={true} smooth={true} offset={-120} duration={400}>
+                                    {key}
+                                </Link>
+                            </li>
+                    })}
+                </ul>
+
+                <h4>Cakes</h4>
+                <ul>
+                    {Object.keys(listCakeCategories).map(function(key, index) {
+                        const refKey = key.replace(/\s+/g, '').toLowerCase();
+                        return <li key={index}>
+                                <Link activeClass="active" to={refKey} spy={true} smooth={true} offset={-120} duration={400}>
+                                    {key}
+                                </Link>
+                            </li>
+                    })}
+                </ul>
+            </div>
         );
     }
 }
