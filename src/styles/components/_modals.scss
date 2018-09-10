@@ -131,6 +131,10 @@ body .modal-content {
         }
         .Select-menu-outer{
             color:$red;
+            width:100%;
+            div{
+                width:100%;
+            }
         }
         .is-disabled{
             background:#fff;
@@ -141,6 +145,11 @@ body .modal-content {
             }
             .Select-arrow-zone{
                 display: none;
+            }
+        }
+        .is-open{
+            .Select-arrow{
+                border-top:none;
             }
         }
     }
@@ -193,9 +202,6 @@ body .modal-content {
     font-size: 12px;
 }
 
-
-
-
 .modal-content{
     .feedback--csa{
         font-family: $sans;
@@ -203,13 +209,11 @@ body .modal-content {
         color:$dark-grey;
         width: 90%;
         margin: 1rem auto 1rem auto;
-        position: relative;
-        left:50%;
-        transform:translateX(-50%);
     }
 }
 
-.modal--cancel{
+.modal--cancel,
+.modal--feedback{
   padding:3rem;
   text-align: center;
   position: relative;
