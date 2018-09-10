@@ -3,7 +3,7 @@ import ProductsListItem from './ProductsListItem';
 
 class ProductsList extends React.Component {
   render() {
-    const { products, loading, editOrder } = this.props;
+    const { products, loading, editOrder, productsCakes } = this.props;
     if (loading) {
       return <div>Loading...</div>;
     }
@@ -17,6 +17,20 @@ class ProductsList extends React.Component {
             <h2>{key}</h2> 
             <div className="wrap-eq-height">
               {products[key].map(product => {
+                return <ProductsListItem key={product.id} item={product} editOrder={editOrder} />;
+              })}
+            </div>
+          </div>;
+        })}
+
+        <h4>Some sort of header for cakes.</h4>
+
+        {Object.keys(productsCakes).map(function(key, index) {
+          const refKey = key.replace(/\s+/g, '').toLowerCase();
+          return <div key={index} id={refKey} className="element">
+            <h2>{key}</h2> 
+            <div className="wrap-eq-height">
+              {productsCakes[key].map(product => {
                 return <ProductsListItem key={product.id} item={product} editOrder={editOrder} />;
               })}
             </div>
