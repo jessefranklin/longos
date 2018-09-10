@@ -27,7 +27,7 @@ class ProductsListItemCake extends Component {
       selectedProduct: {
         id: uuid(),
         type: 'cake',
-        productId: this.props.item.productNumber,
+        productId: this.props.item.id,
         productName: this.props.item.name,
         optionId: this.props.item.options[0].id,
         optionName: this.props.item.options[0].name,

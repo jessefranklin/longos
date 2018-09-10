@@ -25,7 +25,7 @@ export const OptionsSelect = ({options,value,onChange,disabled}) => {
                 disabled={disabled}
                 className={options.type==='hidden'?'hidden':''}
                 searchable={false}
-                clearable={false} 
+                clearable={true} 
             />
         </div>
     )

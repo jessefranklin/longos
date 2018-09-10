@@ -36,7 +36,6 @@ class OrderDetailItem extends Component {
     this.updateOrder(orderUpdate);
   }
   onReassign=()=>{
-    console.log('made it');
     this.setState({ 'reassign' : true });
   }
   onRemove = () => {
