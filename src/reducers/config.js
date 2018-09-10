@@ -7,6 +7,11 @@ export default (state = configReducerDefaultState, action) => {
       return action.settings;
     case 'FETCH_CONFIG':
       return action.payload.config;
+    case 'SET_ASSIGNEES':
+      return {
+        ...state,
+        assignees: action.assignees
+      };
     case 'RESET_CONFIG':
       return {};
     default:

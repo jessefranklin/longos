@@ -1,0 +1,13 @@
+[{ 
+        "id": "088b757f-8bf3-4dec-97a0-18e843171165", 
+        "name": "Jesse Franklin", 
+        "counter": "Sushi", 
+        "storeId": "store1" 
+    },{ 
+        "id": "88e5a39a-0c34-4860-b4c2-d76c83b469c3", 
+        "name": "Alex Drenea", 
+        "counter": 
+        "Kitchen", 
+        "storeId": "store1" 
+        }
+    ]
