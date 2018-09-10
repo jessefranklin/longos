@@ -16,10 +16,6 @@ class ProductsSidebar extends React.Component {
                                 </Link>
                             </li>
                     })}
-                </ul>
-
-                <h4>Cakes</h4>
-                <ul>
                     {Object.keys(listCakeCategories).map(function(key, index) {
                         const refKey = key.replace(/\s+/g, '').toLowerCase();
                         return <li key={index}>

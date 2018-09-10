@@ -28,7 +28,7 @@ export const setAssignees = (assignees) => ({
 });
 
 export function fetchConfigs() {
-    let assigneeOptions = [{value:'default',label:'Assign', disabled: true}];
+    let assigneeOptions = [];
     {assignees.map(assign => {
         assigneeOptions.push({value:assign.name,label:assign.name})
       })}
