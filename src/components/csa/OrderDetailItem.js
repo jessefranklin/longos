@@ -29,10 +29,11 @@ class OrderDetailItem extends Component {
     this.updateOrder(orderUpdate);
 
   }
-  onAssignedChange = (value, name) => {
-    this.setState({ [name] : value });
+  onAssignedChange = (obj) => {
+    let name = obj?obj.value:'unassigned';
+    this.setState({ 'assigned' :name });
     this.setState({ 'reassign' : false });
-    let orderUpdate = `assign?assignee=${value}`;
+    let orderUpdate = `assign?assignee=${name}`;
     this.updateOrder(orderUpdate);
   }
   onReassign=()=>{
