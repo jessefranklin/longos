@@ -116,9 +116,8 @@ class OrderDetailItem extends Component {
 
             </div>
             <div className="order-item--meta">
-              {order.option.name && <ItemDescription order={order} />}
-              {order.comment && <SpecialInstructions order={order} />}
-              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')||(order.product.category === 'Cupcake Cakes')) && <CakeDescription order={order} />}
+              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')||(order.product.category === 'Cupcake Cakes')) ? <div><CakeDescription order={order} /></div>
+              :<div>{order.option.name && <ItemDescription order={order} />}{order.comment && <SpecialInstructions order={order} />}</div>}
             </div>
           </div>
       </div>
@@ -167,6 +166,7 @@ const CakeDescription = ({order}) => {
   return (
     <div>
       <div className="order--cake-options">
+        {order.option.name && <p><strong>Item Option:</strong><br/>{order.option.name}</p>}
         {order.options.size && <p><strong>Size:</strong><br/>{order.options.size}</p>}
         {order.options.cakelayers && <p><strong>Cake Layers:</strong><br/>{order.options.cakelayers}</p>}
         {order.options.icing && <p><strong>Icing:</strong><br/>{order.options.icing}</p>}
