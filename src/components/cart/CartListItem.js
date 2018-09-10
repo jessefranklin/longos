@@ -119,8 +119,8 @@ const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
       </div>
       <div className="cart--item-row2">
         <div className="cart--item-comment">
-          <p>Writing on Cake: {item.options.writigOnCakeTypeNote && item.options.writigOnCakeTypeNote}</p>
-          <p>Special Instructions: {item.options.extras && item.options.extras}</p>
+          {item.options.writigOnCakeTypeNote && <p>Writing on Cake: {item.options.writigOnCakeTypeNote}</p>}
+           {item.options.extras && <p>Special Instructions:{item.options.extras}</p>}
           {item.options.size && <p>Size: {item.options.size}</p>}
           {item.options.cakelayers && <p>Cake Layers: {item.options.cakelayers}</p>}
           {item.options.icing && <p>Icing: {item.options.icing}</p>}
