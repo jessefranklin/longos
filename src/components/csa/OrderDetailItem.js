@@ -60,21 +60,19 @@ class OrderDetailItem extends Component {
 
     return (
         <div>
+          <div className="order-detail-item--container">
+            <div className="order-item--row">
+              <div className="order-item--item grey-border">
+                <img src={order.product.imageLink} alt={order.product.name} />               
+                <h4>{order.product.counter}</h4>
+                {order.product.name}
+              </div>
 
-            <div className="order-detail-item--container">
-              <div className="order-item--row">
-                <div className="order-item--item grey-border">
-                  <img src={order.product.imageLink} alt={order.product.name} />
-                  
-                  <h4>{order.product.counter}</h4>
-                  {order.product.name}
-                </div>
-                <div className="order-item--assign grey-border">
-
+              <div className="order-item--assign grey-border">
                 <Assignees assignee={order.assignee} reassignState={this.state.reassign} reassign={this.onReassign} onAssignedChange={this.onAssignedChange} assignees={assignees} />
-                
-                </div>
-                <div className="order-item--status grey-border">
+              </div>
+
+              <div className="order-item--status grey-border">
                 {order.status == 0 ? (
                   <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
                 ) : (
@@ -86,41 +84,42 @@ class OrderDetailItem extends Component {
                   disabled={order.status === 0 ? true:false}
                   clearable={false} 
                   />
-                )}
-                
-                </div>
-                <div className="order-item--qty grey-border">
-                  {order.quantity}
-                </div>
-                <div className="order-item--barcode">
-                  {order.upc ? (
-                    <Barcode 
-                      format="UPC" 
-                      value={order.upc}
-                      />
-                  ) : ''}
-                </div>
-                {this.props.editState ? (
-                  <div className="order-item--remove-item">
-                  {!this.props.isPaid?
-                      <button onClick={this.onRemove} className="btn-qu">
-                        <FontAwesome
-                        className='fa fa-trash'
-                        name='fa-trash'
-                        size='2x'
-                        aria-hidden='true'
-                      />
-                    </button>
-                  : null}
-                  </div>
-                ): ''}
+                )}             
+              </div>
 
+              <div className="order-item--qty grey-border">
+                {order.quantity}
               </div>
-              <div className="order-item--meta">
-                {order.option.name && <ItemDescription order={order} />}
-                {order.comment && <SpecialInstructions order={order} />}
+              <div className="order-item--barcode">
+                {order.upc ? (
+                  <Barcode 
+                    format="UPC" 
+                    value={order.upc}
+                    />
+                ) : ''}
               </div>
+              {this.props.editState ? (
+                <div className="order-item--remove-item">
+                {!this.props.isPaid?
+                    <button onClick={this.onRemove} className="btn-qu">
+                      <FontAwesome
+                      className='fa fa-trash'
+                      name='fa-trash'
+                      size='2x'
+                      aria-hidden='true'
+                    />
+                  </button>
+                : null}
+                </div>
+              ): ''}
+
             </div>
+            <div className="order-item--meta">
+              {order.option.name && <ItemDescription order={order} />}
+              {order.comment && <SpecialInstructions order={order} />}
+              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')) && <CakeDescription order={order} />}
+            </div>
+          </div>
       </div>
     );
   }
@@ -129,7 +128,7 @@ class OrderDetailItem extends Component {
 const ItemDescription = ({order}) => {
   return (
     <div>
-      <h6>Item Option:</h6> {order.option.name}
+      <p>Item Option: {order.option.name}</p>
     </div>
   );
 };
@@ -158,15 +157,25 @@ const OrderStatus = ({status,statusAssigned}) => {
 const SpecialInstructions = ({order}) => {
   return (
     <div>
-      <h6>Special Instructions:</h6> {order.comment}
+      <p>Special Instructions: {order.comment}</p>
     </div>
   );
 };
 
-const CakeDescription = ({item}) => {
+const CakeDescription = ({order}) => {
   return (
     <div>
-      
+      <p>Writing on Cake: {order.options.writigOnCakeTypeNote && order.options.writigOnCakeTypeNote}</p>
+      <p>Special Instructions: {order.options.extras && order.options.extras}</p>
+      {order.options.size && <p>Size: {order.options.size}</p>}
+      {order.options.cakelayers && <p>Cake Layers: {order.options.cakelayers}</p>}
+      {order.options.icing && <p>Icing: {order.options.icing}</p>}
+      {order.options.trim && <p>Trim: {order.options.trim}</p>}
+      {order.options.color && <p>Color: {order.options.color}</p>}
+      {order.options.filling && <p>Filling: {order.options.filling}</p>}
+      {order.options.side && <p>Side: {order.options.side}</p>}
+      {order.options.decorationType && <p>Decoration Type: {order.options.decorationType}</p>}
+      {order.options.decorqationTypeNote && <p>Decoration Type Note: {order.options.decorqationTypeNote}</p>}
     </div>
   );
 };
