@@ -119,17 +119,17 @@ const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
       </div>
       <div className="cart--item-row2">
         <div className="cart--item-comment">
-          <p>Writing on Cake: {item.options.writigOnCakeTypeNote.length ? item.options.writigOnCakeTypeNote:'N/A'}</p>
-          <p>Special Instructions: {item.options.extras.length ? item.options.extras:'N/A'}</p>
-          {item.options.size.length ? <p>Size: {item.options.size}</p>:''}
-          {item.options.cakelayers.length ? <p>Cake Layers: {item.options.cakelayers}</p>:''}
-          {item.options.icing.length ? <p>Icing: {item.options.icing}</p>:''}
-          {item.options.trim.length ? <p>Trim: {item.options.trim}</p>:''}
-          {item.options.color.length ? <p>Color: {item.options.color}</p>:''}
-          {item.options.filling.length ? <p>Filling: {item.options.filling}</p>:''}
-          {item.options.side.length ? <p>Side: {item.options.side}</p>:''}
-          {item.options.decorationType.length ? <p>Decoration Type: {item.options.decorationType}</p>:''}
-          {item.options.decorqationTypeNote.length ? <p>Decoration Type Note: {item.options.decorqationTypeNote}</p>:''}
+          <p>Writing on Cake: {item.options.writigOnCakeTypeNote && item.options.writigOnCakeTypeNote}</p>
+          <p>Special Instructions: {item.options.extras && item.options.extras}</p>
+          {item.options.size && <p>Size: {item.options.size}</p>}
+          {item.options.cakelayers && <p>Cake Layers: {item.options.cakelayers}</p>}
+          {item.options.icing && <p>Icing: {item.options.icing}</p>}
+          {item.options.trim && <p>Trim: {item.options.trim}</p>}
+          {item.options.color && <p>Color: {item.options.color}</p>}
+          {item.options.filling && <p>Filling: {item.options.filling}</p>}
+          {item.options.side && <p>Side: {item.options.side}</p>}
+          {item.options.decorationType && <p>Decoration Type: {item.options.decorationType}</p>}
+          {item.options.decorqationTypeNote && <p>Decoration Type Note: {item.options.decorqationTypeNote}</p>}
         </div>
       </div>
     </div>
@@ -167,17 +167,17 @@ const ClassicCakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) =>
       </div>
       <div className="cart--item-row2">
         <div className="cart--item-comment">
-          <p>Writing on Cake: {item.options.writigOnCakeTypeNote.length ? item.options.writigOnCakeTypeNote:'N/A'}</p>
-          {/* <p>Special Instructions: {item.options.extras.length ? item.options.extras:'N/A'}</p> */}
-          {item.options.size.length ? <p>Size: {item.options.size}</p>:''}
+          <p>Writing on Cake: {item.options.writigOnCakeTypeNote && item.options.writigOnCakeTypeNote}</p>
+          {item.options.extras && <p>Special Instructiopns: {item.options.extras}</p>}
+          {item.options.size && <p>Size: {item.options.size}</p>}
           {/* {item.options.cakelayers.length ? <p>Cake Layers: {item.options.cakelayers}</p>:''} */}
           {/* {item.options.icing.length ? <p>Icing: {item.options.icing}</p>:''} */}
-          {item.options.trim.length ? <p>Trim: {item.options.trim}</p>:''}
-          {item.options.color.length ? <p>Color: {item.options.color}</p>:''}
+          {item.options.trim && <p>Trim: {item.options.trim}</p>}
+          {item.options.color && <p>Color: {item.options.color}</p>}
           {/* {item.options.filling.length ? <p>Filling: {item.options.filling}</p>:''} */}
-          {item.options.side.length ? <p>Side: {item.options.side}</p>:''}
-          {item.options.decorationType.length ? <p>Decoration Type: {item.options.decorationType}</p>:''}
-          {item.options.decorqationTypeNote.length ? <p>Decoration Type Note: {item.options.decorqationTypeNote}</p>:''}
+          {item.options.side && <p>Side: {item.options.side}</p>}
+          {item.options.decorationType && <p>Decoration Type: {item.options.decorationType}</p>}
+          {item.options.decorqationTypeNote && <p>Decoration Type Note: {item.options.decorqationTypeNote}</p>}
         </div>
       </div>
     </div>
