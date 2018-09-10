@@ -8,9 +8,11 @@ import OrderListItem from './OrderListItem';
 
 import OrdersFilters from './OrdersFilters';
 import { selectOrders, filterByCounter, filterByStatus } from '../../selectors/orders';
+import Loading from '../shared/LoadingPage';
 
 import axios from 'axios';
 import { baseUrl, headers } from "../../const/global";
+
 const orderAPI = baseUrl+'/order';
 
 class DashboardPage extends React.Component {
@@ -19,7 +21,7 @@ class DashboardPage extends React.Component {
   }
   componentDidMount() {
     this.props.fetchCSAOrders();
-
+    
   };
 
   isPickedUp=(oId)=>{
@@ -34,11 +36,10 @@ class DashboardPage extends React.Component {
     )
   }
   viewOrder=(oId)=> {
-    console.log(oId);
     this.props.history.push(`/orderDashboard/orderDetail/${oId}`);
   }
   render(){
-    const { orders, filters} = this.props;
+    const { orders, filters, loading} = this.props;
     let ordersList = filterByStatus(orders,filters);
     let pendingCount = filterByStatus(orders,0).length;
     let readyCount = filterByStatus(orders,{status:1}).length;
@@ -84,8 +85,6 @@ class DashboardPage extends React.Component {
 
               </div>
 
-
-
               {ordersList.map(order => {
                 return <OrderListItem key={order.id} item={order} status={this.props.filters.status} isPickedUp={this.isPickedUp} viewOrder={this.viewOrder} />;
               })}
@@ -93,6 +92,7 @@ class DashboardPage extends React.Component {
             </div>
           </div>
         </div>
+        <Loading loading={this.props.loading} />
       </div>
     )
   }
@@ -113,6 +113,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = state => ({
   orders: filterByCounter(selectOrders(state.orders.items,state.filters),state.filters),
   notifications: state.notifications,
+  loading: state.orders.loading,
   filters: state.filters
 });
 

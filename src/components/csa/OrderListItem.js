@@ -5,7 +5,6 @@ import { sortByCounter } from '../../selectors/sortByCounter';
 import { orderDate } from '../../selectors/orderDate';
 import OrderListCounterItem  from './OrderListCounterItem';
 
-
 const OrderListItem = ({item, pastOrders, status, isPickedUp, viewOrder}) => {
 
     const counters = sortByCounter(item.counters);

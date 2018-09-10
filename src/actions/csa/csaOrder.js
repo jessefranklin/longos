@@ -1,5 +1,5 @@
 import { baseUrl, headers } from "../../const/global";
-let axios = require('axios');
+import axios from 'axios';
 
 export const fetchCSAOrder = (oId) => {
     return (dispatch) => {
@@ -18,12 +18,24 @@ export const fetchCSAOrder = (oId) => {
     }
 }
 
-
-export const updateCSAOrder = (params,oId) => {
+export const updateCSAOrder = (url, payload) => {
     return (dispatch) => {
-        let url = baseUrl + '/order' + params;
         dispatch(fetchCSAOrderBegin())
-        return axios.put(url, headers).then(
+        return axios.put(url,payload,headers).then(
+            (response) => {
+            },
+            (err) => {
+                console.log(err);
+            }
+        )
+
+    }
+}
+
+export const updateCSAOrderState = (url) => {
+    return (dispatch) => {
+        dispatch(fetchCSAOrderBegin())
+        return axios.put(url,headers).then(
             (response) => {
                 console.log(response.data)
             },

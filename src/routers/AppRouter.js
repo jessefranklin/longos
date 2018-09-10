@@ -8,7 +8,6 @@ import PublicRoute from './PublicRoute';
 import LoginRoute from './LoginRoute';
 import CSALogin from '../components/csa/CSALogin';
 import CSADashboard from './CSADashboard';
-import Loading from '../components/shared/LoadingPage';
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -21,7 +20,6 @@ const AppRouter = () => (
         <Route path='/orderDashboard' component={CSADashboard} />
         <Route component={NotFoundPage} />
       </Switch>
-      <Loading />
     </div>
   </Router>
 );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { baseUrl, headers } from "../../const/global";
 import { fetchCSAPastOrders }  from '../../actions/csa/pastOrders';
 import OrderListItem from './OrderListItem';
 import OrdersFilters from './OrdersFilters';
@@ -8,7 +9,7 @@ import { Pagination } from '../partials/Pagination';
 import { selectOrders, filterByStatus, filterByCounter } from '../../selectors/orders';
 import Loading from '../shared/LoadingPage';
 
-class PastOrders extends React.Component {
+class CancelledOrders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,9 +27,13 @@ class PastOrders extends React.Component {
     this.props.fetchCSAPastOrders(url);
   };
   componentDidUpdate(prevProps, prevState, snapshot) {
+    let url = this.returnUrlwithParam();
+      console.log(url);
+
     if (prevProps.filters.counter !== this.props.filters.counter) {
       this.setState({ 'page' : 0 });
       let url = this.returnUrlwithParam();
+      console.log(url);
       this.props.fetchCSAPastOrders(url);
     }
     if (prevState.page !== this.state.page) {
@@ -38,10 +43,9 @@ class PastOrders extends React.Component {
 
   }
   returnUrlwithParam(){
-    const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/pickedup`;
-    const orderIDs = `?storeid=${config[0].store_id}`;
-    let counter = this.props.filters.counter !== '' ? `&counter=${this.props.filters.counter}` : '';
-    const params = `&perpage=${this.state.perpage}&page=${this.state.page}${counter}`
+    const orderAPI = baseUrl+ `/order/bystatus`;
+    const orderIDs = `?storeid=${config[0].store_id}&status=3`;
+    const params = `&perpage=${this.state.perpage}&page=${this.state.page}`
     return orderAPI + orderIDs + params;
   }
   onPaginationChange = (val) =>{
@@ -58,7 +62,7 @@ class PastOrders extends React.Component {
     return(
       <div>
         <div className="content--container">
-          <OrdersFilters pastOrders={true} pendingCount={pendingCount} readyCount={readyCount} />
+          <OrdersFilters pastOrders={false} pendingCount={pendingCount} readyCount={readyCount} />
 
           <div className="divTable">
             <div className="divTableBody">
@@ -127,4 +131,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PastOrders);
+export default connect(mapStateToProps, mapDispatchToProps)(CancelledOrders);

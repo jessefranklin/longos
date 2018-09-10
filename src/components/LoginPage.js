@@ -12,14 +12,7 @@ import { fetchConfigs } from '../actions/config';
 import { fetchProducts } from '../actions/customer/products';
 import { setTextFilter, setOrderFilter } from '../actions/filter';
 import FormValidator from './shared/FormValidator';
-
-const headers = {
-  mode: "no-cors",
-  headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
-  }
-}
+import Loading from './shared/LoadingPage';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -119,7 +112,9 @@ class LoginPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchConfigs();
+    if(!this.props.settings.store){
+      this.props.fetchConfigs();
+    }
     let stateLoader = new StateLoader();
     stateLoader.removeState();
     this.props.removeCart();
@@ -165,6 +160,7 @@ class LoginPage extends React.Component {
           </div>
 
         </div>
+        <Loading loading={this.props.productsLoading} />
       </div>
     )
   }
@@ -238,6 +234,8 @@ const Card = ({state, handleInputChange, handleFormSubmit, validation}) => (
     <button className="button"
       onClick={handleFormSubmit}
         >Sign-In</button>
+    
+    
   </div>
 )
 
@@ -252,4 +250,10 @@ const mapDispatchToProps = (dispatch) => ({
   setOrderFilter: (text) => dispatch(setOrderFilter(text))
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+const mapStateToProps = state => ({
+  settings: state.settings,
+  productsLoading: state.products.loading
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

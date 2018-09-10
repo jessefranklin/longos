@@ -25,7 +25,7 @@ class Footer extends React.Component {
       <footer className="footer">
         <Link to="/orderDashboard">Order Dashboard</Link>
         <Link to="/orderDashboard/settings">Settings</Link>
-        <Link to="/orderDashboard">Cancelled orders</Link>
+        <Link to="/orderDashboard/CancelledOrders">Cancelled orders</Link>
         <button className="btn clear-button-styling" onClick={this.toggleModal}>Report Issue</button> <span className="pipe-white">|</span>
         <button className="btn btn-qu" onClick={startLogout}>Logout</button>
 

@@ -1,9 +1,69 @@
-.loading-element {
-  transition:height 1.6s linear;
-  overflow:hidden;
-  width: 100px;
-  height: 0px;
-  margin: auto;
-  position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
+.loading {
+  display: inline-block;
+  position: fixed;
+  z-index: 99999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: opacity .6s ease-in-out;
+  opacity: 0;
+  width: 64px;
+  height: 64px;
+  margin-top: 0px;
+  pointer-events: none;
+  background-size: 40px;
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+       background-position: 9px 10px;
+       background-size: 40px;
+  }
+  &::before, &::after {
+    content: ' ';
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 3px;
+    border: 1px solid $red;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: $red transparent transparent transparent;
+  }
+  &::after {
+    animation-delay: -0.1s;
+  }
+}
+
+.loading-container {
+  &::after {
+    content: ' ';
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: background .4s ease-in-out;
+    background: rgba(0,0,0,0);
+  }
+}
+
+.loading-container.active {
+  &::after {
+    background: rgba(0,0,0,.4);
+  }
+  .loading{
+    opacity: 1;
+  }
+}
+
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

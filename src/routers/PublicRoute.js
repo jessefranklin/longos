@@ -7,10 +7,12 @@ import Order from '../components/cart/CartOrder';
 import OrderConfirmation from '../components/cart/CartOrderConfirmation';
 import CartOrderReview from '../components/cart/CartOrderReview';
 import Idle from '../components/shared/Idle';
+import Loading from '../components/shared/LoadingPage';
 
 export const PublicRoute = ({match}) => {
   return(
     <div className="customer--app">
+      
       <ProductsHeader />
       <div className="content--container">
         <Switch>

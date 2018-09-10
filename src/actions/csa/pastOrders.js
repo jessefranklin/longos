@@ -1,16 +1,9 @@
-
-let axios = require('axios');
-
-
-const headers = {
-    header: {
-        "Content-Type":"application/json",
-        "Access-Control-Allow-Origin": "*"
-    }
-}
+import { baseUrl, headers } from "../../const/global";
+import axios from 'axios';
 
 export let fetchCSAPastOrders = (url) => {
     return (dispatch) => {
+        dispatch(fetchPastOrdersBegin())
         return axios.get(url, headers).then(
             (response) => {
                 if(response.data.length){
@@ -21,9 +14,14 @@ export let fetchCSAPastOrders = (url) => {
                 console.log(err);
             }
         )
-
     }
 }
+
+
+export const fetchPastOrdersBegin = () => ({
+    type: 'FETCH_ORDERS_BEGIN'
+  });
+  
 
 // SET_ORDER
 export const setPastOrder = (order) => ({
