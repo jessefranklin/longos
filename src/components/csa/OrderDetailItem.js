@@ -65,9 +65,7 @@ class OrderDetailItem extends Component {
             <div className="order-detail-item--container">
               <div className="order-item--row">
                 <div className="order-item--item grey-border">
-                  <div className="img--container">
-                    <img src={order.product.imageLink} alt={order.product.name} />
-                  </div>
+                  <img src={order.product.imageLink} alt={order.product.name} />
                   
                   <h4>{order.product.counter}</h4>
                   {order.product.name}
