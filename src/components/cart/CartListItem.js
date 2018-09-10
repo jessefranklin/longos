@@ -130,8 +130,8 @@ const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
             {item.options.decorationType && <p><strong>Decoration Type:</strong><br/> {item.options.decorationType}</p>}
             {item.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/> {item.options.decorqationTypeNote}</p>}
           </div>
-          {item.options.writigOnCakeTypeNote && <p><strong>Writing on Cake:</strong><br/> {item.options.writigOnCakeTypeNote}</p>}
-          {item.options.extras && <p><strong>Special Instructions:</strong><br/>{item.options.extras}</p>}
+          {item.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {item.options.writigOnCakeTypeNote}</p>}
+          {item.options.extras && <p className="fullwidth"><strong>Special Instructions:</strong><br/>{item.options.extras}</p>}
         </div>
       </div>
     </div>
@@ -177,8 +177,8 @@ const ClassicCakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) =>
             {item.options.decorationType && <p><strong>Decoration Type:</strong><br/> {item.options.decorationType}</p>}
             {item.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/> {item.options.decorqationTypeNote}</p>}
           </div>
-          {item.options.writigOnCakeTypeNote && <p><strong>Writing on Cake:</strong><br/> {item.options.writigOnCakeTypeNote}</p>}
-          {item.options.extras && <p><strong>Special Instructiopns:</strong><br/> {item.options.extras}</p>}
+          {item.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {item.options.writigOnCakeTypeNote}</p>}
+          {item.options.extras && <p className="fullwidth"><strong>Special Instructiopns:</strong><br/> {item.options.extras}</p>}
         </div>
       </div>
     </div>

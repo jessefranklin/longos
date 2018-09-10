@@ -194,7 +194,10 @@
         font-family: $sans;
         font-size: 16px;
         line-height: 20px;
-        width:33%; 
+        width:33%;
+        &.fullwidth{
+            width:100%;
+        }  
     }
     .cart--cake-options{
         display: flex;
