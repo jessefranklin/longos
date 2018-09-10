@@ -4,6 +4,7 @@ import { startRemoveItem, startEditItem }  from '../../actions/cart';
 import numeral from 'numeral';
 import FontAwesome from 'react-fontawesome';
 import { QuantitySelect } from '../partials/QuantitySelect';
+import { orderDate } from '../../selectors/orderDate';
 
 class CartListItem extends Component {
   constructor(props, context) {
@@ -31,10 +32,19 @@ class CartListItem extends Component {
     const formattedItemTotalwithTax = numeral(item.quantity * item.tax).format('$0,0.00');
 
     const quantityEditable = this.props.editable === "true" ? <QuantitySelect onQuantityChange={this.onQuantityChange} quantity={item.quantity} /> : item.quantity;
+    let cartRow;
+
+    if(item.type ==='cake'){
+      cartRow = <CakeItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} />
+    } else if (item.type === 'classiccake'){
+      cartRow = <ClassicCakeItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} />
+    } else {
+      cartRow = <CartItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} />
+    }
+
     return (
       <div className="cart--row">
-        {item.type === 'cake' ? <CakeItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} />
-        :<CartItem item={item} quantityEditable={quantityEditable} formattedItemTotal={formattedItemTotal} onRemove={this.onRemove} formattedItemTotalwithTax={formattedItemTotalwithTax} /> }
+        {cartRow}
       </div>
     );
   }
@@ -81,27 +91,95 @@ const CartItem = ({item,quantityEditable,formattedItemTotal,onRemove,formattedIt
 const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
   return (
     <div className="cart--item">
-        <h4>{item.productName}</h4>
-        <div>
-          {item.comment}
-          {item.options.size}
-          {item.options.cakelayers}
-          {item.options.icing}
-          {item.options.trim}
-          {item.options.color}
-          {item.options.filling}
-          {item.options.side}
-          {item.options.decorationType}
-          {item.options.decorationTypeNote}
-          {item.options.writigOnCakeType}
-          {item.options.extras}
-
+      <div className="cart--item-row1">
+        <div className="cart--item-img grey-border">
+          <img src={item.productImage} alt={item.name} />
+          <h4>{item.productName}</h4>
+          <p>{item.optionName}</p>
+        </div>
+        <div className="cart--item-qty grey-border">
           {quantityEditable}
 
           {item.name}
         </div>
-        {formattedItemTotal}
-        <button onClick={onRemove}>X remove</button>
+        <h4 className="grey-border">{formattedItemTotal}<br />
+          {/*item.tax != 0 ?
+            <span className="sml-red">Tax {formattedItemTotalwithTax}</span>
+          :''*/}
+
+        </h4>
+        <button onClick={onRemove} className="btn-qu">
+            <FontAwesome
+            className='fa fa-trash'
+            name='fa-trash'
+            size='2x'
+            aria-hidden='true'
+          />
+        </button>
+      </div>
+      <div className="cart--item-row2">
+        <div className="cart--item-comment">
+          <p>Writing on Cake: {item.options.writigOnCakeTypeNote.length ? item.options.writigOnCakeTypeNote:'N/A'}</p>
+          <p>Special Instructions: {item.options.extras.length ? item.options.extras:'N/A'}</p>
+          {item.options.size.length ? <p>Size: {item.options.size}</p>:''}
+          {item.options.cakelayers.length ? <p>Cake Layers: {item.options.cakelayers}</p>:''}
+          {item.options.icing.length ? <p>Icing: {item.options.icing}</p>:''}
+          {item.options.trim.length ? <p>Trim: {item.options.trim}</p>:''}
+          {item.options.color.length ? <p>Color: {item.options.color}</p>:''}
+          {item.options.filling.length ? <p>Filling: {item.options.filling}</p>:''}
+          {item.options.side.length ? <p>Side: {item.options.side}</p>:''}
+          {item.options.decorationType.length ? <p>Decoration Type: {item.options.decorationType}</p>:''}
+          {item.options.decorqationTypeNote.length ? <p>Decoration Type Note: {item.options.decorqationTypeNote}</p>:''}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ClassicCakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
+  return (
+    <div className="cart--item">
+      <div className="cart--item-row1">
+        <div className="cart--item-img grey-border">
+          <img src={item.productImage} alt={item.name} />
+          <h4>{item.productName}</h4>
+          <p>{item.optionName}</p>
+        </div>
+        <div className="cart--item-qty grey-border">
+          {quantityEditable}
+
+          {item.name}
+        </div>
+        <h4 className="grey-border">{formattedItemTotal}<br />
+          {/*item.tax != 0 ?
+            <span className="sml-red">Tax {formattedItemTotalwithTax}</span>
+          :''*/}
+
+        </h4>
+        <button onClick={onRemove} className="btn-qu">
+            <FontAwesome
+            className='fa fa-trash'
+            name='fa-trash'
+            size='2x'
+            aria-hidden='true'
+          />
+        </button>
+      </div>
+      <div className="cart--item-row2">
+        <div className="cart--item-comment">
+          <p>Writing on Cake: {item.options.writigOnCakeTypeNote.length ? item.options.writigOnCakeTypeNote:'N/A'}</p>
+          {/* <p>Special Instructions: {item.options.extras.length ? item.options.extras:'N/A'}</p> */}
+          {item.options.size.length ? <p>Size: {item.options.size}</p>:''}
+          {/* {item.options.cakelayers.length ? <p>Cake Layers: {item.options.cakelayers}</p>:''} */}
+          {/* {item.options.icing.length ? <p>Icing: {item.options.icing}</p>:''} */}
+          {item.options.trim.length ? <p>Trim: {item.options.trim}</p>:''}
+          {item.options.color.length ? <p>Color: {item.options.color}</p>:''}
+          {/* {item.options.filling.length ? <p>Filling: {item.options.filling}</p>:''} */}
+          {item.options.side.length ? <p>Side: {item.options.side}</p>:''}
+          {item.options.decorationType.length ? <p>Decoration Type: {item.options.decorationType}</p>:''}
+          {item.options.decorqationTypeNote.length ? <p>Decoration Type Note: {item.options.decorqationTypeNote}</p>:''}
+        </div>
+      </div>
     </div>
   );
 };
