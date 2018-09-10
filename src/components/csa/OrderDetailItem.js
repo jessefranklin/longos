@@ -4,7 +4,7 @@ import Barcode from 'react-barcode';
 import Select from 'react-select';
 import { baseUrl } from '../../const/global';
 import { updateCSAOrderState } from '../../actions/csa/csaOrder';
-import { AutoComplete } from '../partials/AutoComplete';
+import { Assignees } from './Assignees';
 import FontAwesome from 'react-fontawesome';
 
 const options = [
@@ -57,7 +57,7 @@ class OrderDetailItem extends Component {
   }
 
   render() {
-    const { order } = this.props;
+    const { order, assignees } = this.props;
 
     return (
         <div>
@@ -74,7 +74,7 @@ class OrderDetailItem extends Component {
                 </div>
                 <div className="order-item--assign grey-border">
 
-                <AutoComplete assignee={order.assignee} reassignState={this.state.reassign} reassign={this.onReassign} onAssignedChange={this.onAssignedChange}/>
+                <Assignees assignee={order.assignee} reassignState={this.state.reassign} reassign={this.onReassign} onAssignedChange={this.onAssignedChange} assignees={assignees} />
                 
                 </div>
                 <div className="order-item--status grey-border">

@@ -1,13 +1,7 @@
-import { baseUrl } from "../const/global";
+import { baseUrl, headers } from "../const/global";
 let axios = require('axios');
 
 const orderApi  = baseUrl+"/order/add";
-const headers = {
-    headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-    }
-}
 
 //Dispatch Order
 export function dispatchOrder(order) {

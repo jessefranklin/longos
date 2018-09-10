@@ -235,6 +235,7 @@ class OrderDetail extends Component {
 
   render() {
     const csaOrder = this.props.csaOrder.order;
+    const settings = this.props.settings;
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
     const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
@@ -392,7 +393,7 @@ class OrderDetail extends Component {
                 <h2>{key}</h2>
                 <div className="counter-items--container">
                   {csaOrderSortedItems[key].map(order => {
-                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} />;
+                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} assignees={settings}/>;
                   })}
                 </div>
               </div>;
@@ -411,6 +412,7 @@ class OrderDetail extends Component {
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
+  settings: state.settings,
   csaOrder: state.csaOrder
 });
 

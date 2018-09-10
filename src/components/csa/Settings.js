@@ -4,6 +4,7 @@ import Select from 'react-select';
 import CSAHeader from './CSAHeader';
 import { setConfig } from '../../actions/config';
 import { baseUrl, headers } from '../../const/global';
+import { getAssignees } from '../../actions/config';
 
 import axios from 'axios';
 
@@ -23,12 +24,12 @@ class Settings extends React.Component {
   }
   componentDidMount() {
     this.fetchStores();
+    
   };
   fetchStores(){
     const url = `${baseUrl}/store`;
     axios.get(url, headers).then(
         (response) => {
-          console.log(response.data);
           this.listStoreOptions(response.data);
         },
         (err) => {
@@ -48,7 +49,13 @@ class Settings extends React.Component {
     this.setState({ "selectedObj": { value: v, label:l }, "store" : storesObj[v]});
   }
   onSaveSettings = (selectedOption) => {
+
     this.props.setConfig(this.state);
+
+    // http://digitalpreorder-staging.azurewebsites.net/api/assignee?storeId=store1‌&counter=[optional]
+    let url =`${baseUrl}/assignee?storeId=${this.state.store.id}`
+    //Fetch Assignees
+    this.props.getAssignees(url);
   }
   render(){
     return( 
@@ -83,7 +90,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setConfig:(settings) => dispatch(setConfig(settings))
+  setConfig:(settings) => dispatch(setConfig(settings)),
+  getAssignees: (url) => dispatch(getAssignees(url))
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);
