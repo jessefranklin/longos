@@ -28,7 +28,7 @@ class CustomerFeedback extends Component {
             <div className="feedback--customer" >
                 <div>
                     <p>Please rate your experience:</p>
-                    <button onClick={() => this.onRating(1)}>
+                    <button onClick={() => this.onRating(1)} className={this.state.rating === 1 ? 'active' : ''}>
                         <FontAwesomeIcon
                             className='fa-frown'
                             name='fa-frown'
@@ -36,7 +36,7 @@ class CustomerFeedback extends Component {
                             />
                     </button>
 
-                    <button onClick={() => this.onRating(2)}>
+                    <button onClick={() => this.onRating(2)} className={this.state.rating === 2 ? 'active' : ''}>
                         <FontAwesomeIcon
                             className='fa-meh'
                             name='fa-meh'
@@ -44,14 +44,14 @@ class CustomerFeedback extends Component {
                             />
                     </button>
 
-                    <button onClick={() => this.onRating(3)}>
+                    <button onClick={() => this.onRating(3)} className={this.state.rating === 3 ? 'active' : ''}>
                         <FontAwesomeIcon
                             className='fa-smile'
                             name='fa-smile'
                             size='2x'
                             />
                     </button>
-                    <button onClick={() => this.onRating(4)}>
+                    <button onClick={() => this.onRating(4)} className={this.state.rating === 4 ? 'active' : ''}>
                         <FontAwesomeIcon
                             className='fa-laugh'
                             name='fa-laugh'
