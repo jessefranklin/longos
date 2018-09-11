@@ -110,3 +110,59 @@ body .form-group {
       color: $red;
     }
 }
+
+body .modal-body,
+body .box-layout{ 
+    .Select-control {
+        height: 40px;
+        border: 2px solid $red;
+        border-radius: 0px;
+        color: $red;
+        font-weight: 500;
+        font-size: 12px;
+        text-transform: uppercase;
+        .Select-arrow {
+            border-top:5px solid $red;
+        }
+        .Select-value .Select-value-label,
+        .Select-value {
+            font-family: $sans;
+            color: $red;
+            font-size: 14px;
+            font-weight: 600;
+            position: absolute;
+            transform: translateY(-2px);
+        }
+        .Select-value{
+            transform:translateY(3px);
+        }
+        .Select-placeholder{
+        color:$red;
+        font-size: 14px;
+        font-weight: 600;
+        }
+    }
+    .Select-menu-outer{
+        color:$red;
+        width:100%;
+        div{
+            width:100%;
+        }
+    }
+    .is-disabled{
+        background:#fff;
+        .Select-control{
+            border: none;
+            color:$dark-grey;
+            //background:#fff !important;
+        }
+        .Select-arrow-zone{
+            display: none;
+        }
+    }
+    .is-open{
+        .Select-arrow{
+            border-top:none;
+        }
+    }
+}

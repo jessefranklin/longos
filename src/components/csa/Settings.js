@@ -77,7 +77,7 @@ class Settings extends React.Component {
 
             <h3>Counters</h3>
 
-            <button onClick={this.onSaveSettings}>Save</button>
+            <button onClick={this.onSaveSettings} className="btn-primary btn-center btn-green">Save</button>
           </div>
         </div>
       </div>
