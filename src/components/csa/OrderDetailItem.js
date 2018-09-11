@@ -61,21 +61,19 @@ class OrderDetailItem extends Component {
 
     return (
         <div>
+          <div className="order-detail-item--container">
+            <div className="order-item--row">
+              <div className="order-item--item grey-border">
+                <img src={order.product.imageLink} alt={order.product.name} />               
+                <h4>{order.product.counter}</h4>
+                {order.product.name}
+              </div>
 
-            <div className="order-detail-item--container">
-              <div className="order-item--row">
-                <div className="order-item--item grey-border">
-                  <img src={order.product.imageLink} alt={order.product.name} />
-                  
-                  <h4>{order.product.counter}</h4>
-                  {order.product.name}
-                </div>
-                <div className="order-item--assign grey-border">
-
+              <div className="order-item--assign grey-border">
                 <Assignees assignee={order.assignee} reassignState={this.state.reassign} reassign={this.onReassign} onAssignedChange={this.onAssignedChange} assignees={assignees} />
-                
-                </div>
-                <div className="order-item--status grey-border">
+              </div>
+
+              <div className="order-item--status grey-border">
                 {order.status == 0 ? (
                   <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
                 ) : (
@@ -87,41 +85,41 @@ class OrderDetailItem extends Component {
                   disabled={order.status === 0 ? true:false}
                   clearable={false} 
                   />
-                )}
-                
-                </div>
-                <div className="order-item--qty grey-border">
-                  {order.quantity}
-                </div>
-                <div className="order-item--barcode">
-                  {order.upc ? (
-                    <Barcode 
-                      format="UPC" 
-                      value={order.upc}
-                      />
-                  ) : ''}
-                </div>
-                {this.props.editState ? (
-                  <div className="order-item--remove-item">
-                  {!this.props.isPaid?
-                      <button onClick={this.onRemove} className="btn-qu">
-                        <FontAwesome
-                        className='fa fa-trash'
-                        name='fa-trash'
-                        size='2x'
-                        aria-hidden='true'
-                      />
-                    </button>
-                  : null}
-                  </div>
-                ): ''}
+                )}             
+              </div>
 
+              <div className="order-item--qty grey-border">
+                {order.quantity}
               </div>
-              <div className="order-item--meta">
-                {order.option.name && <ItemDescription order={order} />}
-                {order.comment && <SpecialInstructions order={order} />}
+              <div className="order-item--barcode">
+                {order.upc ? (
+                  <Barcode 
+                    format="UPC" 
+                    value={order.upc}
+                    />
+                ) : ''}
               </div>
+              {this.props.editState ? (
+                <div className="order-item--remove-item">
+                {!this.props.isPaid?
+                    <button onClick={this.onRemove} className="btn-qu">
+                      <FontAwesome
+                      className='fa fa-trash'
+                      name='fa-trash'
+                      size='2x'
+                      aria-hidden='true'
+                    />
+                  </button>
+                : null}
+                </div>
+              ): ''}
+
             </div>
+            <div className="order-item--meta">
+              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')||(order.product.category === 'Cupcake Cakes')) ? <div><CakeDescription order={order} /></div>
+              :<div>{order.option.name && <ItemDescription order={order} />}{order.comment && <SpecialInstructions order={order} />}</div>}
+            </div>
+          </div>
       </div>
     );
   }
@@ -130,7 +128,7 @@ class OrderDetailItem extends Component {
 const ItemDescription = ({order}) => {
   return (
     <div>
-      <h6>Item Option:</h6> {order.option.name}
+      <p><strong>Item Option:</strong><br/> {order.option.name}</p>
     </div>
   );
 };
@@ -159,15 +157,28 @@ const OrderStatus = ({status,statusAssigned}) => {
 const SpecialInstructions = ({order}) => {
   return (
     <div>
-      <h6>Special Instructions:</h6> {order.comment}
+      <p><strong>Special Instructions:</strong><br/> {order.comment}</p>
     </div>
   );
 };
 
-const CakeDescription = ({item}) => {
+const CakeDescription = ({order}) => {
   return (
     <div>
-      
+      <div className="order--cake-options">
+        {order.option.name && <p><strong>Item Option:</strong><br/>{order.option.name}</p>}
+        {order.options.size && <p><strong>Size:</strong><br/>{order.options.size}</p>}
+        {order.options.cakelayers && <p><strong>Cake Layers:</strong><br/>{order.options.cakelayers}</p>}
+        {order.options.icing && <p><strong>Icing:</strong><br/>{order.options.icing}</p>}
+        {order.options.trim && <p><strong>Trim:</strong><br/>{order.options.trim}</p>}
+        {order.options.color && <p><strong>Color:</strong><br/>{order.options.color}</p>}
+        {order.options.filling && <p><strong>Filling:</strong><br/>{order.options.filling}</p>}
+        {order.options.side && <p><strong>Side:</strong><br/>{order.options.side}</p>}
+        {order.options.decorationType && <p><strong>Decoration Type:</strong><br/>{order.options.decorationType}</p>}
+        {order.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/>{order.options.decorqationTypeNote}</p>}
+      </div>
+      {order.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {order.options.writigOnCakeTypeNote}</p>}
+      {order.options.extras && <p className="fullwidth"><strong>Special Instructions:</strong><br/> {order.options.extras}</p>}
     </div>
   );
 };

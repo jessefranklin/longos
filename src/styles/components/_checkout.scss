@@ -391,7 +391,7 @@ body .content--container{
     padding: 2rem 1rem;
     border-radius: 27px;
     button{
-        background: $offwhite;
+        background: #fff;
         border:none;
         border-radius:18px;
         padding:4px;
@@ -399,7 +399,31 @@ body .content--container{
         width: 12%;
         min-width: 60px;
         margin-right: 2px;
-        background: $offwhite;
+        .fa-frown,
+        .fa-meh,
+        .fa-smile,
+        .fa-laugh{
+            color:$grey;
+        }
+        .fa-2x {
+            font-size: 4em;
+        }
+        &.active{
+            // background: $offwhite;
+            // border: 2px solid $grey;
+            .fa-frown{
+                color:$red;
+            }
+            .fa-meh{
+                color:$yellow;
+            }
+            .fa-smile{
+                color:$green;
+            }
+            .fa-laugh{
+                color:$green;
+            }
+        }
     }
     .btn-submit{
         height: 70px;
@@ -418,6 +442,7 @@ body .content--container{
         border:none;
         color:$dark-grey;
         width: 90%;
+        padding: 20px;
         background: $offwhite;
         border:2px solid $light-grey;
     }
@@ -427,14 +452,5 @@ body .content--container{
     p{
         font-size:17px;
         padding: 2rem;
-    }
-    .fa-frown{
-        color:$red;
-    }
-    .fa-meh{
-        color:$yellow;
-    }
-    .fa-smile{
-        color:$green;
     }
 }

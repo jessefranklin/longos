@@ -112,7 +112,7 @@ class CartOrder extends React.Component {
             <div className="time-inputs">
               <div className="date-picker">
                 <i className="far fa-calendar-alt" aria-hidden="true"></i>
-                <MediaQuery query="(min-device-width: 769px)">
+                <MediaQuery query="(min-device-width: 801px)">
                   <SingleDatePicker
                     date={this.state.pickUpDate}
                     onDateChange={this.onDateChange}
@@ -122,7 +122,7 @@ class CartOrder extends React.Component {
                     isOutsideRange={() => false}
                   />
                 </MediaQuery>
-                <MediaQuery query="(max-device-width: 768px)">
+                <MediaQuery query="(max-device-width: 800px)">
                   <input
                     type="date"
                     name="pickUpDate"
