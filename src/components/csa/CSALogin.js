@@ -31,7 +31,7 @@ class CSALogin extends React.Component {
                             type="numeric"
                             onComplete={v => this.pins(v)}
                         />
-                        <button onClick={() => pin.clear()}>Clear</button>
+                        <button onClick={() => pin.clear()} className="btn-primary">Clear</button>
                     </div>
                 </div>
             </div>
