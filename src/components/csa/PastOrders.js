@@ -8,6 +8,8 @@ import { Pagination } from '../partials/Pagination';
 import { selectOrders, filterByStatus, filterByCounter } from '../../selectors/orders';
 import Loading from '../shared/LoadingPage';
 
+import { baseUrl, headers } from "../../const/global";
+
 class PastOrders extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +40,7 @@ class PastOrders extends React.Component {
 
   }
   returnUrlwithParam(){
-    const orderAPI = `http://digitalpreorder.azurewebsites.net/api/order/pickedup`;
+    const orderAPI = `${baseUrl}/order/pickedup`;
     const orderIDs = `?storeid=${config[0].store_id}`;
     let counter = this.props.filters.counter !== '' ? `&counter=${this.props.filters.counter}` : '';
     const params = `&perpage=${this.state.perpage}&page=${this.state.page}${counter}`

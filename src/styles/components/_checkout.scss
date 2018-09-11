@@ -405,9 +405,12 @@ body .content--container{
         .fa-laugh{
             color:$grey;
         }
+        .fa-2x {
+            font-size: 4em;
+        }
         &.active{
-            background: $offwhite;
-            border: 2px solid $grey;
+            // background: $offwhite;
+            // border: 2px solid $grey;
             .fa-frown{
                 color:$red;
             }
@@ -439,6 +442,7 @@ body .content--container{
         border:none;
         color:$dark-grey;
         width: 90%;
+        padding: 20px;
         background: $offwhite;
         border:2px solid $light-grey;
     }

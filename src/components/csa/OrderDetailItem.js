@@ -177,8 +177,8 @@ const CakeDescription = ({order}) => {
         {order.options.decorationType && <p><strong>Decoration Type:</strong><br/>{order.options.decorationType}</p>}
         {order.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/>{order.options.decorqationTypeNote}</p>}
       </div>
-      <p className="fullwidth"><strong>Writing on Cake:</strong><br/>{order.options.writigOnCakeTypeNote && order.options.writigOnCakeTypeNote}</p>
-      <p className="fullwidth"><strong>Special Instructions:</strong><br/>{order.options.extras && order.options.extras}</p>
+      {order.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {order.options.writigOnCakeTypeNote}</p>}
+      {order.options.extras && <p className="fullwidth"><strong>Special Instructions:</strong><br/> {order.options.extras}</p>}
     </div>
   );
 };
