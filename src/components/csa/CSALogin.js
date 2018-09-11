@@ -1,21 +1,51 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startLogin } from '../../actions/csa/auth';
-import CSAHeader from './CSAHeader';
+import { login } from '../../actions/csa/auth';
+import PinInput from 'react-pin-input';
+import uuid from 'uuid/v1';
 
-export const CSALogin = ({ startLogin }) => (
-    <div>
-        <div className="content--container">
-            <h4>Login</h4>
-            <button onClick={startLogin}>Login</button>
+let pin;
 
-            
-        </div>
-    </div>
-);
+class CSALogin extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
+    pins=(e)=>{
+        if(e ==='8888'){
+            this.props.login(e);
+            this.props.history.push('/orderDashboard');
+        }
+    }
+    render(){
+        return(
+            <div>
+                <div className="csa--login content--container">
+                    <div className="login--container">
+                        <h2>Login</h2>
+                        <PinInput
+                            length={4}
+                            focus
+                            secret
+                            ref={p => (pin = p)}
+                            type="numeric"
+                            onComplete={v => this.pins(v)}
+                        />
+                        <button onClick={() => pin.clear()}>Clear</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+};
 
 const mapDispatchToProps = (dispatch) => ({
-    startLogin: () => dispatch(startLogin())
+    login: (uid) => dispatch(login(uid))
 });
 
-export default connect(undefined, mapDispatchToProps)(CSALogin);
+const mapStateToProps = (state) => ({
+    auth: state.auth
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CSALogin);

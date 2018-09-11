@@ -52,6 +52,10 @@
     border-bottom: 1px solid #000;
 }
 
+.order-detail .Select-input > input {
+    padding: 0px 0 12px;
+}
+
 .order-detail--actions-row {
     background: #fff;
     display: flex;
@@ -214,7 +218,7 @@
         width:20%;
     }
     .col-barcode {
-        width:25%;
+        width:20%;
     }
     h4{
         font-size: 20px;
@@ -274,7 +278,7 @@
         }
     }
     .order-item--barcode{
-        width:25%;
+        width:20%;
         svg{
             max-width: 100%;
         }
