@@ -49,7 +49,16 @@ class OrderDetailItem extends Component {
     let url = orderAPI+'/'+this.props.oid+'/updateitem';
     const payload = {
       id:this.props.order.id,
-      quantity:0
+      productId:this.props.order.product.id,
+      productName:this.props.order.product.name,
+      optionId:this.props.order.option.id,
+      optionName:this.props.order.option.name,
+      priceId:'',
+      price:this.props.order.price,
+      tax:this.props.order.tax,
+      taxName:this.props.order.taxName,
+      quantity:0,
+      comment:this.props.order.comment
     };
     console.log(url, payload, headers);
     axios.put(url, payload, headers).then(
