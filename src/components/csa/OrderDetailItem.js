@@ -116,9 +116,8 @@ class OrderDetailItem extends Component {
 
             </div>
             <div className="order-item--meta">
-              {order.option.name && <ItemDescription order={order} />}
-              {order.comment && <SpecialInstructions order={order} />}
-              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')) && <CakeDescription order={order} />}
+              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')||(order.product.category === 'Cupcake Cakes')) ? <div><CakeDescription order={order} /></div>
+              :<div>{order.option.name && <ItemDescription order={order} />}{order.comment && <SpecialInstructions order={order} />}</div>}
             </div>
           </div>
       </div>
@@ -129,7 +128,7 @@ class OrderDetailItem extends Component {
 const ItemDescription = ({order}) => {
   return (
     <div>
-      <p>Item Option: {order.option.name}</p>
+      <p><strong>Item Option:</strong><br/> {order.option.name}</p>
     </div>
   );
 };
@@ -158,7 +157,7 @@ const OrderStatus = ({status,statusAssigned}) => {
 const SpecialInstructions = ({order}) => {
   return (
     <div>
-      <p>Special Instructions: {order.comment}</p>
+      <p><strong>Special Instructions:</strong><br/> {order.comment}</p>
     </div>
   );
 };
@@ -166,17 +165,20 @@ const SpecialInstructions = ({order}) => {
 const CakeDescription = ({order}) => {
   return (
     <div>
-      {order.options.writigOnCakeTypeNote && <p>Writing on Cake: {order.options.writigOnCakeTypeNote}</p>}
-      {order.options.extras && <p>Special Instructions: {order.options.extras}</p>}
-      {order.options.size && <p>Size: {order.options.size}</p>}
-      {order.options.cakelayers && <p>Cake Layers: {order.options.cakelayers}</p>}
-      {order.options.icing && <p>Icing: {order.options.icing}</p>}
-      {order.options.trim && <p>Trim: {order.options.trim}</p>}
-      {order.options.color && <p>Color: {order.options.color}</p>}
-      {order.options.filling && <p>Filling: {order.options.filling}</p>}
-      {order.options.side && <p>Side: {order.options.side}</p>}
-      {order.options.decorationType && <p>Decoration Type: {order.options.decorationType}</p>}
-      {order.options.decorqationTypeNote && <p>Decoration Type Note: {order.options.decorqationTypeNote}</p>}
+      <div className="order--cake-options">
+        {order.option.name && <p><strong>Item Option:</strong><br/>{order.option.name}</p>}
+        {order.options.size && <p><strong>Size:</strong><br/>{order.options.size}</p>}
+        {order.options.cakelayers && <p><strong>Cake Layers:</strong><br/>{order.options.cakelayers}</p>}
+        {order.options.icing && <p><strong>Icing:</strong><br/>{order.options.icing}</p>}
+        {order.options.trim && <p><strong>Trim:</strong><br/>{order.options.trim}</p>}
+        {order.options.color && <p><strong>Color:</strong><br/>{order.options.color}</p>}
+        {order.options.filling && <p><strong>Filling:</strong><br/>{order.options.filling}</p>}
+        {order.options.side && <p><strong>Side:</strong><br/>{order.options.side}</p>}
+        {order.options.decorationType && <p><strong>Decoration Type:</strong><br/>{order.options.decorationType}</p>}
+        {order.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/>{order.options.decorqationTypeNote}</p>}
+      </div>
+      {order.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {order.options.writigOnCakeTypeNote}</p>}
+      {order.options.extras && <p className="fullwidth"><strong>Special Instructions:</strong><br/> {order.options.extras}</p>}
     </div>
   );
 };
