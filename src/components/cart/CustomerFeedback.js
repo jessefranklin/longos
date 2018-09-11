@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import FontAwesomeIcon from 'react-fontawesome';
 import { dispatchFeedback } from '../../actions/feedback';
 
@@ -6,8 +7,18 @@ class CustomerFeedback extends Component {
     constructor(props){
         super(props);
         this.state = {
-            rating: 2,
-            feedback: ''
+            storeId: this.props.storeId,
+            orderId: this.props.orderId,
+            feedback: '',
+            rating: null,
+            maxRating: 4,
+            profile: {
+                email: this.props.profile.email,
+                phone: this.props.profile.phone,
+                username: this.props.profile.username,
+                rewards: this.props.profile.rewards
+            }
+
         }
         this.onRating = this.onRating.bind(this)
     }
@@ -19,7 +30,11 @@ class CustomerFeedback extends Component {
         this.setState({ feedback: notes });
     };
     onSubmit = (e) => {
-        // this.props.dispatchFeedback(this.state);
+        
+        this.props.dispatchFeedback(this.state).then(
+            this.props.onSubmitted()
+        );
+
         e.preventDefault();
     };
 
@@ -79,4 +94,10 @@ class CustomerFeedback extends Component {
     }
 }
 
-export default CustomerFeedback;
+const mapDispatchToProps = (dispatch) => ({
+    dispatchFeedback: (feedback) => dispatch(dispatchFeedback(feedback))
+});
+  
+export default connect(undefined, mapDispatchToProps)(CustomerFeedback);
+  
+

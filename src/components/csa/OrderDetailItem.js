@@ -166,8 +166,8 @@ const SpecialInstructions = ({order}) => {
 const CakeDescription = ({order}) => {
   return (
     <div>
-      <p>Writing on Cake: {order.options.writigOnCakeTypeNote && order.options.writigOnCakeTypeNote}</p>
-      <p>Special Instructions: {order.options.extras && order.options.extras}</p>
+      {order.options.writigOnCakeTypeNote && <p>Writing on Cake: {order.options.writigOnCakeTypeNote}</p>}
+      {order.options.extras && <p>Special Instructions: {order.options.extras}</p>}
       {order.options.size && <p>Size: {order.options.size}</p>}
       {order.options.cakelayers && <p>Cake Layers: {order.options.cakelayers}</p>}
       {order.options.icing && <p>Icing: {order.options.icing}</p>}
