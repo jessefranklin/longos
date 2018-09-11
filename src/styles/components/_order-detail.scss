@@ -283,6 +283,15 @@
             max-width: 100%;
         }
     }
+    .order-item--remove-item{
+        .btn-qu{
+            background: transparent;
+            border:none;
+        }
+        .fa-trash {
+            color: $red;
+        }
+    }
 }
 
 .order-item--row {
