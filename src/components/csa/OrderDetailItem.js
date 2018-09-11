@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Barcode from 'react-barcode';
 import Select from 'react-select';
-import { baseUrl } from '../../const/global';
-import { updateCSAOrderState } from '../../actions/csa/csaOrder';
+import { baseUrl, headers } from '../../const/global';
+import { updateCSAOrderState, fetchCSAOrder } from '../../actions/csa/csaOrder';
 import { Assignees } from './Assignees';
 import FontAwesome from 'react-fontawesome';
+import axios from 'axios';
+import { PromptUpdate } from '../shared/Prompt';
+
+const orderAPI = baseUrl+'/order';
 
 const options = [
     { value: 1, label: 'Not Ready' },  
@@ -39,8 +43,27 @@ class OrderDetailItem extends Component {
   onReassign=()=>{
     this.setState({ 'reassign' : true });
   }
+  updateOrderItem = () => {
+    console.log('updateOrderItem called');
+    console.log(this.props);
+    let url = orderAPI+'/'+this.props.oid+'/updateitem';
+    const payload = {
+      id:this.props.order.id,
+      quantity:0
+    };
+    console.log(url, payload, headers);
+    axios.put(url, payload, headers).then(
+      (response) => {
+        fetchCSAOrder(this.props.oid);
+        PromptUpdate('success','This item has been deleted');
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   onRemove = () => {
-    
+    updateOrderItem;
   }
   statusAssigned = () => {
     let orderUpdate = `setstatus?status=2`;
@@ -102,7 +125,7 @@ class OrderDetailItem extends Component {
               {this.props.editState ? (
                 <div className="order-item--remove-item">
                 {!this.props.isPaid?
-                    <button onClick={this.onRemove} className="btn-qu">
+                    <button onClick={() => this.updateOrderItem()} className="btn-qu">
                       <FontAwesome
                       className='fa fa-trash'
                       name='fa-trash'
