@@ -244,9 +244,10 @@ class OrderDetail extends Component {
 
   cancelOrder = (value) => {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`;
+    this.setState({ show: false });
     this.props.updateCSAOrderState(url).then(()=>{
       this.props.fetchCSAOrder(this.props.match.params.id);
-      this.promptUpdate('warning','This order has been cancelled and removed.');
+      this.promptUpdate('danger','This order has been cancelled and removed.');
       setTimeout(()=> {
         this.props.history.push('/orderDashboard');
       }, 3000);
