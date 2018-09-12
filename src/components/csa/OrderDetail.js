@@ -254,8 +254,7 @@ class OrderDetail extends Component {
   }
 
   orderPaid = (data) => {
-    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}/&transactionNumber=${this.state.receiptNumber}`;
-    console.log(url);
+    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}&transactionNumber=${this.state.receiptNumber}`;
     this.setState({ showPaidModal: false });
     this.props.updateCSAOrderState(url).then(()=>{
       this.props.fetchCSAOrder(this.props.match.params.id);
