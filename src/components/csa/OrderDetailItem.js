@@ -43,34 +43,7 @@ class OrderDetailItem extends Component {
   onReassign=()=>{
     this.setState({ 'reassign' : true });
   }
-  updateOrderItem = () => {
-    console.log('updateOrderItem called');
-    console.log(this.props);
-    let url = orderAPI+'/'+this.props.oid+'/updateitem';
-    const payload = {
-      id:this.props.order.id,
-      productId:this.props.order.product.id,
-      productName:this.props.order.product.name,
-      optionId:this.props.order.option.id,
-      optionName:this.props.order.option.name,
-      priceId:'',
-      price:this.props.order.price,
-      tax:this.props.order.tax,
-      taxName:this.props.order.taxName,
-      quantity:0,
-      comment:this.props.order.comment
-    };
-    console.log(url, payload, headers);
-    axios.put(url, payload, headers).then(
-      (response) => {
-        fetchCSAOrder(this.props.oid);
-        PromptUpdate('success','This item has been deleted');
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
-  }
+  
   onRemove = () => {
     updateOrderItem;
   }
@@ -134,7 +107,7 @@ class OrderDetailItem extends Component {
               {this.props.editState ? (
                 <div className="order-item--remove-item">
                 {!this.props.isPaid?
-                    <button onClick={() => this.updateOrderItem()} className="btn-qu">
+                    <button onClick={() => this.props.updateOrderItem({order})} className="btn-qu">
                       <FontAwesome
                       className='fa fa-trash'
                       name='fa-trash'
