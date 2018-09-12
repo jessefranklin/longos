@@ -39,6 +39,7 @@ class OrderDetail extends Component {
       pickupTime: this.props.csaOrder.order.pickupTime,
       status: '',
       isPaid: this.props.csaOrder.order.isPaid,
+      receiptNumber: 0,
       items: [],
       editClient: false,
       editPickup: false,
@@ -54,6 +55,7 @@ class OrderDetail extends Component {
       show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
+    this.receiptChange = this.receiptChange.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.promptUpdate = this.promptUpdate.bind(this);
@@ -134,7 +136,7 @@ class OrderDetail extends Component {
 
   showPaidModal = () => {
     this.setState({ showPaidModal: true });
-    document.addEventListener("click", this.closePaidModal);
+    // document.addEventListener("click", this.closePaidModal);
   }
 
   closePaidModal = () => {
@@ -252,11 +254,18 @@ class OrderDetail extends Component {
   }
 
   orderPaid = (data) => {
-    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
+    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}/&transactionNumber=${this.state.receiptNumber}`;
+    console.log(url);
+    this.setState({ showPaidModal: false });
     this.props.updateCSAOrderState(url).then(()=>{
       this.props.fetchCSAOrder(this.props.match.params.id);
       this.promptUpdate('success','This order has been marked as paid.');
     });
+  }
+
+  receiptChange = (text) =>{
+    let recNo = text.target.value;
+    this.setState({ receiptNumber: recNo });
   }
 
   gotoDashboard = () => {
@@ -314,7 +323,7 @@ class OrderDetail extends Component {
               </h2>
               <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder}  />
 
-              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} showPaidModal={this.state.showPaidModal} handleShow={this.showPaidModal} handleClose={this.closePaidModal} />
+              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} showPaidModal={this.state.showPaidModal} handleShow={this.showPaidModal} handleClose={this.closePaidModal} receiptChange={this.receiptChange}/>
 
             </div>
 

@@ -43,7 +43,7 @@ export const CancelModal = ({show,handleClose,cancel}) => {
   );
 };
 
-export const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClose}) => {
+export const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClose,receiptChange}) => {
   return (
     <div className="btn--container">
       {isPaid ? (
@@ -58,6 +58,14 @@ export const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClos
         <div className="modal--cancel">
           <h3>Order Paid</h3>
           <h4>Please enter your receipt ID below.</h4>
+          <Modal.Body>
+          <textarea
+            placeholder="Receipt #"
+            onChange={(recNo) => receiptChange(recNo)}
+            rows="1"
+          >
+          </textarea>
+          </Modal.Body>
           <div className="modal--buttons">
             <Button onClick={() => orderPaid(true)} className="btn-primary btn-left btn-green">Confirm</Button>
             <Button onClick={handleClose} className="btn-primary btn-right">Cancel</Button>
