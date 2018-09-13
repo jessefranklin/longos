@@ -151,7 +151,7 @@ class CartOrderReview extends React.Component {
                 checked={this.state.checked}
                 onChange={this.handleCheck} />
             </label>
-            <span onClick={this.onShowTerms}> Show Terms</span>
+            <span onClick={this.onShowTerms} className={"align-right"}> Show Terms</span>
           </div>
 
         </div>

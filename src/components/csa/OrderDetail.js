@@ -312,9 +312,9 @@ class OrderDetail extends Component {
             </div>
             <div className="order-detail--actions-row">
               {this.state.orderUpdated? (
-                <PromptUpdate type={this.state.promptType} message={this.state.promptMessage} />
+                <PromptUpdate type={this.state.promptType} message={this.state.promptMessage}/>
               ) : ''}
-            </div>
+            </div> 
 
           <div className="order-detail--header">
             <div className="">
@@ -393,9 +393,9 @@ class OrderDetail extends Component {
             <div className="col-item grey-border">
               <h4>Item</h4>
             </div>
-            <div className="col-assign grey-border">
+            {/* <div className="col-assign grey-border">
               <h4>Assigned To</h4>
-            </div>
+            </div> */}
             <div className="col-status grey-border">
               <h4>Status</h4>
             </div>

@@ -40,7 +40,7 @@ class CustomerFeedback extends Component {
 
     render() {
         return (
-            <div className="feedback--customer" >
+            <div className="feedback--customer">
                 <div>
                     <p>Please rate your experience:</p>
                     <button onClick={() => this.onRating(1)} className={this.state.rating === 1 ? 'active' : ''}>
@@ -75,9 +75,8 @@ class CustomerFeedback extends Component {
                     </button>
                 </div>
                 <div>
-                    <p>Do you have any comments or suggestions?</p>
                     <textarea
-                        placeholder=""
+                        placeholder="Do you have any comments or suggestions?"
                         onChange={this.onFeedback}
                         rows="4"
                         >

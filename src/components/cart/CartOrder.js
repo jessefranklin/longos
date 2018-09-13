@@ -18,6 +18,12 @@ class CartOrder extends React.Component {
 
     const Validation = new FormValidator([
       {
+        field: 'username',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'Name is required.'
+      },
+      {
         field: 'phone',
         method: 'matches',
         args: [/^\(?\d\d\d\)? ?\d\d\d-?\d\d\d\d$/],
@@ -139,7 +145,7 @@ class CartOrder extends React.Component {
               </div>
             </div>
 
-            <div className='f-con'>
+            <div className={validation.username.isInvalid ? 'f-con has-error' : 'f-con'}>
               <label htmlFor="username">Username</label>
               <input
                 type="text"
