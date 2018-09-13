@@ -39,6 +39,7 @@ class OrderDetail extends Component {
       pickupTime: this.props.csaOrder.order.pickupTime,
       status: '',
       isPaid: this.props.csaOrder.order.isPaid,
+      receiptNumber: 0,
       items: [],
       editClient: false,
       editPickup: false,
@@ -54,6 +55,7 @@ class OrderDetail extends Component {
       show: false
     }
     this.orderPaid = this.orderPaid.bind(this);
+    this.receiptChange = this.receiptChange.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.promptUpdate = this.promptUpdate.bind(this);
@@ -65,7 +67,9 @@ class OrderDetail extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchCSAOrder(this.props.match.params.id);
+    this.props.fetchCSAOrder(this.props.match.params.id).then((res)=>{
+      console.log(res);
+    });
   };
 
   componentWillReceiveProps(props) {
@@ -134,7 +138,7 @@ class OrderDetail extends Component {
 
   showPaidModal = () => {
     this.setState({ showPaidModal: true });
-    document.addEventListener("click", this.closePaidModal);
+    // document.addEventListener("click", this.closePaidModal);
   }
 
   closePaidModal = () => {
@@ -154,8 +158,10 @@ class OrderDetail extends Component {
     }
   }
 
-  promptUpdate(){
+  promptUpdate(type, message){
     this.setState({ orderUpdated: true });
+    this.setState({ promptType: type });
+    this.setState({ promptMessage: message });
     setTimeout(()=> {
       this.setState({ orderUpdated: false });
     },this.state.promptTime)
@@ -179,6 +185,34 @@ class OrderDetail extends Component {
     )
 
   }
+  updateOrderItem = (payload) => {
+    console.log(payload);
+    let url = `${orderAPI}/${this.props.match.params.id}/updateitem`;
+    let message = `${payload.order.product.name} has been deleted`;
+    const payloadQ = {
+      id:payload.order.id,
+      productId:payload.order.product.id,
+      productName:payload.order.product.name,
+      optionId:payload.order.option.id,
+      optionName:payload.order.option.name,
+      priceId:'',
+      price:payload.order.price,
+      tax:payload.order.tax,
+      taxName:payload.order.taxName,
+      quantity:0,
+      comment:payload.order.comment
+    };
+    console.log(url, payloadQ, headers);
+    axios.put(url, payloadQ, headers).then(
+      (response) => {
+        this.props.fetchCSAOrder(this.props.match.params.id);
+        this.promptUpdate('warning',message);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
 
   addToOrder = () => {
     let cart = []
@@ -198,7 +232,7 @@ class OrderDetail extends Component {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`;
     this.props.updateCSAOrderState(url).then(()=>{
       this.props.fetchCSAOrder(this.props.match.params.id);
-      this.promptUpdate('success','This order has been updated');
+      this.promptUpdate('success','This order has been completed');
     });
   }
 
@@ -212,9 +246,10 @@ class OrderDetail extends Component {
 
   cancelOrder = (value) => {
     let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`;
+    this.setState({ show: false });
     this.props.updateCSAOrderState(url).then(()=>{
       this.props.fetchCSAOrder(this.props.match.params.id);
-      this.promptUpdate('warning','This order has been cancelled and removed.');
+      this.promptUpdate('danger','This order has been cancelled and removed.');
       setTimeout(()=> {
         this.props.history.push('/orderDashboard');
       }, 3000);
@@ -222,11 +257,17 @@ class OrderDetail extends Component {
   }
 
   orderPaid = (data) => {
-    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}`;
+    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}&transactionNumber=${this.state.receiptNumber}`;
+    this.setState({ showPaidModal: false });
     this.props.updateCSAOrderState(url).then(()=>{
       this.props.fetchCSAOrder(this.props.match.params.id);
-      this.promptUpdate('success','This order has been updated.');
+      this.promptUpdate('success','This order has been marked as paid.');
     });
+  }
+
+  receiptChange = (text) =>{
+    let recNo = text.target.value;
+    this.setState({ receiptNumber: recNo });
   }
 
   gotoDashboard = () => {
@@ -239,6 +280,7 @@ class OrderDetail extends Component {
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
     const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
+    const updateOrderItem = this.updateOrderItem;
     let editState = this.state.editState;
 
     return (
@@ -283,7 +325,7 @@ class OrderDetail extends Component {
               </h2>
               <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder}  />
 
-              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} showPaidModal={this.state.showPaidModal} handleShow={this.showPaidModal} handleClose={this.closePaidModal} />
+              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} showPaidModal={this.state.showPaidModal} handleShow={this.showPaidModal} handleClose={this.closePaidModal} receiptChange={this.receiptChange}/>
 
             </div>
 
@@ -393,7 +435,7 @@ class OrderDetail extends Component {
                 <h2>{key}</h2>
                 <div className="counter-items--container">
                   {csaOrderSortedItems[key].map(order => {
-                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} assignees={settings}/>;
+                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} assignees={settings} updateOrderItem={updateOrderItem}/>;
                   })}
                 </div>
               </div>;

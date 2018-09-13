@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
 
 
 export class Pagination extends React.Component {
@@ -17,8 +18,8 @@ export class Pagination extends React.Component {
     render() {
         return (
             <div className="page--container" >
-                <button onClick={this.minusOne}>prev</button>
-                <button onClick={this.addOne}>next</button>
+                <Button onClick={this.minusOne} bsStyle="primary">prev</Button>
+                <Button onClick={this.addOne} bsStyle="primary">next</Button>
             </div>
         )
     }

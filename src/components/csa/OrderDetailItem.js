@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Barcode from 'react-barcode';
 import Select from 'react-select';
-import { baseUrl } from '../../const/global';
-import { updateCSAOrderState } from '../../actions/csa/csaOrder';
+import { baseUrl, headers } from '../../const/global';
+import { updateCSAOrderState, fetchCSAOrder } from '../../actions/csa/csaOrder';
 import { Assignees } from './Assignees';
 import FontAwesome from 'react-fontawesome';
+import axios from 'axios';
+import { PromptUpdate } from '../shared/Prompt';
+
+const orderAPI = baseUrl+'/order';
 
 const options = [
     { value: 1, label: 'Not Ready' },  
@@ -39,8 +43,9 @@ class OrderDetailItem extends Component {
   onReassign=()=>{
     this.setState({ 'reassign' : true });
   }
+  
   onRemove = () => {
-    
+    updateOrderItem;
   }
   statusAssigned = () => {
     let orderUpdate = `setstatus?status=2`;
@@ -74,18 +79,15 @@ class OrderDetailItem extends Component {
               </div>
 
               <div className="order-item--status grey-border">
-                {order.status == 0 ? (
-                  <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
-                ) : (
+                
                   <Select
                   name="status"
                   value={order.status}
                   onChange={(e)=>this.onSelectChange(e.value, 'status')}
                   options={options}
-                  disabled={order.status === 0 ? true:false}
                   clearable={false} 
                   />
-                )}             
+                         
               </div>
 
               <div className="order-item--qty grey-border">
@@ -102,7 +104,7 @@ class OrderDetailItem extends Component {
               {this.props.editState ? (
                 <div className="order-item--remove-item">
                 {!this.props.isPaid?
-                    <button onClick={this.onRemove} className="btn-qu">
+                    <button onClick={() => this.props.updateOrderItem({order})} className="btn-qu">
                       <FontAwesome
                       className='fa fa-trash'
                       name='fa-trash'
