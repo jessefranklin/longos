@@ -79,18 +79,15 @@ class OrderDetailItem extends Component {
               </div>
 
               <div className="order-item--status grey-border">
-                {order.status == 0 ? (
-                  <OrderStatus status={order.status} statusAssigned={this.statusAssigned} />
-                ) : (
+                
                   <Select
                   name="status"
                   value={order.status}
                   onChange={(e)=>this.onSelectChange(e.value, 'status')}
                   options={options}
-                  disabled={order.status === 0 ? true:false}
                   clearable={false} 
                   />
-                )}             
+                         
               </div>
 
               <div className="order-item--qty grey-border">

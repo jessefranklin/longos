@@ -67,7 +67,9 @@ class OrderDetail extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchCSAOrder(this.props.match.params.id);
+    this.props.fetchCSAOrder(this.props.match.params.id).then((res)=>{
+      console.log(res);
+    });
   };
 
   componentWillReceiveProps(props) {

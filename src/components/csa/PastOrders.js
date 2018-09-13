@@ -50,7 +50,7 @@ class PastOrders extends React.Component {
       this.setState({ 'page' : val });
   }
   viewOrder=(oId)=> {
-    this.props.history.push(`/orderDashboard/orderDetail/${oId}`);
+    this.props.history.push(`/orderDashboard/orderDetail/${oId}&pastOrders=true`);
   }
   render(){
     const { orders, filters, pastorders} = this.props;
