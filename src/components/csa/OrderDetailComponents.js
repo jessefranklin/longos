@@ -48,7 +48,7 @@ export const PaidButton = ({isPaid,orderPaid,showPaidModal,handleShow,handleClos
     <div className="btn--container">
       {isPaid ? (
         <div>
-          <button className="checkbox-red checked" onClick={() => orderPaid(false)}>Order is Paid </button>
+          <div className="checkbox-red checked">Order is Paid </div>
         </div>
       ):(
         <button className="checkbox-red"  onClick={() => handleShow()}>Order is not paid</button>
