@@ -108,46 +108,56 @@ body .content--container{
                 background: transparent;
                 font-size: 14px;
                 font-weight: 600;
+                &::-webkit-clear-button{
+                    display: none;
+                    -webkit-appearance: none;
+                }
             }
             &:after{
-              content: '';
-              position: absolute;
-              right: 7%;
-              top: 50%;
-              width: 0;
-              height: 0;
-              // border-top: 12px solid $red;
-              // border-right: 7px solid transparent;
-              // border-left: 7px solid transparent;
-              border-top: 5px solid $red;
-              border-right: 5px solid transparent;
-              border-left: 2.5px solid transparent;
-              z-index: -1;
+                content: '';
+                position: absolute;
+                //   right: 7%;
+                //   top: 50%;
+                    right: 6%;
+                top: 40%;
+                width: 0;
+                height: 0;
+                border-top: 10px solid $red;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                //   border-top: 5px solid $red;
+                //   border-right: 5px solid transparent;
+                //   border-left: 2.5px solid transparent;
+                z-index: -1;
             }
             &:focus-within{
-              &:after{
-                border:none;
-              }
+                &:after{
+                    border:none;
+                }
             }
         }
         .time-picker{
             height:50px;
             width:50%;
             transform: translateX(5%);
-              &:after {
-                  //content: '';
-                  position: absolute;
-                  right: 7%;
-                  top: 50%;
-                  width: 0;
-                  height: 0;
-                  // border-top: 12px solid $red;
-                  // border-right: 7px solid transparent;
-                  // border-left: 7px solid transparent;
-                  border-top: 5px solid $red;
-                  border-right: 5px solid transparent;
-                  border-left: 2.5px solid transparent;
-                  z-index: -1;
+            select{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    right: 6%;
+                    top: 40%;
+                    width: 0;
+                    height: 0;
+                    border-top: 10px solid $red;
+                    border-right: 5px solid transparent;
+                    border-left: 5px solid transparent;
+                    //   border-top: 5px solid $red;
+                    //   border-right: 5px solid transparent;
+                    //   border-left: 2.5px solid transparent;
+                    z-index: -1;
               }
         }
         select.form-control{
