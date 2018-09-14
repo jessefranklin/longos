@@ -272,6 +272,7 @@ class OrderDetail extends Component {
   }
 
   gotoDashboard = () => {
+    const pastOrder = this.props.match.params.id.split('&')[1];
     {pastOrder==='pastOrders' ?
     this.props.history.push('/orderDashboard/pastOrders')
     : this.props.history.push('/orderDashboard'); }
