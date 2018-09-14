@@ -31,7 +31,7 @@
 	> div {
         display: table-cell;
 		vertical-align: middle;
-		padding: 25px 0;
+		padding: 30px 0;
 		position: relative;
 		&:nth-child(n+3):nth-child(-n+8){
 			text-align: center;
@@ -49,12 +49,12 @@
 		div{
 			&:nth-child(n+2):nth-child(-n+8){
 				div{
-					height:25px;
+					height:40px;
 					width:50px;
 					margin: auto;
 					border-radius:27px;
 					background-color: #fff;
-					padding-top: 1px;
+					padding-top: 7px;
 					h4{
 						vertical-align: middle;
 					}

@@ -107,7 +107,7 @@ DashboardPage.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCSAOrders: () => dispatch(fetchCSAOrders())
+  fetchCSAOrders: (store) => dispatch(fetchCSAOrders(store))
 });
 
 const mapStateToProps = state => ({

@@ -67,7 +67,9 @@ class OrderDetail extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchCSAOrder(this.props.match.params.id).then((res)=>{
+    const param = this.props.match.params.id;
+    this.id = param.split('&')[1] ? param.split('&')[0] : param;
+    this.props.fetchCSAOrder(this.id).then((res)=>{
       console.log(res);
     });
   };
@@ -148,7 +150,7 @@ class OrderDetail extends Component {
   }
 
   updateState = () => {
-    this.props.fetchCSAOrder(this.props.match.params.id);
+    this.props.fetchCSAOrder(this.id);
   }
 
   onSelectChange = (value) => {
@@ -176,7 +178,7 @@ class OrderDetail extends Component {
     let url = orderAPI +`/updateorder`;
     axios.put(url, payload, headers).then(
       (response) => {
-        this.props.fetchCSAOrder(this.props.match.params.id);
+        this.props.fetchCSAOrder(this.id);
         this.promptUpdate('success','This order has been updated');
       },
       (err) => {
@@ -187,7 +189,7 @@ class OrderDetail extends Component {
   }
   updateOrderItem = (payload) => {
     console.log(payload);
-    let url = `${orderAPI}/${this.props.match.params.id}/updateitem`;
+    let url = `${orderAPI}/${this.id}/updateitem`;
     let message = `${payload.order.product.name} has been deleted`;
     const payloadQ = {
       id:payload.order.id,
@@ -202,10 +204,9 @@ class OrderDetail extends Component {
       quantity:0,
       comment:payload.order.comment
     };
-    console.log(url, payloadQ, headers);
     axios.put(url, payloadQ, headers).then(
       (response) => {
-        this.props.fetchCSAOrder(this.props.match.params.id);
+        this.props.fetchCSAOrder(this.id);
         this.promptUpdate('warning',message);
       },
       (err) => {
@@ -229,26 +230,26 @@ class OrderDetail extends Component {
   }
 
   completeOrder(value){
-    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=${value}`;
+    let url = orderAPI +`/${this.id}/setstatus?status=${value}`;
     this.props.updateCSAOrderState(url).then(()=>{
-      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.props.fetchCSAOrder(this.id);
       this.promptUpdate('success','This order has been completed');
     });
   }
 
   updateItem = (payload) => {
-    let url = orderAPI +`/${this.props.match.params.id}/updateitem`;
+    let url = orderAPI +`/${this.id}/updateitem`;
     this.props.updateCSAOrder(url, payload).then(()=>{
-      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.props.fetchCSAOrder(this.id);
       this.promptUpdate('success','This order has been updated');
     });
   }
 
   cancelOrder = (value) => {
-    let url = orderAPI +`/${this.props.match.params.id}/setstatus?status=3`;
+    let url = orderAPI +`/${this.id}/setstatus?status=3`;
     this.setState({ show: false });
     this.props.updateCSAOrderState(url).then(()=>{
-      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.props.fetchCSAOrder(this.id);
       this.promptUpdate('danger','This order has been cancelled and removed.');
       setTimeout(()=> {
         this.props.history.push('/orderDashboard');
@@ -257,10 +258,10 @@ class OrderDetail extends Component {
   }
 
   orderPaid = (data) => {
-    let url = orderAPI +`/${this.props.match.params.id}/setPaid?paid=${data}&transactionNumber=${this.state.receiptNumber}`;
+    let url = orderAPI +`/${this.id}/setPaid?paid=${data}&transactionNumber=${this.state.receiptNumber}`;
     this.setState({ showPaidModal: false });
     this.props.updateCSAOrderState(url).then(()=>{
-      this.props.fetchCSAOrder(this.props.match.params.id);
+      this.props.fetchCSAOrder(this.id);
       this.promptUpdate('success','This order has been marked as paid.');
     });
   }
@@ -282,6 +283,7 @@ class OrderDetail extends Component {
     const updateState = this.updateState;
     const updateOrderItem = this.updateOrderItem;
     let editState = this.state.editState;
+    const pastOrder = this.props.match.params.id.split('&')[1];
 
     return (
       <div>
@@ -291,9 +293,9 @@ class OrderDetail extends Component {
 
               <button className="link--go-back" onClick={this.gotoDashboard}>Back to orders</button>
                 <div className="order-detail--actions-container">
-                  <button className="order-detail--action" onClick={this.showActions}>
+                  {pastOrder==='pastOrders' ? '' : <button className="order-detail--action" onClick={this.showActions}>
                     Order Options
-                  </button>
+                  </button>}
                   {this.state.showActions? (
                     <div className="order-detail--actions-list">
                       <ul>
@@ -312,9 +314,9 @@ class OrderDetail extends Component {
             </div>
             <div className="order-detail--actions-row">
               {this.state.orderUpdated? (
-                <PromptUpdate type={this.state.promptType} message={this.state.promptMessage} />
+                <PromptUpdate type={this.state.promptType} message={this.state.promptMessage}/>
               ) : ''}
-            </div>
+            </div> 
 
           <div className="order-detail--header">
             <div className="">
@@ -393,9 +395,9 @@ class OrderDetail extends Component {
             <div className="col-item grey-border">
               <h4>Item</h4>
             </div>
-            <div className="col-assign grey-border">
+            {/* <div className="col-assign grey-border">
               <h4>Assigned To</h4>
-            </div>
+            </div> */}
             <div className="col-status grey-border">
               <h4>Status</h4>
             </div>
@@ -429,17 +431,20 @@ class OrderDetail extends Component {
 
               </div>
             </div>
+            {csaOrderSortedItems.length?(
 
-            {Object.keys(csaOrderSortedItems).map(function(key, index) {
-              return <div key={index} className="element">
-                <h2>{key}</h2>
-                <div className="counter-items--container">
-                  {csaOrderSortedItems[key].map(order => {
-                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} assignees={settings} updateOrderItem={updateOrderItem}/>;
-                  })}
-                </div>
-              </div>;
-            })}
+              Object.keys(csaOrderSortedItems).map(function(key, index) {
+                return <div key={index} className="element">
+                  <h2>{key}</h2>
+                  <div className="counter-items--container">
+                    {csaOrderSortedItems[key].map(order => {
+                      return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} assignees={settings} updateOrderItem={updateOrderItem}/>;
+                    })}
+                  </div>
+                </div>;
+              })
+
+            ):''}
 
 
           </div>

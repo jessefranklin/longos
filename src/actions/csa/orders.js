@@ -11,6 +11,8 @@ export let fetchCSAOrders = (storeID) => {
     let store = `?storeid=${store_id}`;
     let url = apiUrl + store;
 
+    console.log(url);
+    
     return (dispatch) => {
         dispatch(fetchCSAOrdersBegin())
         return axios.get(url, headers).then(

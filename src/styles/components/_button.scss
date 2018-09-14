@@ -57,11 +57,27 @@ body{
     font-size:18px;
     text-transform: uppercase;
     margin-left: 0;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      color: #fff;
+      background: $red !important;
+      border: 2px solid $red !important;
+    }
   }
 
   .btn-green{
     border: 2px solid $green;
     color: $green;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      color: #fff;
+      background: $green !important;
+      border: 2px solid $green !important;
+    }
   }
 
   .btn-center{
@@ -80,6 +96,23 @@ body{
     margin:0;
     margin-left:0 !important;
     width:25%;
+  }
+
+  .btn-solid{
+    padding: 3rem;
+    color:white;
+    font-family: $sans;
+    font-size:24px;
+    font-weight:600;
+    line-height: 32px;
+    background-color: $green;
+    border:4px solid $off-white;
+    width:100%;
+    position: fixed;
+    bottom:0;
+    border-bottom: none;
+    border-left: none;
+    text-transform: uppercase;
   }
 }
 

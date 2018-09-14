@@ -16,8 +16,8 @@ class Idle extends Component {
     super(props)
     this.idleTimer = null
     this.state = {
-      timeoutActive: false,
-      timeout: 60000,
+      timeoutActive: true,
+      timeout: 1000 * 60 * 3,
       remaining: null,
       isIdle: false,
       lastActive: null,
@@ -29,6 +29,7 @@ class Idle extends Component {
     this.onIdle = this._onIdle.bind(this)
     this.reset = this._reset.bind(this)
     this.changeTimeout = this._changeTimeout.bind(this)
+    this.handleClose = this.handleClose.bind(this)
   }
 
   componentDidMount () {
@@ -46,7 +47,7 @@ class Idle extends Component {
           remaining: this.idleTimer.getRemainingTime(),
           lastActive: this.idleTimer.getLastActiveTime(),
           elapsed: this.idleTimer.getElapsedTime(),
-          showTimeout: this.idleTimer.getRemainingTime() < 10000 ? true : false
+          showTimeout: this.idleTimer.getRemainingTime() < 59000 ? true : false
         })
       }, 1000)
     }
@@ -57,6 +58,9 @@ class Idle extends Component {
   }
   onCancelOrder(){
     this.context.router.history.push('/');
+  }
+  handleClose() {
+    this.setState({ showTimeout: false });
   }
   render () {
       return (
@@ -73,8 +77,8 @@ class Idle extends Component {
                   <h3>{en.notifications.timeout.title}</h3>
                   <h4>Your current order will be cancelled in <span className="red"> {moment.duration(this.state.remaining).seconds()}</span> sec</h4>
                   <div className="modal--buttons">
-                    <button>Resume Order</button>
-                    <button onClick={this.onCancelOrder} className="btn-cancel">Cancel Order</button>
+                    <button onClick={this.handleClose} className="btn-primary btn-left btn-green">Resume Order</button>
+                    <button onClick={this.onCancelOrder.bind(this)} className="btn-primary btn-right">Cancel</button>
                   </div>
                 </div>
               </Modal>

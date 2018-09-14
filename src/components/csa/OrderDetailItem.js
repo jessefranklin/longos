@@ -70,13 +70,15 @@ class OrderDetailItem extends Component {
             <div className="order-item--row">
               <div className="order-item--item grey-border">
                 <img src={order.product.imageLink} alt={order.product.name} />               
-                <h4>{order.product.counter}</h4>
-                {order.product.name}
+                <h4>{order.product.name}</h4>
+                {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')||(order.product.category === 'Cupcake Cakes')) ? ''
+                :<div>{order.option.name && <ItemDescription order={order} />}{order.comment && <SpecialInstructions order={order} />}</div>}
+                
               </div>
 
-              <div className="order-item--assign grey-border">
+              {/* <div className="order-item--assign grey-border">
                 <Assignees assignee={order.assignee} reassignState={this.state.reassign} reassign={this.onReassign} onAssignedChange={this.onAssignedChange} assignees={assignees} />
-              </div>
+              </div> */}
 
               <div className="order-item--status grey-border">
                 
@@ -105,22 +107,14 @@ class OrderDetailItem extends Component {
                 <div className="order-item--remove-item">
                 {!this.props.isPaid?
                     <button onClick={() => this.props.updateOrderItem({order})} className="btn-qu">
-                      <FontAwesome
-                      className='fa fa-trash'
-                      name='fa-trash'
-                      size='2x'
-                      aria-hidden='true'
-                    />
+                      <span className="icon--trash"></span>
                   </button>
                 : null}
                 </div>
               ): ''}
 
             </div>
-            <div className="order-item--meta">
-              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')||(order.product.category === 'Cupcake Cakes')) ? <div><CakeDescription order={order} /></div>
-              :<div>{order.option.name && <ItemDescription order={order} />}{order.comment && <SpecialInstructions order={order} />}</div>}
-            </div>
+              {((order.product.category === 'Signature Cakes')||(order.product.category === 'Classic Cakes')||(order.product.category === 'Cupcake Cakes')) ? <div className="order-item--meta"><CakeDescription order={order} /></div>:''}
           </div>
       </div>
     );
@@ -130,7 +124,7 @@ class OrderDetailItem extends Component {
 const ItemDescription = ({order}) => {
   return (
     <div>
-      <p><strong>Item Option:</strong><br/> {order.option.name}</p>
+      <p><strong>Item Option:</strong> {order.option.name}</p>
     </div>
   );
 };
