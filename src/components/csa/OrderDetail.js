@@ -70,7 +70,7 @@ class OrderDetail extends Component {
     const param = this.props.match.params.id;
     this.id = param.split('&')[1] ? param.split('&')[0] : param;
     this.props.fetchCSAOrder(this.id).then((res)=>{
-      console.log(res);
+      // console.log(res);
     });
   };
 
@@ -431,7 +431,8 @@ class OrderDetail extends Component {
 
               </div>
             </div>
-            {csaOrderSortedItems.length?(
+            
+            {csaOrderSortedItems !== 'undefined' ?(
 
               Object.keys(csaOrderSortedItems).map(function(key, index) {
                 return <div key={index} className="element">
