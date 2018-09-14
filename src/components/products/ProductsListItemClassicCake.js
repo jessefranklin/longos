@@ -125,7 +125,8 @@ class ProductsListItemClassicCake extends Component {
             key={options.label}
             options={options}
             value={this.state.cakeOptions[options.name]}
-            onChange={this.onChange}
+            onChange={this.onChange} 
+            clearable={true}
             />
         })}
         </div>
