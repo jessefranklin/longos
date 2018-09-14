@@ -108,7 +108,7 @@ class PastOrders extends React.Component {
             </div>
           </div>
 
-          <Pagination onPaginationChange={this.onPaginationChange} page={this.state.page} />
+          <Pagination onPaginationChange={this.onPaginationChange} page={this.state.page} count={pastorders.orders.length} />
         </div>
         <Loading loading={this.props.pastorders.loading} />
       </div>

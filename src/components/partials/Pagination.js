@@ -9,6 +9,7 @@ export class Pagination extends React.Component {
         this.minusOne = this.minusOne.bind(this);
     }
     addOne(){
+        if(this.props.count<10) return;
         this.props.onPaginationChange(this.props.page+1);
     }
     minusOne() {
@@ -16,10 +17,11 @@ export class Pagination extends React.Component {
         this.props.onPaginationChange(this.props.page-1);
     }
     render() {
+        console.log(this.props.count);
         return (
             <div className="page--container" >
                 <Button onClick={this.minusOne} bsStyle="primary">prev</Button>
-                <Button onClick={this.addOne} bsStyle="primary">next</Button>
+                <Button onClick={this.addOne} disabled={this.props.count<10?true:false}bsStyle="primary">next</Button>
             </div>
         )
     }

@@ -70,7 +70,7 @@ class OrderDetail extends Component {
     const param = this.props.match.params.id;
     this.id = param.split('&')[1] ? param.split('&')[0] : param;
     this.props.fetchCSAOrder(this.id).then((res)=>{
-      console.log(res);
+      // console.log(res);
     });
   };
 
@@ -272,14 +272,16 @@ class OrderDetail extends Component {
   }
 
   gotoDashboard = () => {
-    this.props.history.push('/orderDashboard');
+    {pastOrder==='pastOrders' ?
+    this.props.history.push('/orderDashboard/pastOrders')
+    : this.props.history.push('/orderDashboard'); }
   }
 
   render() {
     const csaOrder = this.props.csaOrder.order;
     const settings = this.props.settings;
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
-    const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
+    const csaOrderSortedItems = groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
     const updateOrderItem = this.updateOrderItem;
     let editState = this.state.editState;
@@ -431,7 +433,8 @@ class OrderDetail extends Component {
 
               </div>
             </div>
-            {csaOrderSortedItems.length?(
+            
+            {csaOrderSortedItems !== 'undefined' ?(
 
               Object.keys(csaOrderSortedItems).map(function(key, index) {
                 return <div key={index} className="element">
