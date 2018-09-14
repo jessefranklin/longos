@@ -26,6 +26,7 @@ class OrderDetail extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       id:0,
       counter: this.props.filters.counter,
@@ -40,6 +41,7 @@ class OrderDetail extends Component {
       status: '',
       isPaid: this.props.csaOrder.order.isPaid,
       receiptNumber: 0,
+      receiptNumberValid:true,
       items: [],
       editClient: false,
       editPickup: false,
@@ -258,12 +260,18 @@ class OrderDetail extends Component {
   }
 
   orderPaid = (data) => {
-    let url = orderAPI +`/${this.id}/setPaid?paid=${data}&transactionNumber=${this.state.receiptNumber}`;
-    this.setState({ showPaidModal: false });
-    this.props.updateCSAOrderState(url).then(()=>{
-      this.props.fetchCSAOrder(this.id);
-      this.promptUpdate('success','This order has been marked as paid.');
-    });
+    if(/^[0-9]{7}$/.test(this.state.receiptNumber)){
+      this.setState({'receiptNumberValid':true});
+      console.log(this.state.receiptNumberValid);
+      let url = orderAPI +`/${this.id}/setPaid?paid=${data}&transactionNumber=${this.state.receiptNumber}`;
+      this.setState({ showPaidModal: false });
+      this.props.updateCSAOrderState(url).then(()=>{
+        this.props.fetchCSAOrder(this.id);
+        this.promptUpdate('success','This order has been marked as paid.');
+      });
+    }else{
+      this.setState({'receiptNumberValid':false});
+    }
   }
 
   receiptChange = (text) =>{
@@ -284,7 +292,6 @@ class OrderDetail extends Component {
     const updateOrderItem = this.updateOrderItem;
     let editState = this.state.editState;
     const pastOrder = this.props.match.params.id.split('&')[1];
-    console.log(pastOrder);
 
     return (
       <div>
@@ -328,8 +335,8 @@ class OrderDetail extends Component {
               </h2>
               <CancelModal show={this.state.show} handleClose={this.handleClose} cancel={this.cancelOrder}  />
 
-              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} showPaidModal={this.state.showPaidModal} handleShow={this.showPaidModal} handleClose={this.closePaidModal} receiptChange={this.receiptChange}/>
-
+              <PaidButton isPaid={csaOrder.isPaid} orderPaid={this.orderPaid} showPaidModal={this.state.showPaidModal} handleShow={this.showPaidModal} handleClose={this.closePaidModal} receiptChange={this.receiptChange} receiptNumberValid={this.state.receiptNumberValid}/>
+              {!this.state.receiptNumberValid && <span className="error-message">Please enter a valid receipt number</span>}
             </div>
 
             <div className="">

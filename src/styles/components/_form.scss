@@ -166,3 +166,13 @@ body .box-layout{
         }
     }
 }
+
+.error-message {
+    color:$red;
+    font-family: $sans;
+    font-size:14px;
+    margin-top: -2rem;
+    &.bottom-spacing{
+        margin-bottom: 1rem;
+    }
+}
