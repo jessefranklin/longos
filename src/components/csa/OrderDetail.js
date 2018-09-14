@@ -272,14 +272,16 @@ class OrderDetail extends Component {
   }
 
   gotoDashboard = () => {
-    this.props.history.push('/orderDashboard');
+    {pastOrder==='pastOrders' ?
+    this.props.history.push('/orderDashboard/pastOrders')
+    : this.props.history.push('/orderDashboard'); }
   }
 
   render() {
     const csaOrder = this.props.csaOrder.order;
     const settings = this.props.settings;
     const csaOrderItems = orderFilterByCounter(csaOrder.items,this.state.counter);
-    const csaOrderSortedItems =groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
+    const csaOrderSortedItems = groupByCounter(orderFilterByCounter(csaOrder.items,this.state.counter))
     const updateState = this.updateState;
     const updateOrderItem = this.updateOrderItem;
     let editState = this.state.editState;
