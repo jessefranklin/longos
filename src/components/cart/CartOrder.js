@@ -156,6 +156,7 @@ class CartOrder extends React.Component {
                 value={this.state.username}
                 onChange={this.handleChange.bind(this)}
               />
+              <span className="help-block">{validation.username.message}</span>
             </div>
 
             <div className='f-con'>
