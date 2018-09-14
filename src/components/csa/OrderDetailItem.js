@@ -164,14 +164,14 @@ const CakeDescription = ({order}) => {
       <div className="order--cake-options">
         {order.option.name && <p><strong>Item Option:</strong><br/>{order.option.name}</p>}
         {order.options.size && <p><strong>Size:</strong><br/>{order.options.size}</p>}
-        {order.options.cakelayers && <p><strong>Cake Layers:</strong><br/>{order.options.cakelayers}</p>}
-        {order.options.icing && <p><strong>Icing:</strong><br/>{order.options.icing}</p>}
-        {order.options.trim && <p><strong>Trim:</strong><br/>{order.options.trim}</p>}
-        {order.options.color && <p><strong>Color:</strong><br/>{order.options.color}</p>}
-        {order.options.filling && <p><strong>Filling:</strong><br/>{order.options.filling}</p>}
-        {order.options.side && <p><strong>Side:</strong><br/>{order.options.side}</p>}
+        {order.options.cakelayers && <p><strong>Cake Layers:</strong><br/>{order.options.cakelayers.value}</p>}
+        {order.options.icing && <p><strong>Icing:</strong><br/>{order.options.icing.value}</p>}
+        {order.options.trim && <p><strong>Trim:</strong><br/>{order.options.trim.value}</p>}
+        {order.options.color && <p><strong>Color:</strong><br/>{order.options.color.value}</p>}
+        {order.options.filling && <p><strong>Filling:</strong><br/>{order.options.filling.value}</p>}
+        {order.options.side && <p><strong>Side:</strong><br/>{order.options.side.value}</p>}
         {order.options.decorationType && <p><strong>Decoration Type:</strong><br/>{order.options.decorationType}</p>}
-        {order.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/>{order.options.decorqationTypeNote}</p>}
+        {order.options.decorationTypeNote && <p><strong>Decoration Type Note:</strong><br/>{order.options.decorationTypeNote}</p>}
       </div>
       {order.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {order.options.writigOnCakeTypeNote}</p>}
       {order.options.extras && <p className="fullwidth"><strong>Special Instructions:</strong><br/> {order.options.extras}</p>}

@@ -111,14 +111,14 @@ const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
         <div className="cart--item-comment">
           <div className="cart--cake-options">
             {item.options.size && <p><strong>Size:</strong><br/> {item.options.size}</p>}
-            {item.options.cakelayers && <p><strong>Cake Layers:</strong><br/> {item.options.cakelayers}</p>}
-            {item.options.icing && <p><strong>Icing:</strong><br/> {item.options.icing}</p>}
-            {item.options.trim && <p><strong>Trim:</strong><br/> {item.options.trim}</p>}
-            {item.options.color && <p><strong>Color:</strong><br/> {item.options.color}</p>}
-            {item.options.filling && <p><strong>Filling:</strong><br/> {item.options.filling}</p>}
-            {item.options.side && <p><strong>Side:</strong><br/> {item.options.side}</p>}
-            {item.options.decorationType && <p><strong>Decoration Type:</strong><br/> {item.options.decorationType}</p>}
-            {item.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/> {item.options.decorqationTypeNote}</p>}
+            {item.options.cakelayers && <p><strong>Cake Layers:</strong><br/> {item.options.cakelayers.value}</p>}
+            {item.options.icing && <p><strong>Icing:</strong><br/> {item.options.icing.value}</p>}
+            {item.options.trim && <p><strong>Trim:</strong><br/> {item.options.trim.value}</p>}
+            {item.options.color && <p><strong>Color:</strong><br/> {item.options.color.value}</p>}
+            {item.options.filling && <p><strong>Filling:</strong><br/> {item.options.filling.value}</p>}
+            {item.options.side && <p><strong>Side:</strong><br/> {item.options.side.value}</p>}
+            {item.options.decorationType && <p><strong>Decoration Type:</strong><br/> {item.options.decorationType.value}</p>}
+            {item.options.decorationTypeNote && <p><strong>Decoration Type Note:</strong><br/> {item.options.decorationTypeNote}</p>}
           </div>
           {item.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {item.options.writigOnCakeTypeNote}</p>}
           {item.options.extras && <p className="fullwidth"><strong>Special Instructions:</strong><br/>{item.options.extras}</p>}
@@ -156,10 +156,10 @@ const ClassicCakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) =>
         <div className="cart--item-comment">
           <div className="cart--cake-options">
             {item.options.size && <p><strong>Size:</strong><br/> {item.options.size}</p>}
-            {item.options.trim && <p><strong>Trim:</strong><br/> {item.options.trim}</p>}
-            {item.options.color && <p><strong>Color:</strong><br/> {item.options.color}</p>}
-            {item.options.side && <p><strong>Side:</strong><br/> {item.options.side}</p>}
-            {item.options.decorationType && <p><strong>Decoration Type:</strong><br/> {item.options.decorationType}</p>}
+            {item.options.trim && <p><strong>Trim:</strong><br/> {item.options.trim.value}</p>}
+            {item.options.color && <p><strong>Color:</strong><br/> {item.options.color.value}</p>}
+            {item.options.side && <p><strong>Side:</strong><br/> {item.options.side.value}</p>}
+            {item.options.decorationType && <p><strong>Decoration Type:</strong><br/> {item.options.decorationType.value}</p>}
             {item.options.decorqationTypeNote && <p><strong>Decoration Type Note:</strong><br/> {item.options.decorqationTypeNote}</p>}
           </div>
           {item.options.writigOnCakeTypeNote && <p className="fullwidth"><strong>Writing on Cake:</strong><br/> {item.options.writigOnCakeTypeNote}</p>}

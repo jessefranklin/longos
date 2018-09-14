@@ -16,7 +16,7 @@ export const CreateableSelect = ({options,value,onChange,disabled}) => {
                 name={options.name}
                 value={value}
                 placeholder={options.name}
-                onChange={(e) => onChange(e.value, options.name)}
+                onChange={(e) => onChange(e, options.name)}
                 options={optionsArray} 
                 clearable={true}
             />
