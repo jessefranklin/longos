@@ -284,7 +284,6 @@ class OrderDetail extends Component {
     const updateOrderItem = this.updateOrderItem;
     let editState = this.state.editState;
     const pastOrder = this.props.match.params.id.split('&')[1];
-    console.log(pastOrder);
 
     return (
       <div>
@@ -294,7 +293,7 @@ class OrderDetail extends Component {
 
               <button className="link--go-back" onClick={this.gotoDashboard}>Back to orders</button>
                 <div className="order-detail--actions-container">
-                  {pastOrder=='pastOrders' ? '' : <button className="order-detail--action" onClick={this.showActions}>
+                  {pastOrder==='pastOrders' ? '' : <button className="order-detail--action" onClick={this.showActions}>
                     Order Options
                   </button>}
                   {this.state.showActions? (
