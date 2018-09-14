@@ -29,6 +29,7 @@ class Idle extends Component {
     this.onIdle = this._onIdle.bind(this)
     this.reset = this._reset.bind(this)
     this.changeTimeout = this._changeTimeout.bind(this)
+    this.handleClose = this.handleClose.bind(this)
   }
 
   componentDidMount () {
@@ -58,6 +59,9 @@ class Idle extends Component {
   onCancelOrder(){
     this.context.router.history.push('/');
   }
+  handleClose() {
+    this.setState({ showTimeout: false });
+  }
   render () {
       return (
         <div>
@@ -73,8 +77,8 @@ class Idle extends Component {
                   <h3>{en.notifications.timeout.title}</h3>
                   <h4>Your current order will be cancelled in <span className="red"> {moment.duration(this.state.remaining).seconds()}</span> sec</h4>
                   <div className="modal--buttons">
-                    <button className="btn-primary btn-left btn-green">Resume Order</button>
-                    <button onClick={this.onCancelOrder} className="btn-primary btn-right">Cancel</button>
+                    <button onClick={this.handleClose} className="btn-primary btn-left btn-green">Resume Order</button>
+                    <button onClick={this.onCancelOrder.bind(this)} className="btn-primary btn-right">Cancel</button>
                   </div>
                 </div>
               </Modal>
