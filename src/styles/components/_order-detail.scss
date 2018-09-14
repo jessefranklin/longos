@@ -99,6 +99,9 @@
         }
       }
     }
+    div:not([class]){
+        width:100%;
+    }
 }
 
 .order-detail--actions-list {
@@ -163,7 +166,7 @@
         border-top: 5px solid $red;
         position: absolute;
         right:1rem;
-        top:18px;
+        top:15px;
       }
     }
 }
