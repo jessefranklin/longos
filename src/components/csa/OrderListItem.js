@@ -13,11 +13,11 @@ const OrderListItem = ({item, pastOrders, status, isPickedUp, viewOrder}) => {
         <div className='orders--item divTableRow' onClick={() =>viewOrder(item.id)}>
             <div className="cell-id">
                 {dateNotification && !pastOrders ? <Indicator notification={dateNotification} />: ''}
-                <strong>{item.id}</strong><br />
+                <strong>{moment(item.pickupDate).format('MMM. D')} @
+                {moment(item.pickupTime, "HH:mm:ss").format('h:mm a')}</strong><br />
             </div>
             <div className="cell-pickup">
-                {moment(item.pickupDate).format('MMM. D')} @
-                {moment(item.pickupTime, "HH:mm:ss").format('h:mm a')}
+                {item.id}
             </div>
 
             <div className="cell-status">

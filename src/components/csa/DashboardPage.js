@@ -54,10 +54,10 @@ class DashboardPage extends React.Component {
               <div className="divTableRow">
 
                 <div className="cell-id">
-                    Order
+                    Pickup
                 </div>
                 <div className="cell-pickup">
-                    Pickup
+                    Order
                 </div>
                 <div  className="cell-status">
                     Bakery

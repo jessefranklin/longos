@@ -29,23 +29,24 @@ class CSADashboard extends React.Component {
     const {notifications, match } = this.props;
     return(
       <div className="csa--app">
-        
-        <CSAHeader />
+        <div>
+          <CSAHeader />
 
-        <Switch>
-          <PrivateRoute exact path={match.url} component={DashboardPage} />
-          <PrivateRoute exact path={match.url+'/pastOrders'} component={PastOrders} />
-          <PrivateRoute exact path={match.url+'/cancelledOrders'} component={CancelledOrders} />
-          <PrivateRoute exact path={match.url+'/orderDetail/:id'} component={OrderDetail} />
-          <PrivateRoute exact path={match.url+'/EditOrder'} component={EditOrder} />
-          <PrivateRoute exact path={match.url+'/settings'} component={Settings} />
-        </Switch>
+          <Switch>
+            <PrivateRoute exact path={match.url} component={DashboardPage} />
+            <PrivateRoute exact path={match.url+'/pastOrders'} component={PastOrders} />
+            <PrivateRoute exact path={match.url+'/cancelledOrders'} component={CancelledOrders} />
+            <PrivateRoute exact path={match.url+'/orderDetail/:id'} component={OrderDetail} />
+            <PrivateRoute exact path={match.url+'/EditOrder'} component={EditOrder} />
+            <PrivateRoute exact path={match.url+'/settings'} component={Settings} />
+          </Switch>
+        </div>
+        <div>
+          <CSAFooter />
 
-        <CSAFooter />
-
-        <Notifications notifications={notifications} />        
-        <PollApi />
-        
+          <Notifications notifications={notifications} />        
+          <PollApi />
+        </div>
       </div>
     );
   }
