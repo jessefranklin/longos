@@ -104,12 +104,7 @@ const CakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) => {
 
         </h4>
         <button onClick={onRemove} className="btn-qu">
-            <FontAwesome
-            className='fa fa-trash'
-            name='fa-trash'
-            size='2x'
-            aria-hidden='true'
-          />
+          <span className="icon--trash"></span>
         </button>
       </div>
       <div className="cart--item-row2">
@@ -154,12 +149,7 @@ const ClassicCakeItem = ({item,quantityEditable,formattedItemTotal,onRemove}) =>
 
         </h4>
         <button onClick={onRemove} className="btn-qu">
-            <FontAwesome
-            className='fa fa-trash'
-            name='fa-trash'
-            size='2x'
-            aria-hidden='true'
-          />
+          <span className="icon--trash"></span>
         </button>
       </div>
       <div className="cart--item-row2">
