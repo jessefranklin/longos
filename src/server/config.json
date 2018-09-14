@@ -1,16 +1,4 @@
 [{  
-    "id": "store1",
-    "name": "Maple Leaf Square (MLS)",
-    "store_id": "store1",
-    "zone": "6",
-    "phoneNo": "(416) 366-1717", 
-    "location": {
-        "provence": "ON",
-        "city": "Toronto",
-        "address": "15 York Street",
-        "postalCode": "M5J 0A3"
-    }
-},{  
     "id": "store24",
     "name": "Maple Leaf Square (MLS)",
     "store_id": "store24",

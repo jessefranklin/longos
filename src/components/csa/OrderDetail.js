@@ -431,17 +431,20 @@ class OrderDetail extends Component {
 
               </div>
             </div>
+            {csaOrderSortedItems.length?(
 
-            {Object.keys(csaOrderSortedItems).map(function(key, index) {
-              return <div key={index} className="element">
-                <h2>{key}</h2>
-                <div className="counter-items--container">
-                  {csaOrderSortedItems[key].map(order => {
-                    return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} assignees={settings} updateOrderItem={updateOrderItem}/>;
-                  })}
-                </div>
-              </div>;
-            })}
+              Object.keys(csaOrderSortedItems).map(function(key, index) {
+                return <div key={index} className="element">
+                  <h2>{key}</h2>
+                  <div className="counter-items--container">
+                    {csaOrderSortedItems[key].map(order => {
+                      return <OrderDetailItem key={order.id} order={order} oid={csaOrder.id} updateState={updateState} editState={editState} isPaid={csaOrder.isPaid} assignees={settings} updateOrderItem={updateOrderItem}/>;
+                    })}
+                  </div>
+                </div>;
+              })
+
+            ):''}
 
 
           </div>
