@@ -136,11 +136,11 @@
         }],
     "disclaimers" : [{
             "type":"bold",
-            "header": "We are not a nut free env.",
+            "header": "We are not a nut free environment. ",
             "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
         },{
             "type":"script",
-            "header": "Character cakes may not beexactly as shown",
+            "header": "Cakes may not be exactly as shown",
             "body": "Description dolor sit amet, consectetur adipiscing elit. Nulla vitae nisl nec lorem loasxut iaculis condimentum."
         }]
 }
