@@ -25,3 +25,11 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+
+.clearAll-notifications {
+    position: fixed;
+    z-index: 99;
+    top: 10px;
+    right: 330px;
+}

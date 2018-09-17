@@ -100,14 +100,13 @@ class CartOrder extends React.Component {
                     this.state.validation
     const { profile } = this.props;
     const { cart, cartTotal, total, cartTax } = this.props;
-    const itemWord = total === 1 ? 'item' : 'items' ;
     let dateWithin = this.dateWithin();
 
     return (
       <div>
 
         <div className="cart--header">
-          <h2>Place Order <span className="title-light">({total} {itemWord})</span></h2>
+          <h2>Place Order</h2>
           <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
         </div>
 

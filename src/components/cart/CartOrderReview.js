@@ -95,7 +95,7 @@ class CartOrderReview extends React.Component {
       <div className="checkout--review">
 
       <div className="cart--header">
-        <h2>Place Order <span className="title-light">({total} {itemWord})</span></h2>
+        <h2>Place Order</h2>
         <Link to="/products" className="link--continue-shopping">Continue Shopping</Link>
       </div>
 

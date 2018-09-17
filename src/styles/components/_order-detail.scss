@@ -70,6 +70,9 @@
     &.pad-none{
       padding:0;
     }
+    &.reverse{
+        flex-direction: row-reverse;
+    }
     .order-detail--action{
       width:160px;
       height:40px;
