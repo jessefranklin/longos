@@ -89,6 +89,12 @@ class DashboardPage extends React.Component {
                 return <OrderListItem key={order.id} item={order} status={this.props.filters.status} isPickedUp={this.isPickedUp} viewOrder={this.viewOrder} />;
               })}
 
+              {ordersList.length === 0 ? (
+                <div className="no-results--container">
+                  No results found
+                </div>
+              ): null}
+
             </div>
           </div>
         </div>
