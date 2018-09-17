@@ -1,7 +1,7 @@
 [{  
-    "id": "store24",
+    "id": "store1",
     "name": "Maple Leaf Square (MLS)",
-    "store_id": "store24",
+    "store_id": "store1",
     "zone": "6",
     "phoneNo": "(416) 366-1717", 
     "location": {

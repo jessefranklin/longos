@@ -417,11 +417,7 @@ class OrderDetail extends Component {
           </div>
           <div className="order--items">
 
-            <div className="order-detail--actions-row bg-none pad-none">
-              {!csaOrder.isPaid?
-                <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to"><strong>+ &nbsp;</strong> Add to order</button>
-              :'' }
-
+            <div className="order-detail--actions-row bg-none pad-none reverse">
               <div className="filter-by--container">
                 <button className="order-detail--action btn-filter-by order-detail--list" onClick={this.toggleCounterFilter}>
                   {this.state.counter === '' ? 'All Dept.' : this.state.counter}
@@ -433,6 +429,11 @@ class OrderDetail extends Component {
                 )}
 
               </div>
+              {!csaOrder.isPaid?
+                <button onClick={this.addToOrder} className="order-detail--action order-detail--add-to"><strong>+ &nbsp;</strong> Add to order</button>
+              :'' }
+
+              
             </div>
             
             {csaOrderSortedItems !== 'undefined' ?(

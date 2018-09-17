@@ -24,6 +24,9 @@ class CSADashboard extends React.Component {
   constructor(props) {
     super(props);
   }
+  handleRemoveAll=()=> {
+    this.props.removeAll();
+  }
 
   render(){
     const {notifications, match } = this.props;
@@ -43,8 +46,14 @@ class CSADashboard extends React.Component {
         </div>
         <div>
           <CSAFooter />
+          
+          {notifications.length > 0 ?(
+            <div className="clearAll-notifications">
+              <button className="btn btn-green" onClick={this.handleRemoveAll}>Clear All Notifications</button>
+            </div>
+          ):''}
+          <Notifications notifications={notifications} />    
 
-          <Notifications notifications={notifications} />        
           <PollApi />
         </div>
       </div>
@@ -67,5 +76,10 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps)(CSADashboard);
+const mapDispatchToProps = (dispatch) => ({
+  removeAll: () => dispatch(removeAll())
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(CSADashboard);
 

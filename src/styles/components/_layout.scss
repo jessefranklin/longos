@@ -25,3 +25,16 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+
+.clearAll-notifications {
+    position: fixed;
+    z-index: 99;
+    top: 10px;
+    right: 330px;
+}
+
+.no-results--container {
+    padding: 10rem;
+    width: 100%;
+}

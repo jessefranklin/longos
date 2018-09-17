@@ -38,11 +38,8 @@ class PollApi extends React.Component {
     let counter = this.props.filters.counter ? `&counter=${this.props.filters.counter}` : '';
     let url = pollUrl+`/activesince${store}${sinceDate}${sinceTime}${counter}`;
 
-    console.log(url);
-
     axios.get(url, headers).then(
       (response) => {
-        console.log(response.data);
         this.formatNotification(response.data);
       },
       (err) => {

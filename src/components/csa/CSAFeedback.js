@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import FontAwesomeIcon from 'react-fontawesome';
 import { Button, Modal, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { dispatchReport } from '../../actions/feedback';
 
 class CSAFeedback extends Component {
     constructor(props){
         super(props);
         this.state = {
+            storeId: 'store24',
             feedback: ''
         }
     }
@@ -15,9 +18,12 @@ class CSAFeedback extends Component {
     onFeedback = (e) => {
         const notes = e.target.value;
         this.setState({ feedback: notes });
+
     };
     onSubmit = () => {
-        
+        this.props.dispatchReport(this.state).then(
+            console.log('thank you')
+        );
     }
     render() {
         return (
@@ -47,4 +53,8 @@ class CSAFeedback extends Component {
     }
 }
 
-export default CSAFeedback;
+const mapDispatchToProps = (dispatch) => ({
+    dispatchReport: (feedback) => dispatch(dispatchReport(feedback))
+});
+  
+export default connect(undefined, mapDispatchToProps)(CSAFeedback);

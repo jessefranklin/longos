@@ -17,7 +17,6 @@ export class Pagination extends React.Component {
         this.props.onPaginationChange(this.props.page-1);
     }
     render() {
-        console.log(this.props.count);
         return (
             <div className="page--container" >
                 <Button onClick={this.minusOne} bsStyle="primary">prev</Button>
